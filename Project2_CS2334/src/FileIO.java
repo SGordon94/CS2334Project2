@@ -20,6 +20,8 @@ public class FileIO implements Serializable{
 		System.out.print("Enter the name of the data file: ");
 		
 		ScholarPub = inputReader.readLine();
+		
+		System.out.println(ScholarPub);
 	}
 	
 	public static void readFile() throws FileNotFoundException, IOException, ClassNotFoundException{
@@ -32,8 +34,10 @@ public class FileIO implements Serializable{
 	}
 	
 	public static void writeFile(String fileName, ArrayList<Paper> papers) throws FileNotFoundException, IOException{
-		ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
-		objectOutputStream.writeObject(papers);
-		objectOutputStream.close();
+		FileWriter outfile = new FileWriter(fileName);
+		BufferedWriter bw = new BufferedWriter(outfile);
+		bw.write("Test Write");
+		bw.newLine();
+		bw.close();
 	}
 }
