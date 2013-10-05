@@ -2,12 +2,12 @@ import java.io.*;
 import java.util.*;
 
 
-public class FileIO implements Serializable{
+public class FileIO{
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7343823647743067146L;
+
 	private static String ScholarPub;
 	private static Paper paper;
 	
@@ -22,20 +22,22 @@ public class FileIO implements Serializable{
 		ScholarPub = inputReader.readLine();
 	}
 	
-	public static void readFile() throws FileNotFoundException, IOException, ClassNotFoundException{
+	public static void readFile(ArrayList<Paper> papers) throws FileNotFoundException, IOException, ClassNotFoundException{
 		
-		ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(ScholarPub));
-		paper = (Paper) objectInputStream.readObject();
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(ScholarPub));
+		String line;
+		ArrayList<String> lines = new ArrayList<String>();
 		
-		papers.add(paper);
-		objectInputStream.close();
+		while((line = bufferedReader.readLine()) != null) {
+			
+			lines.add(line);
+		}
 	}
 	
-	public static void writeFile(String fileName, ArrayList<Paper> papers) throws FileNotFoundException, IOException{
+	public static void writeFile(String fileName, String output) throws FileNotFoundException, IOException{
 		FileWriter outfile = new FileWriter(fileName);
 		BufferedWriter bw = new BufferedWriter(outfile);
-		bw.write("Test Write");
-		bw.newLine();
+		bw.write(output);
 		bw.close();
 	}
 }
