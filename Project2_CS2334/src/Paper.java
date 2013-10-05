@@ -1,16 +1,15 @@
-import java.io.*;
 import java.util.*;
 
 
-public class Paper implements Serializable, Comparator, Comparable{
+public class Paper implements Comparator<Paper>, Comparable<Paper>{
 
-	private String typeOfPaper;
-	private String authors;
-	private String titleOfPaper;
-	private String titleOfSerial;
-	private String pageNumber;
-	private String publicationDate;
-	private String digitalObjectIdentifier;
+	private String typeOfPaper = null;
+	private String authors = null;
+	private String titleOfPaper = null;
+	private String titleOfSerial = null;
+	private String pageNumber = null;
+	private String publicationDate = null;
+	private String digitalObjectIdentifier = null;
 	
 	
 	public Paper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial, String pageNumber, String publicationDate, String digitalObjectIdentifier){
@@ -53,13 +52,13 @@ public class Paper implements Serializable, Comparator, Comparable{
 	
 	
 	@Override
-	public int compare(Object o1, Object o2) {
+	public int compare(Paper p1, Paper p2) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int compareTo(Object o) {
+	public int compareTo(Paper p) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
