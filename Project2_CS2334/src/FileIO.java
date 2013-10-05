@@ -22,7 +22,7 @@ public class FileIO{
 		ScholarPub = inputReader.readLine();
 	}
 	
-	public static void readFile(ArrayList<Paper> papers) throws FileNotFoundException, IOException, ClassNotFoundException{
+	public static void readFile(PaperCollection papers) throws FileNotFoundException, IOException, ClassNotFoundException{
 		
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(ScholarPub));
 		String line;
