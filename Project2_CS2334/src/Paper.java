@@ -2,12 +2,14 @@ import java.util.*;
 
 
 public class Paper implements Comparator<Paper>, Comparable<Paper>{
-
+	private int volume = -1;
+	private int issue = -1;
+	private int startingPage = -1;
+	private int endingPage = -1;
 	private String typeOfPaper = null;
 	private String authors = null;
 	private String titleOfPaper = null;
 	private String titleOfSerial = null;
-	private String pageNumber = null;
 	private String publicationDate = null;
 	private String digitalObjectIdentifier = null;
 	
@@ -17,7 +19,6 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		this.authors = authors;
 		this.titleOfPaper = titleOfPaper;
 		this.titleOfSerial = titleOfSerial;
-		this.pageNumber = pageNumber;
 		this.publicationDate = publicationDate;
 		this.digitalObjectIdentifier = digitalObjectIdentifier;
 	}
@@ -36,10 +37,6 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	
 	public String getTitleOfSerial(){
 		return this.titleOfSerial;
-	}
-	
-	public String getPageNumber(){
-		return this.pageNumber;
 	}
 	
 	public String getPublicationDate(){
