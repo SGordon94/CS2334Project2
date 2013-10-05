@@ -20,8 +20,6 @@ public class FileIO implements Serializable{
 		System.out.print("Enter the name of the data file: ");
 		
 		ScholarPub = inputReader.readLine();
-		
-		System.out.println(ScholarPub);
 	}
 	
 	public static void readFile() throws FileNotFoundException, IOException, ClassNotFoundException{
