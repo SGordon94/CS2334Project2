@@ -8,7 +8,7 @@ public class MainDriver {
 		FileIO.getInput();
 		FileIO.readFile();
 		
-		Paper testPaper1 = Paper();
+		//Paper testPaper1 = Paper();
 	}
 
 }
