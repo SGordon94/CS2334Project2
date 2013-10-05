@@ -11,8 +11,6 @@ public class FileIO{
 	private static String ScholarPub;
 	private static Paper paper;
 	
-	private static ArrayList<Paper> papers = new ArrayList<Paper>();
-	
 	public static void getInput() throws IOException{
 		
 		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,11 +24,25 @@ public class FileIO{
 		
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(ScholarPub));
 		String line;
+		String output = "";
 		ArrayList<String> lines = new ArrayList<String>();
 		
 		while((line = bufferedReader.readLine()) != null) {
 			
-			lines.add(line);
+			output += line + ";;";
+		}
+		
+		String[] paperObjects = output.split(";;;;");
+		
+		for(int index = 0; index < paperObjects.length; ++index){
+			String[] split = paperObjects[index].split(";;");
+			
+			if(split.length == 6){
+				papers.addPaper(split[0], split[1], split[2], split[3], split[4], split[5]);
+			} 
+			else if(split.length == 7){
+				papers.addPaper(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
+			}
 		}
 	}
 	
