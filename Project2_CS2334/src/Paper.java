@@ -31,6 +31,23 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		this.publicationDate = publicationDate;
 	}
 	
+	public String getPaper(){
+		String paper = "";
+		paper += this.typeOfPaper + "\n";
+		paper += this.authors + "\n";
+		paper += this.titleOfPaper + "\n";
+		paper += this.titleOfSerial + "\n";
+		paper += this.numbers + "\n";
+		if (digitalObjectIdentifier != null){
+			paper += this.publicationDate + "\n";
+			paper += this.digitalObjectIdentifier;
+		}
+		else{
+			paper += this.publicationDate;
+		}
+		return paper;
+	}
+	
 	public String getTypeOfPaper(){
 		return this.typeOfPaper;
 	}
