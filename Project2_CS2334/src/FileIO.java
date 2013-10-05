@@ -2,9 +2,14 @@ import java.io.*;
 import java.util.*;
 
 
-public class FileIO {
-	private static  String ScholarPub;
-	static Paper paper;
+public class FileIO implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7343823647743067146L;
+	private static String ScholarPub;
+	private static Paper paper;
 	
 	private static ArrayList<Paper> papers = new ArrayList<Paper>();
 	
@@ -21,7 +26,14 @@ public class FileIO {
 		
 		ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(ScholarPub));
 		paper = (Paper) objectInputStream.readObject();
+		
 		papers.add(paper);
 		objectInputStream.close();
+	}
+	
+	public static void writeFile(String fileName, ArrayList<Paper> papers) throws FileNotFoundException, IOException{
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+		objectOutputStream.writeObject(papers);
+		objectOutputStream.close();
 	}
 }
