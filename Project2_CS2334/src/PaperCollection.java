@@ -8,9 +8,14 @@ public class PaperCollection {
 	}
 	
 	public void addPaper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial,
-			String publicationDate, String digitalObjectIdentifier, int volume, int issue, int startingPage,
-			int endingPage){
-		
+			String numbers, String publicationDate, String digitalObjectIdentifier){
+		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
+				publicationDate, digitalObjectIdentifier));
+	}
+	
+	public void addPaper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial,
+			String numbers, String publicationDate){
+		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
 	}
 	
 	public void sort(){
