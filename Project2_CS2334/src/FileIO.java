@@ -31,11 +31,10 @@ public class FileIO implements Serializable{
 		objectInputStream.close();
 	}
 	
-	public static void writeFile(String fileName, ArrayList<Paper> papers) throws FileNotFoundException, IOException{
+	public static void writeFile(String fileName, String output) throws FileNotFoundException, IOException{
 		FileWriter outfile = new FileWriter(fileName);
 		BufferedWriter bw = new BufferedWriter(outfile);
-		bw.write("Test Write");
-		bw.newLine();
+		bw.write(output);
 		bw.close();
 	}
 }

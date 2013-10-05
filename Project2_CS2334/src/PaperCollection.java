@@ -29,4 +29,15 @@ public class PaperCollection {
 	public ArrayList<Paper> returnPaperArray(){
 		return this.paperCollection;
 	}
+	
+	public String outputPapers(){
+		String outputString = "";
+		for (int i=0; i < paperCollection.size(); i++){
+			outputString += paperCollection.get(i).getPaper();
+			if (i != paperCollection.size() - 1){
+				outputString += "\n\n";
+			}
+		}
+		return outputString;
+	}
 }
