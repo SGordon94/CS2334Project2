@@ -7,6 +7,7 @@ public class MainDriver {
 		PaperCollection paperCollection = new PaperCollection();
 		boolean run = true;
 		
+		System.out.println("Welcome to ScholarPub!");
 		IO.readFile(paperCollection);
 		while(run){
 			System.out.print("Please input your desired function: ");
@@ -57,6 +58,7 @@ public class MainDriver {
 				case "pf":
 				case "pF":
 					IO.writeFile(paperCollection.outputPapers());
+					System.out.println("The file has been written.\n");
 					break;
 					
 				case "S":
@@ -65,6 +67,9 @@ public class MainDriver {
 					
 				case "E":
 				case "e":
+				case "EXIT":
+				case "exit":
+				case "Exit":
 					run = false;
 					break;
 					
@@ -77,6 +82,18 @@ public class MainDriver {
 				case "HELP":
 				case "help":
 				case "Help":
+					System.out.println("These are the available inputs.");
+					System.out.println("BI: sort by bibliographic order");
+					System.out.println("AN: sort by author names");
+					System.out.println("PT: sort by paper title");
+					System.out.println("ST: sort by serial title");
+					System.out.println("CH: sort by chronological order");
+					System.out.println("R:  randomly sort");
+					System.out.println("PS: print the papers to the screen");
+					System.out.println("PF: write the papers to a file");
+					System.out.println("S:  search for a title");
+					System.out.println("H:  show the help menu");
+					System.out.println("E:  exit the program\n");
 					break;
 					
 				case "TEST":
@@ -85,7 +102,7 @@ public class MainDriver {
 					break;
 					
 				default:
-					System.out.println("Invalid input. You may enter H for help.");
+					System.out.println("Invalid input. You may enter H for help.\n");
 					break;
 			}
 		}
