@@ -6,8 +6,8 @@ public class MainDriver {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		PaperCollection paperCollection = new PaperCollection();
 		
-		FileIO.readFile(paperCollection);
-		FileIO.writeFile("output.txt", paperCollection.outputPapers());
+		IO.readFile(paperCollection);
+		IO.writeFile("output.txt", paperCollection.outputPapers());
 	}
 
 }

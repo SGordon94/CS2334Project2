@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-public class FileIO{
+public class IO{
 	
 	/**
 	 * 
