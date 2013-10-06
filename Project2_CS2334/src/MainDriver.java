@@ -9,7 +9,7 @@ public class MainDriver {
 		
 		IO.readFile(paperCollection);
 		while(run){
-			System.out.println("Please input your desired function: ");
+			System.out.print("Please input your desired function: ");
 			String temp = IO.getInput();
 			switch(temp){
 				case "BI":
