@@ -8,9 +8,6 @@ public class IO{
 	 * 
 	 */
 
-	private static String ScholarPub;
-	private static Paper paper;
-	
 	public static String getInput() throws IOException{
 		String temp = null;
 		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
