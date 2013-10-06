@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -76,16 +78,110 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		return this.digitalObjectIdentifier;
 	}
 	
-	
 	@Override
 	public int compare(Paper p1, Paper p2) {
-		// TODO Auto-generated method stub
+		
+		final int BEFORE = -1;
+		final int EQUAL = 0;
+		final int AFTER = 1;
+		
+		if(p1.typeOfPaper.compareTo(p2.typeOfPaper) < 0)
+			return BEFORE;
+		else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) == 0)
+			return EQUAL;
+		else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) > 0)
+			return AFTER;
+		
+		if(p1.authors.compareTo(p2.authors) < 0)
+			return BEFORE;
+		else if(p1.authors.compareTo(p2.authors) == 0)
+			return EQUAL;
+		else if(p1.authors.compareTo(p2.authors) > 0)
+			return AFTER;
+		
+		if(p1.titleOfPaper.compareTo(p2.titleOfPaper) < 0)
+			return BEFORE;
+		else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) == 0)
+			return EQUAL;
+		else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) > 0)
+			return AFTER;
+		
+		if(p1.titleOfSerial.compareTo(p2.titleOfSerial) < 0)
+			return BEFORE;
+		else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) == 0)
+			return EQUAL;
+		else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) > 0)
+			return AFTER;
+		
+		try {
+			Date dateOfP1 = new SimpleDateFormat("MMMM, yyyy").parse(p1.publicationDate);
+			Date dateOfP2 = new SimpleDateFormat("MMMM, yyyy").parse(p2.publicationDate);
+			
+			if(dateOfP1.before(dateOfP2))
+				return BEFORE;
+			else if(dateOfP1.equals(dateOfP2))
+				return EQUAL;
+			else if(dateOfP1.after(dateOfP2))
+				return AFTER;
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 
 	@Override
 	public int compareTo(Paper p) {
-		// TODO Auto-generated method stub
+		final int BEFORE = -1;
+		final int EQUAL = 0;
+		final int AFTER = 1;
+		
+		if(this.typeOfPaper.compareTo(p.typeOfPaper) < 0)
+			return BEFORE;
+		else if(this.typeOfPaper.compareTo(p.typeOfPaper) == 0)
+			return EQUAL;
+		else if(this.typeOfPaper.compareTo(p.typeOfPaper) > 0)
+			return AFTER;
+		
+		if(this.authors.compareTo(p.authors) < 0)
+			return BEFORE;
+		else if(this.authors.compareTo(p.authors) == 0)
+			return EQUAL;
+		else if(this.authors.compareTo(p.authors) > 0)
+			return AFTER;
+		
+		if(this.titleOfPaper.compareTo(p.titleOfPaper) < 0)
+			return BEFORE;
+		else if(this.titleOfPaper.compareTo(p.titleOfPaper) == 0)
+			return EQUAL;
+		else if(this.titleOfPaper.compareTo(p.titleOfPaper) > 0)
+			return AFTER;
+		
+		if(this.titleOfSerial.compareTo(p.titleOfSerial) < 0)
+			return BEFORE;
+		else if(this.titleOfSerial.compareTo(p.titleOfSerial) == 0)
+			return EQUAL;
+		else if(this.titleOfSerial.compareTo(p.titleOfSerial) > 0)
+			return AFTER;
+		
+		try {
+			Date dateThis = new SimpleDateFormat("MMMM, yyyy").parse(this.publicationDate);
+			Date dateOfP = new SimpleDateFormat("MMMM, yyyy").parse(p.publicationDate);
+			
+			if(dateThis.before(dateOfP))
+				return BEFORE;
+			else if(dateThis.equals(dateOfP))
+				return EQUAL;
+			else if(dateThis.after(dateOfP))
+				return AFTER;
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 	
