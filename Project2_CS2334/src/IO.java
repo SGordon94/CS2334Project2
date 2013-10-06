@@ -43,8 +43,10 @@ public class IO{
 		bufferedReader.close();
 	}
 	
-	public static void writeFile(String fileName, String output) throws FileNotFoundException, IOException{
-		FileWriter outfile = new FileWriter(fileName);
+	public static void writeFile(String output) throws FileNotFoundException, IOException{
+		System.out.print("Enter the name of file to write to: ");
+		String temp = getInput();
+		FileWriter outfile = new FileWriter(temp);
 		BufferedWriter bw = new BufferedWriter(outfile);
 		bw.write(output);
 		bw.close();
