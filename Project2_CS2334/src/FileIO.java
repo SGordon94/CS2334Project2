@@ -11,21 +11,20 @@ public class FileIO{
 	private static String ScholarPub;
 	private static Paper paper;
 	
-	public static void getInput() throws IOException{
-		
+	public static String getInput() throws IOException{
+		String temp = null;
 		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
-		
-		System.out.print("Enter the name of the data file: ");
-		
-		ScholarPub = inputReader.readLine();
+		temp = inputReader.readLine();
+		return temp;
 	}
 	
 	public static void readFile(PaperCollection papers) throws FileNotFoundException, IOException, ClassNotFoundException{
-		
-		BufferedReader bufferedReader = new BufferedReader(new FileReader(ScholarPub));
-		String line;
+		String temp = null;
+		String line = null;
+		System.out.print("Enter the name of the data file: ");
+		temp = getInput();
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(temp));
 		String output = "";
-		ArrayList<String> lines = new ArrayList<String>();
 		
 		while((line = bufferedReader.readLine()) != null) {
 			
@@ -44,6 +43,7 @@ public class FileIO{
 				papers.addPaper(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
 			}
 		}
+		bufferedReader.close();
 	}
 	
 	public static void writeFile(String fileName, String output) throws FileNotFoundException, IOException{
