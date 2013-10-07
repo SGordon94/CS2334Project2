@@ -22,18 +22,6 @@ public class PaperCollection {
 	public void sort(String receivedCase, PaperCollection paperCollection){
 		switch(receivedCase){
 			case "bi":
-				ArrayList<Paper> papers = paperCollection.returnPaperArray();
-				for(int index = 0; index < papers.size(); ++index){
-					
-					if(papers.get(index).getAuthors() == null){
-						paperCollection.setCompareValues(2);
-						Collections.sort(paperCollection.returnPaperArray(), new Paper());
-					}
-					else
-						Collections.sort(paperCollection.returnPaperArray(), new Paper());	
-				}
-				break;
-				
 			case "an":
 			case "pt":
 			case "st":

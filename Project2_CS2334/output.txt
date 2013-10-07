@@ -1,0 +1,14 @@
+Conference Paper
+Woehrer, Mark; Hougen, Dean; Schlupp, Ingo
+Sexual Selection, Resource Distribution, and Population Size in Synthetic Sympatric Speciation
+International Conference on the Synthesis and Simulation of Living Systems
+137-144
+July 2012
+http://dx.doi.org/10.7551/978-0-262-31050-5-ch020
+
+Journal Article
+Eskridge, Brent E.; Hougen, Dean F.
+Extending Adaptive Fuzzy Behavior Hierarchies to Multiple Levels of Composite Behaviors 
+Robotics and Autonomous Systems
+58(9):1076-1084
+September 2010

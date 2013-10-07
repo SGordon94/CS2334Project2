@@ -96,11 +96,16 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		switch (p1.compareValue){
 		
 		case 1:
-			if(p1.typeOfPaper.compareTo(p2.typeOfPaper) < 0)
+			if(p1.authors.compareTo(p2.authors) < 0)
 				return BEFORE;
-			else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) == 0)
-				return EQUAL;
-			else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) > 0)
+			else if(p1.authors.compareTo(p2.authors) == 0)
+				if(p1.titleOfPaper.compareTo(p2.titleOfPaper) < 0)
+					return BEFORE;
+				else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) == 0)
+					return EQUAL;
+				else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) > 0)
+					return AFTER;
+			else if(p1.authors.compareTo(p2.authors) > 0)
 				return AFTER;
 			break;
 			
