@@ -88,7 +88,16 @@ public class MainDriver {
 					
 				case "S":
 				case "s":
-					
+					System.out.print("Please input your search criteria: ");
+					String temp2 = IO.getInput();
+					int result = paperCollection.search(temp2);
+					if (result == -1){
+						System.out.println("The search did not yield any results.\n");
+					}
+					else{
+						System.out.println("Your search was found at index " + result + ".\n");
+						System.out.println(paperCollection.displayPaper(result) + "\n");
+					}
 					break;
 					
 				case "E":
