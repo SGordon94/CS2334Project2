@@ -18,7 +18,7 @@ public class PaperCollection {
 		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
 	}
 	
-	public void sort(){
+	public void sort(String receivedCase, PaperCollection paperCollection){
 		
 	}
 	
