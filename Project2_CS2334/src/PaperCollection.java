@@ -20,22 +20,19 @@ public class PaperCollection {
 	}
 	
 	public void sort(String receivedCase, PaperCollection paperCollection){
-		
-		//if(receivedCase.equals("bi"))
-		
-		if(receivedCase.equals("an"))
-			Collections.sort(paperCollection.returnPaperArray(), new Paper());
-		
-		
-		//if(receivedCase.equals("pt"))
-		
-		//if(receivedCase.equals("st"))
-		
-		//if(receivedCase.equals("ch"))
-		
-		if(receivedCase.equals("r"))
-			Collections.shuffle(paperCollection.returnPaperArray());
+		switch(receivedCase){
+			case "bi":
+			case "an":
+			case "pt":
+			case "st":
+			case "ch":
+				Collections.sort(paperCollection.returnPaperArray(), new Paper());
+				break;
 			
+			case "r":
+				Collections.shuffle(paperCollection.returnPaperArray());
+				break;
+		}			
 	}
 	
 	public void search(){
