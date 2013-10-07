@@ -1,0 +1,33 @@
+PROGRAM AUTHORS:
+DAYLON WILKINS 112-78-3885
+STEPHON GORDON 112-87-5513
+
+
+Milestone 1:
+	Keyboard input was implemented successfully, and the same method is used throughout for all instances where keyboard input is necessary.
+
+Milestone 2:
+	Text file IO was implemented successfully, however there are situations where errors may arise. If the file that the user types in cannot be found, the program will crash. If the paper does not possess the information in the correct format, then the program will not load the paper properly, if at all. It will, however, continue to run.
+
+Milestone 3:
+	The Paper class stores the data for each field of the paper, and also implements the appropriate methods to return itself in a viewable (or writable) format, return individual variables, and compare itself against other Paper objects.
+
+Milestone 4:
+	The Comparable and Comparator interfaces are implemented, and the compare and compareTo methods are overwritten. The distinction between Conference Papers and Journal Articles are not explicitly examined in the comparison methods, and thus the sorting is done on the paper collection as a whole.
+
+Milestone 5:
+	The PaperCollection class stores the list of papers as an ArrayList, and includes the overall search functionality, the ability to print or write the entire ArrayList, as well as handling how sorting works.
+
+Milestone 6:
+	Briefly touched upon in Milestone 5, the PaperCollection class handles both the sort and search operations. A binary search is performed when the collection is sorted by author name, paper title, serial title, or date (chronological). A linear search is performed whenever a bibliographic or random sort is performed, and the program will also search by paper title. By default, the program assumes a random ordering, and performs a linear search before any sorting is performed. The search criteria is determined by the last used sort operation. It is impossible to explicitly state which criteria to sort by without first choosing a sort option.
+
+The bibliographic ordering was based on the following website:
+http://link.springer.com/article/10.1023/A:1010933404324
+First, author names are sorted, and if two or more papers contain the same author, then the paper titles are sorted.
+
+In addition to the specified inputs that must be accepted, the program will allow several variations. For example, to search for author names, the specification states that the input "AN" must be used. This program accepts "AN", as well as the case variants, such as "an", "An", and "aN". This is replicated across the other inputs as well, with "E" extended to include the fully-typed "EXIT". More details can be found within the source code. A "Help" input was also added, to aid in user friendliness and explain the accepted inputs.
+
+Of note, the program will crash if a proper date is not input when searching chronologically. The format of input must be "MONTH YEAR" (but without the quotation marks). For example, 'September 2010' will search properly, however 'Monkeys 2345' will crash the program.
+
+
+Both group members contributed an equal amount of work, and all work was done with both of the users' approval. To further explain, Stephon resided in Daylon's dorm whenever any sort of progress on the project was made. Both programmers interacted with each other at every step, and all code can be considered the product of the collaboration of both minds.
