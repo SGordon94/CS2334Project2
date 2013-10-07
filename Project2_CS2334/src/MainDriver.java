@@ -1,9 +1,10 @@
 import java.io.IOException;
+import java.text.ParseException;
 
 
 public class MainDriver {
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
 		PaperCollection paperCollection = new PaperCollection();
 		boolean run = true;
 		
@@ -123,7 +124,7 @@ public class MainDriver {
 							System.exit(-1);
 							break;
 					}
-					System.out.print("Please input your search criteria: ");
+					System.out.print("Please input your search string: ");
 					String temp2 = IO.getInput();
 					int result = paperCollection.search(temp2);
 					if (result == -1){
@@ -159,7 +160,7 @@ public class MainDriver {
 					System.out.println("AN: sort by author names");
 					System.out.println("PT: sort by paper title");
 					System.out.println("ST: sort by serial title");
-					System.out.println("CH: sort by chronological order");
+					System.out.println("CH: sort by chronological order; dates must be in \"MONTH YEAR\" format");
 					System.out.println("R:  randomly sort");
 					System.out.println("PS: print the papers to the screen");
 					System.out.println("PF: write the papers to a file");

@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**PaperCollection is the class used to create a Paper Collection object which manages the papers imported from a file.
@@ -67,8 +69,9 @@ public class PaperCollection {
 	 * 
 	 * @param key the key being searched for by the user
 	 * @return the index of the found paper
+	 * @throws ParseException 
 	 */
-	public int search(String key){
+	public int search(String key) throws ParseException{
 		int left  = 0;
 		int right = paperCollection.size() - 1;
 		switch(compareValue){
@@ -128,9 +131,10 @@ public class PaperCollection {
 				
 			case 5:
 				while( right - left + 1 > 0) {
+					Date key2 = new SimpleDateFormat("MMMM yyyy").parse(key);
 					int middleIndex = ( left + right ) / 2;
-					String middleElement = paperCollection.get(middleIndex).getPublicationDate();
-					int comparisonValue = middleElement.compareTo(key);
+					Date middleElement = paperCollection.get(middleIndex).getPublicationDateFormatted();
+					int comparisonValue = middleElement.compareTo(key2);
 			
 					if (comparisonValue < 0) {
 						left = middleIndex + 1;
