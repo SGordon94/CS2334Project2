@@ -88,6 +88,26 @@ public class MainDriver {
 					
 				case "S":
 				case "s":
+					switch(paperCollection.returnCompareValue()){
+						case 1:
+						case 3:
+						case 6:
+							System.out.println("The search function will search for paper titles.");
+							break;
+						case 2:
+							System.out.println("The search function will search for author names.");
+							break;
+						case 4:
+							System.out.println("The search function will search for serial titles.");
+							break;
+						case 5:
+							System.out.println("The search function will search for dates.");
+							break;
+						default:
+							System.out.println("Internal Error: illegal compareValue");
+							System.exit(-1);
+							break;
+					}
 					System.out.print("Please input your search criteria: ");
 					String temp2 = IO.getInput();
 					int result = paperCollection.search(temp2);
