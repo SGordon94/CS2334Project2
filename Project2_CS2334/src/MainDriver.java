@@ -8,11 +8,18 @@ public class MainDriver {
 		boolean run = true;
 		
 		System.out.println("Welcome to ScholarPub!");
+		
+		// Reads the file
 		IO.readFile(paperCollection);
+		
+		// Enters main program
 		while(run){
 			System.out.print("Please input your desired function: ");
 			String temp = IO.getInput();
 			switch(temp){
+			
+					// Sorts the papers based on the order used by cited Scholarly Paper
+			
 				case "BI":
 				case "Bi":
 				case "bi":
@@ -23,6 +30,7 @@ public class MainDriver {
 					System.out.println("Sorted. Searches now search by this order.\n");
 					break;
 					
+					// Sorts the papers based on author names in a lexicographical order
 				case "AN":
 				case "An":
 				case "an":
@@ -33,6 +41,7 @@ public class MainDriver {
 					System.out.println("Sorted. Searches now search by author name.\n");
 					break;
 					
+					// Sorts the paper based on paper titles in a lexicographical order
 				case "PT":
 				case "Pt":
 				case "pt":
@@ -43,6 +52,7 @@ public class MainDriver {
 					System.out.println("Sorted. Searches now search by paper title.\n");
 					break;
 					
+					// Sorts the paper based on serial titles in a lexicographical order
 				case "ST":
 				case "St":
 				case "st":
@@ -53,6 +63,7 @@ public class MainDriver {
 					System.out.println("Sorted. Searches now search by serial title.\n");
 					break;
 					
+					// Sorts the papers chronologically 
 				case "CH":
 				case "Ch":
 				case "ch":
@@ -63,6 +74,7 @@ public class MainDriver {
 					System.out.println("Sorted. Searches now search by date.\n");
 					break;
 					
+					// Shuffles the papers into a random order
 				case "R":
 				case "r":
 					System.out.println("Shuffling the papers.");
@@ -71,6 +83,7 @@ public class MainDriver {
 					System.out.println("Shuffled. Searches now search by paper title.\n");
 					break;
 					
+					// Prints the papers to the screen
 				case "PS":
 				case "Ps":
 				case "ps":
@@ -78,6 +91,7 @@ public class MainDriver {
 					System.out.println("\n" + paperCollection.outputPapers() + "\n");
 					break;
 					
+					// Prints the papers to a file
 				case "PF":
 				case "Pf":
 				case "pf":
@@ -86,6 +100,7 @@ public class MainDriver {
 					System.out.println("The file has been written.\n");
 					break;
 					
+					// Searches by a certain criteria
 				case "S":
 				case "s":
 					switch(paperCollection.returnCompareValue()){
@@ -120,6 +135,7 @@ public class MainDriver {
 					}
 					break;
 					
+					// Exits the program
 				case "E":
 				case "e":
 				case "EXIT":
@@ -128,6 +144,7 @@ public class MainDriver {
 					run = false;
 					break;
 					
+					// Gives the user help with input
 				case "H":
 				case "h":
 				case "HE":
@@ -157,6 +174,7 @@ public class MainDriver {
 			}
 		}
 		
+		// Closes main program
 		System.out.println("Thank you for using ScholarPub!");
 		System.exit(0);
 	}

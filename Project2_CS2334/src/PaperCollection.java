@@ -2,7 +2,7 @@ import java.util.*;
 
 /**PaperCollection is the class used to create a Paper Collection object which manages the papers imported from a file.
  * 
- * @author Stephon
+ * 
  * @version 1.0
  */
 public class PaperCollection {
