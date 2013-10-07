@@ -3,7 +3,6 @@ import java.util.*;
 
 /**Class that reads input from the user as well as writes output to either the screen or to a file.
  * 
- * @author Stephon
  * @version 1.0
  */
 public class IO{

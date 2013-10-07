@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	private String typeOfPaper = null;
-	private String authors = null;
+	private String authors = "N/A";
 	private String titleOfPaper = null;
 	private String titleOfSerial = null;
 	private String numbers = null;
@@ -76,6 +76,11 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	
 	public String getPublicationDate(){
 		return this.publicationDate;
+	}
+	
+	public Date getPublicationDateFormatted() throws ParseException{
+		Date date = new SimpleDateFormat("MMMM yyyy").parse(publicationDate);
+		return date;
 	}
 	
 	public String getDigitalObjectIdentifier(){
