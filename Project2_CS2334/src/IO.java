@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 /**Class that reads input from the user as well as writes output to either the screen or to a file.
  * 
