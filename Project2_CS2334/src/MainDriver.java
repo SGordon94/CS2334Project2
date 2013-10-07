@@ -116,14 +116,9 @@ public class MainDriver {
 					System.out.println("R:  randomly sort");
 					System.out.println("PS: print the papers to the screen");
 					System.out.println("PF: write the papers to a file");
-					System.out.println("S:  search for a title");
+					System.out.println("S:  search by the previously sorted option; default is paper title");
 					System.out.println("H:  show the help menu");
 					System.out.println("E:  exit the program\n");
-					break;
-					
-				case "TEST":
-				case "test":
-				case "Test":
 					break;
 					
 				default:

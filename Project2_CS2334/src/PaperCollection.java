@@ -2,6 +2,7 @@ import java.util.*;
 
 
 public class PaperCollection {
+	int compareValue = 6;
 	ArrayList<Paper> paperCollection = new ArrayList<Paper>();
 	
 	public PaperCollection(){
@@ -57,6 +58,7 @@ public class PaperCollection {
 	}
 	
 	public void setCompareValues(int value){
+		compareValue = value;
 		for (int i=0; i < paperCollection.size(); i++){
 			paperCollection.get(i).setCompareValue(value);
 		}
