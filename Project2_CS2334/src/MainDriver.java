@@ -18,8 +18,9 @@ public class MainDriver {
 				case "bi":
 				case "bI":
 					System.out.println("Sorting by the bibliographic order.");
+					paperCollection.setCompareValues(1);
 					paperCollection.sort("bi", paperCollection);
-					System.out.println("Sorted.\n");
+					System.out.println("Sorted. Searches now search by this order.\n");
 					break;
 					
 				case "AN":
@@ -27,8 +28,9 @@ public class MainDriver {
 				case "an":
 				case "aN":
 					System.out.println("Sorting by the author name(s).");
+					paperCollection.setCompareValues(2);
 					paperCollection.sort("an", paperCollection);
-					System.out.println("Sorted.\n");
+					System.out.println("Sorted. Searches now search by author name.\n");
 					break;
 					
 				case "PT":
@@ -36,8 +38,9 @@ public class MainDriver {
 				case "pt":
 				case "pT":
 					System.out.println("Sorting by the paper titles.");
+					paperCollection.setCompareValues(3);
 					paperCollection.sort("pt", paperCollection);
-					System.out.println("Sorted.\n");
+					System.out.println("Sorted. Searches now search by paper title.\n");
 					break;
 					
 				case "ST":
@@ -45,8 +48,9 @@ public class MainDriver {
 				case "st":
 				case "sT":
 					System.out.println("Sorting by the serial titles.");
+					paperCollection.setCompareValues(4);
 					paperCollection.sort("st", paperCollection);
-					System.out.println("Sorted.\n");
+					System.out.println("Sorted. Searches now search by serial title.\n");
 					break;
 					
 				case "CH":
@@ -54,12 +58,17 @@ public class MainDriver {
 				case "ch":
 				case "cH":
 					System.out.println("Sorting by chronological order.");
+					paperCollection.setCompareValues(5);
 					paperCollection.sort("ch", paperCollection);
-					System.out.println("Sorted.\n");
+					System.out.println("Sorted. Searches now search by date.\n");
 					break;
 					
 				case "R":
 				case "r":
+					System.out.println("Shuffling the papers.");
+					paperCollection.setCompareValues(6);
+					paperCollection.sort("r", paperCollection);
+					System.out.println("Shuffled. Searches now search by paper title.\n");
 					break;
 					
 				case "PS":

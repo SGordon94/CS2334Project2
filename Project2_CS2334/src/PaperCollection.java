@@ -55,4 +55,10 @@ public class PaperCollection {
 		}
 		return outputString;
 	}
+	
+	public void setCompareValues(int value){
+		for (int i=0; i < paperCollection.size(); i++){
+			paperCollection.get(i).setCompareValue(value);
+		}
+	}
 }
