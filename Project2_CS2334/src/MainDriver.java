@@ -17,30 +17,45 @@ public class MainDriver {
 				case "Bi":
 				case "bi":
 				case "bI":
+					System.out.println("Sorting by the bibliographic order.");
+					paperCollection.sort("bi", paperCollection);
+					System.out.println("Sorted.\n");
 					break;
 					
 				case "AN":
 				case "An":
 				case "an":
 				case "aN":
+					System.out.println("Sorting by the author name(s).");
+					paperCollection.sort("an", paperCollection);
+					System.out.println("Sorted.\n");
 					break;
 					
 				case "PT":
 				case "Pt":
 				case "pt":
 				case "pT":
+					System.out.println("Sorting by the paper titles.");
+					paperCollection.sort("pt", paperCollection);
+					System.out.println("Sorted.\n");
 					break;
 					
 				case "ST":
 				case "St":
 				case "st":
 				case "sT":
+					System.out.println("Sorting by the serial titles.");
+					paperCollection.sort("st", paperCollection);
+					System.out.println("Sorted.\n");
 					break;
 					
 				case "CH":
 				case "Ch":
 				case "ch":
 				case "cH":
+					System.out.println("Sorting by chronological order.");
+					paperCollection.sort("ch", paperCollection);
+					System.out.println("Sorted.\n");
 					break;
 					
 				case "R":
@@ -51,6 +66,7 @@ public class MainDriver {
 				case "Ps":
 				case "ps":
 				case "pS":
+					System.out.println("\n" + paperCollection.outputPapers() + "\n");
 					break;
 					
 				case "PF":
