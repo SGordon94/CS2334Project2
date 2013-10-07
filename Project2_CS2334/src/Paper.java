@@ -11,6 +11,10 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	private String numbers = null;
 	private String publicationDate = null;
 	private String digitalObjectIdentifier = null;
+	private int compareValue = 0;
+	public Paper(){
+		
+	}
 	
 	public Paper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){
@@ -85,49 +89,52 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		final int EQUAL = 0;
 		final int AFTER = 1;
 		
-		if(p1.typeOfPaper.compareTo(p2.typeOfPaper) < 0)
-			return BEFORE;
-		else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) == 0)
-			return EQUAL;
-		else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) > 0)
-			return AFTER;
+		//switch (compareValue)
 		
-		if(p1.authors.compareTo(p2.authors) < 0)
-			return BEFORE;
-		else if(p1.authors.compareTo(p2.authors) == 0)
-			return EQUAL;
-		else if(p1.authors.compareTo(p2.authors) > 0)
-			return AFTER;
-		
-		if(p1.titleOfPaper.compareTo(p2.titleOfPaper) < 0)
-			return BEFORE;
-		else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) == 0)
-			return EQUAL;
-		else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) > 0)
-			return AFTER;
-		
-		if(p1.titleOfSerial.compareTo(p2.titleOfSerial) < 0)
-			return BEFORE;
-		else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) == 0)
-			return EQUAL;
-		else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) > 0)
-			return AFTER;
-		
-		try {
-			Date dateOfP1 = new SimpleDateFormat("MMMM, yyyy").parse(p1.publicationDate);
-			Date dateOfP2 = new SimpleDateFormat("MMMM, yyyy").parse(p2.publicationDate);
-			
-			if(dateOfP1.before(dateOfP2))
+			if(p1.typeOfPaper.compareTo(p2.typeOfPaper) < 0)
 				return BEFORE;
-			else if(dateOfP1.equals(dateOfP2))
+			else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) == 0)
 				return EQUAL;
-			else if(dateOfP1.after(dateOfP2))
+			else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) > 0)
 				return AFTER;
 			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			if(p1.authors.compareTo(p2.authors) < 0)
+				return BEFORE;
+			else if(p1.authors.compareTo(p2.authors) == 0)
+				return EQUAL;
+			else if(p1.authors.compareTo(p2.authors) > 0)
+				return AFTER;
+			
+			if(p1.titleOfPaper.compareTo(p2.titleOfPaper) < 0)
+				return BEFORE;
+			else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) == 0)
+				return EQUAL;
+			else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) > 0)
+				return AFTER;
+			
+			if(p1.titleOfSerial.compareTo(p2.titleOfSerial) < 0)
+				return BEFORE;
+			else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) == 0)
+				return EQUAL;
+			else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) > 0)
+				return AFTER;
+			
+			try {
+				Date dateOfP1 = new SimpleDateFormat("MMMM, yyyy").parse(p1.publicationDate);
+				Date dateOfP2 = new SimpleDateFormat("MMMM, yyyy").parse(p2.publicationDate);
+				
+				if(dateOfP1.before(dateOfP2))
+					return BEFORE;
+				else if(dateOfP1.equals(dateOfP2))
+					return EQUAL;
+				else if(dateOfP1.after(dateOfP2))
+					return AFTER;
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		
 		return 0;
 	}
