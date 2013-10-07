@@ -134,8 +134,8 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 			
 		case 5:
 			try {
-				Date dateOfP1 = new SimpleDateFormat("MMMM, yyyy").parse(p1.publicationDate);
-				Date dateOfP2 = new SimpleDateFormat("MMMM, yyyy").parse(p2.publicationDate);
+				Date dateOfP1 = new SimpleDateFormat("MMMM yyyy").parse(p1.getPublicationDate());
+				Date dateOfP2 = new SimpleDateFormat("MMMM yyyy").parse(p2.getPublicationDate());
 				
 				if(dateOfP1.before(dateOfP2))
 					return BEFORE;
@@ -149,7 +149,6 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 				e.printStackTrace();
 			}
 			break;
-		
 	}
 	return 0;
 
@@ -201,8 +200,8 @@ public int compareTo(Paper p) {
 			
 		case 5:
 			try {
-				Date dateThis = new SimpleDateFormat("MMMM, yyyy").parse(this.publicationDate);
-				Date dateOfP = new SimpleDateFormat("MMMM, yyyy").parse(p.publicationDate);
+				Date dateThis = new SimpleDateFormat("MMMM yyyy").parse(this.publicationDate);
+				Date dateOfP = new SimpleDateFormat("MMMM yyyy").parse(p.publicationDate);
 				
 				if(dateThis.before(dateOfP))
 					return BEFORE;
