@@ -26,25 +26,21 @@ public class PaperCollection {
 				for(int index = 0; index < papers.size(); ++index){
 					
 					if(papers.get(index).getAuthors() == null){
-						paperCollection.setCompareValues(2);
+						paperCollection.setCompareValues(7);
 						Collections.sort(paperCollection.returnPaperArray(), new Paper());
 					}
 					else
 						Collections.sort(paperCollection.returnPaperArray(), new Paper());	
 				}
 				break;
+				
 			case "an":
-				Collections.sort(paperCollection.returnPaperArray(), new Paper());
-				break;
 			case "pt":
-				Collections.sort(paperCollection.returnPaperArray(), new Paper());
-				break;
 			case "st":
-				Collections.sort(paperCollection.returnPaperArray(), new Paper());
-				break;
 			case "ch":
 				Collections.sort(paperCollection.returnPaperArray(), new Paper());
 				break;
+				
 			case "r":
 				Collections.shuffle(paperCollection.returnPaperArray());
 				break;
@@ -87,6 +83,62 @@ public class PaperCollection {
 					}
 					else {
 						return middleIndex;
+					}
+				}
+				break;
+				
+			case 4:
+				while( right - left + 1 > 0) {
+					int middleIndex = ( left + right ) / 2;
+					String middleElement = paperCollection.get(middleIndex).getTitleOfSerial();
+					int comparisonValue = middleElement.compareTo(key);
+			
+					if (comparisonValue < 0) {
+						left = middleIndex + 1;
+					}
+					else if (comparisonValue > 0) {
+						right = middleIndex - 1;				
+					}
+					else {
+						return middleIndex;
+					}
+				}
+				break;
+				
+			case 5:
+				while( right - left + 1 > 0) {
+					int middleIndex = ( left + right ) / 2;
+					String middleElement = paperCollection.get(middleIndex).getPublicationDate();
+					int comparisonValue = middleElement.compareTo(key);
+			
+					if (comparisonValue < 0) {
+						left = middleIndex + 1;
+					}
+					else if (comparisonValue > 0) {
+						right = middleIndex - 1;				
+					}
+					else {
+						return middleIndex;
+					}
+				}
+				break;
+				
+			case 6:
+				for (int i=0; i < paperCollection.size(); i++){
+					String compareElement = paperCollection.get(i).getTitleOfPaper();
+					int comparisonValue = compareElement.compareTo(key);
+					if (comparisonValue == 0){
+						return i;
+					}
+				}
+				break;
+				
+			case 7:
+				for (int i=0; i < paperCollection.size(); i++){
+					String compareElement = paperCollection.get(i).getTitleOfPaper();
+					int comparisonValue = compareElement.compareTo(key);
+					if (comparisonValue == 0){
+						return i;
 					}
 				}
 				break;

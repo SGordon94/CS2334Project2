@@ -105,6 +105,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 			break;
 			
 		case 2:
+		case 7:
 			if(p1.authors.compareTo(p2.authors) < 0)
 				return BEFORE;
 			else if(p1.authors.compareTo(p2.authors) == 0)
@@ -172,6 +173,7 @@ public int compareTo(Paper p) {
 			break;
 			
 		case 2:
+		case 7:
 			if(this.authors.compareTo(p.authors) < 0)
 				return BEFORE;
 			else if(this.authors.compareTo(p.authors) == 0)
