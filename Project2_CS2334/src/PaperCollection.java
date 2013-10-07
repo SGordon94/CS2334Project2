@@ -39,6 +39,23 @@ public class PaperCollection {
 		int left  = 0;
 		int right = paperCollection.size() - 1;
 		switch(compareValue){
+			case 2:
+				while( right - left + 1 > 0) {
+					int middleIndex = ( left + right ) / 2;
+					String middleElement = paperCollection.get(middleIndex).getAuthors();
+					int comparisonValue = middleElement.compareTo(key);
+		
+					if (comparisonValue < 0) {
+						left = middleIndex + 1;
+					}
+					else if (comparisonValue > 0) {
+						right = middleIndex - 1;				
+					}
+					else {
+						return middleIndex;
+					}
+				}
+				break;
 		
 			case 3:
 				while( right - left + 1 > 0) {
@@ -56,6 +73,7 @@ public class PaperCollection {
 						return middleIndex;
 					}
 				}
+				break;
 		}
 		return -1;	
 	}
@@ -73,6 +91,10 @@ public class PaperCollection {
 			}
 		}
 		return outputString;
+	}
+	
+	public String displayPaper(int index){
+		return paperCollection.get(index).getPaper();
 	}
 	
 	public void setCompareValues(int value){
