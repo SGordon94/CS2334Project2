@@ -150,4 +150,8 @@ public class PaperCollection {
 			paperCollection.get(i).setCompareValue(value);
 		}
 	}
+	
+	public int returnCompareValue(){
+		return this.compareValue;
+	}
 }
