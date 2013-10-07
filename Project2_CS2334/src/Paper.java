@@ -82,6 +82,10 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		return this.digitalObjectIdentifier;
 	}
 	
+	public void setCompareValue(int value){
+		this.compareValue = value;
+	}
+	
 	@Override
 	public int compare(Paper p1, Paper p2) {
 		
