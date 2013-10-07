@@ -11,7 +11,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	private String numbers = null;
 	private String publicationDate = null;
 	private String digitalObjectIdentifier = null;
-	private int compareValue = 0;
+	private int compareValue = 6;
 	public Paper(){
 		
 	}
