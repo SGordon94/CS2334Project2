@@ -35,15 +35,15 @@ public class PaperCollection {
 		}			
 	}
 	
-	public int search(ArrayList<Paper> acceptedList, String key){
+	public int search(String key){
 		int left  = 0;
-		int right = acceptedList.size() - 1;
+		int right = paperCollection.size() - 1;
 		switch(compareValue){
 		
 			case 3:
 				while( right - left + 1 > 0) {
 					int middleIndex = ( left + right ) / 2;
-					String middleElement = acceptedList.get(middleIndex).getTitleOfPaper();
+					String middleElement = paperCollection.get(middleIndex).getTitleOfPaper();
 					int comparisonValue = middleElement.compareTo(key);
 			
 					if (comparisonValue < 0) {
