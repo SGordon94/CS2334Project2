@@ -1,13 +1,18 @@
 import java.io.*;
 import java.util.*;
 
-
+/**Class that reads input from the user as well as writes output to either the screen or to a file.
+ * 
+ * @author Stephon
+ * @version 1.0
+ */
 public class IO{
-	
-	/**
-	 * 
-	 */
 
+	/**Reads in and returns a String specified by the user.
+	 * 
+	 * @return the String input by the user
+	 * @throws IOException
+	 */
 	public static String getInput() throws IOException{
 		String temp = null;
 		BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
@@ -15,6 +20,13 @@ public class IO{
 		return temp;
 	}
 	
+	/** Reads in papers from a file and stores them into a Paper Collection object.
+	 * 
+	 * @param papers the Paper Collection to be used to store the papers from the file
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public static void readFile(PaperCollection papers) throws FileNotFoundException, IOException, ClassNotFoundException{
 		String temp = null;
 		String line = null;
@@ -43,6 +55,12 @@ public class IO{
 		bufferedReader.close();
 	}
 	
+	/**Writes the output to a file.
+	 * 
+	 * @param output the name of the output file specified by the user
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void writeFile(String output) throws FileNotFoundException, IOException{
 		System.out.print("Enter the name of file to write to: ");
 		String temp = getInput();
