@@ -93,36 +93,46 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		final int EQUAL = 0;
 		final int AFTER = 1;
 		
-		//switch (compareValue)
+		switch (p1.compareValue){
 		
+		case 1:
 			if(p1.typeOfPaper.compareTo(p2.typeOfPaper) < 0)
 				return BEFORE;
 			else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) == 0)
 				return EQUAL;
 			else if(p1.typeOfPaper.compareTo(p2.typeOfPaper) > 0)
 				return AFTER;
+			break;
 			
+		case 2:
 			if(p1.authors.compareTo(p2.authors) < 0)
 				return BEFORE;
 			else if(p1.authors.compareTo(p2.authors) == 0)
 				return EQUAL;
 			else if(p1.authors.compareTo(p2.authors) > 0)
 				return AFTER;
-			
+			break;
+		
+		case 3:
 			if(p1.titleOfPaper.compareTo(p2.titleOfPaper) < 0)
 				return BEFORE;
 			else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) == 0)
 				return EQUAL;
 			else if(p1.titleOfPaper.compareTo(p2.titleOfPaper) > 0)
 				return AFTER;
+			break;
 			
+		case 4:
 			if(p1.titleOfSerial.compareTo(p2.titleOfSerial) < 0)
 				return BEFORE;
 			else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) == 0)
 				return EQUAL;
 			else if(p1.titleOfSerial.compareTo(p2.titleOfSerial) > 0)
 				return AFTER;
+			break;
+		
 			
+		case 5:
 			try {
 				Date dateOfP1 = new SimpleDateFormat("MMMM, yyyy").parse(p1.publicationDate);
 				Date dateOfP2 = new SimpleDateFormat("MMMM, yyyy").parse(p2.publicationDate);
@@ -138,63 +148,79 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			break;
 		
-		return 0;
 	}
+	return 0;
 
-	@Override
-	public int compareTo(Paper p) {
-		final int BEFORE = -1;
-		final int EQUAL = 0;
-		final int AFTER = 1;
-		
-		if(this.typeOfPaper.compareTo(p.typeOfPaper) < 0)
-			return BEFORE;
-		else if(this.typeOfPaper.compareTo(p.typeOfPaper) == 0)
-			return EQUAL;
-		else if(this.typeOfPaper.compareTo(p.typeOfPaper) > 0)
-			return AFTER;
-		
-		if(this.authors.compareTo(p.authors) < 0)
-			return BEFORE;
-		else if(this.authors.compareTo(p.authors) == 0)
-			return EQUAL;
-		else if(this.authors.compareTo(p.authors) > 0)
-			return AFTER;
-		
-		if(this.titleOfPaper.compareTo(p.titleOfPaper) < 0)
-			return BEFORE;
-		else if(this.titleOfPaper.compareTo(p.titleOfPaper) == 0)
-			return EQUAL;
-		else if(this.titleOfPaper.compareTo(p.titleOfPaper) > 0)
-			return AFTER;
-		
-		if(this.titleOfSerial.compareTo(p.titleOfSerial) < 0)
-			return BEFORE;
-		else if(this.titleOfSerial.compareTo(p.titleOfSerial) == 0)
-			return EQUAL;
-		else if(this.titleOfSerial.compareTo(p.titleOfSerial) > 0)
-			return AFTER;
-		
-		try {
-			Date dateThis = new SimpleDateFormat("MMMM, yyyy").parse(this.publicationDate);
-			Date dateOfP = new SimpleDateFormat("MMMM, yyyy").parse(p.publicationDate);
-			
-			if(dateThis.before(dateOfP))
+}
+
+@Override
+public int compareTo(Paper p) {
+	final int BEFORE = -1;
+	final int EQUAL = 0;
+	final int AFTER = 1;
+	
+	switch(p.compareValue){
+	
+		case 1:
+			if(this.typeOfPaper.compareTo(p.typeOfPaper) < 0)
 				return BEFORE;
-			else if(dateThis.equals(dateOfP))
+			else if(this.typeOfPaper.compareTo(p.typeOfPaper) == 0)
 				return EQUAL;
-			else if(dateThis.after(dateOfP))
+			else if(this.typeOfPaper.compareTo(p.typeOfPaper) > 0)
 				return AFTER;
+			break;
 			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return 0;
+		case 2:
+			if(this.authors.compareTo(p.authors) < 0)
+				return BEFORE;
+			else if(this.authors.compareTo(p.authors) == 0)
+				return EQUAL;
+			else if(this.authors.compareTo(p.authors) > 0)
+				return AFTER;
+			break;
+			
+		case 3:
+			if(this.titleOfPaper.compareTo(p.titleOfPaper) < 0)
+				return BEFORE;
+			else if(this.titleOfPaper.compareTo(p.titleOfPaper) == 0)
+				return EQUAL;
+			else if(this.titleOfPaper.compareTo(p.titleOfPaper) > 0)
+				return AFTER;
+			break;
+			
+		case 4:
+			if(this.titleOfSerial.compareTo(p.titleOfSerial) < 0)
+				return BEFORE;
+			else if(this.titleOfSerial.compareTo(p.titleOfSerial) == 0)
+				return EQUAL;
+			else if(this.titleOfSerial.compareTo(p.titleOfSerial) > 0)
+				return AFTER;
+			break;
+			
+		case 5:
+			try {
+				Date dateThis = new SimpleDateFormat("MMMM, yyyy").parse(this.publicationDate);
+				Date dateOfP = new SimpleDateFormat("MMMM, yyyy").parse(p.publicationDate);
+				
+				if(dateThis.before(dateOfP))
+					return BEFORE;
+				else if(dateThis.equals(dateOfP))
+					return EQUAL;
+				else if(dateThis.after(dateOfP))
+					return AFTER;
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+	
 	}
+	return 0;
+	
+}
 	
 	
 }
