@@ -26,7 +26,7 @@ public class PaperCollection {
 				for(int index = 0; index < papers.size(); ++index){
 					
 					if(papers.get(index).getAuthors() == null){
-						paperCollection.setCompareValues(7);
+						paperCollection.setCompareValues(2);
 						Collections.sort(paperCollection.returnPaperArray(), new Paper());
 					}
 					else
@@ -123,17 +123,8 @@ public class PaperCollection {
 				}
 				break;
 				
+			case 1:
 			case 6:
-				for (int i=0; i < paperCollection.size(); i++){
-					String compareElement = paperCollection.get(i).getTitleOfPaper();
-					int comparisonValue = compareElement.compareTo(key);
-					if (comparisonValue == 0){
-						return i;
-					}
-				}
-				break;
-				
-			case 7:
 				for (int i=0; i < paperCollection.size(); i++){
 					String compareElement = paperCollection.get(i).getTitleOfPaper();
 					int comparisonValue = compareElement.compareTo(key);
