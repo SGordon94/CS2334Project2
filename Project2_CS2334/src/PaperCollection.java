@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -7,7 +8,11 @@ import java.util.*;
  * 
  * @version 1.0
  */
-public class PaperCollection {
+public class PaperCollection implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1306506026096077696L;
 	int compareValue = 6;
 	ArrayList<Paper> paperCollection = new ArrayList<Paper>();
 	
