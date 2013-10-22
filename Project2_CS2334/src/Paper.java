@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	private String typeOfPaper = null;
+	private ArrayList<Authors> authorsList = new ArrayList<Authors>(); 
 	private String authors = "N/A";
 	private String titleOfPaper = null;
 	private String titleOfSerial = null;
