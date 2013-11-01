@@ -29,7 +29,7 @@ public class PaperCollection implements Serializable {
 	 * @param publicationDate the date the paper was published
 	 * @param digitalObjectIdentifier the digital object identifier of the paper
 	 */
-	public void addPaper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial,
+	public void addPaper(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){
 		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
 				publicationDate, digitalObjectIdentifier));
@@ -44,7 +44,7 @@ public class PaperCollection implements Serializable {
 	 * @param numbers the number of volumes and issues for the paper (if the paper is a journal) and the page number
 	 * @param publicationDate the date the paper was published
 	 */
-	public void addPaper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial,
+	public void addPaper(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate){
 		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
 	}

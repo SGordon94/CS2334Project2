@@ -53,10 +53,10 @@ public class IO{
 			}
 			
 			if(split.length == 6){
-				papers.addPaper(split[0], split[1], split[2], split[3], split[4], split[5]);
+				papers.addPaper(split[0], authorList, split[2], split[3], split[4], split[5]);
 			} 
 			else if(split.length == 7){
-				papers.addPaper(split[0], split[1], split[2], split[3], split[4], split[5], split[6]);
+				papers.addPaper(split[0], authorList, split[2], split[3], split[4], split[5], split[6]);
 			}
 		}
 		bufferedReader.close();

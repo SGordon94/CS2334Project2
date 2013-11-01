@@ -24,10 +24,10 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		
 	}
 	
-	public Paper(String typeOfPaper, String authors, String titleOfPaper, String titleOfSerial,
+	public Paper(String typeOfPaper, ArrayList<Authors> authorsList, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){
 		this.typeOfPaper = typeOfPaper;
-		this.authors = authors;
+		this.authorsList = authorsList;
 		this.titleOfPaper = titleOfPaper;
 		this.titleOfSerial = titleOfSerial;
 		this.numbers = numbers;
@@ -35,10 +35,10 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		this.digitalObjectIdentifier = digitalObjectIdentifier;
 	}
 	
-	public Paper(String typeOfPaper, String authors, String titleOfPaper,
+	public Paper(String typeOfPaper, ArrayList<Authors> authorsList, String titleOfPaper,
 			String titleOfSerial, String numbers, String publicationDate){
 		this.typeOfPaper = typeOfPaper;
-		this.authors = authors;
+		this.authorsList = authorsList;
 		this.titleOfPaper = titleOfPaper;
 		this.titleOfSerial = titleOfSerial;
 		this.numbers = numbers;
