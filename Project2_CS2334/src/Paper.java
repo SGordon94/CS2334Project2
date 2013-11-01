@@ -7,6 +7,7 @@ import java.util.*;
  *@version 1.0
  */
 public class Paper implements Comparator<Paper>, Comparable<Paper>{
+	
 	private String typeOfPaper = null;
 	private ArrayList<Authors> authorsList = new ArrayList<Authors>(); 
 	private String authors = "N/A";
@@ -16,6 +17,9 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 	private String publicationDate = null;
 	private String digitalObjectIdentifier = null;
 	private int compareValue = 6;
+	
+	
+	
 	public Paper(){
 		
 	}

@@ -43,6 +43,12 @@ public class IO{
 		for(int index = 0; index < paperObjects.length; ++index){
 			String[] split = paperObjects[index].split(";;");
 			
+			String[] individualAuthorNames = split[1].split(";");
+			
+			for(int i = 0; i < individualAuthorNames.length; ++i){
+				
+			}
+			
 			if(split.length == 6){
 				papers.addPaper(split[0], split[1], split[2], split[3], split[4], split[5]);
 			} 
@@ -67,4 +73,6 @@ public class IO{
 		bw.write(output);
 		bw.close();
 	}
+	
+	
 }
