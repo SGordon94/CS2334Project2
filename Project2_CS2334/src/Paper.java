@@ -33,6 +33,9 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		this.numbers = numbers;
 		this.publicationDate = publicationDate;
 		this.digitalObjectIdentifier = digitalObjectIdentifier;
+		for(int i=0; i<authorsList.size(); i++){
+			authorsList.get(i).setContainingPaper(this);
+		}
 	}
 	
 	public Paper(String typeOfPaper, ArrayList<Authors> authorsList, String titleOfPaper,
@@ -43,6 +46,9 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>{
 		this.titleOfSerial = titleOfSerial;
 		this.numbers = numbers;
 		this.publicationDate = publicationDate;
+		for(int i=0; i<authorsList.size(); i++){
+			authorsList.get(i).setContainingPaper(this);
+		}
 	}
 	
 	/**Returns the paper as a String
