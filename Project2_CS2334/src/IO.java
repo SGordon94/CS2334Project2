@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 /**Class that reads input from the user as well as writes output to either the screen or to a file.
  * 
@@ -44,9 +45,11 @@ public class IO{
 			String[] split = paperObjects[index].split(";;");
 			
 			String[] individualAuthorNames = split[1].split(";");
+			ArrayList<Authors> authorList = new ArrayList<Authors>();
 			
 			for(int i = 0; i < individualAuthorNames.length; ++i){
-				
+				Authors newAuthor = new Authors(individualAuthorNames[i]);
+				authorList.add(newAuthor);
 			}
 			
 			if(split.length == 6){
