@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -6,7 +7,7 @@ import java.util.*;
  * 
  *@version 1.0
  */
-public class Paper implements Comparator<Paper>, Comparable<Paper>{
+public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable{
 	
 	private String typeOfPaper = null;
 	private ArrayList<Authors> authorsList = new ArrayList<Authors>(); 
