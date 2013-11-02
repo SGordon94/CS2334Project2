@@ -15,6 +15,7 @@ public class PaperCollection implements Serializable {
 	private static final long serialVersionUID = -1306506026096077696L;
 	int compareValue = 6;
 	ArrayList<Paper> paperCollection = new ArrayList<Paper>();
+	ArrayList<Authors> authorsCollection = new ArrayList<Authors>();
 	
 	public PaperCollection(){
 	}
@@ -47,6 +48,20 @@ public class PaperCollection implements Serializable {
 	public void addPaper(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate){
 		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
+	}
+	
+	public void addAuthors(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
+			String numbers, String publicationDate, String digitalObjectIdentifier){
+		for(int i=0; i<authors.size(); i++){
+			if(authorsCollection.size() != 0){
+				
+			}
+		}
+	}
+	
+	public void addAuthors(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
+			String numbers, String publicationDate){
+		
 	}
 	
 	/**The sort method for the PaperCollection class that uses Collections.sort() to sort for each received case.
