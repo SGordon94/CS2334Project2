@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Authors implements Serializable {
@@ -8,18 +9,21 @@ public class Authors implements Serializable {
 	 */
 	private static final long serialVersionUID = -6435144183026980478L;
 
-	private Paper containingPaper;
+	private ArrayList<Paper> containingPapers = new ArrayList<Paper>();
 	private String secondaryName;
 	private String primaryName;
-	private String[] fullName;
 	
 	public Authors(String fullName){
-		this.fullName = fullName.split(",");
-		this.primaryName = this.fullName[0];
-		this.secondaryName = this.fullName[1];
+		String[] wholeName = fullName.split(",");
+		this.primaryName = wholeName[0];
+		this.secondaryName = wholeName[1];
 	}
 	
 	public void setContainingPaper(Paper containingPaper){
-		this.containingPaper = containingPaper;
+		this.containingPapers.add(containingPaper);
+	}
+	
+	public String returnNameInString(){
+		return (primaryName+","+secondaryName); 
 	}
 }

@@ -50,18 +50,63 @@ public class PaperCollection implements Serializable {
 		paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
 	}
 	
+	/** UNOFFICIAL COMMENT, ONLY HERE TO LET YOU KNOW HOW TO USE METHOD
+	 * Okay, this method is to be used instead of the addPaper() method. It looks through both
+	 * the global authorsCollection ArrayList and the paper-local authors ArrayList.
+	 * I've implemented a method in the Authors' class that outputs a string that is easily
+	 * comparable, and this utilizes that. If the author names are the same from both ArrayLists,
+	 * then it removes the created author object in the paper-local authors ArrayList and places a
+	 * reference to the author object in the global authorsCollection ArrayList. If a match is not found,
+	 * then it adds the author object to the global authorsCollection ArrayList. From there, it calls
+	 * the addPaper() method and passes the relevant variables along, so that each paper that has the
+	 * same author references the exact same Authors object, while the same author object has references
+	 * to each paper it belongs to.
+	 */
 	public void addAuthors(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){
 		for(int i=0; i<authors.size(); i++){
+			boolean noMatch = true;
 			if(authorsCollection.size() != 0){
-				
+				for(int j=0; j<authorsCollection.size(); j++){
+					if(authors.get(i).returnNameInString().equals(authorsCollection.get(j).returnNameInString())){
+						authors.remove(i);
+						authors.add(0,authorsCollection.get(j));
+						noMatch = false;
+					}
+				}
+				if(noMatch){
+					authorsCollection.add(authors.get(i));
+				}
+			}
+			else{
+				authorsCollection.add(authors.get(i));
 			}
 		}
+		addPaper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
+				publicationDate, digitalObjectIdentifier);
 	}
 	
 	public void addAuthors(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate){
-		
+		for(int i=0; i<authors.size(); i++){
+			boolean noMatch = true;
+			if(authorsCollection.size() != 0){
+				for(int j=0; j<authorsCollection.size(); j++){
+					if(authors.get(i).returnNameInString().equals(authorsCollection.get(j).returnNameInString())){
+						authors.remove(i);
+						authors.add(0,authorsCollection.get(j));
+						noMatch = false;
+					}
+				}
+				if(noMatch){
+					authorsCollection.add(authors.get(i));
+				}
+			}
+			else{
+				authorsCollection.add(authors.get(i));
+			}
+		}
+		addPaper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate);
 	}
 	
 	/**The sort method for the PaperCollection class that uses Collections.sort() to sort for each received case.
