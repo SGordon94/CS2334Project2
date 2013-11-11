@@ -141,6 +141,22 @@ public class MainDriver {
 				case "Fa":
 				case "fa":
 				case "fA":
+					System.out.print("Please enter the name of the author you wish to find: ");
+					String temp3 = IO.getInput();
+					break;
+					
+				case "LD":
+				case "Ld":
+				case "ld":
+				case "lD":
+					IO.loadObject(paperCollection);
+					break;
+					
+				case "SV":
+				case "Sv":
+				case "sv":
+				case "sV":
+					IO.saveObject(paperCollection);
 					break;
 					
 					// Exits the program
@@ -171,7 +187,10 @@ public class MainDriver {
 					System.out.println("R:  randomly sort");
 					System.out.println("PS: print the papers to the screen");
 					System.out.println("PF: write the papers to a file");
+					System.out.println("FA: finds and displays the papers associated with an author");
 					System.out.println("S:  search by the previously sorted option; default is paper title");
+					System.out.println("LD: loads a file to read");
+					System.out.println("SV: saves a file to the disk");
 					System.out.println("H:  show the help menu");
 					System.out.println("E:  exit the program\n");
 					break;
