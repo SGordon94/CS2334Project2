@@ -136,6 +136,13 @@ public class MainDriver {
 					}
 					break;
 					
+					// Finds authors
+				case "FA":
+				case "Fa":
+				case "fa":
+				case "fA":
+					break;
+					
 					// Exits the program
 				case "E":
 				case "e":
