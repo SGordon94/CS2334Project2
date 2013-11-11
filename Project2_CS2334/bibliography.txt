@@ -1,0 +1,1570 @@
+Journal Article
+Abdelzaher, T.; Atkins, E.; Shin, K.
+QoS negotiation in real-time systems and its application to automated flight control
+IEEE Transactions on Computers
+49(11):1155–1169
+November 2000
+
+Conference Paper
+Adachi, H.; Koyachi, N.; Arai, T.; Shimiza, A.; Nogami, Y.
+Mechanism and Control of a Leg-Wheel Hybrid Mobile Robot
+IEEE/RSJ International Conference on Intelligent Robots and Systems
+1792–1797
+October 1999
+
+Conference Paper
+Adams, Sandra Honda; Morelli, Ralph; Hupfer, Susan; Freeman, Elisabeth; Pinto, Domenick J.; Lang, Catherine; Scoy, Frances L. Van
+Gender Imbalance in Computer Science Programs, Etiology and Amelioration: Views from U.S. Campuses and Elsewhere
+SIGSCE Bulletin
+384–385
+March 1997
+
+Conference Paper
+Agah, Arvin; Bekey, George A.
+In A Team Of Robots The Loudest Is Not Necessarily The Best
+IEEE International Conference on Systems, Man and Cybernetics
+3800–3805
+October 1995
+
+Conference Paper
+Anderson, Charles W.
+Strategy Learning with Multilayer Connectionist Representations
+Proceedings of the Fourth International Workshop on Machine Learning
+103–114
+June 1987
+
+Journal Article
+Arkin, R. C.
+Motor Schema-Based Robot Navigation
+International Journal of Robotics Research
+8(4):92–112
+August 1989
+
+Journal Article
+Arkin, R. C.
+Cooperation without Communication: Multi-agent Schema Based Robot Navigation
+Journal of Robotic Systems
+9(3):351–364
+April 1992
+
+Journal Article
+Bäck, Thomas; Hammel, Ulrich; Schwefel, Hans-Paul
+Evolutionary Computation: Comments on the History and Current State
+IEEE Transactions on Evolutionary Computation
+1(1):3–17
+April 1997
+
+Journal Article
+Balch, T. R.; Arkin, R. C.
+Behavior-based formation control for multiagent robot teams
+IEEE Transactions on Robotics and Automation
+14(6):926–939
+December 1998
+
+Conference Paper
+Bernstein, Danielle R.
+Computing, Diversity, and Community: Fostering the Computing Culture
+SIGSCE Bulletin
+101–103
+March 1997
+
+Journal Article
+Bourbakis, Nikolaos G.
+Kydonas – An Autonomous Hybrid Robot: Walking and Climbing
+IEEE Robotics and Automation Magazine
+5(2):52–59
+June 1998
+
+Journal Article
+Brooks, Rodney A.
+A Robust Layered Control System for a Mobile Robot
+IEEE Journal of Robotics and Automation
+2(1):14–23
+March 1986
+
+Conference Paper
+Brune, Matthias; Reinefeld, Alexander; Varnholt, Jörg
+A Resource Description Environment for Distributed Computing Systems
+Proc. of the IEEE International Symposium on High Performance Distributed Computing
+279–286
+August 1999
+
+Conference Paper
+Budenske, John; Bonney, Jordan; Ahamad, Atiq; Ramanujan, Ranga; Hougen, Dean F.; Papanikolopoulos, Nikolaos
+Nomadic Routing Applications for Wireless Networking in a Team of Miniature Robots
+IEEE International Conference on Systems, Man, and Cybernetics
+3306–3311
+October 2000
+
+Conference Paper
+Burgard, W.; Moors, M.; Fox, D.; Simmons, R.; Thrun, S.
+Collaborative Multi-robot Exploration
+Proceedings of the IEEE International Conference on Robotics and Automation
+476–481
+April 2000
+
+Journal Article
+Camp, Tracy
+The Incredible Shrinking Pipeline
+Communications of the ACM
+40(10):103–110
+October 1997
+
+Journal Article
+CAO, Y. UNY; FUKUNAGA, ALEX S.; KHANG, ANDREW B.
+Cooperative Mobile Robotics: Antecedents and Directions
+Autonomous Robots
+4(1):7–27
+March 1997
+
+Conference Paper
+Carter, Janet; Jenkins, Tony
+Gender and Programming: What's Going On?
+Integrating Technology into Computer Science Education
+1–4
+July 1999
+
+Conference Paper
+Chandrasekaran, Sreedevi; Hougen, Dean F.
+Swarm Intelligence for Cooperation of Bio-Nano Robots using Quorum Sensing
+Second American Society for Microbiology/IEEE Engineering in Medicine and Biology Society Conference on Bio, Micro and Nanosystems
+unnumbered
+January 2006
+
+Conference Paper
+Chandrasekaran, Sreedevi; Hougen, Dean F.
+Trade-Offs in Cooperative Goal Seek using Nano-Devices
+Nano Science and Technology Institute Ninth Annual Nanotechnology Conference
+unnumbered
+May 2006
+
+Journal Article
+Chen, C.-K.; Gardner, W.
+Signal-Selective Time-Difference-of-Arrival Estimation for Passive Location of Man-Made Signal Sources in Highly Corruptive Environments, Part II: Algorithms and Performance
+IEEE Transactions on Signal Processing
+40(5):1185–1197
+May 1992
+
+Conference Paper
+Commuri, Sesh; Li, Yushan; Hougen, Dean F.; Fierro, Rafael
+Evaluating Intelligence in Unmanned Ground Vehicle Teams
+Performance Metrics for Intelligent Systems Workshop
+unnumbered
+August 2004
+
+Conference Paper
+Commuri, Seshadri; Fierro, Rafael; Hougen, Dean F.; Muthuraman, R.
+System Intelligence Requires Distributed Learning
+IEEE International Symposium on Intelligent Control
+67–72
+September 2004
+
+Conference Paper
+Coste-Marière, È; Simmons, R.
+Architecture, the Backbone of Robotic Systems
+Proceedings of the IEEE International Conference on Robotics and Automation
+67–72
+April 2000
+
+Conference Paper
+Demeris, John
+Experiments Towards Robotic Learning by Imitation
+Proceedings of the National Conference on Artificial Intelligence
+1439
+August 1994
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+A Genetic Algorithm Approach for Doing Misuse Detection in Audit Trail Files
+IEEE International Conference on Computing
+329–338
+November 2006
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+Initial Population for Genetic Algorithms: A Metric Approach
+International Conference on Genetic and Evolutionary Methods
+43–49
+June 2007
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+Misuse Detection: A Neural Network vs. A Genetic Algorithm Approach
+International Conference on Enterprise Information Systems
+459–462
+June 2007
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+Misuse Detection: An Iterative Process vs. A Genetic Algorithm Approach
+International Conference on Enterprise Information Systems
+455–457
+June 2007
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+An Empirical Study of Initial Populations and Genetic Algorithm Performance
+International Conference on Artificial Intelligence and Pattern Recognition
+334–341
+July 2007
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+A Trade-Off of the Schema Theorem
+International Conference on Artificial Intelligence and Pattern Recognition
+326–333
+July 2007
+
+Conference Paper
+Diaz-Gomez, Pedro; Hougen, Dean
+Internal vs. External Parameters in Fitness Functions
+International Conference on Artificial Intelligence and Pattern Recognition
+to appear
+July 2008
+
+Conference Paper
+Diaz-Gomez, Pedro A.; Hougen, Dean F.
+Genetic Algorithms for Hunting Snakes in Hypercubes: Fitness Function Analysis and Open Questions
+Proceedings of the Seventh IEEE/Association for Computer and Information Science International Conference on Software Engineering, Artificial Intelligence, Networking, and Parallel/Distributed Computing
+389–394
+June 2006
+
+Conference Paper
+Diaz-Gomez, Pedro A.; Hougen, Dean F.
+Three Approaches to Intrusion Detection: Analysis and Enhancements
+Asociación Colombiana de Ingenieros de Sistemas Sixth National Computer and Information Security Conference
+unnumbered
+June 2006
+
+Conference Paper
+Diaz-Gomez, Pedro A.; Hougen, Dean F.
+The Snake in the Box Problem: Mathematical Conjecture and a Genetic Algorithm Approach
+Genetic and Evolutionary Computation Conference
+1409–1410
+July 2006
+
+Journal Article
+Dorigo, M.
+ALECSYS and the AutonoMouse: Learning to control a real robot by distributed classifier systems
+Machine Learning
+19(3):209–240
+June 1995
+
+Journal Article
+Dudek, G.; Jenkin, M.; Milios, E.; Wilkes, D.
+A Taxonomy for Multi-Agent Robotics
+Autonomous Robots
+3(4):375–397
+December 1996
+
+Conference Paper
+Eskridge, Brent E.; Hougen, Dean F.
+An Analysis of Memetic Crossover's Impact on a Population
+Proceedings of the IEEE Congress on Evolutionary Computation
+6844–6850
+July 2006
+
+Conference Paper
+Eskridge, Brent E.; Hougen, Dean F.
+Prioritizing Fuzzy Behaviors in Multi-Robot Pursuit Teams
+Prodeedings of the IEEE International Conference on Fuzzy Systems
+6039–6045
+July 2006
+
+Conference Paper
+Eskridge, Brent E.; Hougen, Dean F.
+Using Priorities to Simplify Behavior Coordination
+International Joint Conference on Autonomous Agents and Multi-Agent Systems
+1339–1341
+May 2007
+
+Journal Article
+Everett, H. R.; Gage, D. W.
+From Laboratory to Warehouse: Security Robots Meet the Real World
+International Journal of Robotics Research
+18(7):760–768
+July 1999
+
+Conference Paper
+Fair, M.; Miller, D. P.
+Automated Staircase Detection, Alignment, & Traversal
+Proceedings of the IASTED International Conference on Robotics and Manufacturing
+218–222
+May 2001
+
+Journal Article
+Feldman, Michael B.
+Inspiring Our Undergraduate Student's Asperations
+SIGCSE Bulletin
+31(2):4–7
+June 1999
+
+Conference Paper
+Fierro, Rafael; Clark, Justin; Sánchez, José; Walling, Kenny; Leuschen, Martin; Commuri, Sesh; Hougen, Dean
+A Low-Cost Modular Multi-Vehicle Experimental Testbed for Cooperative Control
+Second Annual Swarming: Network Enabled C4ISR Conference
+unnumbered
+June 2004
+
+Journal Article
+Fierro, Rafael; Lewis, Frank L.
+A framework for hybrid control design
+IEEE Transactions on Systems, Man, and Cybernetics
+27(6):765–773
+November 1997
+
+Conference Paper
+Fisher, Allan; Margolis, Jane; Miller, Faye
+Undergraduate Women in Computer Science: Experience, Motivation, and Culture
+SIGSCE Bulletin
+106–110
+March 1997
+
+Journal Article
+Gardner, W.; Chen, C.-K.
+Signal-Selective Time-Difference-of-Arrival Estimation for Passive Location of Man-Made Signal Sources in Highly Corruptive Environments, Part I: Theory and Method
+IEEE Transactions on Signal Processing
+40(5):1168–1184
+May 1992
+
+Journal Article
+Gat, E.; Desai, R. S.; Ivlev, R.; Loch, J.; Miller, D. P.
+Behavior Control for Robotic Exploration of Planetary Surfaces
+IEEE Transactions on Robotics and Automation
+10(4):490–503
+August 1994
+
+Conference Paper
+Geva, Shlomo; Sitte, Joaquin
+BOXES Revisited
+Proceedings of the International Conference on Artificial Neural Networks
+777
+September 1993
+
+Conference Paper
+Granger, Mary J.; Little, Joyce Currie
+Group 4: Using IT to Integrate Societal and Ethical Issues in the CS/IS Curriculum
+Integrating Technology into Computer Science Education
+144
+June 1997
+
+Conference Paper
+Haliburton, William
+Gender Differences in Personality Components of Computer Science Students: A Test of Holland's Congruence Hypothesis
+SIGSCE Bulletin
+77–81
+March 1998
+
+Conference Paper
+Haller, S. M.; Fossum, T. V.
+Retaining Women in CS with Accessible Role Models
+SIGSCE Bulletin
+73–76
+March 1998
+
+Journal Article
+Hawkins, J. K.
+Self-Organizing Systems — A Review and Commentary
+Proceedings of the IRE
+49(1):31–48
+January 1961
+
+Conference Paper
+Hougen, Dean F.
+Learning with Holes: Pitfalls with Simulation in Learning Robot Control
+Machine Learning Technologies for Autonomous Space Applications Workshop of the International Conference on Machine Learning
+unnumbered
+August 2003
+
+Conference Paper
+Hougen, Dean F.; Bonney, Jordan C.; Budenske, John R.; Dvorak, Mark; Gini, Maria; Krantz, Donald G.; Malver, Fred; Nelson, Brad; Papanikolopoulos, Nikolaos; Rybski, Paul E.; Stoeter, Sascha A.; Voyles, Richard; Yesin, Kemal Berk
+Reconfigurable Robots for Distributed Robotics
+Government Microcircuit Applications Conference
+72–75
+March 2000
+
+Conference Paper
+Hougen, Dean F.; Fischer, John; Gini, Maria; Slagle, James
+Fast Connectionist Learning for Trailer Backing using a Real Robot
+Proceedings of the IEEE International Conference on Robotics and Automation
+1917–1922
+April 1996
+
+Conference Paper
+Hougen, Dean F.; Gini, Maria; Slagle, James
+Rapid, Unsupervised Connectionist Learning for Backing a Robot with Two Trailers
+Proceedings of the IEEE International Conference on Robotics and Automation
+2950–2955
+April 1997
+
+Conference Paper
+Hougen, Dean F.; Gini, Maria; Slagle, James
+Partitioning Input Space for Reinforcement Learning for Control
+Proceedings of the IEEE International Conference on Neural Networks
+755–760
+June 1997
+
+Conference Paper
+Hougen, Dean F.; Gini, Maria; Slagle, James
+An Integrated Connectionist Approach to Reinforcement Learning for Robotic Control: The Advantages of Indexed Partitioning
+Proceedings of the International Conference on Machine Learning
+383–390
+June 2000
+
+Conference Paper
+Hougen, Dean F.; Gini, Maria; Slagle, James
+An Integrated Connectionist Approach to Reinforcement Learning for Robotic Control: Extension to Three Dimensions
+International Conference on Intelligent Autonomous Systems 7
+134–141
+March 2002
+
+Conference Paper
+Hougen, Dean F.; Rybski, Paul E.; Gini, Maria
+Repeatability of Real World Training Experiments: A Case Study
+AAAI Spring Symposium on Integrating Robotics Research: Taking the Next Leap
+unnumbered
+March 1998
+
+Conference Paper
+Hougen, Dean F.; Stoeter, Sascha A.; Rybski, Paul E.; Erickson, Michael D.; Gini, Maria; Papanikolopoulos, Nikolaos
+Behavioral Decomposition of Robotic Exploratory Missions
+International Conference for Smart Systems and Robotics for Medicine and Space Applications
+unnumbered
+September 2000
+
+Conference Paper
+Houle, Michael E.; Simon
+Ethics, Programming, and Virtual Environments
+Integrating Technology into Computer Science Education
+91–93
+June 1997
+
+Journal Article
+Hulle, Marc M. Van
+Topology-Preserving Map Formation Achieved with a Purely Local Unsupervised Competetive Learning Rule
+Neural Networks
+10(3):431–446
+April 1997
+
+Journal Article
+Jenkins, Robert E.; Yuhas, Ben P.
+A Simplified Neural Network Solution Through Problem Decomposition: The Case of the Truck Backer-Upper
+IEEE Transactions on Neural Networks
+4(4):718–720
+July 1993
+
+Conference Paper
+Jeon, Yunho; Park, Jungmin; Song, Insub; Cho, Young-Jo; Oh, Sang-Rok
+An Object-Oriented Implementation of Behavior-Based Control Architecture
+Proceedings of the IEEE International Conference on Robotics and Automation
+706–711
+April 1996
+
+Conference Paper
+John, George H.
+When the Best Move Isn't Optimal: Q-Learning with Exploration
+Proceedings of the National Conference on Artificial Intelligence
+1464
+August 1994
+
+Conference Paper
+Kniazewycz, B. George; Darvish, Ali R.; Irving, Timothy L.
+Experience with the Surveyor$^\textrmTM\$$ Mobile Robot in Radioactive Work Environments
+Transactions of the American Nuclear Society
+497--498
+November 1986
+
+Journal Article
+Kohonen, Teuvo K.
+The Self-organizing Map
+Proceedings of the IEEE
+78(9):1464–1480
+September 1990
+
+Conference Paper
+Kortenkamp, David; Weymouth, Terry
+Topological Mapping for Mobile Robots using a Combination of Sonar and Vision Sensing
+Proceedings of the National Conference on Artificial Intelligence
+979–984
+August 1994
+
+Conference Paper
+Krantz, D.; Gini, M.
+Non-Uniform Dead-Reckoning Position Estimate Updates
+Proceedings of the IEEE International Conference on Robotics and Automation
+2061--2066
+April 1996
+
+Journal Article
+Krotkov, E.; Blitch, J.
+The Defense Advanced Research Projects Agency (DARPA) Tactical Mobile Robotics Program
+International Journal of Robotics Research
+18(7):769–776
+July 1999
+
+Journal Article
+KUBE, C. RONALD; ZHANG, HONG
+Task Modelling in Collective Robotics
+Autonomous Robots
+4(1):53–72
+March 1997
+
+Conference Paper
+Kurabayashi, Daisuke
+Toward Realization of Collective Intelligence and Emergent Robotics
+IEEE International Conference on Systems, Man and Cybernetics
+748–753
+October 1999
+
+Journal Article
+Langer, D.; Rosenblatt, J.; Hebert, M.
+A Behavior-Based System For Off-Road Navigation
+IEEE Transactions on Robotics and Automation
+10(6):776–782
+December 1994
+
+Journal Article
+Laumond, Jean-Paul
+Controllability of a Multibody Mobile Robot
+IEEE Transactions on Robotics and Automation
+9(6):755–763
+December 1993
+
+Conference Paper
+Lee, David; Recce, Michael
+Quantitative Evaluation of the Exploration Strategies of a Mobile Robot
+Proceedings of the National Conference on Artificial Intelligence
+1470
+August 1994
+
+Journal Article
+Lin, Chun-Shin; Kim, Hyongsuk
+CMAC-Based Adaptive Critic Self-Learning Control
+IEEE Transactions on Neural Networks
+2(5):530–533
+September 1991
+
+Conference Paper
+Liu, Mei-Ling; Blanc, Lori
+On the Retention of Female Computer Science Students
+SIGSCE Bulletin
+32–36
+February 1996
+
+Conference Paper
+Luke, Sean; Panait, Liviu
+Is the Perfect the Enemy of the Good?
+Proceedings of the Genetic and Evolutionary Computation Conference
+820–828
+July 2002
+
+Journal Article
+MacKenzie, D.; Arkin, R. C.; Cameron, R.
+Specification and Execution of Multiagent Missions
+Autonomous Robots
+4(1):29–57
+January 1997
+
+Journal Article
+MACKENZIE, DOUGLAS C.; ARKIN, RONALD C.; CAMERON, JONATHAN M.
+Multiagent Mission Specification and Execution
+Autonomous Robots
+4(1):29–52
+March 1997
+
+Journal Article
+Masson, P.; Pieczynski, W.
+SEM algorithm and unsupervised statistical segmentation of satellite images
+IEEE Transactions on Geoscience and Remote Sensing
+31(3):618–633
+May 1993
+
+Journal Article
+Matarić, M.
+Learning Social Behavior
+Robotics and Autonomous Systems
+20(2):191–204
+June 1997
+
+Conference Paper
+Matarić, M.
+Using Communication to Reduce Locality in Distributed Multi-Agent Learning
+Proceedings of the National Conference on Artificial Intelligence
+643–648
+July 1997
+
+Journal Article
+Matarić, Maja J.
+Designing and Understanding Adaptive Group Behavior
+Adaptive Behavior
+4(1):51–80
+December 1995
+
+Conference Paper
+Miller, D. P.; Desai, R. S.; Gat, E.; Ivlev, R.; Loch, J.
+Reactive Navigation Through Rough Terrain: Experimental Results
+Proceedings of the National Conference on Artificial Intelligence
+823–828
+July 1992
+
+Journal Article
+Minsky, Marvin
+Steps Toward Artificial Intelligence
+Proceedings of the IRE
+49(1):8–30
+January 1961
+
+Journal Article
+Mjolsness, E.; DeCoste, D.
+Machine learning for science: State of the art and future prospects
+Science
+293(5537):2051–2055
+September 2001
+
+Conference Paper
+Mondada, Francesco; Franzi, Edoardo; Ienne, Paolo
+Mobile Robot Miniaturisation: A Tool for Investigation in Control Algorithms
+Experimental Robotics III, Proceedings of the 3rd International Symposium on Experimental Robotics
+501–513
+October 1993
+
+Conference Paper
+Murphy, Robin R.; Ausmus, Michelle; Bugajska, Magda; Ellis, Tanya; Johnson, Tonia; Kelley, Nia; Kiefer, Jodi; Pollock, Lisa
+Marsupial-like Mobile Robot Societies
+Proceedings of the International Conference on Autonomous Agents
+364--365
+May 1999
+
+Conference Paper
+Nakamura, Michiyo; Yuta, Shin'ici
+Trajectory Control of Trailer Type Mobile Robots
+Proceedings of the 1993 IEEE/RSJ International Conference on Intelligent Robots and Systems
+2257–2263
+July 1993
+
+Journal Article
+Nielsen, S. Travis; Campbell, Douglas M.
+Current Trends in Computer Science Graduate Admissions: A Survey of the Top 108 Programs
+SIGCSE Bulletin
+31(2):31–34
+June 1999
+
+Conference Paper
+Noreils, Fabrice R.
+An Architecture for Cooperative and Autonomous Mobile Robots
+Proceedings of the IEEE International Conference on Robotics and Automation
+2703–2710
+May 1992
+
+Journal Article
+Noreils, Fabrice R.
+Toward a Robot Architecture Integrating Cooperation between Mobile Robots: Application to Indoor Environment
+International Journal of Robotics Research
+12(1):79–98
+February 1993
+
+Journal Article
+Oberg, James
+Why the Mars Probe went off course
+IEEE Spectrum
+36(12):34–39
+December 1999
+
+Conference Paper
+Ohmichi, Takeo; Hosaka, Shigetaka; Nishihara, Masatoshi; Ibe, Tomoyoshi; Okino, Akihisa; Nakayama, Junji; Miida, Toshiro; Ishida, Michiyasu
+DEVELOPMENT OF THE MULTI-FUNCTION ROBOT FOR THE CONTAINMENT VESSEL OF THE NUCLEAR PLANT
+Proc. of the International Conference on Advanced Robotics
+371--378
+September 1985
+
+Conference Paper
+OZAKI, Koichi; ASAMA, Hajime; ISHIDA, Yoshiki; MATSUMOTO, Akihiro; YOKOTA, Kazutaka; KAETSU, Hayato; ENDO, Isao
+Synchronized Motion by Multiple Mobile Robots using Communication
+IEEE/RSJ International Conference on Intelligent Robots and Systems
+1164–1169
+July 1993
+
+Conference Paper
+Papanikolopoulos, Nikolaos; Stoeter, Sascha A.; Rybski, Paul; Gini, Maria; Hougen, Dean F.; Erickson, Michael
+Experiments with a Team of Miniature Robots
+Proceedings of the IEEE Mediterranean Conference on Control & Automation
+unnumbered
+July 2000
+
+Conference Paper
+Parker, Lynne E.
+An Experiment in Mobile Robotic Cooperation
+Proc. of the ASCE Specialty Conference on Robotics for Challenging Environments
+131–139
+February 1994
+
+Journal Article
+Parker, Lynne E.
+ALLIANCE: An Architecture for Fault Tolerant Multirobot Cooperation
+IEEE Transactions on Robotics and Automation
+14(2):220–240
+April 1998
+
+Journal Article
+Pfeiffer, Phil
+What Employers Want from Students: A Report from OOPSLA
+SIGCSE Bulletin
+31(2):69–70
+June 1999
+
+Conference Paper
+Pierce, David; Kuipers, Benjamin
+Learning to Explore and Build Maps
+Proceedings of the National Conference on Artificial Intelligence
+1264–1271
+August 1994
+
+Journal Article
+Pook, P. K.; DeBolt, C. K.
+Test Bed Robot Development for Cooperative Submunitions Clearance
+International Journal of Robotics Research
+18(7):753–759
+July 1999
+
+Conference Paper
+Porteous, J.
+Intelligent Buildings and Their Effect on the Security Industry
+IEEE International Carnahan Conference on Security Technology
+186–188
+October 1995
+
+Conference Paper
+Prey, Jane; Baldwin, Doug
+Measuring Factors Affecting Women in Undergraduate Computer Science
+SIGSCE Bulletin
+395
+March 1997
+
+Conference Paper
+Pritchard, D.; White, R.; Adams, D.; Krause, E.; Fox, E.; Ladd, M.; Heintzleman, R.; Sprauer, P.; MacEachin, J.
+Test and Evaluation of Panoramic Imaging Security Sensor for Force Protection and Facility Security
+IEEE International Carnahan Conference on Security Technology
+190–195
+October 1998
+
+Conference Paper
+Quyang, Min; M.Toulouse; K.Thulasiraman; J.S.Deogun
+Multilevel Cooperative Search: Applications of the Circuit/ Hypergraph Partitioning Problem
+International Symposium on Physical Design Automation
+192–198
+April 2000
+
+Conference Paper
+Rausch, Alexander; Oswald, Norbert; Levi, Paul
+Cooperative crossing of traffic intersections in a distributed robot system
+Proc. of SPIE Sensor Fusion and Networked Robotics VIII
+218–229
+October 1995
+
+Conference Paper
+Ray, T. S.; Hart, Joseph
+Tierra Tutorial
+1999 Genetic and Evolutionary Computation Conference Tutorial Program
+367–394
+July 1999
+
+Conference Paper
+Russell, David W.
+Further Studies in AI-Augmented Process Control Using the BOXES Methodology
+Artificial Intelligence in Real-Time Control: Proceedings of the Third IFAC Workshop
+75–79
+September 1991
+
+Conference Paper
+Russell, David W.
+AI-Augmented Goal Achievement
+Proceedings of the Seventh International Conference on Applications of Artificial Intelligence in Engineering
+971–982
+July 1992
+
+Conference Paper
+Rybski, Paul; Stoeter, Sascha; Wyman, Chris; Gini, Maria
+A Cooperative Multi-Robot Approach to the Mapping and Exploration of Mars
+Proceedings of the National Conference on Artificial Intelligence
+798–799
+July 1997
+
+Conference Paper
+Rybski, Paul E.; Hougen, Dean F.; Stoeter, Sascha A.; Gini, Maria; Papanikolopoulos,; Nikolaos
+Control of Multiple Small Surveillance Robots at AAAI 2000
+Proceedings of the AAAI 2000 Mobile Robot Competition and Exhibition Workshop
+unnumbered
+August 2000
+
+Conference Paper
+Rybski, Paul E.; Larson, Amy; Lindahl, Michael; Gini, Maria
+Performance Evaluation of Multiple Robots in a Search and Retrieval Task
+Workshop on Artificial Intelligence and Manufacturing
+153–160
+August 1998
+
+Journal Article
+Rybski, Paul E.; Papanikolopoulos, Nikolaos P.; Stoeter, Sascha A.; Krantz, Donald G.; Yesin, Kemal B.; Gini, Maria; Voyles, Richard; Hougen, Dean F.; Nelson, Brad; Erickson, Michael D.
+Enlisting Rangers and Scouts for Reconnaissance and Surveillance
+IEEE Robotics and Automation Magazine
+7(4):14–24
+December 2000
+
+Conference Paper
+Rybski, Paul E.; Stoeter, Sascha A.; Erickson, Michael D.; Gini, Maria; Hougen, Dean F.; Papanikolopoulos, Nikolaos
+A Team of Robotic Agents for Surveillance
+Proceedings of the Fourth International Conference on Autonomous Agents
+9–16
+June 2000
+
+Journal Article
+Rybski, Paul E.; Stoeter, Sascha A.; Gini, Maria; Hougen, Dean F.; Papanikolopoulos,; Nikolaos
+Performance of a Distributed Robotic System Using Shared Communications Channels
+IEEE Transactions on Robotics and Automation
+18(5):713–727
+October 2002
+
+Conference Paper
+Rybski, Paul E.; Stoeter, Sascha A.; Gini, Maria; Hougen, Dean F.; Papanikolopoulos, Nikolaos
+Effects of Limited Bandwidth Communications Channels of the Control of Multiple Robots
+Proceedings of the IEEE International Conference on Intelligent Robots and Systems
+369–374
+October 2001
+
+Journal Article
+Rybski, Paul E.; Stoeter, Sascha A.; Papanikolopoulos, Nikolaos P.; Burt, Ian; Dahlin, Tom; Gini, Maria; Hougen, Dean F.; Krantz, Donald G.; Nageotte,; Florent
+Sharing Control: Presenting a Framework for the Operation and Coordination of Multiple Miniature Robots
+IEEE Robotics and Automation Magazine
+9(4):41–48
+December 2002
+
+Journal Article
+Samuel, A. L.
+Some Studies in Machine Learning Using the Game of Checkers
+IBM Journal of Research and Development
+3(3):210–229
+July 1959
+
+Journal Article
+Samuel, A. L.
+Some Studies in Machine Learning Using the Game of Checkers. II — Recent Progress
+IBM Journal of Research and Development
+11(6):601–617
+November 1967
+
+Conference Paper
+Scragg, Greg; Smith, Jesse
+A Study of Barriers to Women in Undergraduate Computer Science
+SIGSCE Bulletin
+82–86
+March 1998
+
+Conference Paper
+Sekhavat, S.; Laumond, J. P.
+Topological Property of Trajectories Computed from Sinusoidal Inputs for Nonholonomic Chained Form Systems
+Proceedings of the IEEE International Conference on Robotics and Automation
+3383–3388
+April 1996
+
+Journal Article
+Simons, J.; Brussel, H. Van; Schutter, J. De; Verhaert, J.
+A self-learning automaton with variable resolution for high precision assembly by industrial robots.
+IEEE Transactions on Automatic Control
+27(5):1109–1113
+October 1982
+
+Journal Article
+Slack, M.
+Navigation Templates: Mediating Qualitative Guidance and Quantitative Control in Mobile Robots
+IEEE Transactions on Systems, Man, and Cybernetics
+23(2):452–466
+April 1993
+
+Journal Article
+Sobel, Ann E. Kelley
+Enhancing the Learning Environment of Deaf Students
+SIGCSE Bulletin
+31(2):71–72
+June 1999
+
+Conference Paper
+Sousa, J. Borges; Pereira, F. Lobo
+A General Control Architecture for Multiple Vehicles
+Proceedings of the IEEE International Conference on Robotics and Automation
+692–697
+April 1996
+
+Conference Paper
+Stoeter, Sascha A.; Mauff, Frédéric Le; Papanikolopoulos, Nikolaos P.
+Real-Time Door Detection in Cluttered Environments
+Proceedings of the IEEE International Symposium on Intelligent Control
+187–192
+July 2000
+
+Conference Paper
+Stoeter, Sascha A.; Rybski, Paul E.; Erickson, Michael D.; Gini, Maria; Hougen, Dean F.; Krantz, Donald G.; Papanikolopoulos, Nikolaos; Wyman, Michael
+A Robot Team for Exploration and Surveillance: Design and Architecture
+International Conference on Intelligent Autonomous Systems 6
+767–774
+July 2000
+
+Conference Paper
+Stoeter, Sascha A.; Rybski, Paul E.; Gini, Maria; Hougen, Dean F.; Papanikolopoulos, Nikolaos P.
+Verteilte Steuerung Heterogener Mobiler Roboter
+Autonome Mobile Systeme 2000
+270–277
+November 2000
+
+Journal Article
+Stoeter, Sascha A.; Rybski, Paul E.; Stubbs, Kristen N.; McMillen, Colin P.; Gini, Maria; Hougen, Dean F.; Papanikolopoulos, Nikolaos
+A Robot Team for Surveillance Tasks: Design and Architecture
+Robotics and Autonomous Systems
+40(2):173–183
+September 2002
+
+Journal Article
+Stone, P.; Veloso, M. M.
+A Layered Approach to Learning Client Behaviors in the Robocup Soccer Server
+Journal of Applied Artificial Intelligence
+12(2):165–188
+May 1998
+
+Conference Paper
+Sunderam, V. S.
+PVM: A Framework for Parallel Distributed Computing
+Concurrency: Practice and Experience
+315–339
+December 1990
+
+Conference Paper
+Tanaka, Kazuo
+Advanced Fuzzy Control of a Trailer Type Mobile Robot: Stability Analysis and Model-based Fuzzy Control
+Proceedings of the Sixth International Conference on Tools with Artificial Intelligence
+205–211
+November 1994
+
+Journal Article
+Thompson, Adrian; Layzell, Paul
+Analysis of Unconventional Evolved Electronics
+Communications of the ACM
+42(4):71–79
+April 1999
+
+Conference Paper
+Tilbury, D.; Laumond, J.-P.; Murray, R.; Sastry, S.; Walsh, G.
+Steering Car-Like Systems with Trailers Using Sinusoids
+Proceedings of the IEEE International Conference on Robotics and Automation
+1993–1998
+May 1992
+
+Journal Article
+Tilbury, Dawn; S\textbackslash/ordalen, Ole Jakob; Bushnell, Linda; Sastry, S. Shankar
+A Multisteering Trailer System: Conversion into Chained Form Using Dynamic Feedback
+IEEE Transactions on Robotics and Automation
+11(6):807–818
+December 1995
+
+Conference Paper
+Troutman, Nathaniel P.; Eskridge, Brent E.; Hougen, Dean F.
+Is 'Best-So-Far' a Good Algorithmic Performance Metric?
+Genetic and Evolutionary Computation Conference
+1147–1148
+July 2008
+
+Journal Article
+Truxal, John G.
+Computers in Automatic Control Systems
+Proceedings of the IRE
+49(1):305–312
+January 1961
+
+Conference Paper
+Vasseur, Pascal; Pégard, Claude; Delahoche, Laurent
+A DISTRIBUTED CONTROL ARCHITECTURE FOR AN EXPERIMENTAL MOBILE ROBOT
+IEEE Industrial Electronics Society Conference
+1548–1553
+August 1996
+
+Conference Paper
+Vest, Sharon N.; Null, Linda; Biddle, Robert; Roberts, Eric; Bjorkman, Christina; Scragg, Greg
+The Retention of Women in the Computing Sciences
+SIGSCE Bulletin
+366–367
+March 1998
+
+Journal Article
+Peterson, David R.; Barrett, Jamie D.; Hester, Kimberly S., Robledo, Issac C., Hougen, Dean F., Day, Eric A., Mumford, Michael D.
+Teaching People to Manage Constraints: Effects on Creative Problem-Solving
+Creativity Research Journal
+25(3): 335-347
+September 2013
+http://dx.doi.org/10.1080/10400419.2013.813809
+
+Journal Article
+Walsh, G.; Tilbury, D.; Sastry, S.; Murray, R.; Laumond, J. P.
+Stabalization of Trajectories for Systems with Nonholonomic Constraints
+IEEE Transactions on Automatic Control
+39(1):216–222
+January 1991
+
+Journal Article
+Weisbin, C.; Blitch, J.; Lavery, D.; Krotkov, E.; Shoemaker, C.; Matthies, L.; Rodriguez, G.
+Miniature Robots for Space and Military Missions
+IEEE Robotics and Automation Magazine
+6(3):9–18
+September 1999
+
+Conference Paper
+Weld, Daniel; Etzioni, Oren
+The First Law of Robotics (a call to arms)
+Proceedings of the National Conference on Artificial Intelligence
+1042–1047
+August 1994
+
+Conference Paper
+Werth, Laurie Honour
+Getting Started with Computer Ethics
+SIGSCE Bulletin
+1–5
+March 1997
+
+Conference Paper
+WHEELCHAIR, DISTRIBUTED IN℡LIGENCE TO CONTROL A. STAIR-CLIMBING
+Wiesspeiner, G. and Windischbacher, E.
+Proc. of the IEEE Conf. on Engineering in Medicine and Biology
+1173–1174
+September 1995
+
+Journal Article
+Widrow, Bernard; Lehr, Michael A.
+30 years of adaptive neural networks: perceptron, madaline and backpropagation
+Proceedings of the IEEE
+78(9):1415–1442
+September 1990
+
+Conference Paper
+Woodcock, N.; Hallam, N. J.; Picton, P. D.
+Fuzzy BOXES as an alternative to neural networks for difficult control problems
+Applications of Artificial Intelligence in Engineering VI
+903–919
+July 1991
+
+Conference Paper
+Yamauchi, B.
+A Frontier-Based Approach for Autonomous Exploration
+Computational Intelligence in Robotics and Automation
+146–151
+July 1997
+
+Journal Article
+AguiléE, R.; Lambert, A.; Claessen, D.
+Ecological speciation in dynamic landscapes
+Journal of Evolutionary Biology
+24(12):2663--2677
+December 2011
+
+Journal Article
+Arbilly, M.; Motro, U.; Feldman, M. W.; Lotem, A.
+Evolution of social learning when high expected payoffs are associated with high risk of failure
+Journal of The Royal Society Interface
+8(64):1604--1615
+April 2011
+
+Journal Article
+Arbilly, Michal; Motro, Uzi; Feldman, Marcus W.; Lotem, Arnon
+Co-evolution of learning complexity and social foraging strategies
+Journal of Theoretical Biology
+267(4):573--581
+December 2010
+
+Journal Article
+Asada, M.; Hosoda, K.; Kuniyoshi, Y.; Ishiguro, H.; Inui, T.; Yoshikawa, Y.; Ogino, M.; Yoshida, C.
+Cognitive Developmental Robotics
+IEEE Transactions on Autonomous Mental Development
+1(1):12--34
+May 2009
+
+Journal Article
+Becquet, Céline; Przeworski, Molly
+LEARNING ABOUT MODES OF SPECIATION BY COMPUTATIONAL APPROACHES
+Evolution
+63(10):2547--2562
+October 2009
+
+Journal Article
+Beltman, J.B; Metz, J.A.J
+Speciation
+Proceedings of the Royal Society B: Biological Sciences
+272(1571):1455--1463
+July 2005
+
+Journal Article
+Beltman, J.B.; Haccou, P.
+Speciation through the learning of habitat features
+Theoretical Population Biology
+67(3):189--202
+May 2005
+
+Journal Article
+Berthouze, Luc; Metta, Giorgio
+Epigenetic robotics
+Cognitive Systems Research
+6(3):189--192
+September 2005
+
+Journal Article
+Berthouze, Luc; Ziemke, Tom
+Epigenetic robotics—modelling cognitive development in robotic systems
+Connection Science
+15(4):147--150
+December 2003
+
+Journal Article
+Bolnick, Daniel I.; Fitzpatrick, Benjamin M.
+Sympatric Speciation
+Annual Review of Ecology, Evolution, and Systematics
+38(1):459--487
+December 2007
+
+Journal Article
+Bonduriansky, Russell
+Sexual Selection and Conflict as Engines of Ecological Diversification
+The American Naturalist
+178(6):729--745
+December 2011
+
+Journal Article
+Breazeal, C.; Scassellati, B.
+Infant-like Social Interactions between a Robot and a Human Caregiver
+Adaptive Behavior
+8(1):49--74
+January 2000
+
+Journal Article
+Brown, Stephanie L.; Brown, R. Michael
+TARGET ARTICLE
+Psychological Inquiry
+17(1):1--29
+January 2006
+
+Conference Paper
+Woehrer, Mark; Hougen, Dean; Schlupp, Ingo
+Sexual Selection, Resource Distribution, and Population Size in Synthetic Sympatric Speciation
+International Conference on the Synthesis and Simulation of Living Systems
+137-144
+July 2012
+http://dx.doi.org/10.7551/978-0-262-31050-5-ch020
+
+Journal Article
+Clune, J.; Goldsby, H. J.; Ofria, C.; Pennock, R. T.
+Selective pressures for accurate altruism targeting
+Proceedings of the Royal Society B: Biological Sciences
+278(1706):666--674
+September 2010
+
+Journal Article
+de Kievit, T. R.; Iglewski, B. H.
+Bacterial Quorum Sensing in Pathogenic Relationships
+Infection and Immunity
+68(9):4839--4849
+September 2000
+
+Journal Article
+Débarre, F.
+Refining the conditions for sympatric ecological speciation
+Journal of Evolutionary Biology
+25(12):2651--2660
+December 2012
+
+Journal Article
+Di Paolo, E. A.
+Evolving spike-timing-dependent plasticity for single-trial learning in robots
+Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences
+361(1811):2299--2319
+October 2003
+
+Journal Article
+Doebeli, Michael; Dieckmann, Ulf
+Evolutionary Branching and Sympatric Speciation Caused by Different Types of Ecological Interactions
+The American Naturalist
+156(4):S77--S101
+October 2000
+
+Journal Article
+Dukas, Reuven
+Evolutionary Biology of Insect Learning
+Annual Review of Entomology
+53(1):145--160
+January 2008
+
+Journal Article
+Elfwing, S.; Uchibe, E.; Doya, K.; Christensen, H. I.
+Darwinian embodied evolution of the learning ability for survival
+Adaptive Behavior
+19(2):101--120
+February 2011
+
+Journal Article
+Ellers, Jacintha; Slabbekoorn, Hans
+Song divergence and male dispersal among bird populations
+Animal Behaviour
+65(4):671--681
+April 2003
+
+Journal Article
+Fletcher, J. A; Doebeli, M.
+A simple and general explanation for the evolution of altruism
+Proceedings of the Royal Society B: Biological Sciences
+276(1654):13--19
+January 2009
+
+Journal Article
+Floreano, Dario; Dürr, Peter; Mattiussi, Claudio
+Neuroevolution
+Evolutionary Intelligence
+1(1):47--62
+January 2008
+
+Journal Article
+Floreano, Dario; Mitri, Sara; Magnenat, Stéphane; Keller, Laurent
+Evolutionary Conditions for the Emergence of Communication in Robots
+Current Biology
+17(6):514--519
+March 2007
+
+Journal Article
+Fong, Terrence; Nourbakhsh, Illah; Dautenhahn, Kerstin
+A survey of socially interactive robots
+Robotics and Autonomous Systems
+42(3):143--166
+March 2003
+
+Journal Article
+Gavrilets, S.; Losos, J. B.
+Adaptive Radiation
+Science
+323(5915):732--737
+February 2009
+
+Journal Article
+Gourbiere, S.
+How do natural and sexual selection contribute to sympatric speciation?
+Journal of Evolutionary Biology
+17(6):1297--1309
+November 2004
+
+Journal Article
+Gourbiere, S.; Mallet, J.
+Has adaptive dynamics contributed to the understanding of adaptive and sympatric speciation?
+Journal of Evolutionary Biology
+18(5):1201--1204
+August 2005
+
+Journal Article
+Grimm, Volker; Berger, Uta; Bastiansen, Finn; Eliassen, Sigrunn; Ginot, Vincent; Giske, Jarl; Goss-Custard, John; Grand, Tamara; Heinz, Simone K.; Huse, Geir; Huth, Andreas; Jepsen, Jane U.; Jørgensen, Christian; Mooij, Wolf M.; Müller, Birgit; Pe’er, Guy; Piou, Cyril; Railsback, Steven F.; Robbins, Andrew M.; Robbins, Martha M.; Rossmanith, Eva; Rüger, Nadja; Strand, Espen; Souissi, Sami; Stillman, Richard A.; Vabø, Rune; Visser, Ute; DeAngelis, Donald L.
+A standard protocol for describing individual-based and agent-based models
+Ecological Modelling
+198(1):115--126
+September 2006
+
+Journal Article
+Grimm, Volker; Berger, Uta; DeAngelis, Donald L.; Polhill, J. Gary; Giske, Jarl; Railsback, Steven F.
+The ODD protocol
+Ecological Modelling
+221(23):2760--2768
+November 2010
+
+Journal Article
+Hamblin, Steven
+On the practical usage of genetic algorithms in ecology and evolution
+Methods in Ecology and Evolution
+4(2):184--194
+February 2013
+
+Journal Article
+Harrison, Douglas A.
+Sex Determination
+Current Biology
+17(9):R328--R330
+May 2007
+
+Journal Article
+Jin, Yaochu; Meng, Yan
+Morphogenetic Robotics
+IEEE Transactions on Systems, Man, and Cybernetics, Part C (Applications and Reviews)
+41(2):145--160
+March 2011
+
+Journal Article
+Kawata, M.
+Invasion of vacant niches and subsequent sympatric speciation
+Proceedings of the Royal Society B: Biological Sciences
+269(1486):55--63
+January 2002
+
+Journal Article
+Keller, I.; Seehausen, O.
+Thermal adaptation and ecological speciation
+Molecular Ecology
+21(4):782--799
+February 2012
+
+Journal Article
+Klee, Victor
+What is the Maximum Length of a d-Dimensional Snake?
+The American Mathematical Monthly
+77(1):63--65
+January 1970
+
+Journal Article
+Korshunov, Aleksei D
+Some unsolved problems in discrete mathematics and mathematical cybernetics
+Russian Mathematical Surveys
+64(5):787--803
+October 2009
+
+Journal Article
+Kraaijeveld, Ken; Kraaijeveld-Smit, Femmie J. L.; Maan, Martine E.
+Sexual selection and speciation
+Biological Reviews
+86(2):367--377
+May 2011
+
+Journal Article
+Lättilä, Lauri; Hilletofth, Per; Lin, Bishan
+Hybrid simulation models – When, Why, How?
+Expert Systems with Applications
+37(12):7969--7975
+December 2010
+
+Journal Article
+Lungarella, Max; Metta, Giorgio; Pfeifer, Rolf; Sandini, Giulio
+Developmental robotics
+Connection Science
+15(4):151--190
+December 2003
+
+Journal Article
+Meeden, Lisa A.; Blank, Douglas S.
+Introduction to developmental robotics
+Connection Science
+18(2):93--96
+June 2006
+
+Journal Article
+Merrill, Richard M.; Gompert, Zachariah; Dembeck, Lauren M.; Kronforst, Marcus R.; McMillan, W. Owen; Jiggins, Chris D.
+MATE PREFERENCE ACROSS THE SPECIATION CONTINUUM IN A CLADE OF MIMETIC BUTTERFLIES
+Evolution
+65(5):1489--1500
+May 2011
+
+Journal Article
+Mifune, Nobuhiro; Hashimoto, Hirofumi; Yamagishi, Toshio
+Altruism toward in-group members as a reputation mechanism
+Evolution and Human Behavior
+31(2):109--117
+March 2010
+
+Journal Article
+Nelson, Andrew L.; Barlow, Gregory J.; Doitsidis, Lefteris
+Fitness functions in evolutionary robotics
+Robotics and Autonomous Systems
+57(4):345--370
+April 2009
+
+Journal Article
+Nosil, Patrik; Harmon, Luke J.; Seehausen, Ole
+Ecological explanations for (incomplete) speciation
+Trends in Ecology & Evolution
+24(3):145--156
+March 2009
+
+Journal Article
+Nowak, M. A.
+Five Rules for the Evolution of Cooperation
+Science
+314(5805):1560--1563
+December 2006
+
+Journal Article
+Olofsson, Helen; Frame, Alicia M.; Servedio, Maria R.
+CAN REINFORCEMENT OCCUR WITH A LEARNED TRAIT?
+Evolution
+65(7):1992--2003
+July 2011
+
+Journal Article
+Ostrowski, Elizabeth A.; Ofria, Charles; Lenski, Richard E.
+Ecological Specialization and Adaptive Decay in Digital Organisms
+The American Naturalist
+169(1):E1--E20
+January 2007
+
+Journal Article
+Parker, L.E.; Fang Tang
+Building Multirobot Coalitions Through Automated Task Solution Synthesis
+Proceedings of the IEEE
+94(7):1289--1305
+July 2006
+
+Journal Article
+Pfennig, David W.; Wund, Matthew A.; Snell-Rood, Emilie C.; Cruickshank, Tami; Schlichting, Carl D.; Moczek, Armin P.
+Phenotypic plasticity's impacts on diversification and speciation
+Trends in Ecology & Evolution
+25(8):459--467
+August 2010
+
+Journal Article
+Pitt, William C; Box, Paul W; Knowlton, Frederick.F
+An individual-based model of canid populations
+Ecological Modelling
+166(1):109--121
+August 2003
+
+Journal Article
+Prince, Christopher G.; Demiris, Yiannis
+Editorial
+Adaptive Behavior
+11(2):75--77
+June 2003
+
+Journal Article
+Risi, S.; Hughes, C. E.; Stanley, K. O.
+Evolving plastic neural networks with novelty search
+Adaptive Behavior
+18(6):470--491
+October 2010
+
+Journal Article
+Risi, S.; Hughes, C. E.; Stanley, K. O.
+Evolving plastic neural networks with novelty search
+Adaptive Behavior
+18(6):470--491
+October 2010
+
+Journal Article
+Rundell, Rebecca J.; Price, Trevor D.
+Adaptive radiation, nonadaptive radiation, ecological speciation and nonecological speciation
+Trends in Ecology & Evolution
+24(7):394--399
+July 2009
+
+Journal Article
+Rundle, Howard D.; Nosil, Patrik
+Ecological speciation
+Ecology Letters
+8(3):336--352
+January 2005
+
+Journal Article
+Sá Martins, J.; Moss de Oliveira, S.; de Medeiros, G.
+Simulated ecology-driven sympatric speciation
+Physical Review E
+64(2):021906
+July 2001
+
+Journal Article
+Servedio, Maria R.; Doorn, G. Sander Van; Kopp, Michael; Frame, Alicia M.; Nosil, Patrik
+Magic traits in speciation
+Trends in Ecology & Evolution
+26(8):389--397
+August 2011
+
+Journal Article
+Servedio, Maria R.; Sæther, Stein A.; Sætre, Glenn-Peter
+Reinforcement and learning
+Evolutionary Ecology
+23(1):109--123
+July 2007
+
+Journal Article
+Slagsvold, T.; Wiebe, K. L
+Learning the ecological niche
+Proceedings of the Royal Society B: Biological Sciences
+274(1606):19--23
+January 2007
+
+Journal Article
+Thibert-Plante, X.; Hendry, A. P.
+Factors influencing progress toward sympatric speciation
+Journal of Evolutionary Biology
+24(10):2186--2196
+October 2011
+
+Journal Article
+Tobler, Michael; DeWitt, Thomas J.; Schlupp, Ingo; García de León, Francisco J.; Herrmann, Roger; Feulner, Philine G.D.; Tiedemann, Ralph; Plath, Martin
+TOXIC HYDROGEN SULFIDE AND DARK CAVES
+Evolution
+62(10):2643--2659
+October 2008
+
+Journal Article
+Topping, Chris J.; Høye, Toke T.; Olesen, Carsten Riis
+Opening the black box—Development, testing and documentation of a mechanistically rich agent-based model
+Ecological Modelling
+221(2):245--255
+January 2010
+
+Journal Article
+van der Post, Daniel J.; Semmann, Dirk
+Local Orientation and the Evolution of Foraging
+PLoS Computational Biology
+7(10):e1002186
+October 2011
+
+Journal Article
+van Doorn, G. Sander; Dieckmann, Ulf; Weissing, Franz J.
+Sympatric Speciation by Sexual Selection
+The American Naturalist
+163(5):709--725
+May 2004
+
+Journal Article
+Verzijden, Machteld N.; ten Cate, Carel; Servedio, Maria R.; Kozak, Genevieve M.; Boughman, Jenny W.; Svensson, Erik I.
+The impact of learning on sexual selection and speciation
+Trends in Ecology & Evolution
+27(9):511--519
+September 2012
+
+Journal Article
+Verzijden, M. N; ten Cate, C.
+Early learning influences species assortative mating preferences in Lake Victoria cichlid fish
+Biology Letters
+3(2):134--136
+April 2007
+
+Journal Article
+Vonlanthen, P.; Bittner, D.; Hudson, A. G.; Young, K. A.; Müller, R.; Lundsgaard-Hansen, B.; Roy, D.; Di Piazza, S.; Largiader, C. R.; Seehausen, O.
+Eutrophication causes speciation reversal in whitefish adaptive radiations
+Nature
+482(7385):357--362
+February 2012
+
+Journal Article
+Waibel, Markus; Keller, Laurent; Floreano, Dario
+Genetic Team Composition and Level of Selection in the Evolution of Cooperation
+IEEE Transactions on Evolutionary Computation
+13(3):648--660
+June 2009
+
+Journal Article
+Waxman, D.; Gavrilets, S.
+20 Questions on Adaptive Dynamics
+Journal of Evolutionary Biology
+18(5):1139--1154
+August 2005
+
+Journal Article
+Zanten, A. J.; Haryanto, Loeky
+Sets of disjoint snakes based on a Reed-Muller code and covering the hypercube
+Designs, Codes and Cryptography
+48(3):207--229
+April 2008
+
+Journal Article
+Zhang, Zhengyou
+Autonomous Mental Development
+IEEE Transactions on Autonomous Mental Development
+1(1):1--11
+May 2009
+

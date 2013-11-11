@@ -76,50 +76,25 @@ public class IO{
                 bw.close();
         }
         
-        /*public static void saveObject(PaperCollection papers){
+        public static void saveObject(PaperCollection papers) throws IOException{
+                System.out.print("Enter the name of file to save to: ");
+                String temp = getInput();
+                FileOutputStream fileOut = new FileOutputStream(temp);
+                ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
                 
+                objectOut.writeObject(papers);
+                
+                objectOut.close();
         }
         
-        public static void loadObject(PaperCollection papers) throws IOException{
-                System.out.print("Enter the name of file to write to: ");
+        public static void loadObject(PaperCollection papers) throws IOException, ClassNotFoundException{
+                System.out.print("Enter the name of file: ");
                 String fileName = getInput();
                 FileInputStream fileIn = new FileInputStream(fileName);
                 ObjectInputStream in = new ObjectInputStream(fileIn);
-                String line = null;
-                String output = "";
                 
-                while((line = in.readLine()) != null) {
-                                        
-                        output += line + ";;";
-                }
+                papers = (PaperCollection) in.readObject();
                 
-                String[] paperObjects = output.split(";;;;");
-                
-                for(int index = 0; index < paperObjects.length; ++index){
-                        String[] split = paperObjects[index].split(";;");
-                        
-                        String[] individualAuthorNames = split[1].split(";");
-                        ArrayList<Authors> authorList = new ArrayList<Authors>();
-                        Authors newAuthor = new Authors();
-                        
-                        for(int i = 0; i < individualAuthorNames.length; ++i){
-                                char[] characters = individualAuthorNames[i].toCharArray();
-                                for(int f = 0; f < characters.length; ++f){
-                                        if(characters[f] == ',')
-                                                newAuthor.makeAuthors(individualAuthorNames[i]);
-                                                authorList.add(newAuthor);
-                                }
-                                
-                        }
-                        
-                        
-                        if(split.length == 6){
-                                papers.addAuthors(split[0], authorList, split[2], split[3], split[4], split[5]);
-                        }
-                        else if(split.length == 7){
-                                papers.addAuthors(split[0], authorList, split[2], split[3], split[4], split[5], split[6]);
-                        }
-                }
                 in.close();
-        }*/
+        }
 }
