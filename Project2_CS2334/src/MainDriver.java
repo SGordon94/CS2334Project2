@@ -189,6 +189,20 @@ public class MainDriver {
 					IO.saveObject(paperCollection);
 					break;
 					
+					// Used to display options for the graph
+				case "G":
+				case "g":
+					System.out.print("Please enter the name of an author: ");
+					String temp4 = IO.getInput();
+					int authorFoundIndex = paperCollection.findAuthor(temp4);
+					if(authorFoundIndex != -1){
+						System.out.println("The author has been found. The graph has not been implemented.");
+					}
+					else{
+						System.out.println("The author was not found.");
+					}
+					break;
+					
 					// Exits the program
 				case "E":
 				case "e":
