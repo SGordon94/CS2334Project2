@@ -59,7 +59,15 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	public String getPaper(){
 		String paper = "";
 		paper += this.typeOfPaper + "\n";
-		paper += this.authors + "\n";
+		for(int i=0;i<authorsList.size();i++){
+			if(i == authorsList.size()-1){
+				paper += authorsList.get(i).returnNameInString() + ";";
+			}
+			else{
+				paper += authorsList.get(i).returnNameInString() + "; ";
+			}
+		}
+		paper += "\n";
 		paper += this.titleOfPaper + "\n";
 		paper += this.titleOfSerial + "\n";
 		paper += this.numbers + "\n";
