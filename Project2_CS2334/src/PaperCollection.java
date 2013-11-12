@@ -13,9 +13,9 @@ public class PaperCollection implements Serializable {
          *
          */
         private static final long serialVersionUID = -1306506026096077696L;
-        int compareValue = 6;
-        ArrayList<Paper> paperCollection = new ArrayList<Paper>();
-        ArrayList<Authors> authorsCollection = new ArrayList<Authors>();
+        private int compareValue = 6;
+        private ArrayList<Paper> paperCollection = new ArrayList<Paper>();
+        private ArrayList<Authors> authorsCollection = new ArrayList<Authors>();
         
         public PaperCollection(){
         }

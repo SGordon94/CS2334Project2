@@ -11,7 +11,28 @@ public class MainDriver {
 		System.out.println("Welcome to ScholarPub!");
 		
 		// Reads the file
-		IO.readFile(paperCollection);
+		System.out.println("Would you like to read from a file or load the existing objects?"
+				+ " (RF = Read File; LO = Load Objects)" + "\n" + "Please enter here: ");
+		
+		String response = IO.getInput();
+		
+		switch(response){
+		
+			// Reads from a specified file
+			case "RF":
+			case "Rf":
+			case "rF":
+			case "rf":
+				IO.readFile(paperCollection);
+				break;
+				
+			// Reads objects from a file
+			case "LO":
+			case "lO":
+			case "Lo":
+			case "lo":
+				paperCollection = IO.loadObject(paperCollection);
+		}
 		
 		// Enters main program
 		while(run){
@@ -149,7 +170,7 @@ public class MainDriver {
 				case "Ld":
 				case "ld":
 				case "lD":
-					IO.loadObject(paperCollection);
+					paperCollection = IO.loadObject(paperCollection);
 					break;
 					
 				case "SV":
