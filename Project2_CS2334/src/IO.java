@@ -27,7 +27,7 @@ public class IO{
          * @throws ClassNotFoundException
          */
         public static void readFile(PaperCollection papers) throws FileNotFoundException, IOException, ClassNotFoundException{
-                String temp = null;
+        		String temp = null;
                 String line = null;
                 System.out.print("Enter the name of the data file: ");
                 temp = getInput();
@@ -87,7 +87,7 @@ public class IO{
                 objectOut.close();
         }
         
-        public static void loadObject(PaperCollection papers) throws IOException, ClassNotFoundException{
+        public static PaperCollection loadObject(PaperCollection papers) throws IOException, ClassNotFoundException{
                 System.out.print("Enter the name of file: ");
                 String fileName = getInput();
                 FileInputStream fileIn = new FileInputStream(fileName);
@@ -96,5 +96,7 @@ public class IO{
                 papers = (PaperCollection) in.readObject();
                 
                 in.close();
+                
+                return papers;
         }
 }
