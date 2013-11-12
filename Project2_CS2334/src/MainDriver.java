@@ -11,8 +11,10 @@ public class MainDriver {
 		System.out.println("Welcome to ScholarPub!");
 		
 		// Reads the file
-		System.out.println("Would you like to read from a file or load the existing objects?"
-				+ " (RF = Read File; LO = Load Objects)" + "\n" + "Please enter here: ");
+		System.out.println("Which file would you like to read?");
+		System.out.println("RF = Read a provided text file that has the proper formatting.");
+		System.out.println("LO = Read a file that was previously saved using this program.");
+		System.out.println("Please input your selection here: ");
 		
 		String response = IO.getInput();
 		

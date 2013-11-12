@@ -31,7 +31,12 @@ public class Authors implements Serializable {
         }
         
         public String returnNameInString(){
-                return (primaryName+", "+secondaryName);
+        	if(secondaryName == null){
+        		return primaryName;
+        	}
+        	else{
+        		return (primaryName+", "+secondaryName);
+        	}
         }
         
         public String displayPapers(){
