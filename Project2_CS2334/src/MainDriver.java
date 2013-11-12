@@ -143,6 +143,13 @@ public class MainDriver {
 				case "fA":
 					System.out.print("Please enter the name of the author you wish to find: ");
 					String temp3 = IO.getInput();
+					int result2 = paperCollection.findAuthor(temp3);
+					if(result2 <= -1){
+						System.out.println("The author was not found.");
+					}
+					else{
+						System.out.println(paperCollection.displayAuthorsPapers(result2) + "\n");
+					}
 					break;
 					
 				case "LD":

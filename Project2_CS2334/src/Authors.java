@@ -17,7 +17,9 @@ public class Authors implements Serializable {
                 String[] wholeName = fullName.split(",");
                 if(wholeName.length == 2){
                 	this.primaryName = wholeName[0];
+                	primaryName = primaryName.trim();
                     this.secondaryName = wholeName[1];
+                    secondaryName = secondaryName.trim();
                 }
                 else{
                 	this.primaryName = wholeName[0];
@@ -29,6 +31,17 @@ public class Authors implements Serializable {
         }
         
         public String returnNameInString(){
-                return (primaryName+","+secondaryName);
+                return (primaryName+", "+secondaryName);
+        }
+        
+        public String displayPapers(){
+        	String output = "";
+        	for(int i=0;i<containingPapers.size();i++){
+        		output += containingPapers.get(i).getPaper();
+        		if (i != containingPapers.size() - 1){
+                    output += "\n\n";
+        		}
+        	}
+        	return output;
         }
 }

@@ -276,4 +276,25 @@ public class PaperCollection implements Serializable {
         public int returnCompareValue(){
                 return this.compareValue;
         }
+        
+        /**Searches through the authors array. If a match is found, then the
+         * index of the author object is returned. If a match is not found,
+         * then -1 is returned.
+         * 
+         * @param key
+         * @return
+         */
+        public int findAuthor(String key){
+        	final int MATCH_NOT_FOUND = -1;
+        	for(int i=0;i<authorsCollection.size();i++){
+        		if(authorsCollection.get(i).returnNameInString().equals(key)){
+        			return i;
+        		}
+        	}
+        	return MATCH_NOT_FOUND;
+        }
+        
+        public String displayAuthorsPapers(int index){
+        	return authorsCollection.get(index).displayPapers();
+        }
 }
