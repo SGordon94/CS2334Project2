@@ -9,6 +9,10 @@ import java.util.*;
  */
 public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1588972413579226921L;
 	private String typeOfPaper = null;
 	private ArrayList<Scholars> authorsList = new ArrayList<Scholars>(); 
 	private String authors = "N/A";
