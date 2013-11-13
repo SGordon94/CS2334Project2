@@ -10,7 +10,7 @@ import java.util.*;
 public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable{
 	
 	private String typeOfPaper = null;
-	private ArrayList<Authors> authorsList = new ArrayList<Authors>(); 
+	private ArrayList<Scholars> authorsList = new ArrayList<Scholars>(); 
 	private String authors = "N/A";
 	private String titleOfPaper = null;
 	private String titleOfSerial = null;
@@ -25,7 +25,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		
 	}
 	
-	public Paper(String typeOfPaper, ArrayList<Authors> authorsList, String titleOfPaper, String titleOfSerial,
+	public Paper(String typeOfPaper, ArrayList<Scholars> authorsList, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){
 		this.typeOfPaper = typeOfPaper;
 		this.authorsList = authorsList;
@@ -39,7 +39,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		}
 	}
 	
-	public Paper(String typeOfPaper, ArrayList<Authors> authorsList, String titleOfPaper,
+	public Paper(String typeOfPaper, ArrayList<Scholars> authorsList, String titleOfPaper,
 			String titleOfSerial, String numbers, String publicationDate){
 		this.typeOfPaper = typeOfPaper;
 		this.authorsList = authorsList;

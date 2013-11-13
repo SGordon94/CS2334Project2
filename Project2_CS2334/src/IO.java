@@ -44,10 +44,10 @@ public class IO{
                         String[] split = paperObjects[index].split(";;");
                         
                         String[] individualAuthorNames = split[1].split(";");
-                        ArrayList<Authors> authorList = new ArrayList<Authors>();
+                        ArrayList<Scholars> authorList = new ArrayList<Scholars>();
                         
                         for(int i = 0; i < individualAuthorNames.length; ++i){
-                        	Authors newAuthor = new Authors(individualAuthorNames[i]);
+                        	Scholars newAuthor = new Scholars(individualAuthorNames[i]);
                         	authorList.add(newAuthor);
                         }
                         

@@ -15,7 +15,7 @@ public class PaperCollection implements Serializable {
         private static final long serialVersionUID = -1306506026096077696L;
         private int compareValue = 6;
         private ArrayList<Paper> paperCollection = new ArrayList<Paper>();
-        private ArrayList<Authors> authorsCollection = new ArrayList<Authors>();
+        private ArrayList<Scholars> authorsCollection = new ArrayList<Scholars>();
         
         public PaperCollection(){
         }
@@ -30,7 +30,7 @@ public class PaperCollection implements Serializable {
          * @param publicationDate the date the paper was published
          * @param digitalObjectIdentifier the digital object identifier of the paper
          */
-        public void addPaper(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
+        public void addPaper(String typeOfPaper, ArrayList<Scholars> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate, String digitalObjectIdentifier){
                 paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
                                 publicationDate, digitalObjectIdentifier));
@@ -45,7 +45,7 @@ public class PaperCollection implements Serializable {
          * @param numbers the number of volumes and issues for the paper (if the paper is a journal) and the page number
          * @param publicationDate the date the paper was published
          */
-        public void addPaper(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
+        public void addPaper(String typeOfPaper, ArrayList<Scholars> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate){
                 paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
         }
@@ -62,7 +62,7 @@ public class PaperCollection implements Serializable {
          * same author references the exact same Authors object, while the same author object has references
          * to each paper it belongs to.
          */
-        public void addAuthors(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
+        public void addAuthors(String typeOfPaper, ArrayList<Scholars> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate, String digitalObjectIdentifier){
                 for(int i=0; i<authors.size(); i++){
                         boolean noMatch = true;
@@ -86,7 +86,7 @@ public class PaperCollection implements Serializable {
                                 publicationDate, digitalObjectIdentifier);
         }
         
-        public void addAuthors(String typeOfPaper, ArrayList<Authors> authors, String titleOfPaper, String titleOfSerial,
+        public void addAuthors(String typeOfPaper, ArrayList<Scholars> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate){
                 for(int i=0; i<authors.size(); i++){
                         boolean noMatch = true;

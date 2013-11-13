@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Authors implements Serializable {
+public class Scholars implements Serializable {
 
         /**
          *
@@ -12,8 +12,10 @@ public class Authors implements Serializable {
         private ArrayList<Paper> containingPapers = new ArrayList<Paper>();
         private String secondaryName;
         private String primaryName;
+        private ArrayList<String> institutionalAffiliation;
+        private ArrayList<String> researchAreas;
         
-        public Authors(String fullName){
+        public Scholars(String fullName){
                 String[] wholeName = fullName.split(",");
                 if(wholeName.length == 2){
                 	this.primaryName = wholeName[0];
