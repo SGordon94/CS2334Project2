@@ -13,15 +13,15 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1588972413579226921L;
-	private String typeOfPaper = null;
-	private ArrayList<Scholars> authorsList = new ArrayList<Scholars>(); 
-	private String authors = "N/A";
-	private String titleOfPaper = null;
-	private String titleOfSerial = null;
-	private String numbers = null;
-	private String publicationDate = null;
-	private String digitalObjectIdentifier = null;
-	private int compareValue = 6;
+	protected String typeOfPaper = null;
+	protected ArrayList<Scholar> authorsList = new ArrayList<Scholar>(); 
+	protected String authors = "N/A";
+	protected String titleOfPaper = null;
+	protected String titleOfSerial = null;
+	protected String numbers = null;
+	protected String publicationDate = null;
+	protected String digitalObjectIdentifier = null;
+	protected int compareValue = 6;
 	
 	
 	
@@ -29,7 +29,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		
 	}
 	
-	public Paper(String typeOfPaper, ArrayList<Scholars> authorsList, String titleOfPaper, String titleOfSerial,
+	public Paper(String typeOfPaper, ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){
 		this.typeOfPaper = typeOfPaper;
 		this.authorsList = authorsList;
@@ -43,7 +43,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		}
 	}
 	
-	public Paper(String typeOfPaper, ArrayList<Scholars> authorsList, String titleOfPaper,
+	public Paper(String typeOfPaper, ArrayList<Scholar> authorsList, String titleOfPaper,
 			String titleOfSerial, String numbers, String publicationDate){
 		this.typeOfPaper = typeOfPaper;
 		this.authorsList = authorsList;

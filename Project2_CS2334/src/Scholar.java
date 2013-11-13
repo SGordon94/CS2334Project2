@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Scholars implements Serializable {
+public class Scholar implements Serializable {
 
         /**
          *
@@ -15,7 +15,7 @@ public class Scholars implements Serializable {
         private ArrayList<String> institutionalAffiliation;
         private ArrayList<String> researchAreas;
         
-        public Scholars(String fullName){
+        public Scholar(String fullName){
                 String[] wholeName = fullName.split(",");
                 if(wholeName.length == 2){
                 	this.primaryName = wholeName[0];
