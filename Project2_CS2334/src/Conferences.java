@@ -1,4 +1,4 @@
 
-public class Conferences {
+public class Conferences extends Paper {
 
 }

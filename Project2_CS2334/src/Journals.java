@@ -1,4 +1,4 @@
 
-public class Journals {
+public class Journals extends Paper {
 
 }
