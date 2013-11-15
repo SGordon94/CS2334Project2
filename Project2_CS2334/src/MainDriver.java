@@ -3,6 +3,10 @@ import java.text.ParseException;
 
 
 public class MainDriver {
+	private ScholarshipModel model;
+	private SelectionView mainView = new SelectionView();
+	private ScholarPubController controller = new ScholarPubController();
+	
 	public MainDriver(){
 		ScholarshipModel model = new ScholarshipModel();
 	}
@@ -11,6 +15,7 @@ public class MainDriver {
 		PaperCollection paperCollection = new PaperCollection();
 		boolean run = true;
 		boolean fileOpened = false;
+		
 		System.out.println("Welcome to ScholarPub!");
 		
 		while(!fileOpened){
@@ -19,6 +24,7 @@ public class MainDriver {
 			System.out.println("RF = Read a provided text file that has the proper formatting.");
 			System.out.println("LO = Read a file that was previously saved using this program.");
 			System.out.println("UI = Bring up an user interface for manipulation.");
+			System.out.println("E  = Exit the program.");
 			System.out.println("Please input your selection here: ");
 			
 			String response = IO.getInput();
@@ -52,7 +58,18 @@ public class MainDriver {
 					run = false;
 					new MainDriver();
 					break;
+				
+				// Exits the program
+				case "E":
+				case "e":
+				case "EXIT":
+				case "exit":
+				case "Exit":
+					System.out.println("Thank you for using ScholarPub!");
+					System.exit(0);
+					break;
 					
+				// If one of the above statements are not entered
 				default:
 					System.out.println("Invalid command.");
 					break;

@@ -1,8 +1,8 @@
 import javax.swing.*;
-
 import java.awt.*;
+import java.awt.event.*;
 
-public class SelectionView extends JFrame {
+public class SelectionView extends JFrame implements ActionListener {
 	private ScholarshipModel model;
 	private JButton jbtAddScholar = new JButton("Add Scholar");
 	private JButton jbtDeleteScholars = new JButton("Delete Selected Scholar(s)");
@@ -19,17 +19,28 @@ public class SelectionView extends JFrame {
 	JPanel mainPanel = new JPanel();
 	LayoutManager layout1 = new GridLayout(1,3, 5, 5);
 	
-	
 	JPanel scholarsPanel = new JPanel();
 	JList listOfScholars = new JList();
-	
-	
 	
 	JPanel serialsPanel = new JPanel();
 	JList listOfSerials = new JList();
 	
-	
 	JPanel papersPanel = new JPanel();
 	JList listOfPapers = new JList();
 	
+	public SelectionView(){
+		setTitle("ScholarPub");
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+	
+	public void setModel(ScholarshipModel mod){
+		this.model = mod;
+	}
 }
