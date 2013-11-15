@@ -10,6 +10,7 @@ public class Scholar implements Serializable {
         private static final long serialVersionUID = -6435144183026980478L;
 
         private ArrayList<Paper> containingPapers = new ArrayList<Paper>();
+        private boolean isAuthor;
         private String secondaryName;
         private String primaryName;
         private ArrayList<String> institutionalAffiliation;

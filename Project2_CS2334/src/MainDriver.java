@@ -3,37 +3,60 @@ import java.text.ParseException;
 
 
 public class MainDriver {
-
+	public MainDriver(){
+		ScholarshipModel model = new ScholarshipModel();
+	}
+	
 	public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
 		PaperCollection paperCollection = new PaperCollection();
 		boolean run = true;
-		
+		boolean fileOpened = false;
 		System.out.println("Welcome to ScholarPub!");
 		
-		// Reads the file
-		System.out.println("Which file would you like to read?");
-		System.out.println("RF = Read a provided text file that has the proper formatting.");
-		System.out.println("LO = Read a file that was previously saved using this program.");
-		System.out.println("Please input your selection here: ");
+		while(!fileOpened){
+			// Reads the file
+			System.out.println("What would you like to do?");
+			System.out.println("RF = Read a provided text file that has the proper formatting.");
+			System.out.println("LO = Read a file that was previously saved using this program.");
+			System.out.println("UI = Bring up an user interface for manipulation.");
+			System.out.println("Please input your selection here: ");
+			
+			String response = IO.getInput();
 		
-		String response = IO.getInput();
-		
-		switch(response){
-		
-			// Reads from a specified file
-			case "RF":
-			case "Rf":
-			case "rF":
-			case "rf":
-				IO.readFile(paperCollection);
-				break;
-				
-			// Reads objects from a file
-			case "LO":
-			case "lO":
-			case "Lo":
-			case "lo":
-				paperCollection = IO.loadObject(paperCollection);
+			switch(response){
+			
+				// Reads from a specified file
+				case "RF":
+				case "Rf":
+				case "rF":
+				case "rf":
+					IO.readFile(paperCollection);
+					fileOpened = true;
+					break;
+					
+				// Reads objects from a file
+				case "LO":
+				case "lO":
+				case "Lo":
+				case "lo":
+					paperCollection = IO.loadObject(paperCollection);
+					fileOpened = true;
+					break;
+					
+				// Brings up the GUI
+				case "UI":
+				case "uI":
+				case "Ui":
+				case "ui":
+					fileOpened = true;
+					run = false;
+					new MainDriver();
+					break;
+					
+				default:
+					System.out.println("Invalid command.");
+					break;
+			}
 		}
 		
 		// Enters main program
@@ -210,6 +233,9 @@ public class MainDriver {
 				case "exit":
 				case "Exit":
 					run = false;
+					// Closes main program
+					System.out.println("Thank you for using ScholarPub!");
+					System.exit(0);
 					break;
 					
 					// Gives the user help with input
@@ -244,10 +270,6 @@ public class MainDriver {
 					break;
 			}
 		}
-		
-		// Closes main program
-		System.out.println("Thank you for using ScholarPub!");
-		System.exit(0);
 	}
 
 }
