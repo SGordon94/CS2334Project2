@@ -2,7 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class SelectionView extends JFrame implements ActionListener {
+public class SelectionView extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8190094167216851323L;
 	private ScholarshipModel model;
 	private JButton jbtAddScholar = new JButton("Add Scholar");
 	private JButton jbtDeleteScholars = new JButton("Delete Selected Scholar(s)");
@@ -72,7 +76,7 @@ public class SelectionView extends JFrame implements ActionListener {
 		
 		papersPanel.add(new JLabel("Papers List"), BorderLayout.NORTH);
 		
-		papersPanel.add(new JList(), BorderLayout.CENTER);
+		papersPanel.add(new List(), BorderLayout.CENTER);
 		
 		JPanel papersButtonPanel = new JPanel();
 		papersButtonPanel.setLayout(new GridLayout(2,2,2,3));
@@ -90,14 +94,13 @@ public class SelectionView extends JFrame implements ActionListener {
 		
 		add(mainPanel);
 		
+		AddScholarListener addScholarListener = new AddScholarListener();
+		jbtAddScholar.addActionListener(addScholarListener);
+		
 		setSize(1200,400);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		
 	}
 	
 	public void setModel(ScholarshipModel mod){
