@@ -30,7 +30,7 @@ public class Scholar implements Serializable {
         }
         
         public void setContainingPaper(Paper containingPaper){
-                this.containingPapers.add(containingPaper);
+        	this.containingPapers.add(containingPaper);
         }
         
         public String returnNameInString(){

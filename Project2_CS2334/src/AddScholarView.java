@@ -83,4 +83,14 @@ public class AddScholarView extends JFrame {
 	public JButton getJBTAddScholar(){
 		return jbtAddScholar;
 	}
+	
+	public String[] getTextFields(){
+		String[] fields = new String[5];
+		fields[0] = primaryNameData.getText();
+		fields[1] = firstNameData.getText();
+		fields[2] = middleInitialData.getText();
+		fields[3] = institutionalData.getText();
+		fields[4] = researchData.getText();
+		return fields;
+	}
 }

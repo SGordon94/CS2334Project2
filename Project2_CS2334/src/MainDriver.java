@@ -12,6 +12,7 @@ public class MainDriver {
 		controller.setModel(model);
 		controller.setView(mainView);
 		controller.setSelectionViewActionListeners();
+		mainView.setModel(model);
 	}
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {

@@ -93,7 +93,8 @@ public class ScholarPubController {
 	
 	private class AddScholarToListListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("Working.");
+			model.addScholar();
+			mainView.updateScholarList();
 		}
 	}
 }

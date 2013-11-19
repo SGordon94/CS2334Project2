@@ -21,17 +21,15 @@ public class SelectionView extends JFrame {
 	private JButton jbtDeletePapers = new JButton("Delete Selected Papers(s)");
 	private JButton jbtDeleteAllPapers = new JButton("Delete All Papers");
 	
-	
-
-	JList listOfScholars = new JList();
-	
-
-	JList listOfSerials = new JList();
-	
-
-	JList listOfPapers = new JList();
+	private JList<String> listOfScholars;
+	private JList listOfSerials;
+	private JList listOfPapers;
 	
 	public SelectionView(){
+		listOfScholars = new JList<String>();
+		listOfSerials = new JList();
+		listOfPapers = new JList();
+		
 		setTitle("ScholarPub");
 		
 		JPanel mainPanel = new JPanel();
@@ -43,7 +41,7 @@ public class SelectionView extends JFrame {
 		
 		scholarsPanel.add(new JLabel("Scholars List"), BorderLayout.NORTH);
 		
-		scholarsPanel.add(new List(), BorderLayout.CENTER);
+		scholarsPanel.add(listOfScholars, BorderLayout.CENTER);
 		
 		JPanel scholarsButtonPanel = new JPanel();
 		scholarsButtonPanel.setLayout(new GridLayout(2,2,2,3));
@@ -60,7 +58,7 @@ public class SelectionView extends JFrame {
 		
 		serialsPanel.add(new JLabel("Serials List"), BorderLayout.NORTH);
 		
-		serialsPanel.add(new List(), BorderLayout.CENTER);
+		serialsPanel.add(listOfSerials, BorderLayout.CENTER);
 		
 		JPanel serialsButtonPanel = new JPanel();
 		serialsButtonPanel.setLayout(new GridLayout(2,2,2,3));
@@ -77,7 +75,7 @@ public class SelectionView extends JFrame {
 		
 		papersPanel.add(new JLabel("Papers List"), BorderLayout.NORTH);
 		
-		papersPanel.add(new List(), BorderLayout.CENTER);
+		papersPanel.add(listOfPapers, BorderLayout.CENTER);
 		
 		JPanel papersButtonPanel = new JPanel();
 		papersButtonPanel.setLayout(new GridLayout(2,2,2,3));
@@ -108,6 +106,10 @@ public class SelectionView extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+	}
+	
+	public synchronized void updateScholarList(){
+		listOfScholars.setListData(model.getScholarNames());
 	}
 	
 	public void setModel(ScholarshipModel mod){
