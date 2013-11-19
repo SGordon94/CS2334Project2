@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -20,6 +22,7 @@ public class AddScholarView extends JFrame {
 	private JTextField middleInitialData = new JTextField(" Middle Name(s)", 10);
 	private JTextField institutionalData = new JTextField("Enter data here. Separate with commas.", 40);
 	private JTextField researchData = new JTextField("Enter data here. Separate with commas.", 50);
+	private JButton jbtAddScholar = new JButton("Add");
 
 	public void showAddScholarView(){
 		setTitle("Add Scholar");
@@ -51,6 +54,8 @@ public class AddScholarView extends JFrame {
 		JPanel researchDataPanel = new JPanel();
 		researchDataPanel.add(researchIndicator);
 		researchDataPanel.add(researchData);
+		researchDataPanel.add(jbtAddScholar);
+		jbtAddScholar.addActionListener(new AddScholarToListListener());
 		
 		JPanel academicsPanel = new JPanel();
 		academicsPanel.setLayout(new GridLayout(2,1, 0, 0));
@@ -74,5 +79,15 @@ public class AddScholarView extends JFrame {
 		setSize(700,200);
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+	
+	private class AddScholarToListListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			System.out.println("Working.");
+		}
+
 	}
 }

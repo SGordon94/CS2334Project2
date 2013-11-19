@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -94,8 +95,7 @@ public class SelectionView extends JFrame {
 		
 		add(mainPanel);
 		
-		AddScholarListener addScholarListener = new AddScholarListener();
-		jbtAddScholar.addActionListener(addScholarListener);
+		jbtAddScholar.addActionListener(new AddScholarListener());
 		
 		setSize(1200,400);
 		setLocationRelativeTo(null);
@@ -106,4 +106,12 @@ public class SelectionView extends JFrame {
 	public void setModel(ScholarshipModel mod){
 		this.model = mod;
 	}
+	
+	private class AddScholarListener implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			AddScholarView addScholarView = new AddScholarView();
+			addScholarView.showAddScholarView();
+		}
+	}
+	
 }
