@@ -1,5 +1,6 @@
 import java.util.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 
 public class ScholarshipModel {
@@ -47,6 +48,9 @@ public class ScholarshipModel {
 		}
 		if(unique){
 			scholars.add(new Scholar(textFields[0], secondaryName, institutionalAffiliations, researchAreas));
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "This author has already been entered.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
 	
