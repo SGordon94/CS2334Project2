@@ -97,6 +97,15 @@ public class SelectionView extends JFrame {
 		
 		jbtAddScholar.addActionListener(new AddScholarListener());
 		
+		jbtDeleteScholars.setEnabled(false);
+		jbtDeleteAllScholars.setEnabled(false);
+		jbtAddSerial.setEnabled(false);
+		jbtDeleteSerials.setEnabled(false);
+		jbtDeleteAllSerials.setEnabled(false);
+		jbtAddPaper.setEnabled(false);
+		jbtDeletePapers.setEnabled(false);
+		jbtDeleteAllPapers.setEnabled(false);
+		
 		setSize(1200,400);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
