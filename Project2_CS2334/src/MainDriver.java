@@ -9,6 +9,9 @@ public class MainDriver {
 	
 	public MainDriver(){
 		ScholarshipModel model = new ScholarshipModel();
+		controller.setModel(model);
+		controller.setView(mainView);
+		controller.setSelectionViewActionListeners();
 	}
 	
 	public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {

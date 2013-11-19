@@ -55,7 +55,6 @@ public class AddScholarView extends JFrame {
 		researchDataPanel.add(researchIndicator);
 		researchDataPanel.add(researchData);
 		researchDataPanel.add(jbtAddScholar);
-		jbtAddScholar.addActionListener(new AddScholarToListListener());
 		
 		JPanel academicsPanel = new JPanel();
 		academicsPanel.setLayout(new GridLayout(2,1, 0, 0));
@@ -81,13 +80,7 @@ public class AddScholarView extends JFrame {
 		setVisible(true);
 	}
 	
-	private class AddScholarToListListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			System.out.println("Working.");
-		}
-
+	public JButton getJBTAddScholar(){
+		return jbtAddScholar;
 	}
 }

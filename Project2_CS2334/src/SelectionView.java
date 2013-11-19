@@ -95,8 +95,6 @@ public class SelectionView extends JFrame {
 		
 		add(mainPanel);
 		
-		jbtAddScholar.addActionListener(new AddScholarListener());
-		
 		jbtDeleteScholars.setEnabled(false);
 		jbtDeleteAllScholars.setEnabled(false);
 		jbtAddSerial.setEnabled(false);
@@ -116,11 +114,39 @@ public class SelectionView extends JFrame {
 		this.model = mod;
 	}
 	
-	private class AddScholarListener implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			AddScholarView addScholarView = new AddScholarView();
-			addScholarView.showAddScholarView();
-		}
+	public JButton getJBTAddScholar(){
+		return jbtAddScholar;
 	}
 	
+	public JButton getJBTDeleteScholars(){
+		return jbtDeleteScholars;
+	}
+	
+	public JButton getJBTDeleteAllScholars(){
+		return jbtDeleteAllScholars;
+	}
+	
+	public JButton getJBTAddSerial(){
+		return jbtAddSerial;
+	}
+	
+	public JButton getJBTDeleteSerials(){
+		return jbtDeleteSerials;
+	}
+	
+	public JButton getJBTDeleteAllSerials(){
+		return jbtDeleteAllSerials;
+	}
+	
+	public JButton getJBTAddPaper(){
+		return jbtAddPaper;
+	}
+	
+	public JButton getJBTDeletePapers(){
+		return jbtDeletePapers;
+	}
+	
+	public JButton getJBTDeleteAllPapers(){
+		return jbtDeleteAllPapers;
+	}
 }
