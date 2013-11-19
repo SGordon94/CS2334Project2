@@ -75,7 +75,7 @@ public class AddScholarView extends JFrame {
 		
 		add(mainPanel);
 		
-		setSize(700,200);
+		setSize(700,250);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}

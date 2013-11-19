@@ -34,6 +34,12 @@ public class ScholarPubController {
 			scholarView.getJBTAddScholar().addActionListener(new AddScholarToListListener(scholarView));
 		}
 	}
+	
+	public void setAddSerialViewActionListeners(AddSerialView serialView){
+		if(serialView != null){
+			
+		}
+	}
 
 	private class AddScholarListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
@@ -84,6 +90,7 @@ public class ScholarPubController {
 	
 	private class AddSerialListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
+			AddSerialView serialView = new AddSerialView();
 			
 		}
 	}

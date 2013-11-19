@@ -21,12 +21,12 @@ public class SelectionView extends JFrame {
 	private JButton jbtDeletePapers = new JButton("Delete Selected Papers(s)");
 	private JButton jbtDeleteAllPapers = new JButton("Delete All Papers");
 	
-	private JList<String> listOfScholars;
-	private JList<String> listOfSerials;
+	private JList listOfScholars;
+	private JList listOfSerials;
 	private JList listOfPapers;
 	
 	public SelectionView(){
-		listOfScholars = new JList<String>();
+		listOfScholars = new JList();
 		listOfSerials = new JList();
 		listOfPapers = new JList();
 		
@@ -41,7 +41,7 @@ public class SelectionView extends JFrame {
 		
 		scholarsPanel.add(new JLabel("Scholars List"), BorderLayout.NORTH);
 		
-		scholarsPanel.add(listOfScholars, BorderLayout.CENTER);
+		scholarsPanel.add(new JScrollPane(listOfScholars), BorderLayout.CENTER);
 		
 		JPanel scholarsButtonPanel = new JPanel();
 		scholarsButtonPanel.setLayout(new GridLayout(2,2,2,3));
@@ -58,7 +58,7 @@ public class SelectionView extends JFrame {
 		
 		serialsPanel.add(new JLabel("Serials List"), BorderLayout.NORTH);
 		
-		serialsPanel.add(listOfSerials, BorderLayout.CENTER);
+		serialsPanel.add(new JScrollPane(listOfSerials), BorderLayout.CENTER);
 		
 		JPanel serialsButtonPanel = new JPanel();
 		serialsButtonPanel.setLayout(new GridLayout(2,2,2,3));
@@ -75,7 +75,7 @@ public class SelectionView extends JFrame {
 		
 		papersPanel.add(new JLabel("Papers List"), BorderLayout.NORTH);
 		
-		papersPanel.add(listOfPapers, BorderLayout.CENTER);
+		papersPanel.add(new JScrollPane(listOfPapers), BorderLayout.CENTER);
 		
 		JPanel papersButtonPanel = new JPanel();
 		papersButtonPanel.setLayout(new GridLayout(2,2,2,3));
