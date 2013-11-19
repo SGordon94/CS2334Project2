@@ -10,11 +10,11 @@ public class Scholar implements Serializable {
         private static final long serialVersionUID = -6435144183026980478L;
 
         private ArrayList<Paper> containingPapers = new ArrayList<Paper>();
-        private boolean isAuthor;
+        private boolean isAuthor = false;
         private String secondaryName;
         private String primaryName;
-        private ArrayList<String> institutionalAffiliation;
-        private ArrayList<String> researchAreas;
+        private ArrayList<String> institutionalAffiliations = new ArrayList<String>();
+        private ArrayList<String> researchAreas = new ArrayList<String>();
         
         public Scholar(String fullName){
                 String[] wholeName = fullName.split(",");
@@ -27,6 +27,17 @@ public class Scholar implements Serializable {
                 else{
                 	this.primaryName = wholeName[0];
                 }
+        }
+        
+        public Scholar(String primary, String secondary, String[] affiliations, String[] researchPlaces){
+        	this.primaryName = primary;
+        	this.secondaryName = secondary;
+        	for(int i=0;i<affiliations.length;i++){
+        		institutionalAffiliations.add(affiliations[i]);
+        	}
+        	for(int i=0;i<researchPlaces.length;i++){
+        		researchAreas.add(researchPlaces[i]);
+        	}
         }
         
         public void setContainingPaper(Paper containingPaper){

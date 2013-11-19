@@ -31,7 +31,7 @@ public class ScholarPubController {
 	
 	public void setAddScholarViewActionListeners(AddScholarView scholarView){
 		if(scholarView != null){
-			scholarView.getJBTAddScholar().addActionListener(new AddScholarToListListener());
+			scholarView.getJBTAddScholar().addActionListener(new AddScholarToListListener(scholarView));
 		}
 	}
 
@@ -45,13 +45,40 @@ public class ScholarPubController {
 	
 	private class DeleteScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			int index = mainView.getScholarListPosition();
+			model.removeScholar(index);
+			if(model.getScholarListSize() == 0){
+				model.emptyConferences();
+				model.emptyJournals();
+				model.emptyPapers();
+				mainView.getJBTDeleteScholars().setEnabled(false);
+				mainView.getJBTDeleteAllScholars().setEnabled(false);
+				mainView.getJBTAddSerial().setEnabled(false);
+				mainView.getJBTDeleteSerials().setEnabled(false);
+				mainView.getJBTDeleteAllSerials().setEnabled(false);
+				mainView.getJBTAddPaper().setEnabled(false);
+				mainView.getJBTDeletePapers().setEnabled(false);
+				mainView.getJBTDeleteAllPapers().setEnabled(false);
+			}
+			mainView.updateScholarList();
 		}
 	}
 	
 	private class DeleteAllScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			model.emptyScholars();
+			model.emptyConferences();
+			model.emptyJournals();
+			model.emptyPapers();
+			mainView.updateScholarList();
+			mainView.getJBTDeleteScholars().setEnabled(false);
+			mainView.getJBTDeleteAllScholars().setEnabled(false);
+			mainView.getJBTAddSerial().setEnabled(false);
+			mainView.getJBTDeleteSerials().setEnabled(false);
+			mainView.getJBTDeleteAllSerials().setEnabled(false);
+			mainView.getJBTAddPaper().setEnabled(false);
+			mainView.getJBTDeletePapers().setEnabled(false);
+			mainView.getJBTDeleteAllPapers().setEnabled(false);
 		}
 	}
 	
@@ -92,9 +119,22 @@ public class ScholarPubController {
 	}
 	
 	private class AddScholarToListListener implements ActionListener{
+		AddScholarView localScholarView;
+		public AddScholarToListListener(AddScholarView scholarView){
+			this.localScholarView = scholarView;
+		}
 		public void actionPerformed(ActionEvent arg0) {
-			model.addScholar();
+			model.addScholar(localScholarView.getTextFields());
 			mainView.updateScholarList();
+			if(!mainView.getJBTDeleteScholars().isEnabled()){
+				mainView.getJBTDeleteScholars().setEnabled(true);
+			}
+			if(!mainView.getJBTDeleteAllScholars().isEnabled()){
+				mainView.getJBTDeleteAllScholars().setEnabled(true);
+			}
+			if(!mainView.getJBTAddSerial().isEnabled()){
+				mainView.getJBTAddSerial().setEnabled(true);
+			}
 		}
 	}
 }

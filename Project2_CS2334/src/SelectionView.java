@@ -22,7 +22,7 @@ public class SelectionView extends JFrame {
 	private JButton jbtDeleteAllPapers = new JButton("Delete All Papers");
 	
 	private JList<String> listOfScholars;
-	private JList listOfSerials;
+	private JList<String> listOfSerials;
 	private JList listOfPapers;
 	
 	public SelectionView(){
@@ -110,6 +110,18 @@ public class SelectionView extends JFrame {
 	
 	public synchronized void updateScholarList(){
 		listOfScholars.setListData(model.getScholarNames());
+	}
+	
+	public synchronized void updateSerialList(){
+		
+	}
+	
+	public synchronized void updatePaperList(){
+		listOfScholars.setListData(model.getPaperNames());
+	}
+	
+	public int getScholarListPosition(){
+		return listOfScholars.getSelectedIndex();
 	}
 	
 	public void setModel(ScholarshipModel mod){
