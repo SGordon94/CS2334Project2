@@ -3,6 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 
 public class AddScholarView extends JFrame {
@@ -24,11 +27,18 @@ public class AddScholarView extends JFrame {
 	private JTextField researchData = new JTextField("Enter data here. Separate with commas.", 50);
 	private JButton jbtAddScholar = new JButton("Add");
 
+	private String meetingLabel = "Scholar Details";
+	private Border etchedBorder = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+	private TitledBorder titledBorder = BorderFactory.createTitledBorder(etchedBorder, meetingLabel,
+			TitledBorder.LEFT, TitledBorder.ABOVE_TOP);
+	
 	public void showAddScholarView(){
 		setTitle("Add Scholar");
 		
+		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout(15, 15));
+		mainPanel.setBorder(titledBorder);
 		
 		JPanel primaryNamePanel = new JPanel();
 		primaryNamePanel.add(primaryNameIndicator);
