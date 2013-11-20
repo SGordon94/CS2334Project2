@@ -109,7 +109,7 @@ public class ScholarPubController {
 	
 	private class AddPaperListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			AddPaperView paperView = new AddPaperView();
 		}
 	}
 	
