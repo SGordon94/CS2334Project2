@@ -37,7 +37,7 @@ public class ScholarPubController {
 	
 	public void setAddSerialViewActionListeners(AddSerialView serialView){
 		if(serialView != null){
-			
+			serialView.getJBTAddSerial().addActionListener(new AddSerialToListListener(serialView));
 		}
 	}
 
@@ -91,7 +91,7 @@ public class ScholarPubController {
 	private class AddSerialListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			AddSerialView serialView = new AddSerialView();
-			
+			setAddSerialViewActionListeners(serialView);
 		}
 	}
 	
@@ -142,6 +142,16 @@ public class ScholarPubController {
 			if(!mainView.getJBTAddSerial().isEnabled()){
 				mainView.getJBTAddSerial().setEnabled(true);
 			}
+		}
+	}
+	
+	private class AddSerialToListListener implements ActionListener{
+		AddSerialView localSerialView;
+		public AddSerialToListListener(AddSerialView serialView){
+			this.localSerialView = serialView;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			
 		}
 	}
 }
