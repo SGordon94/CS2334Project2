@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -48,7 +50,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 		
 	}
 	
-	private class ConferenceView extends JPanel{
+	private class ConferenceView extends JPanel implements ActionListener{
 		
 		/**
 		 * 
@@ -69,6 +71,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private JLabel countryLabel = new JLabel("Country: ");
 		private JTextField country = new JTextField(7);
 		
+		private JButton jbtSaveMeeting = new JButton("Save Meeting");
+		private ArrayList<String> numberOfMeetings = new ArrayList<String>();
+	
+		private JPanel cards;
+		
 		private JLabel programChairsLabel = new JLabel("Program Chairs");
 		private JList  programChairs = new JList();
 		private JLabel programCommitteeMembersLabel = new JLabel("Committe Members");
@@ -81,18 +88,52 @@ public class AddSerialView extends JFrame implements ItemListener{
 		
 		public ConferenceView(){
 			JPanel mainPanel1 = new JPanel();
-			mainPanel1.setLayout(new GridLayout(2,1,0,0));
-			
-			JPanel topPanel = new JPanel();
-			topPanel.setLayout(new GridLayout(4,1,0,0));
-			// Create individual Panels that will go into top panel
-			JPanel namePanel = new JPanel();
-			namePanel.add(nameLabel);
-			namePanel.add(name);
+			mainPanel1.setLayout(new BoxLayout(mainPanel1, BoxLayout.Y_AXIS));
 			
 			JPanel organizationPanel = new JPanel();
 			organizationPanel.add(organizationLabel);
 			organizationPanel.add(organization);
+			
+			numberOfMeetings.add("New Meeting");
+			String[] numberOfMeetingsArray = new String[numberOfMeetings.size()];
+			numberOfMeetingsArray = numberOfMeetings.toArray(numberOfMeetingsArray);
+			JComboBox meetings = new JComboBox(numberOfMeetingsArray);
+			
+			cards = new JPanel();
+			cards.setLayout(new CardLayout());
+			cards.add(createMeetingPanel());
+			
+			
+			mainPanel1.add(organizationPanel);
+			mainPanel1.add(meetings);
+			mainPanel1.add(cards);
+			mainPanel1.add(jbtSaveMeeting);
+			jbtSaveMeeting.setAlignmentX(Component.CENTER_ALIGNMENT);
+			jbtSaveMeeting.addActionListener(new SaveMeetingListener());
+			
+			pack();
+			
+			add(mainPanel1);
+		}
+
+		private class SaveMeetingListener implements ActionListener{
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				int number = numberOfMeetings.size() + 1;
+				String meetingName = "Meeting " + number;
+				numberOfMeetings.add(meetingName);
+				JPanel meetingPanel = createMeetingPanel();
+				cards.add(meetingPanel, meetingName);
+				
+			}
+		}
+		
+		public JPanel createMeetingPanel(){
+			
+			JPanel topPanel = new JPanel();
+			topPanel.setLayout(new GridLayout(2,1,0,0));
+			// Create individual Panels that will go into top panel
 			
 			JPanel monthPanel = new JPanel();
 			monthPanel.add(monthLabel);
@@ -108,14 +149,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 			cityPanel.add(countryLabel);
 			cityPanel.add(country);
 			
-			
-			
-			topPanel.add(namePanel);
-			topPanel.add(organizationPanel);
 			topPanel.add(monthPanel);
 			topPanel.add(cityPanel);
 			topPanel.setBorder(titledBorder);
-			
 			
 			//bottom panel
 			
@@ -133,10 +169,18 @@ public class AddSerialView extends JFrame implements ItemListener{
 			bottomPanel.add(leftPanel);
 			bottomPanel.add(rightPanel);
 			
-			mainPanel1.add(topPanel);
-			mainPanel1.add(bottomPanel);
+			JPanel meetingPanel = new JPanel();
+			meetingPanel.setLayout(new BoxLayout(meetingPanel,BoxLayout.Y_AXIS));
+			meetingPanel.add(topPanel);
+			meetingPanel.add(bottomPanel);
 			
-			add(mainPanel1);
+			return meetingPanel;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
 	
@@ -181,9 +225,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 			JPanel topPanel = new JPanel();
 			topPanel.setLayout(new GridLayout(5,1,0,0));
 			
-			JPanel journalPanel = new JPanel();
-			journalPanel.add(journalNameLabel);
-			journalPanel.add(journalName);
+//			JPanel journalPanel = new JPanel();
+//			journalPanel.add(journalNameLabel);
+//			journalPanel.add(journalName);
 			
 			JPanel organizationPanel = new JPanel();
 			organizationPanel.add(organizationLabel);
@@ -207,7 +251,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 			cityPanel.add(countryLabel);
 			cityPanel.add(country);
 			
-			topPanel.add(journalPanel);
+//			topPanel.add(journalPanel);
 			topPanel.add(organizationPanel);
 			topPanel.add(issuePanel);
 			topPanel.add(monthPanel);
