@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ScholarPubController {
@@ -93,7 +95,7 @@ public class ScholarPubController {
 	
 	private class AddSerialListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			AddSerialView serialView = new AddSerialView();
+			AddSerialView serialView = new AddSerialView(model);
 			setAddSerialViewActionListeners(serialView);
 		}
 	}
@@ -134,7 +136,7 @@ public class ScholarPubController {
 			this.localScholarView = scholarView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
-			model.addScholar(localScholarView.getTextFields());
+			boolean uniqueScholar = model.addScholar(localScholarView.getTextFields());
 			mainView.updateScholarList();
 			if(!mainView.getJBTDeleteScholars().isEnabled()){
 				mainView.getJBTDeleteScholars().setEnabled(true);
@@ -145,7 +147,9 @@ public class ScholarPubController {
 			if(!mainView.getJBTAddSerial().isEnabled()){
 				mainView.getJBTAddSerial().setEnabled(true);
 			}
-			localScholarView.dispose();
+			if(uniqueScholar){
+				localScholarView.dispose();
+			}
 		}
 	}
 	
@@ -155,7 +159,25 @@ public class ScholarPubController {
 			this.localSerialView = serialView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
-			localSerialView.dispose();
+			if(localSerialView.temporaryMeetingSize() != 0){
+				//boolean uniqueSerial = model.addSerial(localSerialView.getTextFields());
+				mainView.updateSerialList();
+				if(!mainView.getJBTDeleteSerials().isEnabled()){
+					mainView.getJBTDeleteSerials().setEnabled(true);
+				}
+				if(!mainView.getJBTDeleteAllSerials().isEnabled()){
+					mainView.getJBTDeleteAllSerials().setEnabled(true);
+				}
+				if(!mainView.getJBTAddPaper().isEnabled()){
+					mainView.getJBTAddPaper().setEnabled(true);
+				}
+				//if(uniqueSerial){
+					localSerialView.dispose();
+				//}
+			}
+			else{
+				JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+			}
 		}
 	}
 	
@@ -164,8 +186,18 @@ public class ScholarPubController {
 		public SerialConferenceSaveMeetingListener(AddSerialView serialView){
 			this.localSerialView = serialView;
 		}
+		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent arg0) {
-			
+			ArrayList<Object> arrayListOfDetails = localSerialView.getInnerDetails();
+			if(arrayListOfDetails != null){
+				String typeOfSerial = (String)arrayListOfDetails.get(0);
+				String[] fields = (String[])arrayListOfDetails.get(1);
+				ArrayList<Scholar> leftScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(2);
+				ArrayList<Scholar> rightScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(3);
+				if(typeOfSerial.equals("Conference")){
+					localSerialView.addTemporaryMeeting(new Meeting(fields, leftScholarList, rightScholarList));
+				} // ADD CODE TO ALLOW THE USER TO SELECT THE DIFFERENT MEETINGS
+			}
 		}
 	}
 }

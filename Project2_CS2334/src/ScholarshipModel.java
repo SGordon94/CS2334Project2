@@ -19,12 +19,31 @@ public class ScholarshipModel {
 		return names;
 	}
 	
+	public synchronized ArrayList<Scholar> getSelectedScholars(int[] indices){
+		ArrayList<Scholar> selectedScholars = new ArrayList<Scholar>();
+		for(int i=0;i<indices.length;i++){
+			selectedScholars.add(scholars.get(indices[i]));
+		}
+		return selectedScholars;
+	}
+	
 	public synchronized String[] getPaperNames(){
 		String[] names = new String[papers.size()];
 		return names;
 	}
 	
-	public synchronized void addScholar(String[] textFields){
+	public synchronized String[] getSerialTitles(){
+		String[] titles = new String[conferences.size()+journals.size()];
+		for(int i=0;i<journals.size();i++){
+			titles[i] = "Journal - " + journals.get(i).getOrganization();
+		}
+		for(int i=0;i<conferences.size();i++){
+			titles[journals.size()+i] = "Conference - " + conferences.get(i).getOrganization();
+		}
+		return titles;
+	}
+	
+	public synchronized boolean addScholar(String[] textFields){
 		String secondaryName;
 		textFields[0] = textFields[0].trim();
 		textFields[1] = textFields[1].trim();
@@ -48,9 +67,11 @@ public class ScholarshipModel {
 		}
 		if(unique){
 			scholars.add(new Scholar(textFields[0], secondaryName, institutionalAffiliations, researchAreas));
+			return true;
 		}
 		else{
 			JOptionPane.showMessageDialog(null, "This author has already been entered.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+			return false;
 		}
 	}
 	

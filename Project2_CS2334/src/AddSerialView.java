@@ -11,8 +11,13 @@ public class AddSerialView extends JFrame implements ItemListener{
 	private JPanel cards;
 	private JButton jbtAddSerial = new JButton("Add Serial");
 	private JButton jbtSaveMeeting = new JButton("Save Meeting");
+	private ScholarshipModel model;
+	private ConferenceView card1;
+	private JournalView card2;
+	private ArrayList<Meeting> temporaryMeetings = new ArrayList<Meeting>();
 	
-	public AddSerialView(){
+	public AddSerialView(ScholarshipModel mod){
+		this.model = mod;
 		setTitle("Add Serial");
 		setLayout(new BorderLayout());
 		
@@ -25,10 +30,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 		add(comboBoxPanel, BorderLayout.NORTH);
 		
 		//Create Conference View panel
-		ConferenceView card1 = new ConferenceView();
+		card1 = new ConferenceView();
 		
 		//Create Journal View panel
-		JournalView card2 = new JournalView();
+		card2 = new JournalView();
 		
 		
 		cards = new JPanel();
@@ -111,6 +116,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 			mainPanel1.add(jbtSaveMeeting);
 			jbtSaveMeeting.setAlignmentX(Component.CENTER_ALIGNMENT);
 			
+			programChairs.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			programCommitteeMembers.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			
 			pack();
 			
 			add(mainPanel1);
@@ -162,6 +170,23 @@ public class AddSerialView extends JFrame implements ItemListener{
 			meetingPanel.add(bottomPanel);
 			
 			return meetingPanel;
+		}
+		
+		public ArrayList<Object> getInnerDetails(){ // gets the meeting text fields
+			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			String[] fields = new String[5];
+			fields[0] = month.getText().trim();
+			fields[1] = year.getText().trim();
+			fields[2] = city.getText().trim();
+			fields[3] = stateProvince.getText().trim();
+			fields[4] = country.getText().trim();
+			ArrayList<Scholar> addedProgramChairs = model.getSelectedScholars(programChairs.getSelectedIndices());
+			ArrayList<Scholar> addedCommitteeMembers = model.getSelectedScholars(programCommitteeMembers.getSelectedIndices());
+			returnStuff.add("Conference");
+			returnStuff.add(fields);
+			returnStuff.add(addedProgramChairs);
+			returnStuff.add(addedCommitteeMembers);
+			return returnStuff;
 		}
 
 		@Override
@@ -265,12 +290,40 @@ public class AddSerialView extends JFrame implements ItemListener{
 			
 			add(mainPanel);
 		}
+		
+		public ArrayList<Object> getInnerDetails(){
+			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			returnStuff.add("Journal");
+			return returnStuff;
+		}
 	}
 	
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		CardLayout cardPanels = (CardLayout)(cards.getLayout());
 		cardPanels.show(cards, (String)(e.getItem()));
+	}
+	
+	public ArrayList<Object> getInnerDetails(){
+		if(card1.isVisible()){
+			return card1.getInnerDetails();
+		}
+		else if(card2.isVisible()){
+			return card2.getInnerDetails();
+		}
+		else{
+			return new ArrayList<Object>();
+		}
+	}
+	
+	public void addTemporaryMeeting(Meeting meet){
+		if(meet != null){
+			temporaryMeetings.add(meet);
+		}
+	}
+	
+	public int temporaryMeetingSize(){
+		return temporaryMeetings.size();
 	}
 
 	public JButton getJBTAddSerial(){

@@ -113,11 +113,11 @@ public class SelectionView extends JFrame {
 	}
 	
 	public synchronized void updateSerialList(){
-		
+		listOfSerials.setListData(model.getSerialTitles());
 	}
 	
 	public synchronized void updatePaperList(){
-		listOfScholars.setListData(model.getPaperNames());
+		listOfPapers.setListData(model.getPaperNames());
 	}
 	
 	public int getScholarListPosition(){
