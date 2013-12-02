@@ -10,6 +10,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 	private final String JOURNAL = "Journal";
 	private JPanel cards;
 	private JButton jbtAddSerial = new JButton("Add Serial");
+	private JButton jbtSaveMeeting = new JButton("Save Meeting");
 	
 	public AddSerialView(){
 		setTitle("Add Serial");
@@ -71,7 +72,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private JLabel countryLabel = new JLabel("Country: ");
 		private JTextField country = new JTextField(7);
 		
-		private JButton jbtSaveMeeting = new JButton("Save Meeting");
+		//private JButton jbtSaveMeeting = new JButton("Save Meeting");
 		private ArrayList<String> numberOfMeetings = new ArrayList<String>();
 	
 		private JPanel cards;
@@ -109,24 +110,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 			mainPanel1.add(cards);
 			mainPanel1.add(jbtSaveMeeting);
 			jbtSaveMeeting.setAlignmentX(Component.CENTER_ALIGNMENT);
-			jbtSaveMeeting.addActionListener(new SaveMeetingListener());
 			
 			pack();
 			
 			add(mainPanel1);
-		}
-
-		private class SaveMeetingListener implements ActionListener{
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				int number = numberOfMeetings.size() + 1;
-				String meetingName = "Meeting " + number;
-				numberOfMeetings.add(meetingName);
-				JPanel meetingPanel = createMeetingPanel();
-				cards.add(meetingPanel, meetingName);
-				
-			}
 		}
 		
 		public JPanel createMeetingPanel(){
@@ -288,5 +275,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 
 	public JButton getJBTAddSerial(){
 		return jbtAddSerial;
+	}
+	
+	public JButton getJBTSaveMeeting(){
+		return jbtSaveMeeting;
 	}
 }

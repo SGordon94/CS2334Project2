@@ -1,17 +1,19 @@
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.swing.JPanel;
+
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
 	
 	ScholarPubController(){}
 	
-	public void setModel(ScholarshipModel mod){
+	public void setModel(ScholarshipModel mod){ // sets the model that the controller will use
 		this.model = mod;
 	}
 	
-	public void setView(SelectionView view){
+	public void setView(SelectionView view){ // sets the primary view for the controller
 		this.mainView = view;
 	}
 	
@@ -38,6 +40,7 @@ public class ScholarPubController {
 	public void setAddSerialViewActionListeners(AddSerialView serialView){
 		if(serialView != null){
 			serialView.getJBTAddSerial().addActionListener(new AddSerialToListListener(serialView));
+			serialView.getJBTSaveMeeting().addActionListener(new SerialConferenceSaveMeetingListener(serialView));
 		}
 	}
 
@@ -142,12 +145,23 @@ public class ScholarPubController {
 			if(!mainView.getJBTAddSerial().isEnabled()){
 				mainView.getJBTAddSerial().setEnabled(true);
 			}
+			localScholarView.dispose();
 		}
 	}
 	
 	private class AddSerialToListListener implements ActionListener{
 		AddSerialView localSerialView;
 		public AddSerialToListListener(AddSerialView serialView){
+			this.localSerialView = serialView;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			localSerialView.dispose();
+		}
+	}
+	
+	private class SerialConferenceSaveMeetingListener implements ActionListener{
+		AddSerialView localSerialView;
+		public SerialConferenceSaveMeetingListener(AddSerialView serialView){
 			this.localSerialView = serialView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
