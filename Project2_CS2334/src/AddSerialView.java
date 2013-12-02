@@ -188,6 +188,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 			returnStuff.add(addedCommitteeMembers);
 			return returnStuff;
 		}
+		
+		public String getOrganizationName(){
+			return organization.getText();
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -304,6 +308,13 @@ public class AddSerialView extends JFrame implements ItemListener{
 		cardPanels.show(cards, (String)(e.getItem()));
 	}
 	
+	public String visibleCard(){
+		if(card1.isVisible()){
+			return "Conference";
+		}
+		return "Journal";
+	}
+	
 	public ArrayList<Object> getInnerDetails(){
 		if(card1.isVisible()){
 			return card1.getInnerDetails();
@@ -316,6 +327,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 		}
 	}
 	
+	public ArrayList<Meeting> getMeetings(){
+		return temporaryMeetings;
+	}
+	
 	public void addTemporaryMeeting(Meeting meet){
 		if(meet != null){
 			temporaryMeetings.add(meet);
@@ -324,6 +339,21 @@ public class AddSerialView extends JFrame implements ItemListener{
 	
 	public int temporaryMeetingSize(){
 		return temporaryMeetings.size();
+	}
+	
+	public boolean containsMeeting(Meeting meet){
+		if(temporaryMeetings.size() != 0){
+			for(int i=0;i<temporaryMeetings.size();i++){
+				if(temporaryMeetings.get(i).equals(meet)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public String getConferenceOrganizationName(){
+		return card1.getOrganizationName();
 	}
 
 	public JButton getJBTAddSerial(){

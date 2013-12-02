@@ -99,6 +99,21 @@ public class ScholarshipModel {
 	public synchronized void emptyJournals(){
 		journals.removeAll(journals);
 	}
+	
+	public synchronized void addConference(Conference conf){
+		conferences.add(conf);
+	}
+	
+	public boolean containsConference(Conference conf){
+		if(conferences.size() != 0){
+			for(int i=0;i<conferences.size();i++){
+				if(conferences.get(i).equals(conf)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	public synchronized void emptyConferences(){
 		conferences.removeAll(conferences);

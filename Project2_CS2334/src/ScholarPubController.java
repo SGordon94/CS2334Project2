@@ -159,24 +159,34 @@ public class ScholarPubController {
 			this.localSerialView = serialView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
-			if(localSerialView.temporaryMeetingSize() != 0){
-				//boolean uniqueSerial = model.addSerial(localSerialView.getTextFields());
-				mainView.updateSerialList();
-				if(!mainView.getJBTDeleteSerials().isEnabled()){
-					mainView.getJBTDeleteSerials().setEnabled(true);
+			if(localSerialView.visibleCard().equals("Conference")){
+				if(localSerialView.temporaryMeetingSize() != 0){
+					Conference tempConf = new Conference(localSerialView.getConferenceOrganizationName(), localSerialView.getMeetings());
+					boolean uniqueSerial = !model.containsConference(tempConf);
+					if(uniqueSerial){
+						if(!mainView.getJBTDeleteSerials().isEnabled()){
+							mainView.getJBTDeleteSerials().setEnabled(true);
+						}
+						if(!mainView.getJBTDeleteAllSerials().isEnabled()){
+							mainView.getJBTDeleteAllSerials().setEnabled(true);
+						}
+						if(!mainView.getJBTAddPaper().isEnabled()){
+							mainView.getJBTAddPaper().setEnabled(true);
+						}
+						model.addConference(tempConf);
+						localSerialView.dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "This conference is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					mainView.updateSerialList();
 				}
-				if(!mainView.getJBTDeleteAllSerials().isEnabled()){
-					mainView.getJBTDeleteAllSerials().setEnabled(true);
+				else{
+					JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 				}
-				if(!mainView.getJBTAddPaper().isEnabled()){
-					mainView.getJBTAddPaper().setEnabled(true);
-				}
-				//if(uniqueSerial){
-					localSerialView.dispose();
-				//}
 			}
 			else{
-				JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				// CODE FOR THE JOURNAL SECTION GOES HERE
 			}
 		}
 	}
@@ -195,8 +205,17 @@ public class ScholarPubController {
 				ArrayList<Scholar> leftScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(2);
 				ArrayList<Scholar> rightScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(3);
 				if(typeOfSerial.equals("Conference")){
-					localSerialView.addTemporaryMeeting(new Meeting(fields, leftScholarList, rightScholarList));
-				} // ADD CODE TO ALLOW THE USER TO SELECT THE DIFFERENT MEETINGS
+					Meeting tempMeeting = new Meeting(fields, leftScholarList, rightScholarList);
+					if(localSerialView.containsMeeting(tempMeeting)){
+						JOptionPane.showMessageDialog(null, "This meeting is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					else{
+						localSerialView.addTemporaryMeeting(tempMeeting);
+					}
+				}
+				else if(typeOfSerial.equals("Journal")){
+					// ADD JOURNAL CODE
+				}
 			}
 		}
 	}
