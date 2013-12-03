@@ -67,4 +67,11 @@ public class Meeting {
 		}
 		return allCommitteeMembers;
 	}
+	public String getAllPapers(){
+		String allPapers = "";
+		for(int index = 0; index < papers.size(); ++index){
+			allPapers += papers.get(index).getTitleOfPaper() + "\n";
+		}
+		return allPapers;
+	}
 }
