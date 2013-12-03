@@ -167,6 +167,42 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return meetingPanel;
 		}
 		
+		public boolean fieldsFilled(){
+			if(organization.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(month.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Month.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(year.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Year.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(city.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a City.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(stateProvince.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a State or Province.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(country.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Country.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;			
+			}
+			if(programChairs.getSelectedIndices().length == 0){
+				JOptionPane.showMessageDialog(null, "Please selected at least 1 Program Chair.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(programCommitteeMembers.getSelectedIndices().length == 0){
+				JOptionPane.showMessageDialog(null, "Please selected at least 1 Committee Member.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			return true;
+		}
+		
 		public ArrayList<Object> getInnerDetails(){ // gets the meeting text fields
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[5];
@@ -175,6 +211,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 			fields[2] = city.getText().trim();
 			fields[3] = stateProvince.getText().trim();
 			fields[4] = country.getText().trim();
+			if(programChairs.getSelectedIndices().length == 0){
+				Debug.Log("yo");
+			}
 			ArrayList<Scholar> addedProgramChairs = model.getSelectedScholars(programChairs.getSelectedIndices());
 			ArrayList<Scholar> addedCommitteeMembers = model.getSelectedScholars(programCommitteeMembers.getSelectedIndices());
 			returnStuff.add("Conference");
@@ -311,6 +350,42 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return mainPanel;
 		}
 		
+		public boolean fieldsFilled(){
+			if(organizationName.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(city.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a City.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(stateProvince.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a State or Province.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(country.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Country.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;			
+			}
+			if(month.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Month.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(year.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Year.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(editors.getSelectedIndices().length == 0){
+				JOptionPane.showMessageDialog(null, "Please selected at least 1 Editor.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(reviewers.getSelectedIndices().length == 0){
+				JOptionPane.showMessageDialog(null, "Please selected at least 1 Reviewer.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			return true;
+		}
+		
 		public ArrayList<Object> getInnerDetails(){
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[2];
@@ -359,10 +434,20 @@ public class AddSerialView extends JFrame implements ItemListener{
 	
 	public ArrayList<Object> getInnerDetails(){
 		if(card1.isVisible()){
-			return card1.getInnerDetails();
+			if(card1.fieldsFilled()){
+				return card1.getInnerDetails();
+			}
+			else{
+				return new ArrayList<Object>();
+			}
 		}
 		else if(card2.isVisible()){
-			return card2.getInnerDetails();
+			if(card2.fieldsFilled()){
+				return card2.getInnerDetails();
+			}
+			else{
+				return new ArrayList<Object>();
+			}
 		}
 		else{
 			return new ArrayList<Object>();

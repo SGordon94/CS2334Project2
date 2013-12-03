@@ -184,7 +184,7 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			if(localSerialView.visibleCard().equals("Conference")){
 				if(localSerialView.temporaryMeetingSize() != 0){
-					Conference tempConf = new Conference(localSerialView.getConferenceOrganizationName(), localSerialView.getMeetings());
+					Conference tempConf = new Conference(localSerialView.getConferenceOrganizationName().trim(), localSerialView.getMeetings());
 					boolean uniqueSerial = !model.containsConference(tempConf);
 					if(uniqueSerial){
 						if(!mainView.getJBTDeleteSerials().isEnabled()){
@@ -210,7 +210,7 @@ public class ScholarPubController {
 			}
 			else{
 				if(localSerialView.issuesPresent()){
-					Journal tempJour = new Journal(localSerialView.getJournalOrganizationName(), localSerialView.getJournalLocation(), localSerialView.getVolumes());
+					Journal tempJour = new Journal(localSerialView.getJournalOrganizationName().trim(), localSerialView.getJournalLocation(), localSerialView.getVolumes());
 					boolean uniqueSerial = !model.containsJournal(tempJour);
 					if(uniqueSerial){
 						if(!mainView.getJBTDeleteSerials().isEnabled()){
@@ -245,7 +245,7 @@ public class ScholarPubController {
 		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent arg0) {
 			ArrayList<Object> arrayListOfDetails = localSerialView.getInnerDetails();
-			if(arrayListOfDetails != null){
+			if(arrayListOfDetails.size() != 0){
 				String typeOfSerial = (String)arrayListOfDetails.get(0);
 				String[] fields = (String[])arrayListOfDetails.get(1);
 				ArrayList<Scholar> leftScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(2);
@@ -274,7 +274,7 @@ public class ScholarPubController {
 		}
 		public void actionPerformed(ActionEvent arg0){
 			ArrayList<Object> arrayListOfDetails = localSerialView.getInnerDetails();
-			if(arrayListOfDetails != null){
+			if(arrayListOfDetails.size() != 0){
 				String typeOfSerial = (String)arrayListOfDetails.get(0);
 				String[] fields = (String[])arrayListOfDetails.get(1);
 				ArrayList<Scholar> leftScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(2);
