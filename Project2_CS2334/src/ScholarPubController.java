@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+//REMAINING FEATURES:
+	//WHENEVER A SCHOLAR IS DELETED, BROWSE THROUGH AND DELETE EMPTY SERIALS AND PAPERS
+	//WHENEVER A SERIAL IS DELETED, BROWSE THROUGH AND DELETE EMPTY PAPERS
+	//DOUBLE-CLICKING ON A SCHOLAR WILL OPEN THE SCHOLAR DATA VIEW WINDOW
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
