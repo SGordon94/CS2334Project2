@@ -43,6 +43,8 @@ public class ScholarPubController {
 		if(serialView != null){
 			serialView.getJBTAddSerial().addActionListener(new AddSerialToListListener(serialView));
 			serialView.getJBTSaveMeeting().addActionListener(new SerialConferenceSaveMeetingListener(serialView));
+			serialView.getJBTSaveIssue().addActionListener(new SerialJournalSaveIssueListener(serialView));
+			serialView.getJBTNewVolume().addActionListener(new SerialJournalNewVolumeListener(serialView));
 		}
 	}
 
@@ -56,11 +58,9 @@ public class ScholarPubController {
 	
 	private class DeleteScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			int index = mainView.getScholarListPosition();
-			model.removeScholar(index);
+			model.removeScholars(mainView.getScholarListPositions());
 			if(model.getScholarListSize() == 0){
-				model.emptyConferences();
-				model.emptyJournals();
+				model.emptySerials();
 				model.emptyPapers();
 				mainView.getJBTDeleteScholars().setEnabled(false);
 				mainView.getJBTDeleteAllScholars().setEnabled(false);
@@ -72,16 +72,19 @@ public class ScholarPubController {
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
 			mainView.updateScholarList();
+			mainView.updateSerialList();
+			mainView.updatePaperList();
 		}
 	}
 	
 	private class DeleteAllScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			model.emptyScholars();
-			model.emptyConferences();
-			model.emptyJournals();
+			model.emptySerials();
 			model.emptyPapers();
 			mainView.updateScholarList();
+			mainView.updateSerialList();
+			mainView.updatePaperList();
 			mainView.getJBTDeleteScholars().setEnabled(false);
 			mainView.getJBTDeleteAllScholars().setEnabled(false);
 			mainView.getJBTAddSerial().setEnabled(false);
@@ -102,13 +105,33 @@ public class ScholarPubController {
 	
 	private class DeleteSerialsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			model.removeSerials(mainView.getSerialListPositions());
+			if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
+				model.emptyPapers();
+				mainView.getJBTDeleteSerials().setEnabled(false);
+				mainView.getJBTDeleteAllSerials().setEnabled(false);
+				mainView.getJBTAddPaper().setEnabled(false);
+				mainView.getJBTDeletePapers().setEnabled(false);
+				mainView.getJBTDeleteAllPapers().setEnabled(false);
+			}
+			mainView.updateScholarList();
+			mainView.updateSerialList();
+			mainView.updatePaperList();
 		}
 	}
 	
 	private class DeleteAllSerialsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			model.emptySerials();
+			model.emptyPapers();
+			mainView.updateScholarList();
+			mainView.updateSerialList();
+			mainView.updatePaperList();
+			mainView.getJBTDeleteSerials().setEnabled(false);
+			mainView.getJBTDeleteAllSerials().setEnabled(false);
+			mainView.getJBTAddPaper().setEnabled(false);
+			mainView.getJBTDeletePapers().setEnabled(false);
+			mainView.getJBTDeleteAllPapers().setEnabled(false);
 		}
 	}
 	
@@ -186,7 +209,30 @@ public class ScholarPubController {
 				}
 			}
 			else{
-				// CODE FOR THE JOURNAL SECTION GOES HERE
+				if(localSerialView.issuesPresent()){
+					Journal tempJour = new Journal(localSerialView.getJournalOrganizationName(), localSerialView.getJournalLocation(), localSerialView.getVolumes());
+					boolean uniqueSerial = !model.containsJournal(tempJour);
+					if(uniqueSerial){
+						if(!mainView.getJBTDeleteSerials().isEnabled()){
+							mainView.getJBTDeleteSerials().setEnabled(true);
+						}
+						if(!mainView.getJBTDeleteAllSerials().isEnabled()){
+							mainView.getJBTDeleteAllSerials().setEnabled(true);
+						}
+						if(!mainView.getJBTAddPaper().isEnabled()){
+							mainView.getJBTAddPaper().setEnabled(true);
+						}
+						model.addJournal(tempJour);
+						localSerialView.dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "This journal is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					mainView.updateSerialList();
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				}
 			}
 		}
 	}
@@ -214,9 +260,49 @@ public class ScholarPubController {
 					}
 				}
 				else if(typeOfSerial.equals("Journal")){
-					// ADD JOURNAL CODE
+					Debug.Log("Error in SerialConferenceSaveMeetingListener: button does not match card");
+					System.exit(-1);
 				}
 			}
+		}
+	}
+	
+	private class SerialJournalSaveIssueListener implements ActionListener{
+		AddSerialView localSerialView;
+		public SerialJournalSaveIssueListener(AddSerialView serialView){
+			this.localSerialView = serialView;
+		}
+		public void actionPerformed(ActionEvent arg0){
+			ArrayList<Object> arrayListOfDetails = localSerialView.getInnerDetails();
+			if(arrayListOfDetails != null){
+				String typeOfSerial = (String)arrayListOfDetails.get(0);
+				String[] fields = (String[])arrayListOfDetails.get(1);
+				ArrayList<Scholar> leftScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(2);
+				ArrayList<Scholar> rightScholarList = (ArrayList<Scholar>)arrayListOfDetails.get(3);
+				if(typeOfSerial.equals("Journal")){
+					Issue issue = new Issue(fields, leftScholarList, rightScholarList);
+					if(localSerialView.containsIssue(issue)){
+						JOptionPane.showMessageDialog(null, "This issue is present in the selected volume.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					else{
+						localSerialView.addIssueToVolume(issue);
+					}
+				}
+				else if(typeOfSerial.equals("Conference")){
+					Debug.Log("Error in SerialJournalSaveIssueListener: button does not match card");
+					System.exit(-1);
+				}
+			}
+		}
+	}
+	
+	private class SerialJournalNewVolumeListener implements ActionListener{
+		AddSerialView localSerialView;
+		public SerialJournalNewVolumeListener(AddSerialView serialView){
+			this.localSerialView = serialView;
+		}
+		public void actionPerformed(ActionEvent arg0){
+			localSerialView.newVolume();
 		}
 	}
 }

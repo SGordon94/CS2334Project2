@@ -29,6 +29,9 @@ public class SelectionView extends JFrame {
 		listOfScholars = new JList();
 		listOfSerials = new JList();
 		listOfPapers = new JList();
+		listOfScholars.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		listOfSerials.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		listOfPapers.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		
 		setTitle("ScholarPub");
 		
@@ -120,8 +123,16 @@ public class SelectionView extends JFrame {
 		listOfPapers.setListData(model.getPaperNames());
 	}
 	
-	public int getScholarListPosition(){
-		return listOfScholars.getSelectedIndex();
+	public int[] getScholarListPositions(){
+		return listOfScholars.getSelectedIndices();
+	}
+	
+	public int[] getSerialListPositions(){
+		return listOfSerials.getSelectedIndices();
+	}
+	
+	public int[] getPaperListPositions(){
+		return listOfPapers.getSelectedIndices();
 	}
 	
 	public void setModel(ScholarshipModel mod){

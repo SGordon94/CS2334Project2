@@ -79,9 +79,6 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private JLabel countryLabel = new JLabel("Country: ");
 		private JTextField country = new JTextField(7);
 		
-		//private JButton jbtSaveMeeting = new JButton("Save Meeting");
-		private ArrayList<String> numberOfMeetings = new ArrayList<String>();
-	
 		private JPanel cards;
 		
 		private JLabel programChairsLabel = new JLabel("Program Chairs");
@@ -102,24 +99,20 @@ public class AddSerialView extends JFrame implements ItemListener{
 			organizationPanel.add(organizationLabel);
 			organizationPanel.add(organization);
 			
-			numberOfMeetings.add("New Meeting");
-			String[] numberOfMeetingsArray = new String[numberOfMeetings.size()];
-			numberOfMeetingsArray = numberOfMeetings.toArray(numberOfMeetingsArray);
-			JComboBox meetings = new JComboBox(numberOfMeetingsArray);
-			
 			cards = new JPanel();
 			cards.setLayout(new CardLayout());
 			cards.add(createMeetingPanel());
 			
 			
 			mainPanel1.add(organizationPanel);
-			//mainPanel1.add(meetings);
 			mainPanel1.add(cards);
 			mainPanel1.add(jbtSaveMeeting);
 			jbtSaveMeeting.setAlignmentX(Component.CENTER_ALIGNMENT);
 			
 			programChairs.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			programCommitteeMembers.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			programChairs.setListData(model.getScholarNames());
+			programCommitteeMembers.setListData(model.getScholarNames());
 			
 			pack();
 			
@@ -209,7 +202,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private static final long serialVersionUID = 6311171508567796171L;
 		
 		private JLabel	   organizationLabel = new JLabel("Organization: ");
-		private JTextField organiztionName = new JTextField(39);
+		private JTextField organizationName = new JTextField(39);
 		private JLabel     issueLabel = new JLabel("Issue: ");
 		private JTextField issueName = new JTextField(43);
 		private JLabel     monthLabel = new JLabel("Month: ");
@@ -228,7 +221,8 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private JLabel reviewersLabel = new JLabel("Reviewers");
 		private JList  reviewers = new JList();
 		
-		private ArrayList<String> numberOfVolumes = new ArrayList<String>();
+		private JComboBox volumeComboBox = new JComboBox();
+		private ArrayList<Volume> temporaryVolumes = new ArrayList<Volume>();
 		
 		private String journalLabel = "Journal Details";
 		private Border etchedBorder = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
@@ -241,7 +235,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 			
 			JPanel organizationPanel = new JPanel();
 			organizationPanel.add(organizationLabel);
-			organizationPanel.add(organiztionName);
+			organizationPanel.add(organizationName);
 			
 			JPanel cityPanel = new JPanel();
 			cityPanel.add(cityLabel);
@@ -250,11 +244,6 @@ public class AddSerialView extends JFrame implements ItemListener{
 			cityPanel.add(stateProvince);
 			cityPanel.add(countryLabel);
 			cityPanel.add(country);
-			
-			numberOfVolumes.add("New Volume");
-			String[] numberOfVolumesArray = new String[numberOfVolumes.size()];
-			numberOfVolumesArray = numberOfVolumes.toArray(numberOfVolumesArray);
-			JComboBox issues = new JComboBox(numberOfVolumesArray);
 			
 			cards = new JPanel();
 			cards.setLayout(new CardLayout());
@@ -266,10 +255,15 @@ public class AddSerialView extends JFrame implements ItemListener{
 			buttonPanel.add(jbtSaveIssue);
 			buttonPanel.add(jbtNewVolume);
 			
+			editors.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			reviewers.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			editors.setListData(model.getScholarNames());
+			reviewers.setListData(model.getScholarNames());
+			
 			mainPanel.add(organizationPanel);
 			mainPanel.add(cityPanel);
-			mainPanel.add(issues);
-			issues.setAlignmentX(CENTER_ALIGNMENT);
+			mainPanel.add(volumeComboBox);
+			volumeComboBox.setAlignmentX(CENTER_ALIGNMENT);
 			mainPanel.add(cards);
 			buttonPanel.setAlignmentX(CENTER_ALIGNMENT);
 			mainPanel.add(buttonPanel);
@@ -319,8 +313,34 @@ public class AddSerialView extends JFrame implements ItemListener{
 		
 		public ArrayList<Object> getInnerDetails(){
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			String[] fields = new String[2];
+			fields[0] = month.getText().trim();
+			fields[1] = year.getText().trim();
+			ArrayList<Scholar> addedEditors = model.getSelectedScholars(editors.getSelectedIndices());
+			ArrayList<Scholar> addedReviewers = model.getSelectedScholars(reviewers.getSelectedIndices());
 			returnStuff.add("Journal");
+			returnStuff.add(fields);
+			returnStuff.add(addedEditors);
+			returnStuff.add(addedReviewers);
 			return returnStuff;
+		}
+		
+		public String getOrganizationName(){
+			return organizationName.getText();
+		}
+		
+		public Location getJournalLocation(){
+			return new Location(city.getText(), stateProvince.getText(), country.getText());
+		}
+		
+		public void updateVolumeComboBox(){
+			if(temporaryVolumes.size() != 0){
+				String[] volumeComboBoxItems = new String[temporaryVolumes.size()];
+				for(int i=0;i<temporaryVolumes.size();i++){
+					volumeComboBoxItems[i] = "Volume "+(i+1);
+				}
+				volumeComboBox.setModel(new DefaultComboBoxModel(volumeComboBoxItems));
+			}
 		}
 	}
 	
@@ -377,6 +397,56 @@ public class AddSerialView extends JFrame implements ItemListener{
 	public String getConferenceOrganizationName(){
 		return card1.getOrganizationName();
 	}
+	
+	public ArrayList<Volume> getVolumes(){
+		return card2.temporaryVolumes;
+	}
+	
+	public void addIssueToVolume(Issue issue){
+		if(card2.temporaryVolumes.size() != 0){
+			card2.temporaryVolumes.get(card2.volumeComboBox.getSelectedIndex()).addIssue(issue);
+		}
+		else{
+			card2.temporaryVolumes.add(new Volume());
+			card2.temporaryVolumes.get(0).addIssue(issue);
+			card2.updateVolumeComboBox();
+		}
+	}
+	
+	public boolean containsIssue(Issue issue){
+		if(card2.volumeComboBox.getItemCount() != 0){
+			for(int i=0;i<card2.temporaryVolumes.get(card2.volumeComboBox.getSelectedIndex()).getSizeOfIssueList();i++){
+				if(card2.temporaryVolumes.get(card2.volumeComboBox.getSelectedIndex()).getIssue(i).equals(issue)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean issuesPresent(){
+		if(card2.temporaryVolumes.size() != 0){
+			for(int i=0;i<card2.temporaryVolumes.size();i++){
+				if(card2.temporaryVolumes.get(i).getSizeOfIssueList() != 0){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public void newVolume(){
+		card2.temporaryVolumes.add(new Volume());
+		card2.updateVolumeComboBox();
+	}
+	
+	public String getJournalOrganizationName(){
+		return card2.getOrganizationName();
+	}
+	
+	public Location getJournalLocation(){
+		return card2.getJournalLocation();
+	}
 
 	public JButton getJBTAddSerial(){
 		return jbtAddSerial;
@@ -384,5 +454,13 @@ public class AddSerialView extends JFrame implements ItemListener{
 	
 	public JButton getJBTSaveMeeting(){
 		return jbtSaveMeeting;
+	}
+	
+	public JButton getJBTSaveIssue(){
+		return jbtSaveIssue;
+	}
+	
+	public JButton getJBTNewVolume(){
+		return  jbtNewVolume;
 	}
 }
