@@ -102,6 +102,7 @@ public class ScholarPubController {
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
 					ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
+					openWindows.add(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
 					clicked = false;
 					enabled = false;
 				}
