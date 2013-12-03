@@ -11,6 +11,8 @@ public class AddSerialView extends JFrame implements ItemListener{
 	private JPanel cards;
 	private JButton jbtAddSerial = new JButton("Add Serial");
 	private JButton jbtSaveMeeting = new JButton("Save Meeting");
+	private JButton jbtSaveIssue = new JButton("Save Issue");
+	private JButton jbtNewVolume = new JButton("New Volume");
 	private ScholarshipModel model;
 	private ConferenceView card1;
 	private JournalView card2;
@@ -111,7 +113,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 			
 			
 			mainPanel1.add(organizationPanel);
-			mainPanel1.add(meetings);
+			//mainPanel1.add(meetings);
 			mainPanel1.add(cards);
 			mainPanel1.add(jbtSaveMeeting);
 			jbtSaveMeeting.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -206,8 +208,6 @@ public class AddSerialView extends JFrame implements ItemListener{
 		 */
 		private static final long serialVersionUID = 6311171508567796171L;
 		
-		private JLabel     journalNameLabel = new JLabel("Journal: ");
-		private JTextField journalName = new JTextField(42);
 		private JLabel	   organizationLabel = new JLabel("Organization: ");
 		private JTextField organiztionName = new JTextField(39);
 		private JLabel     issueLabel = new JLabel("Issue: ");
@@ -228,6 +228,8 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private JLabel reviewersLabel = new JLabel("Reviewers");
 		private JList  reviewers = new JList();
 		
+		private ArrayList<String> numberOfVolumes = new ArrayList<String>();
+		
 		private String journalLabel = "Journal Details";
 		private Border etchedBorder = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
 		private TitledBorder titledBorder = BorderFactory.createTitledBorder(etchedBorder, journalLabel,
@@ -235,29 +237,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 		
 		public JournalView(){
 			JPanel mainPanel = new JPanel();
-			mainPanel.setLayout(new GridLayout(2,1,0,0));
-			
-			//top panel
-			JPanel topPanel = new JPanel();
-			topPanel.setLayout(new GridLayout(5,1,0,0));
-			
-//			JPanel journalPanel = new JPanel();
-//			journalPanel.add(journalNameLabel);
-//			journalPanel.add(journalName);
+			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			
 			JPanel organizationPanel = new JPanel();
 			organizationPanel.add(organizationLabel);
 			organizationPanel.add(organiztionName);
-			
-			JPanel issuePanel = new JPanel();
-			issuePanel.add(issueLabel);
-			issuePanel.add(issueName);
-			
-			JPanel monthPanel = new JPanel();
-			monthPanel.add(monthLabel);
-			monthPanel.add(month);
-			monthPanel.add(yearLabel);
-			monthPanel.add(year);
 			
 			JPanel cityPanel = new JPanel();
 			cityPanel.add(cityLabel);
@@ -267,12 +251,48 @@ public class AddSerialView extends JFrame implements ItemListener{
 			cityPanel.add(countryLabel);
 			cityPanel.add(country);
 			
-//			topPanel.add(journalPanel);
-			topPanel.add(organizationPanel);
-			topPanel.add(issuePanel);
-			topPanel.add(monthPanel);
-			topPanel.add(cityPanel);
-			topPanel.setBorder(titledBorder);
+			numberOfVolumes.add("New Volume");
+			String[] numberOfVolumesArray = new String[numberOfVolumes.size()];
+			numberOfVolumesArray = numberOfVolumes.toArray(numberOfVolumesArray);
+			JComboBox issues = new JComboBox(numberOfVolumesArray);
+			
+			cards = new JPanel();
+			cards.setLayout(new CardLayout());
+			cards.add(createIssuePanel());
+			
+			jbtSaveIssue.setAlignmentX(CENTER_ALIGNMENT);	
+			jbtNewVolume.setAlignmentX(CENTER_ALIGNMENT);
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.add(jbtSaveIssue);
+			buttonPanel.add(jbtNewVolume);
+			
+			mainPanel.add(organizationPanel);
+			mainPanel.add(cityPanel);
+			mainPanel.add(issues);
+			issues.setAlignmentX(CENTER_ALIGNMENT);
+			mainPanel.add(cards);
+			buttonPanel.setAlignmentX(CENTER_ALIGNMENT);
+			mainPanel.add(buttonPanel);
+			
+			add(mainPanel);
+		}
+		
+		public JPanel createIssuePanel(){
+			JPanel mainPanel = new JPanel();
+			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+			
+//			JPanel topPanel = new JPanel();
+//			topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+			
+//			JPanel issuePanel = new JPanel();
+//			issuePanel.add(issueLabel);
+//			issuePanel.add(issueName);
+			
+			JPanel monthPanel = new JPanel();
+			monthPanel.add(monthLabel);
+			monthPanel.add(month);
+			monthPanel.add(yearLabel);
+			monthPanel.add(year);
 			
 			//bottom Panel
 			JPanel bottomPanel = new JPanel();
@@ -289,10 +309,12 @@ public class AddSerialView extends JFrame implements ItemListener{
 			bottomPanel.add(leftPanel);
 			bottomPanel.add(rightPanel);
 			
-			mainPanel.add(topPanel);
+			//topPanel.setBorder(titledBorder);
+			
+			mainPanel.add(monthPanel);
 			mainPanel.add(bottomPanel);
 			
-			add(mainPanel);
+			return mainPanel;
 		}
 		
 		public ArrayList<Object> getInnerDetails(){
