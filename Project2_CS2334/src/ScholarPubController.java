@@ -102,6 +102,7 @@ public class ScholarPubController {
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
 					ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
+					scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
 					openWindows.add(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
 					clicked = false;
 					enabled = false;
@@ -121,6 +122,16 @@ public class ScholarPubController {
 				doubleClick.disable();
 			}
 			public void mouseMoved(MouseEvent arg0) {}
+		}
+	}
+	
+	private class ScholarDataViewOKButtonListener implements ActionListener{
+		ScholarDataView localDataView;
+		public ScholarDataViewOKButtonListener(ScholarDataView view){
+			localDataView = view;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			localDataView.dispose();
 		}
 	}
 

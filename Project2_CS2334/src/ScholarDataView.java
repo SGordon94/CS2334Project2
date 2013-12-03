@@ -68,7 +68,6 @@ public class ScholarDataView extends JFrame{
 		
 		
 		jbtOK.setAlignmentX(CENTER_ALIGNMENT);
-		jbtOK.addActionListener(new jbtOKActionListener());
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
 		
@@ -81,13 +80,9 @@ public class ScholarDataView extends JFrame{
 		setVisible(true);
 		
 	}
-
-	private class jbtOKActionListener implements ActionListener{
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			dispose();
-		}
+	
+	public JButton getJBTOK(){
+		return jbtOK;
 	}
 
 }
