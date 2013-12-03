@@ -62,10 +62,15 @@ public class ScholarPubController {
 		boolean newSelection = true;
 		ArrayList<Scholar> openWindows = new ArrayList<Scholar>();
 		SecondMouseClickScholars doubleClick;
+		MouseDraggedScholars mouseMoved;
+		
 		public ListOfScholarsListener(){
 			doubleClick = new SecondMouseClickScholars();
+			mouseMoved = new MouseDraggedScholars();
 			mainView.getListOfScholars().addMouseListener(doubleClick);
+			mainView.getListOfScholars().addMouseMotionListener(mouseMoved);
 		}
+		
 		public void valueChanged(ListSelectionEvent arg0) {
 			if(!arg0.getValueIsAdjusting()){
 				if(newSelection){
@@ -97,6 +102,7 @@ public class ScholarPubController {
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
 					ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
+					openWindows.add(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
 					clicked = false;
 					enabled = false;
 				}
@@ -106,7 +112,15 @@ public class ScholarPubController {
 			}
 			public void disable(){
 				enabled = false;
+				clicked = false;
 			}
+		}
+		
+		private class MouseDraggedScholars implements MouseMotionListener{
+			public void mouseDragged(MouseEvent arg0) {
+				doubleClick.disable();
+			}
+			public void mouseMoved(MouseEvent arg0) {}
 		}
 	}
 
