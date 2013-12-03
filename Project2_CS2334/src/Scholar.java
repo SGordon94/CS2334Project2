@@ -53,6 +53,15 @@ public class Scholar implements Serializable {
         	}
         }
         
+        public String returnNameInStringAlt(){
+        	if(secondaryName == null){
+        		return primaryName;
+        	}
+        	else{
+        		return (secondaryName + primaryName);
+        	}
+        }
+        
         public String displayPapers(){
         	String output = "";
         	for(int i=0;i<containingPapers.size();i++){
@@ -63,4 +72,12 @@ public class Scholar implements Serializable {
         	}
         	return output;
         }
+        
+        public ArrayList getAffiliations(){
+        	return this.institutionalAffiliations;
+        }
+        public ArrayList getResearchAreas(){
+        	return this.researchAreas;
+        }
+        
 }
