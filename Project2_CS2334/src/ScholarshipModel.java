@@ -79,29 +79,28 @@ public class ScholarshipModel {
 		return scholars.size();
 	}
 	
-	public synchronized void removeScholar(int index){
-		if(index < scholars.size()){
-			scholars.remove(index);
+	public synchronized void removeScholars(int[] indices){
+		for(int i=(indices.length-1);i>=0;i--){
+			scholars.remove(indices[i]);
 		}
 	}
 	
 	public synchronized void emptyScholars(){
 		scholars.removeAll(scholars);
 		emptyPapers();
-		emptyJournals();
-		emptyConferences();
+		emptySerials();
 	}
 	
 	public synchronized void emptyPapers(){
 		papers.removeAll(papers);
 	}
 	
-	public synchronized void emptyJournals(){
-		journals.removeAll(journals);
-	}
-	
 	public synchronized void addConference(Conference conf){
 		conferences.add(conf);
+	}
+	
+	public int getConferenceListSize(){
+		return conferences.size();
 	}
 	
 	public boolean containsConference(Conference conf){
@@ -114,8 +113,39 @@ public class ScholarshipModel {
 		}
 		return false;
 	}
+	
+	public synchronized void addJournal(Journal jour){
+		journals.add(jour);
+	}
+	
+	public int getJournalListSize(){
+		return journals.size();
+	}
+	
+	public boolean containsJournal(Journal jour){
+		if(journals.size() != 0){
+			for(int i=0;i<journals.size();i++){
+				if(journals.get(i).equals(jour)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public synchronized void removeSerials(int[] indices){
+		for(int i=(indices.length-1);i>=0;i--){
+			if(indices[i] >= journals.size()){
+				conferences.remove(indices[i]-journals.size());
+			}
+			else{
+				journals.remove(indices[i]);
+			}
+		}
+	}
 
-	public synchronized void emptyConferences(){
+	public synchronized void emptySerials(){
 		conferences.removeAll(conferences);
+		journals.removeAll(journals);
 	}
 }
