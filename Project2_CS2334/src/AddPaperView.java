@@ -1,87 +1,161 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.*;
 
-public class AddPaperView extends JFrame{
-	private JLabel paperTypeLabel = new JLabel(" Paper Type (Conference Paper/Journal Paper): ");
-	private JTextField paperType = new JTextField();
-	private JLabel paperNameLabel = new JLabel("Name: ");
-	private JTextField paperName = new JTextField();
-	private JLabel conferencePagesLabel = new JLabel("Page Numbers for Conference Paper: ");
-	private JTextField conferencePages = new JTextField();
-	private JLabel journalNumbersLabel = new JLabel("Volume(Issue) :Page Numbers");
-	private JTextField journalNumbers = new JTextField();
-	private JLabel publicationMonthLabel = new JLabel("Month of Publication: ");
-	private JTextField publicationMonth = new JTextField();
-	private JLabel publicationYearLabel = new JLabel("Year of Publication: ");
-	private JTextField publicationYear = new JTextField();
-	private JLabel scholarsListLabel = new JLabel("List of Scholars");
-	private JList scholarList = new JList();
-	private JLabel serialsListLabel = new JLabel("List of Serials");
-	private JList serialsList = new JList();
+public class AddPaperView extends JFrame implements ItemListener{
+	private final String CONFERENCEPAPER = "Conference Paper";
+	private final String JOURNALPAPER = "Journal Paper";
+	private String[] typeOfPapers = {CONFERENCEPAPER, JOURNALPAPER};
+	private JComboBox paperSelector = new JComboBox(typeOfPapers);
+	private ScholarshipModel model;
+	private ConferencePaper card1;
+	private JournalPaper card2;
+	private JPanel cards;
+	
+	
 	private JButton jbtAddPaper = new JButton("Add Paper");
 	
-	public AddPaperView(){
+	public AddPaperView(ScholarshipModel mod){
+		this.model = mod;
+		setLayout(new BorderLayout());
+		paperSelector.addItemListener(this);
 		
-		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new BorderLayout());
+		//Create panel for Conference Paper
+		card1 = new ConferencePaper();
 		
-		JPanel topPanel = new JPanel();
-		topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+		//Create panel for Journal Paper
+		card2 = new JournalPaper();
 		
-		JPanel paperTypePanel = new JPanel();
-		paperTypePanel.add(paperTypeLabel);
-		paperTypePanel.add(paperType);
+		//Create panel for paperSelector JComboBox
+		JPanel paperSelectorPanel = new JPanel();
+		paperSelectorPanel.add(paperSelector);
 		
-		JPanel paperNamePanel = new JPanel();
-		paperNamePanel.add(paperNameLabel);
-		paperNamePanel.add(paperName);
+		//Create panel for the Add Paper button
+		JPanel addPaperPanel = new JPanel();
+		addPaperPanel.add(jbtAddPaper);
 		
-		JPanel numbersPanel = new JPanel();
-		numbersPanel.add(conferencePagesLabel);
-		numbersPanel.add(conferencePages);
-		numbersPanel.add(journalNumbersLabel);
-		numbersPanel.add(journalNumbers);
 		
-		JPanel publicationDatePanel = new JPanel();
-		publicationDatePanel.add(publicationMonthLabel);
-		publicationDatePanel.add(publicationMonth);
-		publicationDatePanel.add(publicationYearLabel);
-		publicationDatePanel.add(publicationYear);
+		//Add cards to panel
+		cards = new JPanel();
+		cards.setLayout(new CardLayout());
+		cards.add(card1, CONFERENCEPAPER);
+		cards.add(card2, JOURNALPAPER);
 		
-		topPanel.add(paperTypePanel);
-		topPanel.add(paperNamePanel);
-		topPanel.add(numbersPanel);
-		topPanel.add(publicationDatePanel);
+		//Add components to main frame
+		add(paperSelectorPanel, BorderLayout.NORTH);
+		add(cards);
+		add(addPaperPanel, BorderLayout.SOUTH);
 		
-		//bottom panel
-		JPanel bottomPanel = new JPanel();
-		JPanel leftPanel = new JPanel();
-		leftPanel.setLayout(new BorderLayout());
-		leftPanel.add(scholarsListLabel, BorderLayout.NORTH);
-		leftPanel.add(new JScrollPane(scholarList));
-		JPanel rightPanel = new JPanel();
-		rightPanel.add(serialsListLabel, BorderLayout.NORTH);
-		rightPanel.add(new JScrollPane(serialsList));
-		bottomPanel.add(leftPanel);
-		bottomPanel.add(rightPanel);
-		
-		//button panel
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.add(jbtAddPaper);
-		
-		mainPanel.add(topPanel, BorderLayout.NORTH);
-		mainPanel.add(bottomPanel);
-		mainPanel.add(buttonPanel);
-		
-		add(mainPanel);
-		
-		setSize(600, 500);
+		setSize(500, 400);
 		setLocationRelativeTo(null);
+		pack();
 		setVisible(true);
+		
+	}
+	
+	private class ConferencePaper extends JPanel{
+		private JLabel paperTitleLabel = new JLabel("Title: ");
+		private JTextField paperTitle = new JTextField(20);
+		private JLabel conferenceListLabel = new JLabel("Conferences");
+		private JList conferencesJList = new JList();
+		private JLabel authorsListLabel = new JLabel("Authors");
+		private JList authorsJList = new JList();
+		private JLabel paperPageNumbersLabel = new JLabel("Page Numbers: ");
+		private JTextField paperPageNumbers = new JTextField(10);
+		
+		public ConferencePaper(){
+			//Panel for the title of the paper
+			JPanel paperTitlePanel = new JPanel();
+			paperTitlePanel.add(paperTitleLabel);
+			paperTitlePanel.add(paperTitle);
+			
+			//Panel for the list of Conferences
+			JPanel conferencesPanel = new JPanel();
+			conferencesPanel.setLayout(new BoxLayout(conferencesPanel, BoxLayout.Y_AXIS));
+			conferencesPanel.add(conferenceListLabel);
+			conferencesPanel.add(new JScrollPane(conferencesJList));
+			
+			//Panel for the list of Authors
+			JPanel authorsPanel = new JPanel();
+			authorsPanel.setLayout(new BoxLayout(authorsPanel, BoxLayout.Y_AXIS));
+			authorsPanel.add(authorsListLabel);
+			authorsPanel.add(new JScrollPane(authorsJList));
+			
+			//Panel for both lists
+			JPanel listsPanel = new JPanel();
+			listsPanel.add(conferencesPanel);
+			listsPanel.add(authorsPanel);
+			
+			//Panel for paper page numbers
+			JPanel pageNumbersPanel = new JPanel();
+			pageNumbersPanel.add(paperPageNumbersLabel);
+			pageNumbersPanel.add(paperPageNumbers);
+			
+			//Set the layout and add panels in order
+			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			add(paperTitlePanel);
+			add(pageNumbersPanel);
+			add(listsPanel);
+			setVisible(true);
+		}
+	}
+	
+	private class JournalPaper extends JPanel{
+		private JLabel paperTitleLabel = new JLabel("Title: ");
+		private JTextField paperTitle = new JTextField(20);
+		private JLabel journalListLabel = new JLabel("Journal-Issue");
+		private JList journalsJList = new JList();
+		private JLabel authorsListLabel = new JLabel("Authors");
+		private JList authorsJList = new JList();
+		private JLabel paperPageNumbersLabel = new JLabel("Page Numbers: ");
+		private JTextField paperPageNumbers = new JTextField(10);
+		
+		public JournalPaper(){
+			//Panel for the title of the paper
+			JPanel paperTitlePanel = new JPanel();
+			paperTitlePanel.add(paperTitleLabel);
+			paperTitlePanel.add(paperTitle);
+			
+			//Panel for the list of Journals
+			JPanel journalsPanel = new JPanel();
+			journalsPanel.setLayout(new BoxLayout(journalsPanel, BoxLayout.Y_AXIS));
+			journalsPanel.add(journalListLabel);
+			journalsPanel.add(new JScrollPane(journalsJList));
+			
+			//Panel for the list of Authors
+			JPanel authorsPanel = new JPanel();
+			authorsPanel.setLayout(new BoxLayout(authorsPanel, BoxLayout.Y_AXIS));
+			authorsPanel.add(authorsListLabel);
+			authorsPanel.add(new JScrollPane(authorsJList));
+			
+			//Panel for both lists
+			JPanel listsPanel = new JPanel();
+			listsPanel.add(journalsPanel);
+			listsPanel.add(authorsPanel);
+			
+			//Panel for paper page numbers
+			JPanel pageNumbersPanel = new JPanel();
+			pageNumbersPanel.add(paperPageNumbersLabel);
+			pageNumbersPanel.add(paperPageNumbers);
+			
+			//Set the layout and add panels in order
+			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			add(paperTitlePanel);
+			add(pageNumbersPanel);
+			add(listsPanel);
+			setVisible(true);
+		}
 	}
 	
 	public JButton getJBTAddPaper(){
 		return jbtAddPaper;
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		CardLayout cardPanels = (CardLayout)(cards.getLayout());
+		cardPanels.show(cards, (String)(e.getItem()));
 	}
 }
