@@ -174,4 +174,16 @@ public class SelectionView extends JFrame {
 	public JButton getJBTDeleteAllPapers(){
 		return jbtDeleteAllPapers;
 	}
+	
+	public JList getListOfScholars(){
+		return listOfScholars;
+	}
+	
+	public JList getListOfSerials(){
+		return listOfSerials;
+	}
+	
+	public JList getListOfPapers(){
+		return listOfPapers;
+	}
 }

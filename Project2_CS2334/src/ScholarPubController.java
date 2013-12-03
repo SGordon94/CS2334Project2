@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 //REMAINING FEATURES:
 	//WHENEVER A SCHOLAR IS DELETED, BROWSE THROUGH AND DELETE EMPTY SERIALS AND PAPERS
@@ -34,6 +36,10 @@ public class ScholarPubController {
 			mainView.getJBTAddPaper().addActionListener(new AddPaperListener());
 			mainView.getJBTDeletePapers().addActionListener(new DeletePapersListener());
 			mainView.getJBTDeleteAllPapers().addActionListener(new DeleteAllPapersListener());
+			mainView.getListOfScholars().addListSelectionListener(new ListOfScholarsListener());
+			
+			mainView.getListOfSerials().addListSelectionListener(new ListOfSerialsListener());
+			mainView.getListOfPapers().addListSelectionListener(new ListOfPapersListener());
 		}
 	}
 	
@@ -49,6 +55,58 @@ public class ScholarPubController {
 			serialView.getJBTSaveMeeting().addActionListener(new SerialConferenceSaveMeetingListener(serialView));
 			serialView.getJBTSaveIssue().addActionListener(new SerialJournalSaveIssueListener(serialView));
 			serialView.getJBTNewVolume().addActionListener(new SerialJournalNewVolumeListener(serialView));
+		}
+	}
+	
+	private class ListOfScholarsListener implements ListSelectionListener{
+		boolean newSelection = true;
+		ArrayList<Scholar> openWindows = new ArrayList<Scholar>();
+		SecondMouseClickScholars doubleClick;
+		public ListOfScholarsListener(){
+			doubleClick = new SecondMouseClickScholars();
+			mainView.getListOfScholars().addMouseListener(doubleClick);
+		}
+		public void valueChanged(ListSelectionEvent arg0) {
+			if(!arg0.getValueIsAdjusting()){
+				if(newSelection){
+					newSelection = false;
+					doubleClick.enable();
+				}
+			}
+			else{
+				newSelection = true;
+				doubleClick.disable();
+			}
+		}
+		
+		private class SecondMouseClickScholars implements MouseListener{
+			boolean enabled = false;
+			boolean clicked = false;
+			public void mouseClicked(MouseEvent arg0) {}
+			public void mouseEntered(MouseEvent arg0) {}
+			public void mouseExited(MouseEvent arg0) {
+				clicked = false;
+				enabled = false;
+			}
+			public void mousePressed(MouseEvent arg0) {
+				if(enabled){
+					clicked = true;
+					enabled = false;
+				}
+			}
+			public void mouseReleased(MouseEvent arg0) {
+				if(clicked){
+					ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
+					clicked = false;
+					enabled = false;
+				}
+			}
+			public void enable(){
+				enabled = true;
+			}
+			public void disable(){
+				enabled = false;
+			}
 		}
 	}
 
@@ -100,6 +158,13 @@ public class ScholarPubController {
 		}
 	}
 	
+	private class ListOfSerialsListener implements ListSelectionListener{
+		int lastSelectedIndex = -1;
+		public void valueChanged(ListSelectionEvent arg0) {
+			
+		}
+	}
+	
 	private class AddSerialListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			AddSerialView serialView = new AddSerialView(model);
@@ -136,6 +201,13 @@ public class ScholarPubController {
 			mainView.getJBTAddPaper().setEnabled(false);
 			mainView.getJBTDeletePapers().setEnabled(false);
 			mainView.getJBTDeleteAllPapers().setEnabled(false);
+		}
+	}
+	
+	private class ListOfPapersListener implements ListSelectionListener{
+		int lastSelectedIndex = -1;
+		public void valueChanged(ListSelectionEvent arg0) {
+			
 		}
 	}
 	

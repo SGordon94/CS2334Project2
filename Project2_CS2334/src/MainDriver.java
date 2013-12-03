@@ -19,8 +19,8 @@ public class MainDriver {
 		PaperCollection paperCollection = new PaperCollection();
 		boolean run = true;
 		//boolean fileOpened = false;				CHANGE THIS BACK TO FALSE WHEN DONE
-									boolean fileOpened = true;
-									new MainDriver();
+									boolean fileOpened = true;	// DELETE WHEN DONE
+									new MainDriver();			// DELETE WHEN DONE
 		
 		System.out.println("Welcome to ScholarPub!");
 		

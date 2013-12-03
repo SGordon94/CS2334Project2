@@ -19,6 +19,10 @@ public class ScholarshipModel {
 		return names;
 	}
 	
+	public synchronized Scholar getScholar(int index){
+		return scholars.get(index);
+	}
+	
 	public synchronized ArrayList<Scholar> getSelectedScholars(int[] indices){
 		ArrayList<Scholar> selectedScholars = new ArrayList<Scholar>();
 		for(int i=0;i<indices.length;i++){
