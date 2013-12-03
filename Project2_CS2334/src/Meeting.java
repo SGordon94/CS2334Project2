@@ -51,4 +51,20 @@ public class Meeting {
 	public ArrayList<ConferencePaper> getPapers(){
 		return papers;
 	}
+	
+	public String getAllProgramChairs(){
+		String allProgramChairs = "";
+		for(int index = 0; index < programChairs.size(); ++index){
+			allProgramChairs += programChairs.get(index).returnNameInStringAlt() + "\n";
+		}
+		return allProgramChairs;
+	}
+	
+	public String getAllCommitteeMembers(){
+		String allCommitteeMembers = "";
+		for(int index = 0; index < committeeMembers.size(); ++index){
+			allCommitteeMembers += committeeMembers.get(index).returnNameInString() + "\n";
+		}
+		return allCommitteeMembers;
+	}
 }
