@@ -4,75 +4,58 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 
 
 public class ScholarDataView extends JFrame{
-	JLabel nameLabel = new JLabel("Name: ");
-	JLabel affiliationsLabel = new JLabel("Institutional Affiliations: ");
-	JLabel researchLabel = new JLabel("Research Areas: ");
-	JLabel publicationsLabel = new JLabel("Publications: ");
-	JLabel chairLabel = new JLabel("Conferences attended as Program Chair: ");
-	JLabel memberLabel = new JLabel("Conferences attended as Program Committee Member: ");
-	JLabel editedLabel = new JLabel("Edited Journals: ");
-	JLabel reviewedLabel = new JLabel("Reviewed Journals: ");
+	private String nameLabel = "Name: ";
+	private String affiliationsLabel = "Institutional Affiliations: ";
+	private String researchLabel = "Research Areas: ";
+	private String publicationsLabel = "Publications: ";
+	private String chairLabel = "Conferences attended as Program Chair: ";
+	private String memberLabel = "Conferences attended as Program Committee Member: ";
+	private String editedLabel = "Edited Journals: ";
+	private String reviewedLabel = "Reviewed Journals: ";
 	JButton jbtOK = new JButton("OK");
 	
 	public ScholarDataView(Scholar scholar){
 		setTitle(scholar.returnNameInStringAlt());
 		setLayout(new BorderLayout());
 		
-		JLabel name = new JLabel(scholar.returnNameInStringAlt());
+		String name = scholar.returnNameInStringAlt();
 		
 		String affiliations = "";
 		for(int i = 0; i < scholar.getAffiliations().size(); ++i){
 			affiliations += scholar.getAffiliations().get(i) + "\n";
 		}
-		JLabel affiliationsData = new JLabel(affiliations);
 		
 		String researchAreas = "";
 		for(int i = 0; i < scholar.getResearchAreas().size(); ++i){
-			researchAreas += scholar.getResearchAreas().get(i);
+			researchAreas += scholar.getResearchAreas().get(i) + "\n";
 		}
-		JLabel researchData = new JLabel(researchAreas);
 		
-		JLabel publicationsData = new JLabel(scholar.displayPapers());
+		String publications = scholar.displayPapers();
 		
-		JLabel chairData = new JLabel();
+		String chairData = "";
 		
-		JLabel memberData = new JLabel();
+		String memberData = "";
 		
-		JLabel editedData = new JLabel();
+		String editedData = "";
 		
-		JLabel reviewedData = new JLabel();
+		String reviewedData = "";
 		
-		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new GridLayout(8,2,5,5));
+		JTextArea mainTextArea = new JTextArea(nameLabel + name + "\n\n" + affiliationsLabel + "\n" + affiliations + "\n" + researchLabel + "\n" + researchAreas
+				+ "\n" + publicationsLabel + "\n" + publications + "\n" + chairLabel + "\n" + chairData + "\n" + memberLabel + "\n" + memberData + "\n" + editedLabel + "\n" +
+				editedData + "\n" + reviewedLabel + "\n" + reviewedData);
 		
-		mainPanel.add(nameLabel);
-		mainPanel.add(name);
-		mainPanel.add(affiliationsLabel);
-		mainPanel.add(affiliationsData);
-		mainPanel.add(researchLabel);
-		mainPanel.add(researchData);
-		mainPanel.add(publicationsLabel);
-		mainPanel.add(publicationsData);
-		mainPanel.add(chairLabel);
-		mainPanel.add(chairData);
-		mainPanel.add(memberLabel);
-		mainPanel.add(memberData);
-		mainPanel.add(editedLabel);
-		add(editedData);
-		add(reviewedLabel);
-		add(reviewedData);
+		mainTextArea.setEditable(false);
 		
-		
+		add(mainTextArea);
 		
 		jbtOK.setAlignmentX(CENTER_ALIGNMENT);
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
 		
-		
-		add(mainPanel);
 		add(buttonPanel, BorderLayout.SOUTH);
 		
 		setSize(800,500);

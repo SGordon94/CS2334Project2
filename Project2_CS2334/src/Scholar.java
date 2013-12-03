@@ -58,7 +58,7 @@ public class Scholar implements Serializable {
         		return primaryName;
         	}
         	else{
-        		return (secondaryName + primaryName);
+        		return (secondaryName + " " + primaryName);
         	}
         }
         
