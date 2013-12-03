@@ -14,6 +14,8 @@ import javax.swing.event.ListSelectionListener;
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
+	private ArrayList<Scholar> openScholars = new ArrayList<Scholar>();
+	private ArrayList<ScholarDataView> openScholarWindows = new ArrayList<ScholarDataView>();
 	
 	ScholarPubController(){}
 	
@@ -60,7 +62,6 @@ public class ScholarPubController {
 	
 	private class ListOfScholarsListener implements ListSelectionListener{
 		boolean newSelection = true;
-		ArrayList<Scholar> openWindows = new ArrayList<Scholar>();
 		SecondMouseClickScholars doubleClick;
 		MouseDraggedScholars mouseMoved;
 		
@@ -101,11 +102,17 @@ public class ScholarPubController {
 			}
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
-					ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
-					scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
-					openWindows.add(model.getScholar(mainView.getListOfScholars().getSelectedIndex()));
-					clicked = false;
-					enabled = false;
+					if(!openScholars.contains(model.getScholar(mainView.getListOfScholars().getSelectedIndex()))){
+						ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()), openScholars, openScholarWindows);
+						scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
+						scholarDataView.addWindowListener(new ScholarDataViewWindowListener(scholarDataView));
+						clicked = false;
+						enabled = false;
+					}
+					else{
+						clicked = false;
+						enabled = false;
+					}
 				}
 			}
 			public void enable(){
@@ -123,6 +130,22 @@ public class ScholarPubController {
 			}
 			public void mouseMoved(MouseEvent arg0) {}
 		}
+	}
+	
+	private class ScholarDataViewWindowListener implements WindowListener{
+		ScholarDataView scholarDataView;
+		public ScholarDataViewWindowListener(ScholarDataView view){
+			scholarDataView = view;
+		}
+		public void windowActivated(WindowEvent arg0) {}
+		public void windowClosed(WindowEvent arg0) {}
+		public void windowClosing(WindowEvent arg0) {
+			scholarDataView.windowIsClosing();
+		}
+		public void windowDeactivated(WindowEvent arg0) {}
+		public void windowDeiconified(WindowEvent arg0) {}
+		public void windowIconified(WindowEvent arg0) {}
+		public void windowOpened(WindowEvent arg0) {}
 	}
 	
 	private class ScholarDataViewOKButtonListener implements ActionListener{

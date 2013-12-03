@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -16,8 +17,16 @@ public class ScholarDataView extends JFrame{
 	JLabel editedLabel = new JLabel("Edited Journals: ");
 	JLabel reviewedLabel = new JLabel("Reviewed Journals: ");
 	JButton jbtOK = new JButton("OK");
+	ArrayList<Scholar> openWindowScholars;
+	ArrayList<ScholarDataView> scholarWindows;
+	Scholar usedScholar;
 	
-	public ScholarDataView(Scholar scholar){
+	public ScholarDataView(Scholar scholar, ArrayList<Scholar> openWindows, ArrayList<ScholarDataView> windows){
+		usedScholar = scholar;
+		openWindowScholars = openWindows;
+		openWindowScholars.add(usedScholar);
+		scholarWindows = windows;
+		
 		setTitle(scholar.returnNameInStringAlt());
 		setLayout(new BorderLayout());
 		
@@ -79,6 +88,15 @@ public class ScholarDataView extends JFrame{
 		setLocationRelativeTo(null);
 		setVisible(true);
 		
+	}
+	
+	public void windowIsClosing(){
+		openWindowScholars.remove(usedScholar);
+		scholarWindows.remove(this);
+	}
+	
+	public Scholar getUsedScholar(){
+		return usedScholar;
 	}
 	
 	public JButton getJBTOK(){
