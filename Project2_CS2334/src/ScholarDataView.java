@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,14 +11,15 @@ public class ScholarDataView extends JFrame{
 	JLabel affiliationsLabel = new JLabel("Institutional Affiliations: ");
 	JLabel researchLabel = new JLabel("Research Areas: ");
 	JLabel publicationsLabel = new JLabel("Publications: ");
-	JLabel chairLabel = new JLabel("Conferences attended as\nProgram Chair: ");
-	JLabel memberLabel = new JLabel("Conferences attended as\nProgram Committee Member: ");
+	JLabel chairLabel = new JLabel("Conferences attended as Program Chair: ");
+	JLabel memberLabel = new JLabel("Conferences attended as Program Committee Member: ");
 	JLabel editedLabel = new JLabel("Edited Journals: ");
 	JLabel reviewedLabel = new JLabel("Reviewed Journals: ");
 	JButton jbtOK = new JButton("OK");
 	
 	public ScholarDataView(Scholar scholar){
 		setTitle(scholar.returnNameInStringAlt());
+		setLayout(new BorderLayout());
 		
 		JLabel name = new JLabel(scholar.returnNameInStringAlt());
 		
@@ -43,56 +46,38 @@ public class ScholarDataView extends JFrame{
 		JLabel reviewedData = new JLabel();
 		
 		JPanel mainPanel = new JPanel();
-		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		mainPanel.setLayout(new GridLayout(8,2,5,5));
 		
-		JPanel namePanel = new JPanel();
-		namePanel.add(nameLabel);
-		namePanel.add(name);
+		mainPanel.add(nameLabel);
+		mainPanel.add(name);
+		mainPanel.add(affiliationsLabel);
+		mainPanel.add(affiliationsData);
+		mainPanel.add(researchLabel);
+		mainPanel.add(researchData);
+		mainPanel.add(publicationsLabel);
+		mainPanel.add(publicationsData);
+		mainPanel.add(chairLabel);
+		mainPanel.add(chairData);
+		mainPanel.add(memberLabel);
+		mainPanel.add(memberData);
+		mainPanel.add(editedLabel);
+		add(editedData);
+		add(reviewedLabel);
+		add(reviewedData);
 		
-		JPanel affiliationsPanel = new JPanel();
-		affiliationsPanel.add(affiliationsLabel);
-		affiliationsPanel.add(affiliationsData);
 		
-		JPanel researchPanel = new JPanel();
-		researchPanel.add(researchLabel);
-		researchPanel.add(researchData);
 		
-		JPanel publicationsPanel = new JPanel();
-		publicationsPanel.add(publicationsLabel);
-		publicationsPanel.add(publicationsData);
-		
-		JPanel chairPanel = new JPanel();
-		chairPanel.add(chairLabel);
-		chairPanel.add(chairData);
-		
-		JPanel memberPanel = new JPanel();
-		memberPanel.add(memberLabel);
-		memberPanel.add(memberData);
-		
-		JPanel editorPanel = new JPanel();
-		editorPanel.add(editedLabel);
-		editorPanel.add(editedData);
-		
-		JPanel reviewerPanel = new JPanel();
-		reviewerPanel.add(reviewedLabel);
-		reviewerPanel.add(reviewedData);
-		
-		mainPanel.add(namePanel);
-		mainPanel.add(affiliationsPanel);
-		mainPanel.add(publicationsPanel);
-		mainPanel.add(chairPanel);
-		mainPanel.add(memberPanel);
-		mainPanel.add(editorPanel);
-		mainPanel.add(reviewerPanel);
 		jbtOK.setAlignmentX(CENTER_ALIGNMENT);
 		jbtOK.addActionListener(new jbtOKActionListener());
-		mainPanel.add(jbtOK);
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(jbtOK);
+		
 		
 		add(mainPanel);
+		add(buttonPanel, BorderLayout.SOUTH);
 		
-		setSize(400,800);
+		setSize(800,500);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 	}
