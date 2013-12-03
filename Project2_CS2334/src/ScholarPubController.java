@@ -62,6 +62,7 @@ public class ScholarPubController {
 		boolean newSelection = true;
 		ArrayList<Scholar> openWindows = new ArrayList<Scholar>();
 		SecondMouseClickScholars doubleClick;
+		MouseDraggedScholars mouseMoved;
 		public ListOfScholarsListener(){
 			doubleClick = new SecondMouseClickScholars();
 			mainView.getListOfScholars().addMouseListener(doubleClick);
@@ -107,6 +108,21 @@ public class ScholarPubController {
 			public void disable(){
 				enabled = false;
 			}
+		}
+		
+		private class MouseDraggedScholars implements MouseMotionListener{
+			public MouseDraggedScholars(){
+				
+			}
+			public void mouseDragged(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			public void mouseMoved(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
 		}
 	}
 
