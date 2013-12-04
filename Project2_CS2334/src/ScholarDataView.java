@@ -74,7 +74,9 @@ public class ScholarDataView extends JFrame{
 	}
 	
 	public void windowIsClosing(){
+		Debug.Log("Contains scholar: "+openWindowScholars.contains(usedScholar));
 		openWindowScholars.remove(usedScholar);
+		Debug.Log("Contains window: "+scholarWindows.contains(this));
 		scholarWindows.remove(this);
 	}
 	

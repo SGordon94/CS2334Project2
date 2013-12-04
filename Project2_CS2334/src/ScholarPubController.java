@@ -76,7 +76,6 @@ public class ScholarPubController {
 			if(!arg0.getValueIsAdjusting()){
 				if(newSelection){
 					newSelection = false;
-					doubleClick.enable();
 				}
 			}
 			else{
@@ -86,18 +85,15 @@ public class ScholarPubController {
 		}
 		
 		private class SecondMouseClickScholars implements MouseListener{
-			boolean enabled = false;
 			boolean clicked = false;
 			public void mouseClicked(MouseEvent arg0) {}
 			public void mouseEntered(MouseEvent arg0) {}
 			public void mouseExited(MouseEvent arg0) {
 				clicked = false;
-				enabled = false;
 			}
 			public void mousePressed(MouseEvent arg0) {
-				if(enabled){
+				if(!newSelection){
 					clicked = true;
-					enabled = false;
 				}
 			}
 			public void mouseReleased(MouseEvent arg0) {
@@ -107,19 +103,13 @@ public class ScholarPubController {
 						scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
 						scholarDataView.addWindowListener(new ScholarDataViewWindowListener(scholarDataView));
 						clicked = false;
-						enabled = false;
 					}
 					else{
 						clicked = false;
-						enabled = false;
 					}
 				}
 			}
-			public void enable(){
-				enabled = true;
-			}
 			public void disable(){
-				enabled = false;
 				clicked = false;
 			}
 		}
@@ -154,6 +144,7 @@ public class ScholarPubController {
 			localDataView = view;
 		}
 		public void actionPerformed(ActionEvent arg0) {
+			localDataView.windowIsClosing();
 			localDataView.dispose();
 		}
 	}
