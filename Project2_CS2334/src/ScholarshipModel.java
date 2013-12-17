@@ -103,6 +103,10 @@ public class ScholarshipModel {
 		conferences.add(conf);
 	}
 	
+	public Conference getConference(int index){
+		return conferences.get(index);
+	}
+	
 	public int getConferenceListSize(){
 		return conferences.size();
 	}
@@ -120,6 +124,10 @@ public class ScholarshipModel {
 	
 	public synchronized void addJournal(Journal jour){
 		journals.add(jour);
+	}
+	
+	public Journal getJournal(int index){
+		return journals.get(index);
 	}
 	
 	public int getJournalListSize(){

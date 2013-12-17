@@ -32,4 +32,8 @@ public class Location {
 	public String getCountryName(){
 		return countryName;
 	}
+	
+	public String toString(){
+		return (cityName+", "+state+", "+countryName);
+	}
 }

@@ -29,7 +29,19 @@ public class Journal {
 		return location;
 	}
 	
+	public Volume getVolume(int index){
+		return volumes.get(index);
+	}
+	
 	public ArrayList<Volume> getVolumes(){
 		return volumes;
+	}
+	
+	public int getVolumeSize(){
+		return volumes.size();
+	}
+	
+	public String toString(){
+		return (nameOfOrganization+" // "+location.toString());
 	}
 }

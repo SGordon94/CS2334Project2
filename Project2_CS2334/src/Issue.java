@@ -36,6 +36,13 @@ public class Issue {
 		return editors;
 	}
 	
+	public boolean containsEditor(Scholar key){
+		if(editors.contains(key)){
+			return true;
+		}
+		return false;
+	}
+	
 	public ArrayList<Scholar> getReviewers(){
 		return reviewers;
 	}
@@ -66,5 +73,16 @@ public class Issue {
 			
 		
 		return listOfArticles;
+	}
+	
+	public boolean containsReviewer(Scholar key){
+		if(reviewers.contains(key)){
+			return true;
+		}
+		return false;
+	}
+	
+	public String toString(){
+		return (month+", "+year);
 	}
 }

@@ -40,12 +40,30 @@ public class Meeting {
 		return location;
 	}
 	
+	public String toString(){
+		return (month+", "+year+" // "+location.toString());
+	}
+	
 	public ArrayList<Scholar> getProgramChairs(){
 		return programChairs;
 	}
 	
+	public boolean containsProgramChair(Scholar key){
+		if(programChairs.contains(key)){
+			return true;
+		}
+		return false;
+	}
+	
 	public ArrayList<Scholar> getCommitteeMembers(){
 		return committeeMembers;
+	}
+	
+	public boolean containsCommitteeMember(Scholar key){
+		if(committeeMembers.contains(key)){
+			return true;
+		}
+		return false;
 	}
 	
 	public ArrayList<ConferencePaper> getPapers(){

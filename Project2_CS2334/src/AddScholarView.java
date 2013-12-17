@@ -20,11 +20,11 @@ public class AddScholarView extends JFrame {
 	private JLabel middleInitialIndicator = new JLabel("Middle Name(s): ");
 	private JLabel institutionalIndicator = new JLabel("Institutional Affiliation(s): ");
 	private JLabel researchIndicator = new JLabel("Research Area(s): ");
-	private JTextField primaryNameData = new JTextField(" Last Name", 10);
-	private JTextField firstNameData = new JTextField(" First Name", 10);
-	private JTextField middleInitialData = new JTextField(" Middle Name(s)", 10);
-	private JTextField institutionalData = new JTextField("Enter data here. Separate with commas.", 40);
-	private JTextField researchData = new JTextField("Enter data here. Separate with commas.", 50);
+	private JTextField primaryNameData = new JTextField("", 10);
+	private JTextField firstNameData = new JTextField("", 10);
+	private JTextField middleInitialData = new JTextField("", 10);
+	private JTextField institutionalData = new JTextField(" Separate with commas.", 40);
+	private JTextField researchData = new JTextField(" Separate with commas.", 50);
 	private JButton jbtAddScholar = new JButton("Add");
 
 	private String meetingLabel = "Scholar Details";

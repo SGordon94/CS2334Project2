@@ -47,8 +47,6 @@ public class ScholarDataView extends JFrame{
 		
 		String publications = scholar.displayPapers();
 		
-		
-		
 		String chairData = "";
 		
 		String memberData = "";
@@ -56,6 +54,30 @@ public class ScholarDataView extends JFrame{
 		String editedData = "";
 		
 		String reviewedData = "";
+		
+		for(int i=0;i<model.getConferenceListSize();i++){
+			for(int j=0;j<model.getConference(i).getMeetingListSize();j++){
+				if(model.getConference(i).getMeeting(j).containsCommitteeMember(usedScholar)){
+					memberData += model.getConference(i).toString() + " // " + model.getConference(i).getMeeting(j).toString() + "\n";
+				}
+				if(model.getConference(i).getMeeting(j).containsProgramChair(usedScholar)){
+					chairData += model.getConference(i).toString() + " // " + model.getConference(i).getMeeting(j).toString() + "\n";
+				}
+			}
+		}
+		
+		for(int i=0;i<model.getJournalListSize();i++){
+			for(int j=0;j<model.getJournal(i).getVolumeSize();j++){
+				for(int k=0;k<model.getJournal(i).getVolume(j).getSizeOfIssueList();k++){
+					if(model.getJournal(i).getVolume(j).getIssue(k).containsEditor(usedScholar)){
+						editedData += model.getJournal(i).toString() + " // " + model.getJournal(i).getVolume(j).getIssue(k).toString() + "\n";
+					}
+					if(model.getJournal(i).getVolume(j).getIssue(k).containsReviewer(usedScholar)){
+						reviewedData += model.getJournal(i).toString() + " // " + model.getJournal(i).getVolume(j).getIssue(k).toString() + "\n";
+					}
+				}
+			}
+		}
 		
 		JTextArea mainTextArea = new JTextArea(nameLabel + name + "\n\n" + affiliationsLabel + "\n" + affiliations + "\n" + researchLabel + "\n" + researchAreas
 				+ "\n" + publicationsLabel + "\n" + publications + "\n" + chairLabel + "\n" + chairData + "\n" + memberLabel + "\n" + memberData + "\n" + editedLabel + "\n" +
@@ -78,9 +100,7 @@ public class ScholarDataView extends JFrame{
 	}
 	
 	public void windowIsClosing(){
-		Debug.Log("Contains scholar: "+openWindowScholars.contains(usedScholar));
 		openWindowScholars.remove(usedScholar);
-		Debug.Log("Contains window: "+scholarWindows.contains(this));
 		scholarWindows.remove(this);
 	}
 	

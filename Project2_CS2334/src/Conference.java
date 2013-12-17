@@ -21,7 +21,19 @@ public class Conference {
 		return nameOfOrganization;
 	}
 	
+	public Meeting getMeeting(int index){
+		return meetings.get(index);
+	}
+	
 	public ArrayList<Meeting> getMeetings(){
 		return meetings;
+	}
+	
+	public int getMeetingListSize(){
+		return meetings.size();
+	}
+	
+	public String toString(){
+		return nameOfOrganization;
 	}
 }
