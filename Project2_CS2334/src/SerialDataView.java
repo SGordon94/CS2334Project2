@@ -52,12 +52,27 @@ public class SerialDataView {
 	
 	private class JournalDataView extends JFrame{
 		
+		//Journal Details
+		private String organizationLabel = "Organization: ";
+		private String locationLabel = "Location: ";
+		
+		//Volume Details
+		private String volumeLabel = "Volume: ";
+		
+		//Issue Details
+		private String issueLabel = "Issue: ";
+		
 		public JournalDataView(Journal journal){
 			setTitle("Journal Details");
 			JPanel mainPanel = new JPanel();
 			
+			for(int firstIndex = 0; firstIndex < journal.getVolumes().size(); ++firstIndex){
+				for(int secondIndex = 0; secondIndex < journal.getVolumes().get(secondIndex).getSizeOfIssueList(); ++secondIndex){
+					
+				}
+			}
+			
 			
 		}
-		
 	}
 }
