@@ -20,4 +20,8 @@ public class Conference {
 	public String getOrganization(){
 		return nameOfOrganization;
 	}
+	
+	public ArrayList<Meeting> getMeetings(){
+		return meetings;
+	}
 }
