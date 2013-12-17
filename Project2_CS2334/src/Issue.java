@@ -47,12 +47,18 @@ public class Issue {
 		return reviewers;
 	}
 	
+	public boolean containsReviewer(Scholar key){
+		if(reviewers.contains(key)){
+			return true;
+		}
+		return false;
+	}
+	
 	public String printEditors(){
 		String listOfEditors = "";
 		for(int index = 0; index < editors.size(); ++index){
 			listOfEditors += editors.get(index).returnNameInString() + "\n";
 		}
-		
 		return listOfEditors;
 	}
 	
@@ -61,7 +67,6 @@ public class Issue {
 		for(int index = 0; index < reviewers.size(); ++index){
 			listOfReviewers += reviewers.get(index).returnNameInString() + "\n";
 		}
-		
 		return listOfReviewers;
 	}
 	
@@ -70,16 +75,7 @@ public class Issue {
 		for(int index = 0; index < articles.size(); ++index){
 			listOfArticles += articles.get(index).getTitleOfPaper();
 		}
-			
-		
 		return listOfArticles;
-	}
-	
-	public boolean containsReviewer(Scholar key){
-		if(reviewers.contains(key)){
-			return true;
-		}
-		return false;
 	}
 	
 	public String toString(){
