@@ -39,4 +39,32 @@ public class Issue {
 	public ArrayList<Scholar> getReviewers(){
 		return reviewers;
 	}
+	
+	public String printEditors(){
+		String listOfEditors = "";
+		for(int index = 0; index < editors.size(); ++index){
+			listOfEditors += editors.get(index).returnNameInString() + "\n";
+		}
+		
+		return listOfEditors;
+	}
+	
+	public String printReviewers(){
+		String listOfReviewers = "";
+		for(int index = 0; index < reviewers.size(); ++index){
+			listOfReviewers += reviewers.get(index).returnNameInString() + "\n";
+		}
+		
+		return listOfReviewers;
+	}
+	
+	public String printArticles(){
+		String listOfArticles = "";
+		for(int index = 0; index < articles.size(); ++index){
+			listOfArticles += articles.get(index).getTitleOfPaper();
+		}
+			
+		
+		return listOfArticles;
+	}
 }
