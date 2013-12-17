@@ -28,4 +28,8 @@ public class Journal {
 	public Location getLocation(){
 		return location;
 	}
+	
+	public ArrayList<Volume> getVolumes(){
+		return volumes;
+	}
 }
