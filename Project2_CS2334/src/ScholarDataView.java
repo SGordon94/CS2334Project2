@@ -21,8 +21,10 @@ public class ScholarDataView extends JFrame{
 	ArrayList<Scholar> openWindowScholars;
 	ArrayList<ScholarDataView> scholarWindows;
 	Scholar usedScholar;
+	ScholarshipModel model;
+	// IMPLEMENT THE COMMITTEE MEMBERS VIEW AND STUFF
 	
-	public ScholarDataView(Scholar scholar, ArrayList<Scholar> openWindows, ArrayList<ScholarDataView> windows){
+	public ScholarDataView(Scholar scholar, ArrayList<Scholar> openWindows, ArrayList<ScholarDataView> windows, ScholarshipModel model){
 		usedScholar = scholar;
 		openWindowScholars = openWindows;
 		openWindowScholars.add(usedScholar);
@@ -44,6 +46,8 @@ public class ScholarDataView extends JFrame{
 		}
 		
 		String publications = scholar.displayPapers();
+		
+		
 		
 		String chairData = "";
 		
