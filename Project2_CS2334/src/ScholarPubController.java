@@ -64,7 +64,6 @@ public class ScholarPubController {
 	}
 	
 	private class ListOfScholarsListener implements ListSelectionListener{
-		// MAKE THE STUFF SO THAT IT WORKS FOR SERIALS (CONFERENCES & JOURNALS)
 		boolean newSelection = true;
 		SecondMouseClickScholars doubleClick;
 		MouseDraggedScholars mouseMoved;
@@ -102,7 +101,8 @@ public class ScholarPubController {
 			}
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
-					if(!openScholars.contains(model.getScholar(mainView.getListOfSerials().getSelectedIndex()))){
+					Debug.Log(mainView.getListOfSerials().getSelectedIndex());
+					if(!openScholars.contains(model.getScholar(mainView.getListOfScholars().getSelectedIndex()))){
 						ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()), openScholars, openScholarWindows, model);
 						scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
 						scholarDataView.addWindowListener(new ScholarDataViewWindowListener(scholarDataView));
