@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -22,9 +25,22 @@ public class JournalDataView extends JFrame{
 	private String reviewersLabel = "Reviewers: ";
 	private String articlesLabel = "Articles: ";
 	
-	public JournalDataView(Journal journal){
+	private JButton jbtOK = new JButton("OK");
+	ArrayList<Journal> openWindowJournals;
+	ArrayList<JournalDataView> journalWindows;
+	Journal usedJournal;
+	ScholarshipModel model;
+	
+	public JournalDataView(Journal journal, ArrayList<Journal> openWindows, ArrayList<JournalDataView> windows, ScholarshipModel model){
+		usedJournal = journal;
+		openWindowJournals = openWindows;
+		openWindowJournals.add(usedJournal);
+		journalWindows = windows;
+		
 		setTitle("Journal Details");
 		JPanel mainPanel = new JPanel();
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(jbtOK);
 		String organization = organizationLabel + journal.getOrganization();
 		String location = locationLabel + journal.getLocation().getCityName() + ", " + journal.getLocation().getState() + ", "
 				+ journal.getLocation().getCountryName();
@@ -48,8 +64,18 @@ public class JournalDataView extends JFrame{
 		mainTextArea.setEditable(false);
 		mainPanel.add(mainTextArea);
 		add(mainPanel);
+		add(buttonPanel);
 		setLocationRelativeTo(null);
 		setSize(400,600);
 		setVisible(true);
+	}
+	
+	public void windowIsClosing(){
+		openWindowJournals.remove(usedJournal);
+		journalWindows.remove(this);
+	}
+	
+	public JButton getJBTOK(){
+		return jbtOK;
 	}
 }

@@ -22,7 +22,6 @@ public class ScholarDataView extends JFrame{
 	ArrayList<ScholarDataView> scholarWindows;
 	Scholar usedScholar;
 	ScholarshipModel model;
-	// IMPLEMENT THE COMMITTEE MEMBERS VIEW AND STUFF
 	
 	public ScholarDataView(Scholar scholar, ArrayList<Scholar> openWindows, ArrayList<ScholarDataView> windows, ScholarshipModel model){
 		usedScholar = scholar;

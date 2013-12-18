@@ -10,12 +10,16 @@ import javax.swing.event.ListSelectionListener;
 //REMAINING FEATURES:
 	//WHENEVER A SCHOLAR IS DELETED, BROWSE THROUGH AND DELETE EMPTY SERIALS AND PAPERS
 	//WHENEVER A SERIAL IS DELETED, BROWSE THROUGH AND DELETE EMPTY PAPERS
-	//DOUBLE-CLICKING ON A SCHOLAR WILL OPEN THE SCHOLAR DATA VIEW WINDOW
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
 	private ArrayList<Scholar> openScholars = new ArrayList<Scholar>();
+	private ArrayList<Conference> openConferences = new ArrayList<Conference>();
+	private ArrayList<Journal> openJournals = new ArrayList<Journal>();
+	private ArrayList<Paper> openPapers = new ArrayList<Paper>();
 	private ArrayList<ScholarDataView> openScholarWindows = new ArrayList<ScholarDataView>();
+	private ArrayList<ConferenceDataView> openConferenceWindows = new ArrayList<ConferenceDataView>();
+	private ArrayList<JournalDataView> openJournalWindows = new ArrayList<JournalDataView>();
 	
 	ScholarPubController(){}
 	
@@ -39,7 +43,6 @@ public class ScholarPubController {
 			mainView.getJBTDeletePapers().addActionListener(new DeletePapersListener());
 			mainView.getJBTDeleteAllPapers().addActionListener(new DeleteAllPapersListener());
 			mainView.getListOfScholars().addListSelectionListener(new ListOfScholarsListener());
-			
 			mainView.getListOfSerials().addListSelectionListener(new ListOfSerialsListener());
 			mainView.getListOfPapers().addListSelectionListener(new ListOfPapersListener());
 		}
@@ -61,6 +64,7 @@ public class ScholarPubController {
 	}
 	
 	private class ListOfScholarsListener implements ListSelectionListener{
+		// MAKE THE STUFF SO THAT IT WORKS FOR SERIALS (CONFERENCES & JOURNALS)
 		boolean newSelection = true;
 		SecondMouseClickScholars doubleClick;
 		MouseDraggedScholars mouseMoved;
@@ -98,7 +102,7 @@ public class ScholarPubController {
 			}
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
-					if(!openScholars.contains(model.getScholar(mainView.getListOfScholars().getSelectedIndex()))){
+					if(!openScholars.contains(model.getScholar(mainView.getListOfSerials().getSelectedIndex()))){
 						ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()), openScholars, openScholarWindows, model);
 						scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
 						scholarDataView.addWindowListener(new ScholarDataViewWindowListener(scholarDataView));
@@ -198,9 +202,131 @@ public class ScholarPubController {
 	}
 	
 	private class ListOfSerialsListener implements ListSelectionListener{
-		int lastSelectedIndex = -1;
+		boolean newSelection = true;
+		SecondMouseClickSerials doubleClick;
+		MouseDraggedSerials mouseMoved;
+		
+		public ListOfSerialsListener(){
+			doubleClick = new SecondMouseClickSerials();
+			mouseMoved = new MouseDraggedSerials();
+			mainView.getListOfSerials().addMouseListener(doubleClick);
+			mainView.getListOfSerials().addMouseMotionListener(mouseMoved);
+		}
+		
 		public void valueChanged(ListSelectionEvent arg0) {
-			
+			if(!arg0.getValueIsAdjusting()){
+				if(newSelection){
+					newSelection = false;
+				}
+			}
+			else{
+				newSelection = true;
+				doubleClick.disable();
+			}
+		}
+		
+		private class SecondMouseClickSerials implements MouseListener{
+			boolean clicked = false;
+			public void mouseClicked(MouseEvent arg0) {}
+			public void mouseEntered(MouseEvent arg0) {}
+			public void mouseExited(MouseEvent arg0) {
+				clicked = false;
+			}
+			public void mousePressed(MouseEvent arg0) {
+				if(!newSelection){
+					clicked = true;
+				}
+			}
+			public void mouseReleased(MouseEvent arg0) {
+				if(clicked){
+					if(mainView.getListOfSerials().getSelectedIndex() >= model.getJournalListSize()){
+						if(!openConferences.contains(model.getConference(mainView.getListOfSerials().getSelectedIndex() - model.getJournalListSize()))){
+							ConferenceDataView conferenceDataView = new ConferenceDataView(model.getConference(mainView.getListOfSerials().getSelectedIndex() - model.getJournalListSize()), openConferences, openConferenceWindows, model);
+							conferenceDataView.getJBTOK().addActionListener(new ConferenceDataViewOKButtonListener(conferenceDataView));
+							conferenceDataView.addWindowListener(new ConferenceDataViewWindowListener(conferenceDataView));
+							clicked = false;
+						}
+						else{
+							clicked = false;
+						}
+					}
+					else if(mainView.getListOfSerials().getSelectedIndex() < model.getJournalListSize()){
+						if(!openJournals.contains(model.getJournal(mainView.getListOfSerials().getSelectedIndex()))){
+							JournalDataView journalDataView = new JournalDataView(model.getJournal(mainView.getListOfSerials().getSelectedIndex()), openJournals, openJournalWindows, model);
+							journalDataView.getJBTOK().addActionListener(new JournalDataViewOKButtonListener(journalDataView));
+							journalDataView.addWindowListener(new JournalDataViewWindowListener(journalDataView));
+							clicked = false;
+						}
+						else{
+							clicked = false;
+						}
+					}
+				}
+			}
+			public void disable(){
+				clicked = false;
+			}
+		}
+		
+		private class MouseDraggedSerials implements MouseMotionListener{
+			public void mouseDragged(MouseEvent arg0) {
+				doubleClick.disable();
+			}
+			public void mouseMoved(MouseEvent arg0) {}
+		}
+	}
+	
+	private class ConferenceDataViewWindowListener implements WindowListener{
+		ConferenceDataView conferenceDataView;
+		public ConferenceDataViewWindowListener(ConferenceDataView view){
+			conferenceDataView = view;
+		}
+		public void windowActivated(WindowEvent arg0) {}
+		public void windowClosed(WindowEvent arg0) {}
+		public void windowClosing(WindowEvent arg0) {
+			conferenceDataView.windowIsClosing();
+		}
+		public void windowDeactivated(WindowEvent arg0) {}
+		public void windowDeiconified(WindowEvent arg0) {}
+		public void windowIconified(WindowEvent arg0) {}
+		public void windowOpened(WindowEvent arg0) {}
+	}
+	
+	private class ConferenceDataViewOKButtonListener implements ActionListener{
+		ConferenceDataView localDataView;
+		public ConferenceDataViewOKButtonListener(ConferenceDataView view){
+			localDataView = view;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			localDataView.windowIsClosing();
+			localDataView.dispose();
+		}
+	}
+	
+	private class JournalDataViewWindowListener implements WindowListener{
+		JournalDataView journalDataView;
+		public JournalDataViewWindowListener(JournalDataView view){
+			journalDataView = view;
+		}
+		public void windowActivated(WindowEvent arg0) {}
+		public void windowClosed(WindowEvent arg0) {}
+		public void windowClosing(WindowEvent arg0) {
+			journalDataView.windowIsClosing();
+		}
+		public void windowDeactivated(WindowEvent arg0) {}
+		public void windowDeiconified(WindowEvent arg0) {}
+		public void windowIconified(WindowEvent arg0) {}
+		public void windowOpened(WindowEvent arg0) {}
+	}
+	
+	private class JournalDataViewOKButtonListener implements ActionListener{
+		JournalDataView localDataView;
+		public JournalDataViewOKButtonListener(JournalDataView view){
+			localDataView = view;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			localDataView.windowIsClosing();
+			localDataView.dispose();
 		}
 	}
 	

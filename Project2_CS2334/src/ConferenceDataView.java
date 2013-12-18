@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -18,10 +22,23 @@ public class ConferenceDataView extends JFrame{
 	private String programChairsLabel = "Program Chairs: ";
 	private String programCommitteeMembsLabel = "Program Committee Members: ";
 	private String publishedPapersLabel = "Published Papers: ";
+	private JButton jbtOK = new JButton("OK");
+	ArrayList<Conference> openWindowConferences;
+	ArrayList<ConferenceDataView> conferenceWindows;
+	Conference usedConference;
+	ScholarshipModel model;
 			
-	public ConferenceDataView(Conference conference){
+	public ConferenceDataView(Conference conference, ArrayList<Conference> openWindows, ArrayList<ConferenceDataView> windows, ScholarshipModel model){
+		usedConference = conference;
+		openWindowConferences = openWindows;
+		openWindowConferences.add(usedConference);
+		conferenceWindows = windows;
+		
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setTitle("Conference Details");
 		JPanel mainPanel = new JPanel();
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(jbtOK);
 				
 		for(int index = 0; index < conference.getMeetings().size(); ++index){
 			String meetingMonth = conference.getMeetings().get(index).getMonth();
@@ -46,9 +63,19 @@ public class ConferenceDataView extends JFrame{
 		mainTextArea.setEditable(false);
 		mainPanel.add(mainTextArea);
 		add(mainPanel);
+		add(buttonPanel);
 		setLocationRelativeTo(null);
 		setSize(400,600);
 		setVisible(true);		
 				
+	}
+	
+	public void windowIsClosing(){
+		openWindowConferences.remove(usedConference);
+		conferenceWindows.remove(this);
+	}
+	
+	public JButton getJBTOK(){
+		return jbtOK;
 	}
 }
