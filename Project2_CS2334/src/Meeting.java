@@ -73,7 +73,7 @@ public class Meeting {
 	public String getAllProgramChairs(){
 		String allProgramChairs = "";
 		for(int index = 0; index < programChairs.size(); ++index){
-			allProgramChairs += programChairs.get(index).returnNameInStringAlt() + "\n";
+			allProgramChairs += programChairs.get(index).returnNameInString() + "\n";
 		}
 		return allProgramChairs;
 	}

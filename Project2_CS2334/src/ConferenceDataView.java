@@ -19,7 +19,7 @@ public class ConferenceDataView extends JFrame{
 			
 	//Meeting details
 	private String dateLabel = "Date: ";
-	private String meetingDetails;
+	private String meetingDetails = "";
 	private String programChairsLabel = "Program Chairs: ";
 	private String programCommitteeMembsLabel = "Program Committee Members: ";
 	private String publishedPapersLabel = "Published Papers: ";
@@ -53,13 +53,14 @@ public class ConferenceDataView extends JFrame{
 			String papers;
 			papers = conference.getMeetings().get(index).getAllPapers();
 					
-			String date = meetingMonth + " " + meetingYear;
+			String date = meetingMonth + ", " + meetingYear;
 			String location = meetingCity + ", " + meetingState + ", " + meetingCountry;
 					
 					
-			meetingDetails += dateLabel + date + "\n\t" + "This meeting took place on " + date + " at " + location + ".\n\n" + programChairsLabel
-					+ "\n" + programChairs + "\n" + programCommitteeMembsLabel + "\n" + programCommitteeMembers + "\n" + publishedPapersLabel +
-					"\n" + papers;
+			meetingDetails += "This meeting took place on " + date + " at " + location + ".\n\n\t" + programChairsLabel
+					+ "\n\t\t" + programChairs + "\n\t" + programCommitteeMembsLabel + "\n\t\t" + programCommitteeMembers + "\n\t" + publishedPapersLabel +
+					"\n\t\t" + papers + "\n";
+			//meetingDetails = meetingDetails.substring(3);
 		}
 				
 		JTextArea mainTextArea = new JTextArea(organizationLabel + conference.getOrganization() + "\n\n" + meetingsLabel + "\n" + meetingDetails);
@@ -68,7 +69,7 @@ public class ConferenceDataView extends JFrame{
 		add(mainPanel);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setLocationRelativeTo(null);
-		setSize(400,600);
+		setSize(700,500);
 		setVisible(true);		
 				
 	}
