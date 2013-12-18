@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -53,8 +54,14 @@ public class JournalDataView extends JFrame{
 						+ " " + journal.getVolumes().get(firstIndex).getIssue(secondIndex).getYear();
 				String editors = editorsLabel + "\n\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printEditors();
 				String reviewers = reviewersLabel + "\n\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printReviewers();
-				String articles = articlesLabel + "\b\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printArticles();
 				
+				String articles;
+				if(journal.getVolume(firstIndex).getIssue(secondIndex) != null){
+					articles = articlesLabel + "\b\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printArticles();
+				}else{
+					articles = "No articles have been added.";
+				}
+		
 				issueDetails += issueDate + "\n\t" + editors + "\n" + reviewers + "\n" + articles + "\n";
 				
 			}
@@ -64,7 +71,7 @@ public class JournalDataView extends JFrame{
 		mainTextArea.setEditable(false);
 		mainPanel.add(mainTextArea);
 		add(mainPanel);
-		add(buttonPanel);
+		add(buttonPanel, BorderLayout.SOUTH);
 		setLocationRelativeTo(null);
 		setSize(400,600);
 		setVisible(true);

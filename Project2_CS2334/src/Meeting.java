@@ -87,9 +87,14 @@ public class Meeting {
 	}
 	public String getAllPapers(){
 		String allPapers = "";
-		for(int index = 0; index < papers.size(); ++index){
-			allPapers += papers.get(index).getTitleOfPaper() + "\n";
+		if(papers != null){
+			for(int index = 0; index < papers.size(); ++index){
+				allPapers += papers.get(index).getTitleOfPaper() + "\n";
+			}
+		}else{
+			allPapers = "No papers have been added.";
 		}
+		
 		return allPapers;
 	}
 }

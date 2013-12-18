@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -34,7 +35,7 @@ public class ConferenceDataView extends JFrame{
 		openWindowConferences.add(usedConference);
 		conferenceWindows = windows;
 		
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setLayout(new BorderLayout());
 		setTitle("Conference Details");
 		JPanel mainPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
@@ -48,7 +49,9 @@ public class ConferenceDataView extends JFrame{
 			String meetingCountry = conference.getMeetings().get(index).getLocation().getCountryName();
 			String programChairs = conference.getMeetings().get(index).getAllProgramChairs();
 			String programCommitteeMembers = conference.getMeetings().get(index).getAllCommitteeMembers();
-			String papers = conference.getMeetings().get(index).getAllPapers();
+			
+			String papers;
+			papers = conference.getMeetings().get(index).getAllPapers();
 					
 			String date = meetingMonth + " " + meetingYear;
 			String location = meetingCity + ", " + meetingState + ", " + meetingCountry;
@@ -63,7 +66,7 @@ public class ConferenceDataView extends JFrame{
 		mainTextArea.setEditable(false);
 		mainPanel.add(mainTextArea);
 		add(mainPanel);
-		add(buttonPanel);
+		add(buttonPanel, BorderLayout.SOUTH);
 		setLocationRelativeTo(null);
 		setSize(400,600);
 		setVisible(true);		
