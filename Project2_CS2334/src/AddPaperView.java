@@ -62,6 +62,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 		private JList authorsJList = new JList();
 		private JLabel paperPageNumbersLabel = new JLabel("Page Numbers: ");
 		private JTextField paperPageNumbers = new JTextField(10);
+		private JLabel digitalObjectIdentifierLabel = new JLabel("Digital Object Identifier: ");
+		private JTextField digitalObjectIdentifier = new JTextField(20);
 		
 		public ConferencePaper(){
 			//Panel for the title of the paper
@@ -91,9 +93,15 @@ public class AddPaperView extends JFrame implements ItemListener{
 			pageNumbersPanel.add(paperPageNumbersLabel);
 			pageNumbersPanel.add(paperPageNumbers);
 			
+			//Panel for digital object identifier
+			JPanel digitalObjectPanel = new JPanel();
+			digitalObjectPanel.add(digitalObjectIdentifierLabel);
+			digitalObjectPanel.add(digitalObjectIdentifier);
+			
 			//Set the layout and add panels in order
 			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 			add(paperTitlePanel);
+			add(digitalObjectPanel);
 			add(pageNumbersPanel);
 			add(listsPanel);
 			setVisible(true);
@@ -109,6 +117,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 		private JList authorsJList = new JList();
 		private JLabel paperPageNumbersLabel = new JLabel("Page Numbers: ");
 		private JTextField paperPageNumbers = new JTextField(10);
+		private JLabel digitalObjectIdentifierLabel = new JLabel("Digital Object Identifier: ");
+		private JTextField digitalObjectIdentifier = new JTextField(20);
 		
 		public JournalPaper(){
 			//Panel for the title of the paper
@@ -138,9 +148,15 @@ public class AddPaperView extends JFrame implements ItemListener{
 			pageNumbersPanel.add(paperPageNumbersLabel);
 			pageNumbersPanel.add(paperPageNumbers);
 			
+			//Panel for digital object identifier
+			JPanel digitalObjectPanel = new JPanel();
+			digitalObjectPanel.add(digitalObjectIdentifierLabel);
+			digitalObjectPanel.add(digitalObjectIdentifier);
+			
 			//Set the layout and add panels in order
 			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 			add(paperTitlePanel);
+			add(digitalObjectPanel);
 			add(pageNumbersPanel);
 			add(listsPanel);
 			setVisible(true);

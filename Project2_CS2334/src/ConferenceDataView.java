@@ -5,6 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
@@ -37,6 +38,7 @@ public class ConferenceDataView extends JFrame{
 		
 		setLayout(new BorderLayout());
 		setTitle("Conference Details");
+		setSize(800,800);
 		JPanel mainPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
@@ -64,12 +66,15 @@ public class ConferenceDataView extends JFrame{
 		}
 				
 		JTextArea mainTextArea = new JTextArea(organizationLabel + conference.getOrganization() + "\n\n" + meetingsLabel + "\n" + meetingDetails);
+		mainTextArea.setLineWrap(true);
 		mainTextArea.setEditable(false);
-		mainPanel.add(mainTextArea);
+		mainTextArea.setSize(this.getWidth() - 100, 100);
+		JScrollPane scroll = new JScrollPane(mainTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		
+		mainPanel.add(scroll);
 		add(mainPanel);
 		add(buttonPanel, BorderLayout.SOUTH);
 		setLocationRelativeTo(null);
-		setSize(700,500);
 		setVisible(true);		
 				
 	}
