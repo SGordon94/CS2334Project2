@@ -84,7 +84,7 @@ public class ScholarDataView extends JFrame{
 		
 		mainTextArea.setEditable(false);
 		
-		add(mainTextArea);
+		add(new JScrollPane(mainTextArea));
 		
 		jbtOK.setAlignmentX(CENTER_ALIGNMENT);
 		JPanel buttonPanel = new JPanel();
