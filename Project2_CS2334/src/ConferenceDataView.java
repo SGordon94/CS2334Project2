@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -68,8 +69,11 @@ public class ConferenceDataView extends JFrame{
 		JTextArea mainTextArea = new JTextArea(organizationLabel + conference.getOrganization() + "\n\n" + meetingsLabel + "\n" + meetingDetails);
 		mainTextArea.setLineWrap(true);
 		mainTextArea.setEditable(false);
-		mainTextArea.setSize(this.getWidth() - 100, 100);
+		mainTextArea.setSize(this.getWidth() - 100, this.getHeight() - 100);
 		JScrollPane scroll = new JScrollPane(mainTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		
+		scroll.setSize(new Dimension(this.getWidth()-100, this.getHeight()-100));
+		scroll.setBounds(getX(), getY(), getWidth(), getHeight());
 		
 		mainPanel.add(scroll);
 		add(mainPanel);

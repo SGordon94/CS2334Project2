@@ -6,7 +6,7 @@ public class Issue {
 	private String year;
 	private ArrayList<Scholar> editors;
 	private ArrayList<Scholar> reviewers;
-	private ArrayList<JournalPaper> articles;
+	private ArrayList<JournalPaper> articles = new ArrayList<JournalPaper>();
 	
 	public Issue(String[] fields, ArrayList<Scholar> editor, ArrayList<Scholar> reviewer){
 		this.month = fields[0];
@@ -72,8 +72,12 @@ public class Issue {
 	
 	public String printArticles(){
 		String listOfArticles = "";
-		for(int index = 0; index < articles.size(); ++index){
-			listOfArticles += articles.get(index).getTitleOfPaper();
+		if(articles.isEmpty()){
+			listOfArticles = "No articles have been added.";
+		}else{
+			for(int index = 0; index < articles.size(); ++index){
+				listOfArticles += articles.get(index).getTitleOfPaper();
+			}
 		}
 		return listOfArticles;
 	}
