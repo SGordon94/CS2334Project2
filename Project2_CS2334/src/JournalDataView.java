@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class JournalDataView extends JFrame{
@@ -68,9 +69,10 @@ public class JournalDataView extends JFrame{
 			volumeDetails = "Volume " + firstIndex + 1 + "\n" + issueLabel + "\n\t" + issueDetails;
 		}
 		JTextArea mainTextArea = new JTextArea(organization + "\n" + location + "\n" + volumeLabel + "\n" + volumeDetails);
+		mainTextArea.setLineWrap(true);
 		mainTextArea.setEditable(false);
-		mainPanel.add(mainTextArea);
-		add(mainPanel);
+		
+		add(new JScrollPane(mainTextArea));
 		add(buttonPanel, BorderLayout.SOUTH);
 		setLocationRelativeTo(null);
 		setSize(400,600);

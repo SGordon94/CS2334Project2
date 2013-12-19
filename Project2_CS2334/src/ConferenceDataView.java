@@ -39,7 +39,7 @@ public class ConferenceDataView extends JFrame{
 		
 		setLayout(new BorderLayout());
 		setTitle("Conference Details");
-		setSize(800,800);
+		setSize(500,700);
 		JPanel mainPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
@@ -63,20 +63,14 @@ public class ConferenceDataView extends JFrame{
 			meetingDetails += "This meeting took place on " + date + " at " + location + ".\n\n\t" + programChairsLabel
 					+ "\n\t\t" + programChairs + "\n\t" + programCommitteeMembsLabel + "\n\t\t" + programCommitteeMembers + "\n\t" + publishedPapersLabel +
 					"\n\t\t" + papers + "\n";
-			//meetingDetails = meetingDetails.substring(3);
+		
 		}
 				
 		JTextArea mainTextArea = new JTextArea(organizationLabel + conference.getOrganization() + "\n\n" + meetingsLabel + "\n" + meetingDetails);
 		mainTextArea.setLineWrap(true);
 		mainTextArea.setEditable(false);
-		mainTextArea.setSize(this.getWidth() - 100, this.getHeight() - 100);
-		JScrollPane scroll = new JScrollPane(mainTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
-		scroll.setSize(new Dimension(this.getWidth()-100, this.getHeight()-100));
-		scroll.setBounds(getX(), getY(), getWidth(), getHeight());
-		
-		mainPanel.add(scroll);
-		add(mainPanel);
+		add(new JScrollPane(mainTextArea));
 		add(buttonPanel, BorderLayout.SOUTH);
 		setLocationRelativeTo(null);
 		setVisible(true);		
