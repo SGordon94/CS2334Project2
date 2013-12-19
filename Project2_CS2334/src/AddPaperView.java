@@ -105,9 +105,17 @@ public class AddPaperView extends JFrame implements ItemListener{
 				conferenceJListSize += model.getConference(i).getMeetingListSize();
 			}
 			String[] conferenceJListText = new String[conferenceJListSize];
-			// add counter to add text to the string to display for the JList
+			int conferenceJListCounter = 0;
+			for(int i=0;i<model.getConferenceListSize();i++){
+				for(int j=0;j<model.getConference(i).getMeetingListSize();j++){
+					conferenceJListText[conferenceJListCounter] = model.getConference(i).toString() + " // " + model.getConference(i).getMeeting(j).toString() + "\n";
+					++conferenceJListCounter;
+				}
+			}
+			conferencesJList.setListData(conferenceJListText);
 			
 			String[] scholarJListText = new String[model.getScholarListSize()];
+			scholarsJList.setListData(scholarJListText);
 			conferencesJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			scholarsJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			

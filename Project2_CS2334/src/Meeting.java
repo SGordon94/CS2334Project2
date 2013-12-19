@@ -40,10 +40,6 @@ public class Meeting {
 		return location;
 	}
 	
-	public String toString(){
-		return (month+", "+year+" // "+location.toString());
-	}
-	
 	public ArrayList<Scholar> getProgramChairs(){
 		return programChairs;
 	}
@@ -96,5 +92,9 @@ public class Meeting {
 		}
 		
 		return allPapers;
+	}
+	
+	public String toString(){
+		return (month+", "+year+" // "+location.toString());
 	}
 }
