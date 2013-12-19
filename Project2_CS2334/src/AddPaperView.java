@@ -47,7 +47,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 		add(cards);
 		add(addPaperPanel, BorderLayout.SOUTH);
 		
-		setSize(500, 400);
+		setSize(600, 500);
 		setLocationRelativeTo(null);
 		pack();
 		setVisible(true);
@@ -83,11 +83,6 @@ public class AddPaperView extends JFrame implements ItemListener{
 			authorsPanel.setLayout(new BoxLayout(authorsPanel, BoxLayout.Y_AXIS));
 			authorsPanel.add(scholarsListLabel);
 			authorsPanel.add(new JScrollPane(scholarsJList));
-			
-			//Panel for both lists
-			JPanel listsPanel = new JPanel();
-			listsPanel.add(conferencesPanel);
-			listsPanel.add(authorsPanel);
 			
 			//Panel for paper page numbers
 			JPanel pageNumbersPanel = new JPanel();
@@ -125,7 +120,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			add(paperTitlePanel);
 			add(digitalObjectPanel);
 			add(pageNumbersPanel);
-			add(listsPanel);
+			add(conferencesPanel);
+			add(authorsPanel);
 			setVisible(true);
 		}
 	}
@@ -161,9 +157,9 @@ public class AddPaperView extends JFrame implements ItemListener{
 			authorsPanel.add(new JScrollPane(scholarsJList));
 			
 			//Panel for both lists
-			JPanel listsPanel = new JPanel();
-			listsPanel.add(journalsPanel);
-			listsPanel.add(authorsPanel);
+			//JPanel listsPanel = new JPanel();
+			//listsPanel.add(journalsPanel);
+			//listsPanel.add(authorsPanel);
 			
 			//Panel for paper page numbers
 			JPanel pageNumbersPanel = new JPanel();
@@ -180,7 +176,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			add(paperTitlePanel);
 			add(digitalObjectPanel);
 			add(pageNumbersPanel);
-			add(listsPanel);
+			add(journalsPanel);
+			add(authorsPanel);
 			setVisible(true);
 		}
 	}

@@ -40,7 +40,6 @@ public class JournalDataView extends JFrame{
 		journalWindows = windows;
 		
 		setTitle("Journal Details");
-		JPanel mainPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
 		String organization = organizationLabel + journal.getOrganization();
