@@ -101,7 +101,6 @@ public class ScholarPubController {
 			}
 			public void mouseReleased(MouseEvent arg0) {
 				if(clicked){
-					Debug.Log(mainView.getListOfSerials().getSelectedIndex());
 					if(!openScholars.contains(model.getScholar(mainView.getListOfScholars().getSelectedIndex()))){
 						ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()), openScholars, openScholarWindows, model);
 						scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
