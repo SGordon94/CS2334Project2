@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -58,8 +59,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 		private JTextField paperTitle = new JTextField(20);
 		private JLabel conferenceListLabel = new JLabel("Conferences");
 		private JList conferencesJList = new JList();
-		private JLabel authorsListLabel = new JLabel("Authors");
-		private JList authorsJList = new JList();
+		private JLabel scholarsListLabel = new JLabel("Scholars");
+		private JList scholarsJList = new JList();
 		private JLabel paperPageNumbersLabel = new JLabel("Page Numbers: ");
 		private JTextField paperPageNumbers = new JTextField(10);
 		private JLabel digitalObjectIdentifierLabel = new JLabel("Digital Object Identifier: ");
@@ -80,8 +81,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			//Panel for the list of Authors
 			JPanel authorsPanel = new JPanel();
 			authorsPanel.setLayout(new BoxLayout(authorsPanel, BoxLayout.Y_AXIS));
-			authorsPanel.add(authorsListLabel);
-			authorsPanel.add(new JScrollPane(authorsJList));
+			authorsPanel.add(scholarsListLabel);
+			authorsPanel.add(new JScrollPane(scholarsJList));
 			
 			//Panel for both lists
 			JPanel listsPanel = new JPanel();
@@ -98,6 +99,19 @@ public class AddPaperView extends JFrame implements ItemListener{
 			digitalObjectPanel.add(digitalObjectIdentifierLabel);
 			digitalObjectPanel.add(digitalObjectIdentifier);
 			
+			//Set the contents of the JLists
+			int conferenceJListSize = 0;
+			for(int i=0;i<model.getConferenceListSize();i++){
+				conferenceJListSize += model.getConference(i).getMeetingListSize();
+			}
+			String[] conferenceJListText = new String[conferenceJListSize];
+			// add counter to add text to the string to display for the JList
+			
+			String[] scholarJListText = new String[model.getScholarListSize()];
+			conferencesJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			scholarsJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			
+			
 			//Set the layout and add panels in order
 			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 			add(paperTitlePanel);
@@ -113,8 +127,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 		private JTextField paperTitle = new JTextField(20);
 		private JLabel journalListLabel = new JLabel("Journal-Issue");
 		private JList journalsJList = new JList();
-		private JLabel authorsListLabel = new JLabel("Authors");
-		private JList authorsJList = new JList();
+		private JLabel scholarsListLabel = new JLabel("Scholars");
+		private JList scholarsJList = new JList();
 		private JLabel paperPageNumbersLabel = new JLabel("Page Numbers: ");
 		private JTextField paperPageNumbers = new JTextField(10);
 		private JLabel digitalObjectIdentifierLabel = new JLabel("Digital Object Identifier: ");
@@ -135,8 +149,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			//Panel for the list of Authors
 			JPanel authorsPanel = new JPanel();
 			authorsPanel.setLayout(new BoxLayout(authorsPanel, BoxLayout.Y_AXIS));
-			authorsPanel.add(authorsListLabel);
-			authorsPanel.add(new JScrollPane(authorsJList));
+			authorsPanel.add(scholarsListLabel);
+			authorsPanel.add(new JScrollPane(scholarsJList));
 			
 			//Panel for both lists
 			JPanel listsPanel = new JPanel();
