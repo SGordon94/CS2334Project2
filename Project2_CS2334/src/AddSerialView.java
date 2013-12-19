@@ -146,7 +146,8 @@ public class AddSerialView extends JFrame implements ItemListener{
 			//bottom panel
 			
 			JPanel bottomPanel = new JPanel();
-			bottomPanel.setLayout(new GridLayout(1,2,4,4));
+			int layoutGrid = 1;
+			bottomPanel.setLayout(new GridLayout(layoutGrid,layoutGrid<<1,layoutGrid<<2,layoutGrid<<2));
 			
 			JPanel leftPanel = new JPanel();
 			leftPanel.setLayout(new BorderLayout());
@@ -314,13 +315,6 @@ public class AddSerialView extends JFrame implements ItemListener{
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			
-//			JPanel topPanel = new JPanel();
-//			topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-			
-//			JPanel issuePanel = new JPanel();
-//			issuePanel.add(issueLabel);
-//			issuePanel.add(issueName);
-			
 			JPanel monthPanel = new JPanel();
 			monthPanel.add(monthLabel);
 			monthPanel.add(month);
@@ -341,8 +335,6 @@ public class AddSerialView extends JFrame implements ItemListener{
 			rightPanel.add(new JScrollPane(reviewers));
 			bottomPanel.add(leftPanel);
 			bottomPanel.add(rightPanel);
-			
-			//topPanel.setBorder(titledBorder);
 			
 			mainPanel.add(monthPanel);
 			mainPanel.add(bottomPanel);
