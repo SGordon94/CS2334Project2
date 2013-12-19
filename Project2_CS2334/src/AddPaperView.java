@@ -100,22 +100,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			digitalObjectPanel.add(digitalObjectIdentifier);
 			
 			//Set the contents of the JLists
-			int conferenceJListSize = 0;
-			for(int i=0;i<model.getConferenceListSize();i++){
-				conferenceJListSize += model.getConference(i).getMeetingListSize();
-			}
-			String[] conferenceJListText = new String[conferenceJListSize];
-			int conferenceJListCounter = 0;
-			for(int i=0;i<model.getConferenceListSize();i++){
-				for(int j=0;j<model.getConference(i).getMeetingListSize();j++){
-					conferenceJListText[conferenceJListCounter] = model.getConference(i).toString() + " // " + model.getConference(i).getMeeting(j).toString() + "\n";
-					++conferenceJListCounter;
-				}
-			}
-			conferencesJList.setListData(conferenceJListText);
-			
-			String[] scholarJListText = new String[model.getScholarListSize()];
-			scholarsJList.setListData(scholarJListText);
+			conferencesJList.setListData(model.getConferenceMeetings());
+			scholarsJList.setListData(model.getScholarNames());
 			conferencesJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			scholarsJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			
