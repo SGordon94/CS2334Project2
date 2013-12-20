@@ -133,14 +133,13 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 		
 		public ArrayList<Object> getInnerDetails(){
-			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			ArrayList<Object> returnStuff = new ArrayList<Object>(3);
 			String[] fields = new String[3];
 			fields[0] = paperTitle.getText().trim();
 			fields[1] = paperPageNumbers.getText().trim();
 			fields[2] = digitalObjectIdentifier.getText().trim();
 			Meeting addedMeeting = model.getSelectedConferenceMeeting(conferencesJList.getSelectedIndex());
 			ArrayList<Scholar> addedScholars = model.getSelectedScholars(scholarsJList.getSelectedIndices());
-			returnStuff.add("Journal");
 			returnStuff.add(fields);
 			returnStuff.add(addedMeeting);
 			returnStuff.add(addedScholars);
@@ -225,14 +224,13 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 		
 		public ArrayList<Object> getInnerDetails(){
-			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			ArrayList<Object> returnStuff = new ArrayList<Object>(3);
 			String[] fields = new String[3];
 			fields[0] = paperTitle.getText().trim();
 			fields[1] = paperPageNumbers.getText().trim();
 			fields[2] = digitalObjectIdentifier.getText().trim();
 			Issue addedIssue = model.getSelectedJournalIssue(journalsJList.getSelectedIndex());
 			ArrayList<Scholar> addedScholars = model.getSelectedScholars(scholarsJList.getSelectedIndices());
-			returnStuff.add("Journal");
 			returnStuff.add(fields);
 			returnStuff.add(addedIssue);
 			returnStuff.add(addedScholars);

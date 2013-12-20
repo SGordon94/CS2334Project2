@@ -7,7 +7,7 @@ public class Meeting {
 	private Location location;
 	private ArrayList<Scholar> programChairs;
 	private ArrayList<Scholar> committeeMembers;
-	private ArrayList<ConferencePaper> papers;
+	private ArrayList<ConferencePaper> papers = new ArrayList<ConferencePaper>();
 	
 	public Meeting(String[] fields, ArrayList<Scholar> chairs, ArrayList<Scholar> members){
 		month = fields[0];
@@ -15,6 +15,10 @@ public class Meeting {
 		location = new Location(fields[2], fields[3], fields[4]);
 		programChairs = chairs;
 		committeeMembers = members;
+	}
+	
+	public void addPaper(ConferencePaper pape){
+		papers.add(pape);
 	}
 	
 	public boolean equals(Meeting meet){

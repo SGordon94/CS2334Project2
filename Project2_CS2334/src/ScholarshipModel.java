@@ -34,6 +34,9 @@ public class ScholarshipModel {
 	
 	public synchronized String[] getPaperNames(){
 		String[] names = new String[papers.size()];
+		for(int i=0;i<papers.size();i++){
+			names[i] = papers.get(i).toString();
+		}
 		return names;
 	}
 	

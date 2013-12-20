@@ -23,7 +23,14 @@ public class JournalPaper extends Paper {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public JournalPaper(ArrayList<Object> innerDetails){
-		
+		String[] fields = (String[])innerDetails.get(0);
+		this.titleOfPaper = fields[0];
+		this.numbers = fields[1];
+		this.digitalObjectIdentifier = fields[2];
+		this.parentIssue = (Issue)innerDetails.get(1);
+		this.authorsList = (ArrayList<Scholar>)innerDetails.get(2);
+		parentIssue.addPaper(this);
 	}
 }

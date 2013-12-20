@@ -15,6 +15,10 @@ public class Issue {
 		this.reviewers = reviewer;
 	}
 	
+	public void addPaper(JournalPaper pape){
+		articles.add(pape);
+	}
+	
 	public boolean equals(Issue issue){
 		if(this.month.equals(issue.getMonth())){
 			if(this.year.equals(issue.getYear())){
