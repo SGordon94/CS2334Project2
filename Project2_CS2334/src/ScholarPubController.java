@@ -623,6 +623,21 @@ public class ScholarPubController {
 			// TODO Auto-generated method stub
 			
 		}
-		
+	}
+
+	public class AddPaperToListListener implements ActionListener{
+		AddPaperView localPaperView;
+		public AddPaperToListListener(AddPaperView paperView){
+			this.localPaperView = paperView;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			if(localPaperView.visibleCard().equals("Conference")){
+				
+			}
+			else{
+				
+			}
+		}
+
 	}
 }
