@@ -6,6 +6,8 @@ public class ConferencePaper extends Paper {
 	/**
 	 * 
 	 */
+	private Meeting parentMeeting;
+	
 	private static final long serialVersionUID = -1864623661714427137L;
 	public ConferencePaper(ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){

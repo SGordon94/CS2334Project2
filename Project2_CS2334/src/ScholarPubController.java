@@ -674,7 +674,7 @@ public class ScholarPubController {
 						localPaperView.dispose();
 					}
 					else{
-						JOptionPane.showMessageDialog(null, "This Journal Paper is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "This Article is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 					}
 					mainView.updatePaperList();
 				}

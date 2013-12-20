@@ -118,7 +118,6 @@ public class ScholarshipModel {
 				index -= conferences.get(i).getMeetingListSize();
 			}
 			else{
-				Debug.Log(conferences.get(i).getMeeting(index).toString());
 				return conferences.get(i).getMeeting(index);
 			}
 		}
