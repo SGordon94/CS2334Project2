@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class AddPaperView extends JFrame implements ItemListener{
 	private final String CONFERENCEPAPER = "Conference Paper";
@@ -110,6 +111,41 @@ public class AddPaperView extends JFrame implements ItemListener{
 			add(authorsPanel);
 			setVisible(true);
 		}
+		
+		public boolean fieldsFilled(){
+			if(paperTitle.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the name of the paper.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(paperPageNumbers.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the paper's page numbers.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(conferencesJList.getSelectedIndex() == -1){
+				JOptionPane.showMessageDialog(null, "Please select the Meeting that this paper belongs to.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(scholarsJList.getSelectedIndices().length == 0){
+				JOptionPane.showMessageDialog(null, "Please select at least on Scholar.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			return true;
+		}
+		
+		public ArrayList<Object> getInnerDetails(){
+			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			String[] fields = new String[3];
+			fields[0] = paperTitle.getText().trim();
+			fields[1] = paperPageNumbers.getText().trim();
+			fields[2] = digitalObjectIdentifier.getText().trim();
+			Meeting addedMeeting = model.getSelectedConferenceMeeting(conferencesJList.getSelectedIndex());
+			ArrayList<Scholar> addedScholars = model.getSelectedScholars(scholarsJList.getSelectedIndices());
+			returnStuff.add("Journal");
+			returnStuff.add(fields);
+			returnStuff.add(addedMeeting);
+			returnStuff.add(addedScholars);
+			return returnStuff;
+		}
 	}
 	
 	private class JournalPaper extends JPanel{
@@ -142,11 +178,6 @@ public class AddPaperView extends JFrame implements ItemListener{
 			authorsPanel.add(scholarsListLabel);
 			authorsPanel.add(new JScrollPane(scholarsJList));
 			
-			//Panel for both lists
-			//JPanel listsPanel = new JPanel();
-			//listsPanel.add(journalsPanel);
-			//listsPanel.add(authorsPanel);
-			
 			//Panel for paper page numbers
 			JPanel pageNumbersPanel = new JPanel();
 			pageNumbersPanel.add(paperPageNumbersLabel);
@@ -172,6 +203,41 @@ public class AddPaperView extends JFrame implements ItemListener{
 			add(authorsPanel);
 			setVisible(true);
 		}
+		
+		public boolean fieldsFilled(){
+			if(paperTitle.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the name of the paper.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(paperPageNumbers.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the paper's page numbers.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(journalsJList.getSelectedIndex() == -1){
+				JOptionPane.showMessageDialog(null, "Please select the Issue that this paper belongs to.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(scholarsJList.getSelectedIndices().length == 0){
+				JOptionPane.showMessageDialog(null, "Please select at least on Scholar.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			return true;
+		}
+		
+		public ArrayList<Object> getInnerDetails(){
+			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
+			String[] fields = new String[3];
+			fields[0] = paperTitle.getText().trim();
+			fields[1] = paperPageNumbers.getText().trim();
+			fields[2] = digitalObjectIdentifier.getText().trim();
+			Issue addedIssue = model.getSelectedJournalIssue(journalsJList.getSelectedIndex());
+			ArrayList<Scholar> addedScholars = model.getSelectedScholars(scholarsJList.getSelectedIndices());
+			returnStuff.add("Journal");
+			returnStuff.add(fields);
+			returnStuff.add(addedIssue);
+			returnStuff.add(addedScholars);
+			return returnStuff;
+		}
 	}
 	
 	public String visibleCard(){
@@ -179,6 +245,28 @@ public class AddPaperView extends JFrame implements ItemListener{
 			return "Conference";
 		}
 		return "Journal";
+	}
+	
+	public ArrayList<Object> getInnerDetails(){
+		if(card1.isVisible()){
+			if(card1.fieldsFilled()){
+				return card1.getInnerDetails();
+			}
+			else{
+				return new ArrayList<Object>();
+			}
+		}
+		else if(card2.isVisible()){
+			if(card2.fieldsFilled()){
+				return card2.getInnerDetails();
+			}
+			else{
+				return new ArrayList<Object>();
+			}
+		}
+		else{
+			return new ArrayList<Object>();
+		}
 	}
 	
 	public JButton getJBTAddPaper(){

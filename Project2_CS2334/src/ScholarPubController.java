@@ -386,6 +386,7 @@ public class ScholarPubController {
 	private class AddPaperListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			AddPaperView paperView = new AddPaperView(model);
+			paperView.getJBTAddPaper().addActionListener(new AddPaperToListListener(paperView));
 		}
 	}
 	
@@ -639,13 +640,44 @@ public class ScholarPubController {
 			this.localPaperView = paperView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
-			if(localPaperView.visibleCard().equals("Conference")){
-				Paper pape = new ConferencePaper();
-				boolean uniquePaper = !model.containsPaper(pape);
-			}
-			else{
-				Paper pape = new JournalPaper();
-				boolean uniquePaper = !model.containsPaper(pape);
+			ArrayList<Object> innerDetails = localPaperView.getInnerDetails();
+			if(innerDetails.size() != 0){
+				if(localPaperView.visibleCard().equals("Conference")){
+					Paper pape = new ConferencePaper(innerDetails);
+					boolean uniquePaper = !model.containsPaper(pape);
+					if(uniquePaper){
+						if(!mainView.getJBTDeletePapers().isEnabled()){
+							mainView.getJBTDeletePapers().setEnabled(true);
+						}
+						if(!mainView.getJBTDeleteAllPapers().isEnabled()){
+							mainView.getJBTDeleteAllPapers().setEnabled(true);
+						}
+						model.addPaper(pape);
+						localPaperView.dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "This Conference Paper is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					mainView.updatePaperList();
+				}
+				else{
+					Paper pape = new JournalPaper(innerDetails);
+					boolean uniquePaper = !model.containsPaper(pape);
+					if(uniquePaper){
+						if(!mainView.getJBTDeletePapers().isEnabled()){
+							mainView.getJBTDeletePapers().setEnabled(true);
+						}
+						if(!mainView.getJBTDeleteAllPapers().isEnabled()){
+							mainView.getJBTDeleteAllPapers().setEnabled(true);
+						}
+						model.addPaper(pape);
+						localPaperView.dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "This Journal Paper is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					mainView.updatePaperList();
+				}
 			}
 		}
 

@@ -19,4 +19,8 @@ public class ConferencePaper extends Paper {
 			authorsList.get(i).setContainingPaper(this);
 		}
 	}
+	
+	public ConferencePaper(ArrayList<Object> innerDetails){
+		
+	}
 }
