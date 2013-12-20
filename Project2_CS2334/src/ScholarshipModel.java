@@ -197,4 +197,17 @@ public class ScholarshipModel {
 		conferences.removeAll(conferences);
 		journals.removeAll(journals);
 	}
+	
+	public boolean containsPaper(Paper pape){
+		if(papers.size() != 0){
+			for(int i=0;i<papers.size();i++){
+				if(papers.get(i).getClass() == pape.getClass()){
+					if(papers.get(i).getTitleOfPaper().equals(pape.getTitleOfPaper())){
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 }

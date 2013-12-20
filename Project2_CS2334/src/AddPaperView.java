@@ -174,6 +174,13 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 	}
 	
+	public String visibleCard(){
+		if(card1.isVisible()){
+			return "Conference";
+		}
+		return "Journal";
+	}
+	
 	public JButton getJBTAddPaper(){
 		return jbtAddPaper;
 	}
