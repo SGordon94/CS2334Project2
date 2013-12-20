@@ -39,8 +39,7 @@ public class ConferenceDataView extends JFrame{
 		
 		setLayout(new BorderLayout());
 		setTitle("Conference Details");
-		setSize(500,700);
-		JPanel mainPanel = new JPanel();
+
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
 				
@@ -56,13 +55,13 @@ public class ConferenceDataView extends JFrame{
 			String papers;
 			papers = conference.getMeetings().get(index).getAllPapers();
 					
-			String date = meetingMonth + ", " + meetingYear;
+			String date = meetingMonth + " " + meetingYear;
 			String location = meetingCity + ", " + meetingState + ", " + meetingCountry;
 					
 					
-			meetingDetails += "This meeting took place on " + date + " at " + location + ".\n\n\t" + programChairsLabel
-					+ "\n\t\t" + programChairs + "\n\t" + programCommitteeMembsLabel + "\n\t\t" + programCommitteeMembers + "\n\t" + publishedPapersLabel +
-					"\n\t\t" + papers + "\n";
+			meetingDetails += "\nThis meeting took place during " + date + " in " + location + ".\n\t" + programChairsLabel
+					+ "\n\t" + programChairs + "\n\t" + programCommitteeMembsLabel + "\n\t" + programCommitteeMembers + "\n\t" + publishedPapersLabel +
+					"\n\t" + papers + "\n";
 		
 		}
 				
@@ -72,6 +71,8 @@ public class ConferenceDataView extends JFrame{
 		
 		add(new JScrollPane(mainTextArea));
 		add(buttonPanel, BorderLayout.SOUTH);
+		
+		setSize(500,700);
 		setLocationRelativeTo(null);
 		setVisible(true);		
 				

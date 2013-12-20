@@ -46,35 +46,37 @@ public class JournalDataView extends JFrame{
 		String location = locationLabel + journal.getLocation().getCityName() + ", " + journal.getLocation().getState() + ", "
 				+ journal.getLocation().getCountryName();
 		
+		
 		for(int firstIndex = 0; firstIndex < journal.getVolumes().size(); ++firstIndex){
 			
-			for(int secondIndex = 0; secondIndex < journal.getVolumes().get(secondIndex).getSizeOfIssueList(); ++secondIndex){
+			for(int secondIndex = 0; secondIndex < journal.getVolumes().get(firstIndex).getSizeOfIssueList(); ++secondIndex){
 				
 				String issueDate = journal.getVolumes().get(firstIndex).getIssue(secondIndex).getMonth() 
 						+ " " + journal.getVolumes().get(firstIndex).getIssue(secondIndex).getYear();
-				String editors = editorsLabel + "\n\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printEditors();
-				String reviewers = reviewersLabel + "\n\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printReviewers();
+				String editors = editorsLabel + "\n\t\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printEditors();
+				String reviewers = reviewersLabel + "\n\t\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printReviewers();
 				
 				String articles;
 				if(journal.getVolume(firstIndex).getIssue(secondIndex) != null){
-					articles = articlesLabel + "\b\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printArticles();
+					articles = articlesLabel + "\n\t\t" + journal.getVolumes().get(firstIndex).getIssue(secondIndex).printArticles();
 				}else{
-					articles = "No articles have been added.";
+					articles = articlesLabel + "\n\t\t" + "No articles have been added.";
 				}
 		
-				issueDetails += issueDate + "\n\t" + editors + "\n" + reviewers + "\n" + articles + "\n";
+				issueDetails += "\n\t\t" + issueDate + "\n\t\t" + editors + "\n\t\t" + reviewers + "\n\t\t" + articles;
 				
 			}
-			volumeDetails = "Volume " + firstIndex + 1 + "\n" + issueLabel + "\n\t" + issueDetails;
+			volumeDetails += "\n\t" + "Volume " + (firstIndex + 1) + "\n\t" + issueLabel + issueDetails;
+			issueDetails = "";
 		}
-		JTextArea mainTextArea = new JTextArea(organization + "\n" + location + "\n" + volumeLabel + "\n" + volumeDetails);
+		JTextArea mainTextArea = new JTextArea(organization + "\n" + location + "\n" + volumeLabel + volumeDetails);
 		mainTextArea.setLineWrap(true);
 		mainTextArea.setEditable(false);
 		
 		add(new JScrollPane(mainTextArea));
 		add(buttonPanel, BorderLayout.SOUTH);
+		setSize(500,700);
 		setLocationRelativeTo(null);
-		setSize(400,600);
 		setVisible(true);
 	}
 	
