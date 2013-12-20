@@ -25,6 +25,17 @@ public class SelectionView extends JFrame {
 	private JList listOfSerials;
 	private JList listOfPapers;
 	
+	//Menu Items
+	JMenuItem loadOption = new JMenuItem("Load");
+	JMenuItem saveOption = new JMenuItem("Save");
+	JMenuItem closeOption = new JMenuItem("Close");
+	
+	JMenuItem typeOfPublication = new JMenuItem("Type of Publication");
+	JMenuItem publicationsPerYear = new JMenuItem("Publication Per Year");
+	JMenuItem conferencePapersPerYear = new JMenuItem("Conference Papers Per Year");
+	JMenuItem journalArticlesPerYear = new JMenuItem("Journal Articles Per Year");
+	JMenuItem numberOfCoauthorsPerPublication = new JMenuItem("Number of Co-Authors Per Publication");
+	
 	public SelectionView(){
 		listOfScholars = new JList();
 		listOfSerials = new JList();
@@ -40,25 +51,22 @@ public class SelectionView extends JFrame {
 		
 		//Menus
 		JMenu fileOption = new JMenu("File");
-		JMenu graphOption = new JMenu("Graph");
-		
-		
-		//Menu Items
-		JMenuItem loadOption = new JMenuItem("Load");
-		JMenuItem saveOption = new JMenuItem("Save");
-		JMenuItem closeOption = new JMenuItem("Close");
+		JMenu graphOption = new JMenu("Plot");
 		
 		//Add items to menu
 		fileOption.add(loadOption);
 		fileOption.add(saveOption);
 		fileOption.add(closeOption);
 		
+		graphOption.add(typeOfPublication);
+		graphOption.add(publicationsPerYear);
+		graphOption.add(conferencePapersPerYear);
+		graphOption.add(journalArticlesPerYear);
+		graphOption.add(numberOfCoauthorsPerPublication);
+		
 		//Add menus to bar
 		menuBar.add(fileOption);
 		menuBar.add(graphOption);
-		
-		//menuBar.setVisible(true);
-		//add(menuBar);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new GridLayout(1,3,5,5));
@@ -197,7 +205,7 @@ public class SelectionView extends JFrame {
 	public JButton getJBTDeletePapers(){
 		return jbtDeletePapers;
 	}
-	
+
 	public JButton getJBTDeleteAllPapers(){
 		return jbtDeleteAllPapers;
 	}
@@ -212,5 +220,37 @@ public class SelectionView extends JFrame {
 	
 	public JList getListOfPapers(){
 		return listOfPapers;
+	}
+	
+	public JMenuItem getLoadOption(){
+		return loadOption;
+	}
+	
+	public JMenuItem getSaveOption(){
+		return saveOption;
+	}
+	
+	public JMenuItem getCloseOption(){
+		return closeOption;
+	}
+	
+	public JMenuItem getTypeOfPublication(){
+		return typeOfPublication;
+	}
+	
+	public JMenuItem getPublicationsPerYear(){
+		return publicationsPerYear;
+	}
+	
+	public JMenuItem getConferencePapersPerYear(){
+		return conferencePapersPerYear;
+	}
+	
+	public JMenuItem getJournalArticlesPerYear(){
+		return journalArticlesPerYear;
+	}
+	
+	public JMenuItem getNumberOfCoauthorsPerYear(){
+		return numberOfCoauthorsPerPublication;
 	}
 }
