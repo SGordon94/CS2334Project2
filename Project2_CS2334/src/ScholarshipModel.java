@@ -121,7 +121,7 @@ public class ScholarshipModel {
 		int conferenceJListCounter = 0;
 		for(int i=0;i<conferences.size();i++){
 			for(int j=0;j<conferences.get(i).getMeetingListSize();j++){
-				conferenceJListText[conferenceJListCounter] = conferences.get(i).toString() + " // " + conferences.get(i).getMeeting(j).toString() + "\n";
+				conferenceJListText[conferenceJListCounter] = conferences.get(i).toString() + " // " + conferences.get(i).getMeeting(j).toString();
 				++conferenceJListCounter;
 			}
 		}
@@ -163,7 +163,7 @@ public class ScholarshipModel {
 		for(int i=0;i<journals.size();i++){
 			for(int j=0;j<journals.get(i).getVolumeSize();j++){
 				for(int k=0;k<journals.get(i).getVolume(j).getSizeOfIssueList();k++){
-					journalJListText[journalJListCounter] = journals.get(i).toString() + " // Volume" + j + " // " + journals.get(i).getVolume(j).getIssue(k).toString() + "\n";
+					journalJListText[journalJListCounter] = journals.get(i).toString() + " // Volume " + j + " // " + journals.get(i).getVolume(j).getIssue(k).toString();
 					++journalJListCounter;
 				}
 			}

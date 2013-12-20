@@ -4,6 +4,12 @@ public final class Debug {
 		System.out.println(s);
 	}
 	
+	public static void Log(String[] s){
+		for(int i=0;i<s.length;i++){
+			System.out.println(s[i]);
+		}
+	}
+	
 	public static void Log(int s){
 		System.out.println(s);
 	}
