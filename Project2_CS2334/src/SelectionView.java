@@ -35,6 +35,31 @@ public class SelectionView extends JFrame {
 		
 		setTitle("ScholarPub");
 		
+		//Menu Bar
+		JMenuBar menuBar = new JMenuBar();
+		
+		//Menus
+		JMenu fileOption = new JMenu("File");
+		JMenu graphOption = new JMenu("Graph");
+		
+		
+		//Menu Items
+		JMenuItem loadOption = new JMenuItem("Load");
+		JMenuItem saveOption = new JMenuItem("Save");
+		JMenuItem closeOption = new JMenuItem("Close");
+		
+		//Add items to menu
+		fileOption.add(loadOption);
+		fileOption.add(saveOption);
+		fileOption.add(closeOption);
+		
+		//Add menus to bar
+		menuBar.add(fileOption);
+		menuBar.add(graphOption);
+		
+		//menuBar.setVisible(true);
+		//add(menuBar);
+		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new GridLayout(1,3,5,5));
 		
@@ -87,6 +112,8 @@ public class SelectionView extends JFrame {
 		papersButtonPanel.add(jbtDeleteAllPapers);
 		
 		papersPanel.add(papersButtonPanel, BorderLayout.SOUTH);
+		
+		setJMenuBar(menuBar);
 		
 		mainPanel.add(scholarsPanel);
 		
