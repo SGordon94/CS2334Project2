@@ -45,6 +45,14 @@ public class ScholarPubController {
 			mainView.getListOfScholars().addListSelectionListener(new ListOfScholarsListener());
 			mainView.getListOfSerials().addListSelectionListener(new ListOfSerialsListener());
 			mainView.getListOfPapers().addListSelectionListener(new ListOfPapersListener());
+			mainView.getLoadOption().addActionListener(new LoadOptionListener());
+			mainView.getSaveOption().addActionListener(new SaveOptionListener());
+			mainView.getCloseOption().addActionListener(new CloseOptionListener());
+			mainView.getTypeOfPublication().addActionListener(new TypeOfPublicationListener());
+			mainView.getPublicationsPerYear().addActionListener(new PublicationsPerYearListener());
+			mainView.getConferencePapersPerYear().addActionListener(new ConferencePapersPerYearListener());
+			mainView.getJournalArticlesPerYear().addActionListener(new JournalArticlesPerYearListener());
+			mainView.getNumberOfCoauthorsPerYear().addActionListener(new NumberOfCoauthorsPerPublicationListener());
 		}
 	}
 	
