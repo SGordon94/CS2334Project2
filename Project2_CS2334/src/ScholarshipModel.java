@@ -1,5 +1,6 @@
 import java.util.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 
@@ -111,6 +112,22 @@ public class ScholarshipModel {
 		return conferences.size();
 	}
 	
+	public String[] getConferenceMeetings(){
+		int conferenceJListSize = 0;
+		for(int i=0;i<conferences.size();i++){
+			conferenceJListSize += conferences.get(i).getMeetingListSize();
+		}
+		String[] conferenceJListText = new String[conferenceJListSize];
+		int conferenceJListCounter = 0;
+		for(int i=0;i<conferences.size();i++){
+			for(int j=0;j<conferences.get(i).getMeetingListSize();j++){
+				conferenceJListText[conferenceJListCounter] = conferences.get(i).toString() + " // " + conferences.get(i).getMeeting(j).toString() + "\n";
+				++conferenceJListCounter;
+			}
+		}
+		return conferenceJListText;
+	}
+	
 	public boolean containsConference(Conference conf){
 		if(conferences.size() != 0){
 			for(int i=0;i<conferences.size();i++){
@@ -132,6 +149,26 @@ public class ScholarshipModel {
 	
 	public int getJournalListSize(){
 		return journals.size();
+	}
+	
+	public String[] getJournalIssues(){
+		int journalJListSize = 0;
+		for(int i=0;i<journals.size();i++){
+			for(int j=0;j<journals.get(i).getVolumeSize();j++){
+				journalJListSize += journals.get(i).getVolume(j).getSizeOfIssueList();
+			}
+		}
+		String[] journalJListText = new String[journalJListSize];
+		int journalJListCounter = 0;
+		for(int i=0;i<journals.size();i++){
+			for(int j=0;j<journals.get(i).getVolumeSize();j++){
+				for(int k=0;k<journals.get(i).getVolume(j).getSizeOfIssueList();k++){
+					journalJListText[journalJListCounter] = journals.get(i).toString() + " // Volume" + j + " // " + journals.get(i).getVolume(j).getIssue(k).toString() + "\n";
+					++journalJListCounter;
+				}
+			}
+		}
+		return journalJListText;
 	}
 	
 	public boolean containsJournal(Journal jour){
