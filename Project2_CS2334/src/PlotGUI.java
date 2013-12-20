@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 
 public class PlotGUI extends JFrame {
-	
+	ScholarshipModel plotModel;
 	public PlotGUI(){
 		
 	}
