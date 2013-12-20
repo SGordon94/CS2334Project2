@@ -632,10 +632,12 @@ public class ScholarPubController {
 		}
 		public void actionPerformed(ActionEvent arg0) {
 			if(localPaperView.visibleCard().equals("Conference")){
-				
+				Paper pape = new ConferencePaper();
+				boolean uniquePaper = !model.containsPaper(pape);
 			}
 			else{
-				
+				Paper pape = new JournalPaper();
+				boolean uniquePaper = !model.containsPaper(pape);
 			}
 		}
 
