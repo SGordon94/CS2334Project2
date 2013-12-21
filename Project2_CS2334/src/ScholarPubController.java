@@ -585,51 +585,51 @@ public class ScholarPubController {
 	}
 	
 	private class TypeOfPublicationListener implements ActionListener{
-
+		String choice = "Type Of Publication";
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			PlotGUI plotGUI = new PlotGUI(model, choice);
+			//System.out.print("HI");
 		}
-		
 	}
 	
 	private class PublicationsPerYearListener implements ActionListener{
-
+		String choice = "Publications Per Year";
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 		
 	}
 	
 	private class ConferencePapersPerYearListener implements ActionListener{
-
+		String choice = "Conference Papers Per Year";
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 		
 	}
 	
 	private class JournalArticlesPerYearListener implements ActionListener{
-
+		String choice = "Journal Articles Per Year";
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 		
 	}
 	
 	private class NumberOfCoauthorsPerPublicationListener implements ActionListener{
-
+		String choice = "Number of Co-Authors Per Publication";
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 	}
 

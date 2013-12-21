@@ -31,7 +31,7 @@ public class SelectionView extends JFrame {
 	JMenuItem closeOption = new JMenuItem("Close");
 	
 	JMenuItem typeOfPublication = new JMenuItem("Type of Publication");
-	JMenuItem publicationsPerYear = new JMenuItem("Publication Per Year");
+	JMenuItem publicationsPerYear = new JMenuItem("Publications Per Year");
 	JMenuItem conferencePapersPerYear = new JMenuItem("Conference Papers Per Year");
 	JMenuItem journalArticlesPerYear = new JMenuItem("Journal Articles Per Year");
 	JMenuItem numberOfCoauthorsPerPublication = new JMenuItem("Number of Co-Authors Per Publication");

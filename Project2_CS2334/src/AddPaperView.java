@@ -102,7 +102,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 			
 			
 			//Set the layout and add panels in order
-			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 			add(paperTitlePanel);
 			add(digitalObjectPanel);
 			add(pageNumbersPanel);
@@ -164,7 +164,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 			scholarsJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			
 			//Set the layout and add panels in order
-			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 			add(paperTitlePanel);
 			add(digitalObjectPanel);
 			add(pageNumbersPanel);

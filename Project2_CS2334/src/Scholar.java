@@ -79,5 +79,8 @@ public class Scholar implements Serializable {
         public ArrayList getResearchAreas(){
         	return this.researchAreas;
         }
+        public ArrayList<Paper> getPapers(){
+        	return this.containingPapers;
+        }
         
 }
