@@ -19,6 +19,10 @@ public class Issue {
 		articles.add(pape);
 	}
 	
+	public void removePaper(JournalPaper pape){
+		articles.remove(pape);
+	}
+	
 	public boolean equals(Issue issue){
 		if(this.month.equals(issue.getMonth())){
 			if(this.year.equals(issue.getYear())){

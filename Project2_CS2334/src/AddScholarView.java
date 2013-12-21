@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -26,6 +27,7 @@ public class AddScholarView extends JFrame {
 	private JTextField institutionalData = new JTextField(" Separate with commas.", 40);
 	private JTextField researchData = new JTextField(" Separate with commas.", 50);
 	private JButton jbtAddScholar = new JButton("Add");
+	private ArrayList<AddScholarView> openAddScholarWindows;
 
 	private String meetingLabel = "Scholar Details";
 	private Border etchedBorder = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
@@ -92,6 +94,10 @@ public class AddScholarView extends JFrame {
 	
 	public JButton getJBTAddScholar(){
 		return jbtAddScholar;
+	}
+	
+	public void windowIsClosing(){
+		openAddScholarWindows.remove(this);
 	}
 	
 	public String[] getTextFields(){

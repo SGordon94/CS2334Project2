@@ -320,4 +320,8 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		}
 		return allAuthors;
 	}
+		
+	public void removePaper(){
+		
+	}
 }
