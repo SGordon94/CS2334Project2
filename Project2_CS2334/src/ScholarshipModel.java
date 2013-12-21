@@ -238,6 +238,10 @@ public class ScholarshipModel {
 		return papers.get(index);
 	}
 	
+	public int getPaperListSize(){
+		return papers.size();
+	}
+	
 	public boolean containsPaper(Paper pape){
 		if(papers.size() != 0){
 			for(int i=0;i<papers.size();i++){
@@ -249,5 +253,12 @@ public class ScholarshipModel {
 			}
 		}
 		return false;
+	}
+	
+	public synchronized void removePapers(int[] indices){
+		for(int i=indices.length-1;i>=0;i--){
+			papers.get(indices[i]).removePaper();
+			papers.remove(indices[i]);
+		}
 	}
 }
