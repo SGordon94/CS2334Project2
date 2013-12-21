@@ -10,11 +10,13 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 public class PlotGUI {
 	ScholarshipModel plotModel;
 	Scholar selectedScholar;
+	ArrayList<Paper> publishedPapers = new ArrayList<Paper>();
 	int scholarIndex;
 	String option;
 	int numberOfConferencePapers = 0;
@@ -60,11 +62,18 @@ public class PlotGUI {
 			public void actionPerformed(ActionEvent arg0) {
 				scholarIndex = listOfScholarNames.getSelectedIndex();
 				selectedScholar = plotModel.getScholar(scholarIndex);
+				publishedPapers = plotModel.getPapersForAuthor(selectedScholar);
+				System.out.println(publishedPapers.get(0).getTitleOfPaper());
+				//System.out.println(publishedPapers.get(0).getTypeOfPaper());
+
+
 				
-				for(int index = 0; index < selectedScholar.getPapers().size(); ++index){
-					if(selectedScholar.getPapers().get(index).getTypeOfPaper() == "Conference Paper"){
+				for(int index = 0; index < publishedPapers.size(); ++index){
+					if(publishedPapers.get(index).equals(ConferencePaper.class)){
+						System.out.print("Conference Paper");
 						++numberOfConferencePapers;
 					}else{
+						System.out.print("Journal Articles");
 						++numberOfJournalArticles;
 					}
 				}
@@ -93,14 +102,24 @@ public class PlotGUI {
 	private class PublicationTypePanel extends JFrame{
 		private JLabel conferencePapersLabel = new JLabel("Conference Papers ");
 		private JLabel journalArticlesLabel = new JLabel("Journal Articles ");
+		private ArrayList<JLabel> labels = new ArrayList<JLabel>();
+		private ArrayList<Integer> numbers = new ArrayList<Integer>();
 		
 		public PublicationTypePanel(){
+			labels.add(conferencePapersLabel);
+			labels.add(journalArticlesLabel);
+			numbers.add(numberOfConferencePapers);
+			numbers.add(numberOfJournalArticles);
 			
-			setLayout(new GridLayout(2,2,0,0));
-			BarPanel mainPanel = new BarPanel(numberOfConferencePapers);
-			add(conferencePapersLabel);
-			add(mainPanel);
-			add(journalArticlesLabel);
+			setLayout(new GridLayout(2,2,5,5));
+			
+			for(int index = 0; index < labels.size(); ++index){
+				add(labels.get(index));
+				BarPanel barGraph = new BarPanel(numbers.get(index));
+				add(barGraph);
+				
+			}
+			
 			setName("Type Of Publication");
 			setSize(400,300);
 			setLocationRelativeTo(null);
@@ -143,7 +162,7 @@ public class PlotGUI {
 	private class ConferencePaperPerYearPanel extends JFrame{
 		public ConferencePaperPerYearPanel(){
 			setName("Conference Papers Per Year");
-			setSize(400,300);
+			setSize(800,600);
 			setLocationRelativeTo(null);
 			setVisible(true);
 		}

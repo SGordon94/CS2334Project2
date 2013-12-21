@@ -329,6 +329,10 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return false;
 	}
 		
+	public ArrayList<Scholar> getListOfScholars(){
+		return this.authorsList;
+	}
+	
 	public void removePaper(){
 		
 	}
