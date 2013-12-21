@@ -45,7 +45,7 @@ public class ScholarDataView extends JFrame{
 			researchAreas += scholar.getResearchAreas().get(i) + "\n";
 		}
 		
-		String publications = scholar.displayPapers();
+		String publications = model.getPaperTitlesForAuthor(usedScholar);
 		
 		String chairData = "";
 		

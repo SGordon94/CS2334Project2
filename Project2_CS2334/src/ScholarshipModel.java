@@ -250,4 +250,21 @@ public class ScholarshipModel {
 		}
 		return false;
 	}
+	
+	public String getPaperTitlesForAuthor(Scholar scholar){
+		String publishedPapers = "";
+		for(int index = 0; index < papers.size(); ++index){
+			if(papers.get(index).containsScholar(scholar)){
+				publishedPapers += papers.get(index).getTitleOfPaper() + "\n";
+			}
+		}
+		
+		return publishedPapers;
+	}
+	
+	public ArrayList<Paper> getPapersForAuthor(Scholar scholar){
+		ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
+		
+		return listOfPapers;
+	}
 }

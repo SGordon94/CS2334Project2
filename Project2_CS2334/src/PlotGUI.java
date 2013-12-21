@@ -17,6 +17,8 @@ public class PlotGUI {
 	Scholar selectedScholar;
 	int scholarIndex;
 	String option;
+	int numberOfConferencePapers = 0;
+	int numberOfJournalArticles = 0;
 	public PlotGUI(ScholarshipModel model, String option){
 		this.plotModel = model;
 		this.option = option;
@@ -59,6 +61,14 @@ public class PlotGUI {
 				scholarIndex = listOfScholarNames.getSelectedIndex();
 				selectedScholar = plotModel.getScholar(scholarIndex);
 				
+				for(int index = 0; index < selectedScholar.getPapers().size(); ++index){
+					if(selectedScholar.getPapers().get(index).getTypeOfPaper() == "Conference Paper"){
+						++numberOfConferencePapers;
+					}else{
+						++numberOfJournalArticles;
+					}
+				}
+				
 				switch (option){
 					case "Type Of Publication":
 						PublicationTypePanel publicationTypePanel = new PublicationTypePanel();
@@ -86,18 +96,8 @@ public class PlotGUI {
 		
 		public PublicationTypePanel(){
 			
-			int numberOfConferencePapers = 0;
-			int numberOfJournalArticles = 0;
-			for(int index = 0; index < selectedScholar.getPapers().size(); ++index){
-				if(selectedScholar.getPapers().get(index).getTypeOfPaper() == "Conference Paper"){
-					++numberOfConferencePapers;
-				}else{
-					++numberOfJournalArticles;
-				}
-			}
-			
 			setLayout(new GridLayout(2,2,0,0));
-			MainPanel mainPanel = new MainPanel();
+			BarPanel mainPanel = new BarPanel(numberOfConferencePapers);
 			add(conferencePapersLabel);
 			add(mainPanel);
 			add(journalArticlesLabel);
@@ -108,11 +108,15 @@ public class PlotGUI {
 			
 		}
 		
-		private class MainPanel extends JPanel{
+		private class BarPanel extends JPanel{
+			int width = 0;
+			BarPanel(int width){
+				this.width = width;
+			}
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				g.fillRect(0, 0, 100, 50);
+				g.fillRect(0, 50, width * 10, 50);
 				
 			}
 		}
@@ -127,7 +131,7 @@ public class PlotGUI {
 			setVisible(true);
 		}
 		
-		private class mainPanel extends JPanel{
+		private class BarPanel extends JPanel{
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
@@ -144,7 +148,7 @@ public class PlotGUI {
 			setVisible(true);
 		}
 		
-		private class mainPanel extends JPanel{
+		private class BarPanel extends JPanel{
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
@@ -161,7 +165,7 @@ public class PlotGUI {
 			setVisible(true);
 		}
 		
-		private class mainPanel extends JPanel{
+		private class BarPanel extends JPanel{
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
@@ -178,7 +182,7 @@ public class PlotGUI {
 			setVisible(true);
 		}
 		
-		private class mainPanel extends JPanel{
+		private class BarPanel extends JPanel{
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);

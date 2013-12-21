@@ -320,6 +320,14 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		}
 		return allAuthors;
 	}
+	
+	public boolean containsScholar(Scholar scholar){
+		for(int index = 0; index < authorsList.size(); ++index)
+			if(authorsList.get(index).equals(scholar))
+				return true;
+		
+		return false;
+	}
 		
 	public void removePaper(){
 		
