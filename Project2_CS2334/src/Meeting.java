@@ -21,6 +21,10 @@ public class Meeting {
 		papers.add(pape);
 	}
 	
+	public void removePaper(ConferencePaper pape){
+		papers.remove(pape);
+	}
+	
 	public boolean equals(Meeting meet){
 		if(this.month.equals(meet.getMonth())){
 			if(this.year.equals(meet.getYear())){

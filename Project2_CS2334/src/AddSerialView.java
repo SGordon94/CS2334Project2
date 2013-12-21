@@ -17,6 +17,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 	private ConferenceView card1;
 	private JournalView card2;
 	private ArrayList<Meeting> temporaryMeetings = new ArrayList<Meeting>();
+	private ArrayList<AddSerialView> openAddSerialWindows;
 	
 	public AddSerialView(ScholarshipModel mod){
 		this.model = mod;
@@ -539,5 +540,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 	
 	public JButton getJBTNewVolume(){
 		return  jbtNewVolume;
+	}
+	
+	public void windowIsClosing(){
+		openAddSerialWindows.remove(this);
 	}
 }

@@ -1,9 +1,7 @@
-import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -22,6 +20,9 @@ public class ScholarPubController {
 	private ArrayList<JournalDataView> openJournalWindows = new ArrayList<JournalDataView>();
 	private ArrayList<ConferencePaperDataView> openConferencePaperWindows = new ArrayList<ConferencePaperDataView>();
 	private ArrayList<JournalArticleDataView> openJournalArticleWindows = new ArrayList<JournalArticleDataView>();
+	private ArrayList<AddScholarView> openAddScholarWindows = new ArrayList<AddScholarView>();
+	private ArrayList<AddSerialView> openAddSerialWindows = new ArrayList<AddSerialView>();
+	private ArrayList<AddPaperView> openAddPaperWindows = new ArrayList<AddPaperView>();
 	
 	ScholarPubController(){}
 	
@@ -166,7 +167,25 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			AddScholarView addScholarView = new AddScholarView();
 			addScholarView.showAddScholarView();
+			addScholarView.addWindowListener(new AddScholarWindowListener(addScholarView));
 			setAddScholarViewActionListeners(addScholarView);
+			openAddScholarWindows.add(addScholarView);
+		}
+		
+		private class AddScholarWindowListener implements WindowListener{
+			AddScholarView addScholarView;
+			public AddScholarWindowListener(AddScholarView view){
+				addScholarView = view;
+			}
+			public void windowActivated(WindowEvent arg0) {}
+			public void windowClosed(WindowEvent arg0) {}
+			public void windowClosing(WindowEvent arg0) {
+				addScholarView.windowIsClosing();
+			}
+			public void windowDeactivated(WindowEvent arg0) {}
+			public void windowDeiconified(WindowEvent arg0) {}
+			public void windowIconified(WindowEvent arg0) {}
+			public void windowOpened(WindowEvent arg0) {}
 		}
 	}
 	
@@ -193,6 +212,42 @@ public class ScholarPubController {
 	
 	private class DeleteAllScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
+			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+				openAddPaperWindows.get(i).dispose();
+				openAddPaperWindows.remove(i);
+			}
+			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
+				openAddSerialWindows.get(i).dispose();
+				openAddSerialWindows.remove(i);
+			}
+			for(int i=openAddScholarWindows.size()-1;i>=0;i--){
+				openAddScholarWindows.get(i).dispose();
+				openAddScholarWindows.remove(i);
+			}
+			for(int i=openScholarWindows.size()-1;i>=0;i--){
+				openScholarWindows.get(i).dispose();
+				openScholarWindows.remove(i);
+			}
+			for(int i=openConferenceWindows.size()-1;i>=0;i--){
+				openConferenceWindows.get(i).dispose();
+				openConferenceWindows.remove(i);
+			}
+			for(int i=openJournalWindows.size()-1;i>=0;i--){
+				openJournalWindows.get(i).dispose();
+				openJournalWindows.remove(i);
+			}
+			for(int i=openConferencePaperWindows.size()-1;i>=0;i--){
+				openConferencePaperWindows.get(i).dispose();
+				openConferencePaperWindows.remove(i);
+			}
+			for(int i=openJournalArticleWindows.size()-1;i>=0;i--){
+				openJournalArticleWindows.get(i).dispose();
+				openJournalArticleWindows.remove(i);
+			}
+			openScholars.removeAll(openScholars);
+			openConferences.removeAll(openConferences);
+			openJournals.removeAll(openJournals);
+			openPapers.removeAll(openPapers);
 			model.emptyScholars();
 			model.emptySerials();
 			model.emptyPapers();
@@ -342,7 +397,25 @@ public class ScholarPubController {
 	private class AddSerialListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			AddSerialView serialView = new AddSerialView(model);
+			serialView.addWindowListener(new AddSerialWindowListener(serialView));
 			setAddSerialViewActionListeners(serialView);
+			openAddSerialWindows.add(serialView);
+		}
+		
+		private class AddSerialWindowListener implements WindowListener{
+			AddSerialView serialView;
+			public AddSerialWindowListener(AddSerialView view){
+				serialView = view;
+			}
+			public void windowActivated(WindowEvent arg0) {}
+			public void windowClosed(WindowEvent arg0) {}
+			public void windowClosing(WindowEvent arg0) {
+				serialView.windowIsClosing();
+			}
+			public void windowDeactivated(WindowEvent arg0) {}
+			public void windowDeiconified(WindowEvent arg0) {}
+			public void windowIconified(WindowEvent arg0) {}
+			public void windowOpened(WindowEvent arg0) {}
 		}
 	}
 	
@@ -365,6 +438,33 @@ public class ScholarPubController {
 	
 	private class DeleteAllSerialsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
+			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+				openAddPaperWindows.get(i).dispose();
+				openAddPaperWindows.remove(i);
+			}
+			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
+				openAddSerialWindows.get(i).dispose();
+				openAddSerialWindows.remove(i);
+			}
+			for(int i=openConferenceWindows.size()-1;i>=0;i--){
+				openConferenceWindows.get(i).dispose();
+				openConferenceWindows.remove(i);
+			}
+			for(int i=openJournalWindows.size()-1;i>=0;i--){
+				openJournalWindows.get(i).dispose();
+				openJournalWindows.remove(i);
+			}
+			for(int i=openConferencePaperWindows.size()-1;i>=0;i--){
+				openConferencePaperWindows.get(i).dispose();
+				openConferencePaperWindows.remove(i);
+			}
+			for(int i=openJournalArticleWindows.size()-1;i>=0;i--){
+				openJournalArticleWindows.get(i).dispose();
+				openJournalArticleWindows.remove(i);
+			}
+			openConferences.removeAll(openConferences);
+			openJournals.removeAll(openJournals);
+			openPapers.removeAll(openPapers);
 			model.emptySerials();
 			model.emptyPapers();
 			mainView.updateScholarList();
@@ -451,6 +551,24 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			AddPaperView paperView = new AddPaperView(model);
 			paperView.getJBTAddPaper().addActionListener(new AddPaperToListListener(paperView));
+			paperView.addWindowListener(new AddPaperWindowListener(paperView));
+			openAddPaperWindows.add(paperView);
+		}
+		
+		private class AddPaperWindowListener implements WindowListener{
+			AddPaperView paperView;
+			public AddPaperWindowListener(AddPaperView view){
+				paperView = view;
+			}
+			public void windowActivated(WindowEvent arg0) {}
+			public void windowClosed(WindowEvent arg0) {}
+			public void windowClosing(WindowEvent arg0) {
+				paperView.windowIsClosing();
+			}
+			public void windowDeactivated(WindowEvent arg0) {}
+			public void windowDeiconified(WindowEvent arg0) {}
+			public void windowIconified(WindowEvent arg0) {}
+			public void windowOpened(WindowEvent arg0) {}
 		}
 	}
 	
@@ -516,7 +634,23 @@ public class ScholarPubController {
 	
 	private class DeleteAllPapersListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+				openAddPaperWindows.get(i).dispose();
+				openAddPaperWindows.remove(i);
+			}
+			for(int i=openConferencePaperWindows.size()-1;i>=0;i--){
+				openConferencePaperWindows.get(i).dispose();
+				openConferencePaperWindows.remove(i);
+			}
+			for(int i=openJournalArticleWindows.size()-1;i>=0;i--){
+				openJournalArticleWindows.get(i).dispose();
+				openJournalArticleWindows.remove(i);
+			}
+			openPapers.removeAll(openPapers);
+			model.emptyPapers();
+			mainView.getJBTDeletePapers().setEnabled(false);
+			mainView.getJBTDeleteAllPapers().setEnabled(false);
+			mainView.updatePaperList();
 		}
 	}
 	
@@ -538,6 +672,7 @@ public class ScholarPubController {
 				mainView.getJBTAddSerial().setEnabled(true);
 			}
 			if(uniqueScholar){
+				openAddScholarWindows.remove(localScholarView);
 				localScholarView.dispose();
 			}
 		}
@@ -564,6 +699,7 @@ public class ScholarPubController {
 							mainView.getJBTAddPaper().setEnabled(true);
 						}
 						model.addConference(tempConf);
+						openAddSerialWindows.remove(localSerialView);
 						localSerialView.dispose();
 					}
 					else{
@@ -590,6 +726,7 @@ public class ScholarPubController {
 							mainView.getJBTAddPaper().setEnabled(true);
 						}
 						model.addJournal(tempJour);
+						openAddSerialWindows.remove(localSerialView);
 						localSerialView.dispose();
 					}
 					else{
@@ -634,6 +771,7 @@ public class ScholarPubController {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private class SerialJournalSaveIssueListener implements ActionListener{
 		AddSerialView localSerialView;
 		public SerialJournalSaveIssueListener(AddSerialView serialView){
@@ -771,6 +909,7 @@ public class ScholarPubController {
 							mainView.getJBTDeleteAllPapers().setEnabled(true);
 						}
 						model.addPaper(pape);
+						openAddPaperWindows.remove(localPaperView);
 						localPaperView.dispose();
 					}
 					else{
@@ -789,6 +928,7 @@ public class ScholarPubController {
 							mainView.getJBTDeleteAllPapers().setEnabled(true);
 						}
 						model.addPaper(pape);
+						openAddPaperWindows.remove(localPaperView);
 						localPaperView.dispose();
 					}
 					else{

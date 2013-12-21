@@ -33,4 +33,8 @@ public class JournalPaper extends Paper {
 		this.authorsList = (ArrayList<Scholar>)innerDetails.get(2);
 		parentIssue.addPaper(this);
 	}
+	
+	public void removePaper(){
+		parentIssue.removePaper(this);
+	}
 }

@@ -14,8 +14,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 	private JournalPaper card2;
 	private JPanel cards;
 	
-	
 	private JButton jbtAddPaper = new JButton("Add Paper");
+	private ArrayList<AddPaperView> openAddPaperWindows;
 	
 	public AddPaperView(ScholarshipModel mod){
 		this.model = mod;
@@ -270,10 +270,12 @@ public class AddPaperView extends JFrame implements ItemListener{
 	public JButton getJBTAddPaper(){
 		return jbtAddPaper;
 	}
+	
+	public void windowIsClosing(){
+		openAddPaperWindows.remove(this);
+	}
 
-	@Override
 	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stub
 		CardLayout cardPanels = (CardLayout)(cards.getLayout());
 		cardPanels.show(cards, (String)(e.getItem()));
 	}

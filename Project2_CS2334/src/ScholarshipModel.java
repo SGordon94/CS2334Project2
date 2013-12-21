@@ -100,6 +100,9 @@ public class ScholarshipModel {
 	}
 	
 	public synchronized void emptyPapers(){
+		for(int i=0;i<papers.size();i++){
+			papers.get(i).removePaper();
+		}
 		papers.removeAll(papers);
 	}
 	
