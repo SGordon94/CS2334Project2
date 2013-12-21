@@ -189,7 +189,7 @@ public class ScholarPubController {
 		}
 	}
 	
-	private class DeleteScholarsListener implements ActionListener{
+	private class DeleteScholarsListener implements ActionListener{ // FINISH THIS BEHEMOTH 12/21/2013
 		public void actionPerformed(ActionEvent arg0) {
 			model.removeScholars(mainView.getScholarListPositions());
 			if(model.getScholarListSize() == 0){
@@ -219,10 +219,6 @@ public class ScholarPubController {
 			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
 				openAddSerialWindows.get(i).dispose();
 				openAddSerialWindows.remove(i);
-			}
-			for(int i=openAddScholarWindows.size()-1;i>=0;i--){
-				openAddScholarWindows.get(i).dispose();
-				openAddScholarWindows.remove(i);
 			}
 			for(int i=openScholarWindows.size()-1;i>=0;i--){
 				openScholarWindows.get(i).dispose();
@@ -499,10 +495,6 @@ public class ScholarPubController {
 				openAddPaperWindows.get(i).dispose();
 				openAddPaperWindows.remove(i);
 			}
-			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
-				openAddSerialWindows.get(i).dispose();
-				openAddSerialWindows.remove(i);
-			}
 			for(int i=openConferenceWindows.size()-1;i>=0;i--){
 				openConferenceWindows.get(i).dispose();
 				openConferenceWindows.remove(i);
@@ -716,10 +708,6 @@ public class ScholarPubController {
 	
 	private class DeleteAllPapersListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
-				openAddPaperWindows.get(i).dispose();
-				openAddPaperWindows.remove(i);
-			}
 			for(int i=openConferencePaperWindows.size()-1;i>=0;i--){
 				openConferencePaperWindows.get(i).dispose();
 				openConferencePaperWindows.remove(i);
