@@ -430,7 +430,6 @@ public class ScholarPubController {
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
-			mainView.updateScholarList();
 			mainView.updateSerialList();
 			mainView.updatePaperList();
 		}
@@ -628,7 +627,36 @@ public class ScholarPubController {
 	
 	private class DeletePapersListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			
+			int[] indices = mainView.getPaperListPositions();
+			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+				openAddPaperWindows.get(i).dispose();
+				openAddPaperWindows.remove(i);
+			}
+			for(int i=indices.length-1;i>=0;i--){
+				for(int j=openConferencePaperWindows.size()-1;j>=0;j--){
+					if(model.getPaper(indices[i]) == openConferencePaperWindows.get(j).getUsedPaper()){
+						openConferencePaperWindows.get(j).dispose();
+						openConferencePaperWindows.remove(j);
+					}
+				}
+				for(int k=openJournalArticleWindows.size()-1;k>=0;k--){
+					if(model.getPaper(indices[i]) == openJournalArticleWindows.get(k).getUsedPaper()){
+						openJournalArticleWindows.get(k).dispose();
+						openJournalArticleWindows.remove(k);
+					}
+				}
+				for(int l=openPapers.size()-1;l>=0;l--){
+					if(model.getPaper(indices[i]) == openPapers.get(l)){
+						openPapers.remove(l);
+					}
+				}
+			}
+			model.removePapers(indices);
+			if(model.getPaperListSize() == 0){
+				mainView.getJBTDeletePapers().setEnabled(false);
+				mainView.getJBTDeleteAllPapers().setEnabled(false);
+			}
+			mainView.updatePaperList();
 		}
 	}
 	
@@ -812,50 +840,33 @@ public class ScholarPubController {
 	}
 	
 	private class LoadOptionListener implements ActionListener{
-
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
-		
 	}
 	
 	private class SaveOptionListener implements ActionListener{
-
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
-		
 	}
 	
 	private class CloseOptionListener implements ActionListener{
-
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
-		
 	}
 	
 	private class TypeOfPublicationListener implements ActionListener{
 		String choice = "Type Of Publication";
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			PlotGUI plotGUI = new PlotGUI(model, choice);
-			//System.out.print("HI");
 		}
 	}
 	
 	private class PublicationsPerYearListener implements ActionListener{
 		String choice = "Publications Per Year";
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 		
@@ -863,9 +874,7 @@ public class ScholarPubController {
 	
 	private class ConferencePapersPerYearListener implements ActionListener{
 		String choice = "Conference Papers Per Year";
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 		
@@ -873,9 +882,7 @@ public class ScholarPubController {
 	
 	private class JournalArticlesPerYearListener implements ActionListener{
 		String choice = "Journal Articles Per Year";
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 		
@@ -883,9 +890,7 @@ public class ScholarPubController {
 	
 	private class NumberOfCoauthorsPerPublicationListener implements ActionListener{
 		String choice = "Number of Co-Authors Per Publication";
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			PlotGUI plotGUI = new PlotGUI(model, choice);
 		}
 	}
