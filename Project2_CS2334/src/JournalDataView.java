@@ -38,6 +38,7 @@ public class JournalDataView extends JFrame{
 		openWindowJournals = openWindows;
 		openWindowJournals.add(usedJournal);
 		journalWindows = windows;
+		journalWindows.add(this);
 		
 		setTitle("Journal Details");
 		JPanel buttonPanel = new JPanel();

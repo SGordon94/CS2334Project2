@@ -36,6 +36,7 @@ public class ConferenceDataView extends JFrame{
 		openWindowConferences = openWindows;
 		openWindowConferences.add(usedConference);
 		conferenceWindows = windows;
+		conferenceWindows.add(this);
 		
 		setLayout(new BorderLayout());
 		setTitle("Conference Details");

@@ -34,6 +34,9 @@ public class ScholarshipModel {
 	
 	public synchronized String[] getPaperNames(){
 		String[] names = new String[papers.size()];
+		for(int i=0;i<papers.size();i++){
+			names[i] = papers.get(i).toString();
+		}
 		return names;
 	}
 	
@@ -112,6 +115,18 @@ public class ScholarshipModel {
 		return conferences.size();
 	}
 	
+	public Meeting getSelectedConferenceMeeting(int index){
+		for(int i=0;i<conferences.size();i++){
+			if(index >= conferences.get(i).getMeetingListSize()){
+				index -= conferences.get(i).getMeetingListSize();
+			}
+			else{
+				return conferences.get(i).getMeeting(index);
+			}
+		}
+		return conferences.get(0).getMeeting(0);
+	}
+	
 	public String[] getConferenceMeetings(){
 		int conferenceJListSize = 0;
 		for(int i=0;i<conferences.size();i++){
@@ -149,6 +164,20 @@ public class ScholarshipModel {
 	
 	public int getJournalListSize(){
 		return journals.size();
+	}
+	
+	public Issue getSelectedJournalIssue(int index){
+		for(int i=0;i<journals.size();i++){
+			for(int j=0;j<journals.get(i).getVolumeSize();j++){
+				if(index >= journals.get(i).getVolume(j).getSizeOfIssueList()){
+					index -= journals.get(i).getVolume(j).getSizeOfIssueList();
+				}
+				else{
+					return journals.get(i).getVolume(j).getIssue(index);
+				}
+			}
+		}
+		return journals.get(0).getVolume(0).getIssue(0);
 	}
 	
 	public String[] getJournalIssues(){
@@ -196,6 +225,14 @@ public class ScholarshipModel {
 	public synchronized void emptySerials(){
 		conferences.removeAll(conferences);
 		journals.removeAll(journals);
+	}
+	
+	public synchronized void addPaper(Paper pape){
+		papers.add(pape);
+	}
+	
+	public Paper getPaper(int index){
+		return papers.get(index);
 	}
 	
 	public boolean containsPaper(Paper pape){

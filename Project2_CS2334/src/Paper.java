@@ -305,5 +305,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		
 	}
 	
-	
+	public String toString(){
+		return titleOfPaper;
+	}
 }

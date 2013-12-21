@@ -20,6 +20,8 @@ public class ScholarPubController {
 	private ArrayList<ScholarDataView> openScholarWindows = new ArrayList<ScholarDataView>();
 	private ArrayList<ConferenceDataView> openConferenceWindows = new ArrayList<ConferenceDataView>();
 	private ArrayList<JournalDataView> openJournalWindows = new ArrayList<JournalDataView>();
+	private ArrayList<ConferencePaperDataView> openConferencePaperWindows = new ArrayList<ConferencePaperDataView>();
+	private ArrayList<JournalArticleDataView> openJournalArticleWindows = new ArrayList<JournalArticleDataView>();
 	
 	ScholarPubController(){}
 	
@@ -377,15 +379,132 @@ public class ScholarPubController {
 	}
 	
 	private class ListOfPapersListener implements ListSelectionListener{
-		int lastSelectedIndex = -1;
+		boolean newSelection = true;
+		SecondMouseClickPapers doubleClick;
+		MouseDraggedPapers mouseMoved;
+		
+		public ListOfPapersListener(){
+			doubleClick = new SecondMouseClickPapers();
+			mouseMoved = new MouseDraggedPapers();
+			mainView.getListOfPapers().addMouseListener(doubleClick);
+			mainView.getListOfPapers().addMouseMotionListener(mouseMoved);
+		}
+		
 		public void valueChanged(ListSelectionEvent arg0) {
-			
+			if(!arg0.getValueIsAdjusting()){
+				if(newSelection){
+					newSelection = false;
+				}
+			}
+			else{
+				newSelection = true;
+				doubleClick.disable();
+			}
+		}
+		
+		private class SecondMouseClickPapers implements MouseListener{
+			boolean clicked = false;
+			public void mouseClicked(MouseEvent arg0) {}
+			public void mouseEntered(MouseEvent arg0) {}
+			public void mouseExited(MouseEvent arg0) {
+				clicked = false;
+			}
+			public void mousePressed(MouseEvent arg0) {
+				if(!newSelection){
+					clicked = true;
+				}
+			}
+			public void mouseReleased(MouseEvent arg0) {
+				if(clicked){
+					if(!openPapers.contains(model.getPaper(mainView.getListOfPapers().getSelectedIndex()))){
+						if(model.getPaper(mainView.getListOfPapers().getSelectedIndex()).getClass() == ConferencePaper.class){
+							ConferencePaperDataView paperDataView = new ConferencePaperDataView((ConferencePaper)model.getPaper(mainView.getListOfPapers().getSelectedIndex()), openPapers, openConferencePaperWindows, model);
+							paperDataView.getJBTOK().addActionListener(new ConferencePaperDataViewOKButtonListener(paperDataView));
+							paperDataView.addWindowListener(new ConferencePaperDataViewWindowListener(paperDataView));
+						}
+						else{
+							JournalArticleDataView paperDataView = new JournalArticleDataView((JournalPaper)model.getPaper(mainView.getListOfPapers().getSelectedIndex()), openPapers, openJournalArticleWindows, model);
+							paperDataView.getJBTOK().addActionListener(new JournalArticleDataViewOKButtonListener(paperDataView));
+							paperDataView.addWindowListener(new JournalArticleDataViewWindowListener(paperDataView));
+						}
+						clicked = false;
+					}
+					else{
+						clicked = false;
+					}
+				}
+			}
+			public void disable(){
+				clicked = false;
+			}
+		}
+		
+		private class MouseDraggedPapers implements MouseMotionListener{
+			public void mouseDragged(MouseEvent arg0) {
+				doubleClick.disable();
+			}
+			public void mouseMoved(MouseEvent arg0) {}
 		}
 	}
 	
 	private class AddPaperListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			AddPaperView paperView = new AddPaperView(model);
+			paperView.getJBTAddPaper().addActionListener(new AddPaperToListListener(paperView));
+		}
+	}
+	
+	private class ConferencePaperDataViewWindowListener implements WindowListener{
+		ConferencePaperDataView conferencePaperView;
+		public ConferencePaperDataViewWindowListener(ConferencePaperDataView view){
+			conferencePaperView = view;
+		}
+		public void windowActivated(WindowEvent arg0) {}
+		public void windowClosed(WindowEvent arg0) {}
+		public void windowClosing(WindowEvent arg0) {
+			conferencePaperView.windowIsClosing();
+		}
+		public void windowDeactivated(WindowEvent arg0) {}
+		public void windowDeiconified(WindowEvent arg0) {}
+		public void windowIconified(WindowEvent arg0) {}
+		public void windowOpened(WindowEvent arg0) {}
+	}
+	
+	private class ConferencePaperDataViewOKButtonListener implements ActionListener{
+		ConferencePaperDataView localDataView;
+		public ConferencePaperDataViewOKButtonListener(ConferencePaperDataView view){
+			localDataView = view;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			localDataView.windowIsClosing();
+			localDataView.dispose();
+		}
+	}
+	
+	private class JournalArticleDataViewWindowListener implements WindowListener{
+		JournalArticleDataView journalArticleView;
+		public JournalArticleDataViewWindowListener(JournalArticleDataView view){
+			journalArticleView = view;
+		}
+		public void windowActivated(WindowEvent arg0) {}
+		public void windowClosed(WindowEvent arg0) {}
+		public void windowClosing(WindowEvent arg0) {
+			journalArticleView.windowIsClosing();
+		}
+		public void windowDeactivated(WindowEvent arg0) {}
+		public void windowDeiconified(WindowEvent arg0) {}
+		public void windowIconified(WindowEvent arg0) {}
+		public void windowOpened(WindowEvent arg0) {}
+	}
+	
+	private class JournalArticleDataViewOKButtonListener implements ActionListener{
+		JournalArticleDataView localDataView;
+		public JournalArticleDataViewOKButtonListener(JournalArticleDataView view){
+			localDataView = view;
+		}
+		public void actionPerformed(ActionEvent arg0) {
+			localDataView.windowIsClosing();
+			localDataView.dispose();
 		}
 	}
 	
@@ -639,13 +758,45 @@ public class ScholarPubController {
 			this.localPaperView = paperView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
-			if(localPaperView.visibleCard().equals("Conference")){
-				
-			}
-			else{
-				
+			ArrayList<Object> innerDetails = localPaperView.getInnerDetails();
+			if(innerDetails.size() != 0){
+				if(localPaperView.visibleCard().equals("Conference")){
+					Paper pape = new ConferencePaper(innerDetails);
+					boolean uniquePaper = !model.containsPaper(pape);
+					if(uniquePaper){
+						if(!mainView.getJBTDeletePapers().isEnabled()){
+							mainView.getJBTDeletePapers().setEnabled(true);
+						}
+						if(!mainView.getJBTDeleteAllPapers().isEnabled()){
+							mainView.getJBTDeleteAllPapers().setEnabled(true);
+						}
+						model.addPaper(pape);
+						localPaperView.dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "This Conference Paper is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					mainView.updatePaperList();
+				}
+				else{
+					Paper pape = new JournalPaper(innerDetails);
+					boolean uniquePaper = !model.containsPaper(pape);
+					if(uniquePaper){
+						if(!mainView.getJBTDeletePapers().isEnabled()){
+							mainView.getJBTDeletePapers().setEnabled(true);
+						}
+						if(!mainView.getJBTDeleteAllPapers().isEnabled()){
+							mainView.getJBTDeleteAllPapers().setEnabled(true);
+						}
+						model.addPaper(pape);
+						localPaperView.dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "This Article is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					mainView.updatePaperList();
+				}
 			}
 		}
-
 	}
 }
