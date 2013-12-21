@@ -231,6 +231,10 @@ public class ScholarshipModel {
 		papers.add(pape);
 	}
 	
+	public Paper getPaper(int index){
+		return papers.get(index);
+	}
+	
 	public boolean containsPaper(Paper pape){
 		if(papers.size() != 0){
 			for(int i=0;i<papers.size();i++){

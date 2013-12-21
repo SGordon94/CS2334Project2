@@ -28,6 +28,7 @@ public class ScholarDataView extends JFrame{
 		openWindowScholars = openWindows;
 		openWindowScholars.add(usedScholar);
 		scholarWindows = windows;
+		scholarWindows.add(this);
 		
 		setTitle(scholar.returnNameInStringAlt());
 		setLayout(new BorderLayout());

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,8 +13,18 @@ public class JournalArticleDataView extends JFrame{
 	String pageNumbers = "Page Numbers: ";
 	String digitalObjectIdentifierLabel = "Digital Object Identifier: ";
 	JButton jbtOK = new JButton("OK");
+	ArrayList<Paper> openWindowPapers;
+	ArrayList<JournalArticleDataView> paperWindows;
+	JournalPaper usedPaper;
+	ScholarshipModel model;
 
-	public JournalArticleDataView(Paper paper){
+	public JournalArticleDataView(JournalPaper paper, ArrayList<Paper> openWindows, ArrayList<JournalArticleDataView> windows, ScholarshipModel model){
+		usedPaper = paper;
+		openWindowPapers = openWindows;
+		openWindowPapers.add(usedPaper);
+		paperWindows = windows;
+		paperWindows.add(this);
+		
 		setTitle(paper.getTitleOfPaper());
 		String digitalObjectIdentifier = "";
 		
@@ -40,5 +52,18 @@ public class JournalArticleDataView extends JFrame{
 		setSize(400,400);
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+	
+	public void windowIsClosing(){
+		openWindowPapers.remove(usedPaper);
+		paperWindows.remove(this);
+	}
+	
+	public JournalPaper getUsedPaper(){
+		return usedPaper;
+	}
+	
+	public JButton getJBTOK(){
+		return jbtOK;
 	}
 }
