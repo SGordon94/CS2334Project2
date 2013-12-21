@@ -22,6 +22,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	protected String publicationDate = null;
 	protected String digitalObjectIdentifier = null;
 	protected int compareValue = 6;
+	protected Conference parentSerial;
 	
 	
 	
@@ -329,6 +330,14 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return false;
 	}
 		
+	public ArrayList<Scholar> getListOfScholars(){
+		return this.authorsList;
+	}
+	
+	public boolean isConference(){
+		return true;
+	}
+	
 	public void removePaper(){
 		
 	}

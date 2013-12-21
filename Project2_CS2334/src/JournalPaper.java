@@ -39,4 +39,9 @@ public class JournalPaper extends Paper {
 	public void removePaper(){
 		parentIssue.removePaper(this);
 	}
+	
+	@Override
+	public boolean isConference(){
+		return false;
+	}
 }

@@ -278,6 +278,11 @@ public class ScholarshipModel {
 	
 	public ArrayList<Paper> getPapersForAuthor(Scholar scholar){
 		ArrayList<Paper> listOfPapers = new ArrayList<Paper>();
+		for(int index = 0; index < papers.size(); ++index){
+			if(papers.get(index).containsScholar(scholar)){
+				listOfPapers.add(papers.get(index));
+			}
+		}
 		
 		return listOfPapers;
 	}
