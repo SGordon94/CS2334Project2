@@ -69,7 +69,7 @@ public class PlotGUI {
 
 				
 				for(int index = 0; index < publishedPapers.size(); ++index){
-					if(publishedPapers.get(index).equals(ConferencePaper.class)){
+					if(publishedPapers.get(index).isConference()){
 						System.out.print("Conference Paper");
 						++numberOfConferencePapers;
 					}else{
@@ -81,6 +81,7 @@ public class PlotGUI {
 				switch (option){
 					case "Type Of Publication":
 						PublicationTypePanel publicationTypePanel = new PublicationTypePanel();
+						publicationTypePanel.setName("Type of Publicaton");
 						break;
 					case "Publications Per Year":
 						PublicationPerYear publicationPerYear = new PublicationPerYear();
@@ -100,8 +101,8 @@ public class PlotGUI {
 	}
 	
 	private class PublicationTypePanel extends JFrame{
-		private JLabel conferencePapersLabel = new JLabel("Conference Papers ");
-		private JLabel journalArticlesLabel = new JLabel("Journal Articles ");
+		private JLabel conferencePapersLabel = new JLabel("Conference Papers (" + numberOfConferencePapers + ")");
+		private JLabel journalArticlesLabel = new JLabel("Journal Articles (" + numberOfJournalArticles + ")");
 		private ArrayList<JLabel> labels = new ArrayList<JLabel>();
 		private ArrayList<Integer> numbers = new ArrayList<Integer>();
 		
@@ -120,8 +121,7 @@ public class PlotGUI {
 				
 			}
 			
-			setName("Type Of Publication");
-			setSize(400,300);
+			setSize(600,500);
 			setLocationRelativeTo(null);
 			setVisible(true);
 			
@@ -135,7 +135,7 @@ public class PlotGUI {
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				g.fillRect(0, 50, width * 10, 50);
+				g.fillRect(0, 65, width * 10, 100);
 				
 			}
 		}
@@ -144,7 +144,8 @@ public class PlotGUI {
 	
 	private class PublicationPerYear extends JFrame{
 		public PublicationPerYear(){
-			setName("Publicatons Per Year");
+			this.setName("Publicatons Per Year");
+			this.getContentPane().setName("Publications Per Year");
 			setSize(400,300);
 			setLocationRelativeTo(null);
 			setVisible(true);
