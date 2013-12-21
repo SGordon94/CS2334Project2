@@ -70,6 +70,14 @@ public class Meeting {
 		return false;
 	}
 	
+	public int getPaperListSize(){
+		return papers.size();
+	}
+	
+	public ConferencePaper getPaper(int index){
+		return papers.get(index);
+	}
+	
 	public ArrayList<ConferencePaper> getPapers(){
 		return papers;
 	}

@@ -23,6 +23,14 @@ public class Issue {
 		articles.remove(pape);
 	}
 	
+	public JournalPaper getPaper(int index){
+		return articles.get(index);
+	}
+	
+	public int getPaperListSize(){
+		return articles.size();
+	}
+	
 	public boolean equals(Issue issue){
 		if(this.month.equals(issue.getMonth())){
 			if(this.year.equals(issue.getYear())){

@@ -422,52 +422,64 @@ public class ScholarPubController {
 	private class DeleteSerialsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			int[] indices = mainView.getSerialListPositions();
+			for(int i=indices.length-1;i>=0;i--){
+				if(indices[i] >= model.getJournalListSize()){
+					for(int j=openConferenceWindows.size()-1;j>=0;j--){
+						if(model.getConference(indices[i]-model.getJournalListSize()) == openConferenceWindows.get(j).getUsedSerial()){
+							openConferenceWindows.get(j).dispose();
+							openConferenceWindows.remove(j);
+						}
+					}
+					for(int j=model.getConference(indices[i]-model.getJournalListSize()).getMeetingListSize()-1;j>=0;j--){
+						for(int k=model.getConference(indices[i]-model.getJournalListSize()).getMeeting(j).getPaperListSize()-1;k>=0;k--){
+							for(int l=openConferencePaperWindows.size()-1;l>=0;l--){
+								if(model.getConference(indices[i]-model.getJournalListSize()).getMeeting(j).getPaper(k) == openConferencePaperWindows.get(l).getUsedPaper()){
+									openConferencePaperWindows.get(l).dispose();
+									openConferencePaperWindows.remove(l);
+								}
+							}
+							for(int l=openPapers.size()-1;l>=0;l--){
+								if(model.getConference(indices[i]-model.getJournalListSize()).getMeeting(j).getPaper(k) == openPapers.get(l)){
+									openPapers.remove(l);
+								}
+							}
+							model.removePaper(model.getConference(indices[i]-model.getJournalListSize()).getMeeting(j).getPaper(k));
+							model.getConference(indices[i]-model.getJournalListSize()).getMeeting(j).getPaper(k).removePaper();
+						}
+					}
+				}
+				else{
+					for(int j=openJournalWindows.size()-1;j>=0;j--){
+						if(model.getJournal(indices[i]) == openJournalWindows.get(j).getUsedSerial()){
+							openJournalWindows.get(j).dispose();
+							openJournalWindows.remove(j);
+						}
+					}
+					for(int j=model.getJournal(indices[i]).getVolumeSize()-1;j>=0;j--){
+						for(int k=model.getJournal(indices[i]).getVolume(j).getSizeOfIssueList()-1;k>=0;k--){
+							for(int l=model.getJournal(indices[i]).getVolume(j).getIssue(k).getPaperListSize()-1;l>=0;l--){
+								for(int m=openJournalArticleWindows.size()-1;m>=0;m--){
+									if(model.getJournal(indices[i]).getVolume(j).getIssue(k).getPaper(l) == openJournalArticleWindows.get(m).getUsedPaper()){
+										openJournalArticleWindows.get(m).dispose();
+										openJournalArticleWindows.remove(m);
+									}
+								}
+								for(int m=openPapers.size()-1;m>=0;m--){
+									if(model.getJournal(indices[i]).getVolume(j).getIssue(k).getPaper(l) == openPapers.get(m)){
+										openPapers.remove(m);
+									}
+								}
+								model.removePaper(model.getJournal(indices[i]).getVolume(j).getIssue(k).getPaper(l));
+								model.getJournal(indices[i]).getVolume(j).getIssue(k).getPaper(l).removePaper();
+							}
+						}
+					}
+				}	
+			}
 			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
 				openAddPaperWindows.get(i).dispose();
 				openAddPaperWindows.remove(i);
 			}
-			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
-				openAddSerialWindows.get(i).dispose();
-				openAddSerialWindows.remove(i);
-			}
-			/*/-------------------/
-			for(int i=indices.length-1;i>=0;i--){
-				for(int j=openConferencePaperWindows.size()-1;j>=0;j--){
-					if(model.getPaper(indices[i]) == openConferencePaperWindows.get(j).getUsedPaper()){
-						openConferencePaperWindows.get(j).dispose();
-						openConferencePaperWindows.remove(j);
-					}
-				}
-				for(int k=openJournalArticleWindows.size()-1;k>=0;k--){
-					if(model.getPaper(indices[i]) == openJournalArticleWindows.get(k).getUsedPaper()){
-						openJournalArticleWindows.get(k).dispose();
-						openJournalArticleWindows.remove(k);
-					}
-				}
-				for(int l=openPapers.size()-1;l>=0;l--){
-					if(model.getPaper(indices[i]) == openPapers.get(l)){
-						openPapers.remove(l);
-					}
-				}
-			}
-			//-------------------/
-			for(int i=openConferenceWindows.size()-1;i>=0;i--){
-				openConferenceWindows.get(i).dispose();
-				openConferenceWindows.remove(i);
-			}
-			for(int i=openJournalWindows.size()-1;i>=0;i--){
-				openJournalWindows.get(i).dispose();
-				openJournalWindows.remove(i);
-			}
-			for(int i=openConferencePaperWindows.size()-1;i>=0;i--){
-				openConferencePaperWindows.get(i).dispose();
-				openConferencePaperWindows.remove(i);
-			}
-			for(int i=openJournalArticleWindows.size()-1;i>=0;i--){
-				openJournalArticleWindows.get(i).dispose();
-				openJournalArticleWindows.remove(i);
-			}
-			//-------------------*/
 			model.removeSerials(mainView.getSerialListPositions());
 			if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
 				mainView.getJBTDeleteSerials().setEnabled(false);
@@ -674,10 +686,6 @@ public class ScholarPubController {
 	private class DeletePapersListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			int[] indices = mainView.getPaperListPositions();
-			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
-				openAddPaperWindows.get(i).dispose();
-				openAddPaperWindows.remove(i);
-			}
 			for(int i=indices.length-1;i>=0;i--){
 				for(int j=openConferencePaperWindows.size()-1;j>=0;j--){
 					if(model.getPaper(indices[i]) == openConferencePaperWindows.get(j).getUsedPaper()){

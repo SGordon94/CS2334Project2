@@ -288,4 +288,8 @@ public class ScholarshipModel {
 			papers.remove(indices[i]);
 		}
 	}
+	
+	public synchronized void removePaper(Paper pape){
+		papers.remove(pape);
+	}
 }

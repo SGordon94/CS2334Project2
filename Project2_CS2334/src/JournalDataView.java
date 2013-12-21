@@ -89,4 +89,8 @@ public class JournalDataView extends JFrame{
 	public JButton getJBTOK(){
 		return jbtOK;
 	}
+	
+	public Journal getUsedSerial(){
+		return usedJournal;
+	}
 }

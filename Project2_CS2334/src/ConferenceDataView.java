@@ -87,4 +87,8 @@ public class ConferenceDataView extends JFrame{
 	public JButton getJBTOK(){
 		return jbtOK;
 	}
+	
+	public Conference getUsedSerial(){
+		return usedConference;
+	}
 }
