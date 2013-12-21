@@ -118,16 +118,21 @@ public class ScholarshipModel {
 		return conferences.size();
 	}
 	
-	public Meeting getSelectedConferenceMeeting(int index){
+	public ArrayList<Object> getSelectedConferenceMeeting(int index){
+		ArrayList<Object> returnStuff = new ArrayList<Object>();
 		for(int i=0;i<conferences.size();i++){
 			if(index >= conferences.get(i).getMeetingListSize()){
 				index -= conferences.get(i).getMeetingListSize();
 			}
 			else{
-				return conferences.get(i).getMeeting(index);
+				returnStuff.add(conferences.get(i).getMeeting(index));
+				returnStuff.add(conferences.get(i));
+				return returnStuff;
 			}
 		}
-		return conferences.get(0).getMeeting(0);
+		returnStuff.add(conferences.get(0).getMeeting(0));
+		returnStuff.add(conferences.get(0));
+		return returnStuff;
 	}
 	
 	public String[] getConferenceMeetings(){
@@ -169,18 +174,23 @@ public class ScholarshipModel {
 		return journals.size();
 	}
 	
-	public Issue getSelectedJournalIssue(int index){
+	public ArrayList<Object> getSelectedJournalIssue(int index){
+		ArrayList<Object> returnStuff = new ArrayList<Object>();
 		for(int i=0;i<journals.size();i++){
 			for(int j=0;j<journals.get(i).getVolumeSize();j++){
 				if(index >= journals.get(i).getVolume(j).getSizeOfIssueList()){
 					index -= journals.get(i).getVolume(j).getSizeOfIssueList();
 				}
 				else{
-					return journals.get(i).getVolume(j).getIssue(index);
+					returnStuff.add(journals.get(i).getVolume(j).getIssue(index));
+					returnStuff.add(journals.get(i));
+					return returnStuff;
 				}
 			}
 		}
-		return journals.get(0).getVolume(0).getIssue(0);
+		returnStuff.add(journals.get(0).getVolume(0).getIssue(0));
+		returnStuff.add(journals.get(0));
+		return returnStuff;
 	}
 	
 	public String[] getJournalIssues(){

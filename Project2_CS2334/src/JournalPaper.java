@@ -7,6 +7,7 @@ public class JournalPaper extends Paper {
 	 * 
 	 */
 	private Issue parentIssue;
+	private Journal parentSerial;
 	
 	private static final long serialVersionUID = -4382541146772288240L;
 	public JournalPaper(ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
@@ -31,6 +32,7 @@ public class JournalPaper extends Paper {
 		this.digitalObjectIdentifier = fields[2];
 		this.parentIssue = (Issue)innerDetails.get(1);
 		this.authorsList = (ArrayList<Scholar>)innerDetails.get(2);
+		this.parentSerial = (Journal)innerDetails.get(3);
 		parentIssue.addPaper(this);
 	}
 	
