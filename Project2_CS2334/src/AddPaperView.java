@@ -101,14 +101,29 @@ public class AddPaperView extends JFrame implements ItemListener{
 			conferencesJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			scholarsJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			
+			//Create additional Panes
+			JPanel dataFieldsPanel = new JPanel();
+			dataFieldsPanel.setLayout(new GridLayout(3,1));
+			dataFieldsPanel.add(paperTitlePanel);
+			dataFieldsPanel.add(pageNumbersPanel);
+			dataFieldsPanel.add(digitalObjectPanel);
+			
+			JPanel listsPanel = new JPanel();
+			listsPanel.setLayout(new GridLayout(2,1));
+			listsPanel.add(conferencesPanel);
+			listsPanel.add(authorsPanel);
+			
+			
 			
 			//Set the layout and add panels in order
-			setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-			add(paperTitlePanel);
-			add(digitalObjectPanel);
-			add(pageNumbersPanel);
-			add(conferencesPanel);
-			add(authorsPanel);
+			setLayout(new BorderLayout());
+			//add(paperTitlePanel);
+			//add(digitalObjectPanel);
+			//add(pageNumbersPanel);
+			//add(conferencesPanel);
+			//add(authorsPanel);
+			add(dataFieldsPanel, BorderLayout.NORTH);
+			add(listsPanel);
 			setVisible(true);
 		}
 		
@@ -193,13 +208,27 @@ public class AddPaperView extends JFrame implements ItemListener{
 			journalsJList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			scholarsJList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			
+			//Create additional Panes
+			JPanel dataFieldsPanel = new JPanel();
+			dataFieldsPanel.setLayout(new GridLayout(3,1));
+			dataFieldsPanel.add(paperTitlePanel);
+			dataFieldsPanel.add(pageNumbersPanel);
+			dataFieldsPanel.add(digitalObjectPanel);
+			
+			JPanel listsPanel = new JPanel();
+			listsPanel.setLayout(new GridLayout(2,1));
+			listsPanel.add(journalsPanel);
+			listsPanel.add(authorsPanel);
+			
 			//Set the layout and add panels in order
-			setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-			add(paperTitlePanel);
-			add(digitalObjectPanel);
-			add(pageNumbersPanel);
-			add(journalsPanel);
-			add(authorsPanel);
+			setLayout(new BorderLayout());
+			//add(paperTitlePanel);
+			//add(digitalObjectPanel);
+			//add(pageNumbersPanel);
+			//add(journalsPanel);
+			//add(authorsPanel);
+			add(dataFieldsPanel, BorderLayout.NORTH);
+			add(listsPanel);
 			setVisible(true);
 		}
 		

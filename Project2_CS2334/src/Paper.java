@@ -308,4 +308,16 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	public String toString(){
 		return titleOfPaper;
 	}
+	
+	public String getAllAuthors(){
+		String allAuthors = "";
+		if(authorsList.size() == 1){
+			allAuthors = authorsList.get(0).returnNameInString() + "\n";
+		}else{
+			for(int index = 0; index < authorsList.size(); ++index){
+				allAuthors += authorsList.get(index).returnNameInString() + "\n";
+			}
+		}
+		return allAuthors;
+	}
 }

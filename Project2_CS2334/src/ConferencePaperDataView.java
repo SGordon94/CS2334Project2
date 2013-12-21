@@ -1,9 +1,9 @@
+import java.awt.BorderLayout;
 import java.util.ArrayList;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class ConferencePaperDataView extends JFrame{
@@ -34,20 +34,17 @@ public class ConferencePaperDataView extends JFrame{
 			digitalObjectIdentifier = "N/A";
 		}
 		
-		JTextArea mainTextArea = new JTextArea(paperTitleLabel + paper.getTitleOfPaper() + "\n" + authorsLabel + paper.getAuthors() + "\n"
-				+ conferencePaperReference + paper.getTitleOfSerial() + "\n" + pageNumbers + paper.getNumbers() + "\n"
+		JTextArea mainTextArea = new JTextArea(paperTitleLabel + paper.getTitleOfPaper() + "\n\n" + authorsLabel + "\n" + paper.getAllAuthors() + "\n"
+				+ conferencePaperReference + paper.getTitleOfSerial() + "\n\n" + pageNumbers + paper.getNumbers() + "\n\n"
 				+ digitalObjectIdentifierLabel + digitalObjectIdentifier);
 		mainTextArea.setEditable(false);
-		
-		JPanel mainPanel = new JPanel();
-		mainPanel.add(mainTextArea);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(jbtOK);
 		
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(mainPanel);
-		add(buttonPanel);
+		setLayout(new BorderLayout());
+		add(new JScrollPane(mainTextArea));
+		add(buttonPanel, BorderLayout.SOUTH);
 		
 		setSize(400,400);
 		setLocationRelativeTo(null);
