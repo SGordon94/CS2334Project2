@@ -7,6 +7,7 @@ public class ConferencePaper extends Paper {
 	 * 
 	 */
 	private Meeting parentMeeting;
+	private Conference parentSerial;
 	
 	private static final long serialVersionUID = -1864623661714427137L;
 	public ConferencePaper(ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
@@ -31,6 +32,7 @@ public class ConferencePaper extends Paper {
 		this.digitalObjectIdentifier = fields[2];
 		this.parentMeeting = (Meeting)innerDetails.get(1);
 		this.authorsList = (ArrayList<Scholar>)innerDetails.get(2);
+		this.parentSerial = (Conference)innerDetails.get(3);
 		parentMeeting.addPaper(this);
 	}
 	

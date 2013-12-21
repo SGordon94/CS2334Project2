@@ -421,9 +421,55 @@ public class ScholarPubController {
 	
 	private class DeleteSerialsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
+			int[] indices = mainView.getSerialListPositions();
+			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+				openAddPaperWindows.get(i).dispose();
+				openAddPaperWindows.remove(i);
+			}
+			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
+				openAddSerialWindows.get(i).dispose();
+				openAddSerialWindows.remove(i);
+			}
+			/*/-------------------/
+			for(int i=indices.length-1;i>=0;i--){
+				for(int j=openConferencePaperWindows.size()-1;j>=0;j--){
+					if(model.getPaper(indices[i]) == openConferencePaperWindows.get(j).getUsedPaper()){
+						openConferencePaperWindows.get(j).dispose();
+						openConferencePaperWindows.remove(j);
+					}
+				}
+				for(int k=openJournalArticleWindows.size()-1;k>=0;k--){
+					if(model.getPaper(indices[i]) == openJournalArticleWindows.get(k).getUsedPaper()){
+						openJournalArticleWindows.get(k).dispose();
+						openJournalArticleWindows.remove(k);
+					}
+				}
+				for(int l=openPapers.size()-1;l>=0;l--){
+					if(model.getPaper(indices[i]) == openPapers.get(l)){
+						openPapers.remove(l);
+					}
+				}
+			}
+			//-------------------/
+			for(int i=openConferenceWindows.size()-1;i>=0;i--){
+				openConferenceWindows.get(i).dispose();
+				openConferenceWindows.remove(i);
+			}
+			for(int i=openJournalWindows.size()-1;i>=0;i--){
+				openJournalWindows.get(i).dispose();
+				openJournalWindows.remove(i);
+			}
+			for(int i=openConferencePaperWindows.size()-1;i>=0;i--){
+				openConferencePaperWindows.get(i).dispose();
+				openConferencePaperWindows.remove(i);
+			}
+			for(int i=openJournalArticleWindows.size()-1;i>=0;i--){
+				openJournalArticleWindows.get(i).dispose();
+				openJournalArticleWindows.remove(i);
+			}
+			//-------------------*/
 			model.removeSerials(mainView.getSerialListPositions());
 			if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
-				model.emptyPapers();
 				mainView.getJBTDeleteSerials().setEnabled(false);
 				mainView.getJBTDeleteAllSerials().setEnabled(false);
 				mainView.getJBTAddPaper().setEnabled(false);
