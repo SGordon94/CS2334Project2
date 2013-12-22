@@ -38,9 +38,6 @@ public class ConferencePaper extends Paper {
 	
 	public void removePaper(){
 		parentMeeting.removePaper(this);
-	}
-	
-	public boolean isConference(){
-		return true;
+		authorsList.remove(this);
 	}
 }
