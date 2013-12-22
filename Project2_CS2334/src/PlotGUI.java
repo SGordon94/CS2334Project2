@@ -21,6 +21,8 @@ public class PlotGUI {
 	String option;
 	int numberOfConferencePapers = 0;
 	int numberOfJournalArticles = 0;
+	
+	
 	public PlotGUI(ScholarshipModel model, String option){
 		this.plotModel = model;
 		this.option = option;
@@ -70,21 +72,21 @@ public class PlotGUI {
 				
 				for(int index = 0; index < publishedPapers.size(); ++index){
 					if(publishedPapers.get(index).isConference()){
-						System.out.print("Conference Paper");
 						++numberOfConferencePapers;
 					}else{
-						System.out.print("Journal Articles");
 						++numberOfJournalArticles;
 					}
 				}
 				
+				
+				
 				switch (option){
 					case "Type Of Publication":
 						PublicationTypePanel publicationTypePanel = new PublicationTypePanel();
-						publicationTypePanel.setName("Type of Publicaton");
+						publicationTypePanel.setTitle("Type of Publicaton");
 						break;
 					case "Publications Per Year":
-						PublicationPerYear publicationPerYear = new PublicationPerYear();
+						PublicationPerYearPanel publicationPerYearPanel = new PublicationPerYearPanel();
 						break;
 					case "Conference Papers Per Year":
 						ConferencePaperPerYearPanel conferencePaperPerYearPanel = new ConferencePaperPerYearPanel();
@@ -142,9 +144,19 @@ public class PlotGUI {
 	}
 	
 	
-	private class PublicationPerYear extends JFrame{
-		public PublicationPerYear(){
-			this.setName("Publicatons Per Year");
+	private class PublicationPerYearPanel extends JFrame{
+		private ArrayList<JLabel> yearLabels = new ArrayList<JLabel>();
+		private ArrayList<String> yearStrings = new ArrayList<String>();
+		private ArrayList<Integer> data = new ArrayList<Integer>();
+		
+		public PublicationPerYearPanel(){
+			
+			for(int index = 0; index < publishedPapers.size(); ++index){
+				String[] year = publishedPapers.get(index).getPublicationDate().split(" ");
+				System.out.print(year[1]);
+				yearStrings.add(year[1]);
+			}
+			
 			this.getContentPane().setName("Publications Per Year");
 			setSize(400,300);
 			setLocationRelativeTo(null);

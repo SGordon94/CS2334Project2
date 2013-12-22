@@ -49,6 +49,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 		add(cards);
 		add(addPaperPanel, BorderLayout.SOUTH);
 		
+		setTitle("Add Paper");
 		setSize(600, 500);
 		setLocationRelativeTo(null);
 		pack();
