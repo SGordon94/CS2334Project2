@@ -334,10 +334,6 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return this.authorsList;
 	}
 	
-	public boolean isConference(){
-		return true;
-	}
-	
 	public void removePaper(){
 		
 	}

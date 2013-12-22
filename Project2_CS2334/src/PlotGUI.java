@@ -69,7 +69,7 @@ public class PlotGUI {
 
 				
 				for(int index = 0; index < publishedPapers.size(); ++index){
-					if(publishedPapers.get(index).isConference()){
+					if(publishedPapers.get(index).getClass() == ConferencePaper.class){
 						System.out.print("Conference Paper");
 						++numberOfConferencePapers;
 					}else{
