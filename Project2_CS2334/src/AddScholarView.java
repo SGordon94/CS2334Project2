@@ -34,7 +34,8 @@ public class AddScholarView extends JFrame {
 	private TitledBorder titledBorder = BorderFactory.createTitledBorder(etchedBorder, meetingLabel,
 			TitledBorder.LEFT, TitledBorder.ABOVE_TOP);
 	
-	public void showAddScholarView(){
+	public void showAddScholarView(ArrayList<AddScholarView> windows){
+		this.openAddScholarWindows = windows;
 		setTitle("Add Scholar");
 		
 		

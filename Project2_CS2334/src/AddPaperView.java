@@ -17,7 +17,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 	private JButton jbtAddPaper = new JButton("Add Paper");
 	private ArrayList<AddPaperView> openAddPaperWindows;
 	
-	public AddPaperView(ScholarshipModel mod){
+	public AddPaperView(ScholarshipModel mod, ArrayList<AddPaperView> windows){
+		this.openAddPaperWindows = windows;
 		this.model = mod;
 		setLayout(new BorderLayout());
 		paperSelector.addItemListener(this);

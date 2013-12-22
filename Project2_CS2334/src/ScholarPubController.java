@@ -166,7 +166,7 @@ public class ScholarPubController {
 	private class AddScholarListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			AddScholarView addScholarView = new AddScholarView();
-			addScholarView.showAddScholarView();
+			addScholarView.showAddScholarView(openAddScholarWindows);
 			addScholarView.addWindowListener(new AddScholarWindowListener(addScholarView));
 			setAddScholarViewActionListeners(addScholarView);
 			openAddScholarWindows.add(addScholarView);
@@ -392,7 +392,7 @@ public class ScholarPubController {
 	
 	private class AddSerialListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			AddSerialView serialView = new AddSerialView(model);
+			AddSerialView serialView = new AddSerialView(model, openAddSerialWindows);
 			serialView.addWindowListener(new AddSerialWindowListener(serialView));
 			setAddSerialViewActionListeners(serialView);
 			openAddSerialWindows.add(serialView);
@@ -598,7 +598,7 @@ public class ScholarPubController {
 	
 	private class AddPaperListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			AddPaperView paperView = new AddPaperView(model);
+			AddPaperView paperView = new AddPaperView(model, openAddPaperWindows);
 			paperView.getJBTAddPaper().addActionListener(new AddPaperToListListener(paperView));
 			paperView.addWindowListener(new AddPaperWindowListener(paperView));
 			openAddPaperWindows.add(paperView);

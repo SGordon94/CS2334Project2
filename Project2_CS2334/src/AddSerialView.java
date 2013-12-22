@@ -19,7 +19,8 @@ public class AddSerialView extends JFrame implements ItemListener{
 	private ArrayList<Meeting> temporaryMeetings = new ArrayList<Meeting>();
 	private ArrayList<AddSerialView> openAddSerialWindows;
 	
-	public AddSerialView(ScholarshipModel mod){
+	public AddSerialView(ScholarshipModel mod, ArrayList<AddSerialView> windows){
+		this.openAddSerialWindows = windows;
 		this.model = mod;
 		setTitle("Add Serial");
 		setLayout(new BorderLayout());
