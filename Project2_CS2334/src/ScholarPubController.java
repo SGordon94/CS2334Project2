@@ -6,7 +6,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 //REMAINING FEATURES:
-	//DOUBLE CLICKING A JLIST AFTER WHEN IT IS EMPTY (AFTER BEING FILLED) THROWS AN ERROR
+	//CAN ADD EMPTY SCHOLARS
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
@@ -110,15 +110,17 @@ public class ScholarPubController {
 				}
 			}
 			public void mouseReleased(MouseEvent arg0) {
-				if(clicked){
-					if(!openScholars.contains(model.getScholar(mainView.getListOfScholars().getSelectedIndex()))){
-						ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()), openScholars, openScholarWindows, model);
-						scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
-						scholarDataView.addWindowListener(new ScholarDataViewWindowListener(scholarDataView));
-						clicked = false;
-					}
-					else{
-						clicked = false;
+				if(model.getScholarListSize() > 0){
+					if(clicked){
+						if(!openScholars.contains(model.getScholar(mainView.getListOfScholars().getSelectedIndex()))){
+							ScholarDataView scholarDataView = new ScholarDataView(model.getScholar(mainView.getListOfScholars().getSelectedIndex()), openScholars, openScholarWindows, model);
+							scholarDataView.getJBTOK().addActionListener(new ScholarDataViewOKButtonListener(scholarDataView));
+							scholarDataView.addWindowListener(new ScholarDataViewWindowListener(scholarDataView));
+							clicked = false;
+						}
+						else{
+							clicked = false;
+						}
 					}
 				}
 			}
@@ -660,22 +662,24 @@ public class ScholarPubController {
 				}
 			}
 			public void mouseReleased(MouseEvent arg0) {
-				if(clicked){
-					if(!openPapers.contains(model.getPaper(mainView.getListOfPapers().getSelectedIndex()))){
-						if(model.getPaper(mainView.getListOfPapers().getSelectedIndex()).getClass() == ConferencePaper.class){
-							ConferencePaperDataView paperDataView = new ConferencePaperDataView((ConferencePaper)model.getPaper(mainView.getListOfPapers().getSelectedIndex()), openPapers, openConferencePaperWindows, model);
-							paperDataView.getJBTOK().addActionListener(new ConferencePaperDataViewOKButtonListener(paperDataView));
-							paperDataView.addWindowListener(new ConferencePaperDataViewWindowListener(paperDataView));
+				if(model.getPaperListSize() > 0){
+					if(clicked){
+						if(!openPapers.contains(model.getPaper(mainView.getListOfPapers().getSelectedIndex()))){
+							if(model.getPaper(mainView.getListOfPapers().getSelectedIndex()).getClass() == ConferencePaper.class){
+								ConferencePaperDataView paperDataView = new ConferencePaperDataView((ConferencePaper)model.getPaper(mainView.getListOfPapers().getSelectedIndex()), openPapers, openConferencePaperWindows, model);
+								paperDataView.getJBTOK().addActionListener(new ConferencePaperDataViewOKButtonListener(paperDataView));
+								paperDataView.addWindowListener(new ConferencePaperDataViewWindowListener(paperDataView));
+							}
+							else{
+								JournalArticleDataView paperDataView = new JournalArticleDataView((JournalPaper)model.getPaper(mainView.getListOfPapers().getSelectedIndex()), openPapers, openJournalArticleWindows, model);
+								paperDataView.getJBTOK().addActionListener(new JournalArticleDataViewOKButtonListener(paperDataView));
+								paperDataView.addWindowListener(new JournalArticleDataViewWindowListener(paperDataView));
+							}
+							clicked = false;
 						}
 						else{
-							JournalArticleDataView paperDataView = new JournalArticleDataView((JournalPaper)model.getPaper(mainView.getListOfPapers().getSelectedIndex()), openPapers, openJournalArticleWindows, model);
-							paperDataView.getJBTOK().addActionListener(new JournalArticleDataViewOKButtonListener(paperDataView));
-							paperDataView.addWindowListener(new JournalArticleDataViewWindowListener(paperDataView));
+							clicked = false;
 						}
-						clicked = false;
-					}
-					else{
-						clicked = false;
 					}
 				}
 			}
