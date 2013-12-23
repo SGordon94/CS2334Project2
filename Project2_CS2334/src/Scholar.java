@@ -83,4 +83,12 @@ public class Scholar implements Serializable {
         	return this.containingPapers;
         }
         
+        public Paper getPaper(int index){
+        	return containingPapers.get(index);
+        }
+        
+        public int getPaperListSize(){
+        	return containingPapers.size();
+        }
+        
 }

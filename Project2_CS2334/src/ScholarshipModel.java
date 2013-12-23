@@ -224,6 +224,14 @@ public class ScholarshipModel {
 		return false;
 	}
 	
+	public synchronized void removeSerial(Conference conf){
+		conferences.remove(conf);
+	}
+	
+	public synchronized void removeSerial(Journal jour){
+		journals.remove(jour);
+	}
+	
 	public synchronized void removeSerials(int[] indices){
 		for(int i=(indices.length-1);i>=0;i--){
 			if(indices[i] >= journals.size()){
