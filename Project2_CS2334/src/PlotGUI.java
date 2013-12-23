@@ -1,15 +1,19 @@
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class PlotGUI {
@@ -21,9 +25,12 @@ public class PlotGUI {
 	int numberOfConferencePapers = 0;
 	int numberOfJournalArticles = 0;
 	
-	private ArrayList<JLabel> yearLabels = new ArrayList<JLabel>();
 	private ArrayList<String> yearStrings = new ArrayList<String>();
 	private ArrayList<Integer> data = new ArrayList<Integer>();
+	
+	private ArrayList<Paper> conferencePapers = new ArrayList<Paper>();
+	
+	private ArrayList<Paper> journalArticles = new ArrayList<Paper>();
 	
 	
 	public PlotGUI(ScholarshipModel model, String option){
@@ -89,20 +96,41 @@ public class PlotGUI {
 							String year = publishedPapers.get(index).getYear();
 							yearStrings.add(year);
 						}
-						
-						for(int index = 0; index < yearStrings.size(); ++index){
-							System.out.print(yearStrings.get(index));
-						}
+						Set<String> set1 = new HashSet<String>(yearStrings); // get rid of duplicates
+						yearStrings = new ArrayList<String>(set1);
 						
 						PublicationPerYearPanel publicationPerYearPanel = new PublicationPerYearPanel();
+						publicationPerYearPanel.setTitle("Publications Per Year");
 						break;
 						
 					case "Conference Papers Per Year":
+						for(int index = 0; index < publishedPapers.size(); ++index){
+							if(publishedPapers.get(index).getClass() == ConferencePaper.class){
+								String year = publishedPapers.get(index).getYear();
+								yearStrings.add(year);
+							}
+							
+						}
+						Set<String> set2 = new HashSet<String>(yearStrings); // get rid of duplicates
+						yearStrings = new ArrayList<String>(set2);
+						
 						ConferencePaperPerYearPanel conferencePaperPerYearPanel = new ConferencePaperPerYearPanel();
+						conferencePaperPerYearPanel.setTitle("Conference Papers Per Year");
 						break;
 						
 					case "Journal Articles Per Year":
+						for(int index = 0; index < publishedPapers.size(); ++index){
+							if(publishedPapers.get(index).getClass() == JournalPaper.class){
+								String year = publishedPapers.get(index).getYear();
+								yearStrings.add(year);
+							}
+							
+						}
+						Set<String> set3 = new HashSet<String>(yearStrings); // get rid of duplicates
+						yearStrings = new ArrayList<String>(set3);
+						
 						JournalArticlesPerYearPanel journalArticlesPerYearPanel = new JournalArticlesPerYearPanel();
+						journalArticlesPerYearPanel.setTitle("Journal Articles Per Year");
 						break;
 						
 					case "Number of Co-Authors Per Publication":
@@ -160,49 +188,115 @@ public class PlotGUI {
 		
 		public PublicationPerYearPanel(){
 			setSize(400,300);
+			JPanel mainPanel = new JPanel();
+			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+			
+			for(int firstIndex = 0; firstIndex < yearStrings.size(); ++firstIndex){
+				int counter = 0;
+				for(int secondIndex = 0; secondIndex < publishedPapers.size(); ++secondIndex){
+					if(yearStrings.get(firstIndex).equals(publishedPapers.get(secondIndex).getYear())){
+						++counter;
+					}
+				}
+				JLabel label = new JLabel(yearStrings.get(firstIndex) + " (" + counter + ")");
+				mainPanel.add(label);
+				BarPanel panel = new BarPanel(counter);
+				mainPanel.add(panel);
+			}
+			add(mainPanel);
+			
+			setSize(600,500);
 			setLocationRelativeTo(null);
 			setVisible(true);
 		}
 		
 		private class BarPanel extends JPanel{
+			int width;
+			BarPanel(int width){
+				this.width = width;
+			}
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				
+				g.fillRect(0, 0, width * 10, 100);
 			}
 		}
 	}
 	
 	private class ConferencePaperPerYearPanel extends JFrame{
 		public ConferencePaperPerYearPanel(){
-			setName("Conference Papers Per Year");
-			setSize(800,600);
+			
+			JPanel mainPanel = new JPanel();
+			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+			
+			for(int firstIndex = 0; firstIndex < yearStrings.size(); ++firstIndex){
+				int counter = 0;
+				for(int secondIndex = 0; secondIndex < publishedPapers.size(); ++secondIndex){
+					if((yearStrings.get(firstIndex).equals(publishedPapers.get(secondIndex).getYear())) && (publishedPapers.get(secondIndex).getClass() == ConferencePaper.class)){
+						++counter;
+					}
+				}
+				JLabel label = new JLabel(yearStrings.get(firstIndex) + " (" + counter + ")");
+				mainPanel.add(label);
+				BarPanel panel = new BarPanel(counter);
+				mainPanel.add(panel);
+			}
+			add(mainPanel);
+			
+			setSize(600,500);
 			setLocationRelativeTo(null);
 			setVisible(true);
 		}
 		
 		private class BarPanel extends JPanel{
+			int width;
+			BarPanel(int width){
+				this.width = width;
+			}
+			
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				
+				g.fillRect(0, 0, width * 10, 100);
 			}
 		}
 	}
 	
 	private class JournalArticlesPerYearPanel extends JFrame{
 		public JournalArticlesPerYearPanel(){
-			setName("Journal Articles Per Year");
-			setSize(400,300);
+			
+			JPanel mainPanel = new JPanel();
+			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+			
+			for(int firstIndex = 0; firstIndex < yearStrings.size(); ++firstIndex){
+				int counter = 0;
+				for(int secondIndex = 0; secondIndex < publishedPapers.size(); ++secondIndex){
+					if((yearStrings.get(firstIndex).equals(publishedPapers.get(secondIndex).getYear())) && (publishedPapers.get(secondIndex).getClass() == JournalPaper.class)){
+						++counter;
+					}
+				}
+				JLabel label = new JLabel(yearStrings.get(firstIndex) + " (" + counter + ")");
+				mainPanel.add(label);
+				BarPanel panel = new BarPanel(counter);
+				mainPanel.add(panel);
+			}
+			add(mainPanel);
+			
+			setSize(600,500);
 			setLocationRelativeTo(null);
 			setVisible(true);
 		}
 		
 		private class BarPanel extends JPanel{
+			int width;
+			BarPanel(int width){
+				this.width = width;
+			}
+			
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				
+				g.fillRect(0, 0, width * 10, 100);
 			}
 		}
 	}
