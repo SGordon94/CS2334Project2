@@ -31,6 +31,18 @@ public class Issue {
 		return articles.size();
 	}
 	
+	public void removeScholar(Scholar key){
+		editors.remove(key);
+		reviewers.remove(key);
+	}
+	
+	public boolean isAListEmpty(){
+		if((editors.size() > 0) && (reviewers.size() > 0)){
+			return false;
+		}
+		return true;
+	}
+	
 	public boolean equals(Issue issue){
 		if(this.month.equals(issue.getMonth())){
 			if(this.year.equals(issue.getYear())){

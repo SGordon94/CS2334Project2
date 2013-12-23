@@ -334,6 +334,10 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return this.authorsList;
 	}
 	
+	public Object getParentSerial(){
+		return new Object();
+	}
+	
 	public void removePaper(){
 		
 	}

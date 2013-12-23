@@ -70,6 +70,18 @@ public class Meeting {
 		return false;
 	}
 	
+	public void removeScholar(Scholar key){
+		programChairs.remove(key);
+		committeeMembers.remove(key);
+	}
+	
+	public boolean isAListEmpty(){
+		if((programChairs.size() > 0) && (committeeMembers.size() > 0)){
+			return false;
+		}
+		return true;
+	}
+	
 	public int getPaperListSize(){
 		return papers.size();
 	}
