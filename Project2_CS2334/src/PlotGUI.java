@@ -68,17 +68,13 @@ public class PlotGUI {
 				System.out.println(publishedPapers.get(0).getTitleOfPaper());
 				//System.out.println(publishedPapers.get(0).getTypeOfPaper());
 
-
-				
 				for(int index = 0; index < publishedPapers.size(); ++index){
 
-					//if(publishedPapers.get(index).isConference()){
-
 					if(publishedPapers.get(index).getClass() == ConferencePaper.class){
-						System.out.print("Conference Paper");
 
 						++numberOfConferencePapers;
 					}else{
+						
 						++numberOfJournalArticles;
 					}
 				}

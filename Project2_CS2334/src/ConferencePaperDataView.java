@@ -34,8 +34,17 @@ public class ConferencePaperDataView extends JFrame{
 			digitalObjectIdentifier = "N/A";
 		}
 		
+		String meetingNumber = "";
+		for(int index = 0; index < paper.getParentSerial().getMeetingListSize(); ++index){
+			if(paper.getParentSerial().getMeeting(index).equals(paper.getParentMeeting())){
+				meetingNumber += index + 1;
+			}
+		}
+		
+		String meetingInfo = paper.getParentSerial().getOrganization() + " - Meeting " + meetingNumber;
+		
 		JTextArea mainTextArea = new JTextArea(paperTitleLabel + paper.getTitleOfPaper() + "\n\n" + authorsLabel + "\n" + paper.getAllAuthors() + "\n"
-				+ conferencePaperReference + paper.getTitleOfSerial() + "\n\n" + pageNumbers + paper.getNumbers() + "\n\n"
+				+ conferencePaperReference + meetingInfo + "\n\n" + pageNumbers + paper.getNumbers() + "\n\n"
 				+ digitalObjectIdentifierLabel + digitalObjectIdentifier);
 		mainTextArea.setEditable(false);
 		

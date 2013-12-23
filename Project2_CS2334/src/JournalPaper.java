@@ -40,4 +40,8 @@ public class JournalPaper extends Paper {
 		authorsList.remove(this);
 		parentIssue.removePaper(this);
 	}
+	
+	public Journal getParentSerial(){
+		return this.parentSerial;
+	}
 }

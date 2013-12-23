@@ -34,6 +34,9 @@ public class JournalArticleDataView extends JFrame{
 			digitalObjectIdentifier = "N/A";
 		}
 		
+		String volumeNumber = "";
+		String issueNumber = "";
+		
 		JTextArea mainTextArea = new JTextArea(paperTitleLabel + paper.getTitleOfPaper() + "\n" + authorsLabel + paper.getAuthors() + "\n"
 				+ articleIssueReference + paper.getTitleOfSerial() + "\n" + pageNumbers + paper.getNumbers() + "\n"
 				+ digitalObjectIdentifierLabel + digitalObjectIdentifier);

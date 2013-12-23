@@ -16,4 +16,8 @@ public class Volume {
 	public int getSizeOfIssueList(){
 		return issues.size();
 	}
+	
+	public ArrayList<Issue> getIssues(){
+		return this.issues;
+	}
 }

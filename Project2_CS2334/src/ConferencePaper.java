@@ -40,4 +40,12 @@ public class ConferencePaper extends Paper {
 		parentMeeting.removePaper(this);
 		authorsList.remove(this);
 	}
+	
+	public Conference getParentSerial(){
+		return this.parentSerial;
+	}
+	
+	public Meeting getParentMeeting(){
+		return this.parentMeeting;
+	}
 }
