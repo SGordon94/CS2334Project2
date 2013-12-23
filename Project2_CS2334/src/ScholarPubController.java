@@ -20,6 +20,7 @@ public class ScholarPubController {
 	private ArrayList<AddScholarView> openAddScholarWindows = new ArrayList<AddScholarView>();
 	private ArrayList<AddSerialView> openAddSerialWindows = new ArrayList<AddSerialView>();
 	private ArrayList<AddPaperView> openAddPaperWindows = new ArrayList<AddPaperView>();
+	private boolean stateChanged = false;
 	
 	ScholarPubController(){}
 	

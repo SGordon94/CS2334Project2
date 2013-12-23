@@ -139,6 +139,7 @@ public class SelectionView extends JFrame {
 		jbtAddPaper.setEnabled(false);
 		jbtDeletePapers.setEnabled(false);
 		jbtDeleteAllPapers.setEnabled(false);
+		saveOption.setEnabled(false);
 		
 		setSize(1200,400);
 		setLocationRelativeTo(null);

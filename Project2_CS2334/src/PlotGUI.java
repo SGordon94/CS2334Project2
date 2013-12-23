@@ -159,10 +159,6 @@ public class PlotGUI {
 
 		
 		public PublicationPerYearPanel(){
-			
-			
-			
-			
 			setSize(400,300);
 			setLocationRelativeTo(null);
 			setVisible(true);
