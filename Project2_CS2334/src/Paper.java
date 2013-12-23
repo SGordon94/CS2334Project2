@@ -341,4 +341,9 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	public void removePaper(){
 		
 	}
+	
+	public String getYear(){
+		String[] year = this.publicationDate.split(" ");
+		return year[1];
+	}
 }

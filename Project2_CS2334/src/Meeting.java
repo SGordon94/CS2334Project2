@@ -97,7 +97,7 @@ public class Meeting {
 	public String getAllProgramChairs(){
 		String allProgramChairs = "";
 		for(int index = 0; index < programChairs.size(); ++index){
-			allProgramChairs += programChairs.get(index).returnNameInString() + "\n\t\t";
+			allProgramChairs += programChairs.get(index).returnNameInString() + "\n\t";
 		}
 		return allProgramChairs;
 	}
@@ -105,7 +105,7 @@ public class Meeting {
 	public String getAllCommitteeMembers(){
 		String allCommitteeMembers = "";
 		for(int index = 0; index < committeeMembers.size(); ++index){
-			allCommitteeMembers += committeeMembers.get(index).returnNameInString() + "\n\t\t";
+			allCommitteeMembers += committeeMembers.get(index).returnNameInString() + "\n\t";
 		}
 		return allCommitteeMembers;
 	}
@@ -113,7 +113,7 @@ public class Meeting {
 		String allPapers = "";
 		if(papers != null){
 			for(int index = 0; index < papers.size(); ++index){
-				allPapers += papers.get(index).getTitleOfPaper() + "\n\t\t";
+				allPapers += papers.get(index).getTitleOfPaper() + "\n\t";
 			}
 		}else{
 			allPapers = "No papers have been added.";

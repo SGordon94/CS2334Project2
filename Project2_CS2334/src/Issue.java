@@ -85,7 +85,7 @@ public class Issue {
 	public String printEditors(){
 		String listOfEditors = "";
 		for(int index = 0; index < editors.size(); ++index){
-			listOfEditors += editors.get(index).returnNameInString() + "\n";
+			listOfEditors += editors.get(index).returnNameInString() + "\n\t\t";
 		}
 		return listOfEditors;
 	}
@@ -93,7 +93,7 @@ public class Issue {
 	public String printReviewers(){
 		String listOfReviewers = "";
 		for(int index = 0; index < reviewers.size(); ++index){
-			listOfReviewers += reviewers.get(index).returnNameInString() + "\n";
+			listOfReviewers += reviewers.get(index).returnNameInString() + "\n\t\t";
 		}
 		return listOfReviewers;
 	}
@@ -104,7 +104,7 @@ public class Issue {
 			listOfArticles = "No articles have been added.";
 		}else{
 			for(int index = 0; index < articles.size(); ++index){
-				listOfArticles += articles.get(index).getTitleOfPaper();
+				listOfArticles += articles.get(index).getTitleOfPaper() + "\n\t\t";
 			}
 		}
 		return listOfArticles;
@@ -112,5 +112,14 @@ public class Issue {
 	
 	public String toString(){
 		return (month+", "+year);
+	}
+	
+	public boolean containsPaper(Paper paper){
+		for(int index = 0; index < articles.size(); ++index){
+			if(articles.get(index).equals(paper)){
+				return true;
+			}
+		}
+		return false;
 	}
 }

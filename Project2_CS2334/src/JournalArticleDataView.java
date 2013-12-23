@@ -37,8 +37,20 @@ public class JournalArticleDataView extends JFrame{
 		String volumeNumber = "";
 		String issueNumber = "";
 		
-		JTextArea mainTextArea = new JTextArea(paperTitleLabel + paper.getTitleOfPaper() + "\n" + authorsLabel + paper.getAuthors() + "\n"
-				+ articleIssueReference + paper.getTitleOfSerial() + "\n" + pageNumbers + paper.getNumbers() + "\n"
+		for(int firstIndex = 0; firstIndex < paper.getParentSerial().getVolumeSize(); ++firstIndex){
+			for(int secondIndex = 0; secondIndex < paper.getParentSerial().getVolumes().get(firstIndex).getSizeOfIssueList(); ++secondIndex){
+				if(paper.getParentSerial().getVolume(firstIndex).getIssues().get(secondIndex).containsPaper(paper)){
+					volumeNumber += firstIndex + 1;
+					issueNumber += secondIndex + 1;
+				}
+			}
+		}
+		
+		String issueDetails = paper.getParentSerial().getOrganization() + " - Volume " + volumeNumber 
+				+ " Issue " + issueNumber;
+		
+		JTextArea mainTextArea = new JTextArea(paperTitleLabel + paper.getTitleOfPaper() + "\n\n" + authorsLabel + paper.getAllAuthors() + "\n"
+				+ articleIssueReference + issueDetails + "\n\n" + pageNumbers + paper.getNumbers() + "\n\n"
 				+ digitalObjectIdentifierLabel + digitalObjectIdentifier);
 		mainTextArea.setEditable(false);
 		
