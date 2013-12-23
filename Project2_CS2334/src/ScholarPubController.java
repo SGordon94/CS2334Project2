@@ -900,65 +900,69 @@ public class ScholarPubController {
 		}
 		public void actionPerformed(ActionEvent arg0) {
 			if(localSerialView.visibleCard().equals("Conference")){
-				if(localSerialView.temporaryMeetingSize() != 0){
-					Conference tempConf = new Conference(localSerialView.getConferenceOrganizationName().trim(), localSerialView.getMeetings());
-					boolean uniqueSerial = !model.containsConference(tempConf);
-					if(uniqueSerial){
-						if(!mainView.getJBTDeleteSerials().isEnabled()){
-							mainView.getJBTDeleteSerials().setEnabled(true);
+				if(localSerialView.fieldsFilledOnClosing()){
+					if(localSerialView.temporaryMeetingSize() != 0){
+						Conference tempConf = new Conference(localSerialView.getConferenceOrganizationName().trim(), localSerialView.getMeetings());
+						boolean uniqueSerial = !model.containsConference(tempConf);
+						if(uniqueSerial){
+							if(!mainView.getJBTDeleteSerials().isEnabled()){
+								mainView.getJBTDeleteSerials().setEnabled(true);
+							}
+							if(!mainView.getJBTDeleteAllSerials().isEnabled()){
+								mainView.getJBTDeleteAllSerials().setEnabled(true);
+							}
+							if(!mainView.getJBTAddPaper().isEnabled()){
+								mainView.getJBTAddPaper().setEnabled(true);
+							}
+							for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+								openAddPaperWindows.get(i).dispose();
+								openAddPaperWindows.remove(i);
+							}
+							model.addConference(tempConf);
+							openAddSerialWindows.remove(localSerialView);
+							localSerialView.dispose();
 						}
-						if(!mainView.getJBTDeleteAllSerials().isEnabled()){
-							mainView.getJBTDeleteAllSerials().setEnabled(true);
+						else{
+							JOptionPane.showMessageDialog(null, "This conference is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 						}
-						if(!mainView.getJBTAddPaper().isEnabled()){
-							mainView.getJBTAddPaper().setEnabled(true);
-						}
-						for(int i=openAddPaperWindows.size()-1;i>=0;i--){
-							openAddPaperWindows.get(i).dispose();
-							openAddPaperWindows.remove(i);
-						}
-						model.addConference(tempConf);
-						openAddSerialWindows.remove(localSerialView);
-						localSerialView.dispose();
+						mainView.updateSerialList();
 					}
 					else{
-						JOptionPane.showMessageDialog(null, "This conference is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 					}
-					mainView.updateSerialList();
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 			else{
-				if(localSerialView.issuesPresent()){
-					Journal tempJour = new Journal(localSerialView.getJournalOrganizationName().trim(), localSerialView.getJournalLocation(), localSerialView.getVolumes());
-					boolean uniqueSerial = !model.containsJournal(tempJour);
-					if(uniqueSerial){
-						if(!mainView.getJBTDeleteSerials().isEnabled()){
-							mainView.getJBTDeleteSerials().setEnabled(true);
+				if(localSerialView.fieldsFilledOnClosing()){
+					if(localSerialView.issuesPresent()){
+						Journal tempJour = new Journal(localSerialView.getJournalOrganizationName().trim(), localSerialView.getJournalLocation(), localSerialView.getVolumes());
+						boolean uniqueSerial = !model.containsJournal(tempJour);
+						if(uniqueSerial){
+							if(!mainView.getJBTDeleteSerials().isEnabled()){
+								mainView.getJBTDeleteSerials().setEnabled(true);
+							}
+							if(!mainView.getJBTDeleteAllSerials().isEnabled()){
+								mainView.getJBTDeleteAllSerials().setEnabled(true);
+							}
+							if(!mainView.getJBTAddPaper().isEnabled()){
+								mainView.getJBTAddPaper().setEnabled(true);
+							}
+							for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+								openAddPaperWindows.get(i).dispose();
+								openAddPaperWindows.remove(i);
+							}
+							model.addJournal(tempJour);
+							openAddSerialWindows.remove(localSerialView);
+							localSerialView.dispose();
 						}
-						if(!mainView.getJBTDeleteAllSerials().isEnabled()){
-							mainView.getJBTDeleteAllSerials().setEnabled(true);
+						else{
+							JOptionPane.showMessageDialog(null, "This journal is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 						}
-						if(!mainView.getJBTAddPaper().isEnabled()){
-							mainView.getJBTAddPaper().setEnabled(true);
-						}
-						for(int i=openAddPaperWindows.size()-1;i>=0;i--){
-							openAddPaperWindows.get(i).dispose();
-							openAddPaperWindows.remove(i);
-						}
-						model.addJournal(tempJour);
-						openAddSerialWindows.remove(localSerialView);
-						localSerialView.dispose();
+						mainView.updateSerialList();
 					}
 					else{
-						JOptionPane.showMessageDialog(null, "This journal is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 					}
-					mainView.updateSerialList();
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "Cannot add an empty serial.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		}
