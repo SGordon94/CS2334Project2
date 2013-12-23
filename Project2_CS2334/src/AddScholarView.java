@@ -101,6 +101,26 @@ public class AddScholarView extends JFrame {
 		openAddScholarWindows.remove(this);
 	}
 	
+	public boolean fieldsFilled(){
+		if(primaryNameData.getText().trim().equals("")){
+			JOptionPane.showMessageDialog(null, "Please input the name the Last Name.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+			return false;
+		}
+		if(firstNameData.getText().trim().equals("")){
+			JOptionPane.showMessageDialog(null, "Please input the name the First Name.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+			return false;
+		}
+		if(institutionalData.getText().trim().equals("")){
+			JOptionPane.showMessageDialog(null, "Please input the Institutional Affiliation(s).", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+			return false;
+		}
+		if(researchData.getText().trim().equals("")){
+			JOptionPane.showMessageDialog(null, "Please input the Research Area(s).", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+	
 	public String[] getTextFields(){
 		String[] fields = new String[5];
 		fields[0] = primaryNameData.getText();

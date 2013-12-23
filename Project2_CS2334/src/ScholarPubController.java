@@ -5,9 +5,6 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-//REMAINING FEATURES:
-	//CAN ADD EMPTY SCHOLARS
-	//CAN ADD DUPLICATE PAPERS
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
@@ -833,6 +830,7 @@ public class ScholarPubController {
 						openPapers.remove(l);
 					}
 				}
+				model.getPaper(indices[i]).removePaper();
 			}
 			model.removePapers(indices);
 			if(model.getPaperListSize() == 0){
@@ -867,28 +865,30 @@ public class ScholarPubController {
 			this.localScholarView = scholarView;
 		}
 		public void actionPerformed(ActionEvent arg0) {
-			boolean uniqueScholar = model.addScholar(localScholarView.getTextFields());
-			mainView.updateScholarList();
-			if(!mainView.getJBTDeleteScholars().isEnabled()){
-				mainView.getJBTDeleteScholars().setEnabled(true);
-			}
-			if(!mainView.getJBTDeleteAllScholars().isEnabled()){
-				mainView.getJBTDeleteAllScholars().setEnabled(true);
-			}
-			if(!mainView.getJBTAddSerial().isEnabled()){
-				mainView.getJBTAddSerial().setEnabled(true);
-			}
-			if(uniqueScholar){
-				openAddScholarWindows.remove(localScholarView);
-				for(int i=openAddSerialWindows.size()-1;i>=0;i--){
-					openAddSerialWindows.get(i).dispose();
-					openAddSerialWindows.remove(i);
+			if(localScholarView.fieldsFilled()){
+				boolean uniqueScholar = model.addScholar(localScholarView.getTextFields());
+				mainView.updateScholarList();
+				if(!mainView.getJBTDeleteScholars().isEnabled()){
+					mainView.getJBTDeleteScholars().setEnabled(true);
 				}
-				for(int i=openAddPaperWindows.size()-1;i>=0;i--){
-					openAddPaperWindows.get(i).dispose();
-					openAddPaperWindows.remove(i);
+				if(!mainView.getJBTDeleteAllScholars().isEnabled()){
+					mainView.getJBTDeleteAllScholars().setEnabled(true);
 				}
-				localScholarView.dispose();
+				if(!mainView.getJBTAddSerial().isEnabled()){
+					mainView.getJBTAddSerial().setEnabled(true);
+				}
+				if(uniqueScholar){
+					openAddScholarWindows.remove(localScholarView);
+					for(int i=openAddSerialWindows.size()-1;i>=0;i--){
+						openAddSerialWindows.get(i).dispose();
+						openAddSerialWindows.remove(i);
+					}
+					for(int i=openAddPaperWindows.size()-1;i>=0;i--){
+						openAddPaperWindows.get(i).dispose();
+						openAddPaperWindows.remove(i);
+					}
+					localScholarView.dispose();
+				}
 			}
 		}
 	}
@@ -1048,7 +1048,7 @@ public class ScholarPubController {
 	
 	private class CloseOptionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			System.exit(0);
 		}
 	}
 	
@@ -1113,7 +1113,9 @@ public class ScholarPubController {
 						localPaperView.dispose();
 					}
 					else{
+						pape.removePaper();
 						JOptionPane.showMessageDialog(null, "This Conference Paper is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+						
 					}
 					mainView.updatePaperList();
 				}
@@ -1132,6 +1134,7 @@ public class ScholarPubController {
 						localPaperView.dispose();
 					}
 					else{
+						pape.removePaper();
 						JOptionPane.showMessageDialog(null, "This Article is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 					}
 					mainView.updatePaperList();
