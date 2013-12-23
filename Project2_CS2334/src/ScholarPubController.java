@@ -7,6 +7,7 @@ import javax.swing.event.ListSelectionListener;
 
 //REMAINING FEATURES:
 	//CAN ADD EMPTY SCHOLARS
+	//CAN ADD DUPLICATE PAPERS
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;
@@ -190,12 +191,9 @@ public class ScholarPubController {
 		}
 	}
 	
-	private class DeleteScholarsListener implements ActionListener{ // FINISH THIS BEHEMOTH 12/21/2013
+	private class DeleteScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			//-------------------------------------------------------/
 			int[] indices = mainView.getScholarListPositions();
-			////////////////
-			//((Conference)model.getScholar(indices[i]).getPaper(n).getParentSerial())
 			for(int i=indices.length-1;i>=0;i--){
 				for(int o=model.getConferenceListSize()-1;o>=0;o--){
 					boolean delete = false;
@@ -271,7 +269,38 @@ public class ScholarPubController {
 						model.removeSerial(model.getJournal(o));
 					}
 				}
-				
+				for(int j=model.getScholar(indices[i]).getPaperListSize()-1;j>=0;j--){
+					for(int l=openConferencePaperWindows.size()-1;l>=0;l--){
+						if(model.getScholar(indices[i]).getPaper(j) == openConferencePaperWindows.get(l).getUsedPaper()){
+							openConferencePaperWindows.get(l).dispose();
+							openConferencePaperWindows.remove(l);
+						}
+					}
+					for(int k=openJournalArticleWindows.size()-1;k>=0;k--){
+						if(model.getScholar(indices[i]).getPaper(j) == openJournalArticleWindows.get(k).getUsedPaper()){
+							openJournalArticleWindows.get(k).dispose();
+							openJournalArticleWindows.remove(k);
+						}
+					}
+					for(int l=openPapers.size()-1;l>=0;l--){
+						if(model.getScholar(indices[i]).getPaper(j) == openPapers.get(l)){
+							openPapers.remove(l);
+						}
+					}
+					model.removePaper(model.getScholar(indices[i]).getPaper(j));
+					model.getScholar(indices[i]).getPaper(j).removePaper();
+				}
+				for(int r=openScholarWindows.size()-1;r>=0;r--){
+					if(model.getScholar(indices[i]) == openScholarWindows.get(r).getUsedScholar()){
+						openScholarWindows.get(r).dispose();
+						openScholarWindows.remove(r);
+					}
+				}
+				for(int s=openScholars.size()-1;s>=0;s--){
+					if(model.getScholar(indices[i]) == openScholars.get(s)){
+						openScholars.remove(s);
+					}
+				}
 			}
 			for(int i=openAddSerialWindows.size()-1;i>=0;i--){
 				openAddSerialWindows.get(i).dispose();
@@ -285,21 +314,27 @@ public class ScholarPubController {
 			if(model.getScholarListSize() == 0){
 				mainView.getJBTDeleteScholars().setEnabled(false);
 				mainView.getJBTDeleteAllScholars().setEnabled(false);
-			}
-			if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
 				mainView.getJBTAddSerial().setEnabled(false);
 				mainView.getJBTDeleteSerials().setEnabled(false);
 				mainView.getJBTDeleteAllSerials().setEnabled(false);
-			}
-			if(model.getPaperListSize() == 0){
 				mainView.getJBTAddPaper().setEnabled(false);
+				mainView.getJBTDeletePapers().setEnabled(false);
+				mainView.getJBTDeleteAllPapers().setEnabled(false);
+			}
+			else if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
+				mainView.getJBTDeleteSerials().setEnabled(false);
+				mainView.getJBTDeleteAllSerials().setEnabled(false);
+				mainView.getJBTAddPaper().setEnabled(false);
+				mainView.getJBTDeletePapers().setEnabled(false);
+				mainView.getJBTDeleteAllPapers().setEnabled(false);
+			}
+			else if(model.getPaperListSize() == 0){
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
 			mainView.updateScholarList();
 			mainView.updateSerialList();
 			mainView.updatePaperList();
-			//-------------------------------------------------------/
 		}
 	}
 	
@@ -575,10 +610,12 @@ public class ScholarPubController {
 			if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
 				mainView.getJBTDeleteSerials().setEnabled(false);
 				mainView.getJBTDeleteAllSerials().setEnabled(false);
+				mainView.getJBTAddPaper().setEnabled(false);
+				mainView.getJBTDeletePapers().setEnabled(false);
+				mainView.getJBTDeleteAllPapers().setEnabled(false);
 
 			}
-			if(model.getPaperListSize() == 0){
-				mainView.getJBTAddPaper().setEnabled(false);
+			else if(model.getPaperListSize() == 0){
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}

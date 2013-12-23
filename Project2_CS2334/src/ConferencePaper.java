@@ -34,6 +34,9 @@ public class ConferencePaper extends Paper {
 		this.authorsList = (ArrayList<Scholar>)innerDetails.get(2);
 		this.parentSerial = (Conference)innerDetails.get(3);
 		parentMeeting.addPaper(this);
+		for(int i=0; i<authorsList.size(); i++){
+			authorsList.get(i).setContainingPaper(this);
+		}
 	}
 	
 	public void removePaper(){
