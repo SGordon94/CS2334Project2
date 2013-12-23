@@ -71,10 +71,8 @@ public class PlotGUI {
 				for(int index = 0; index < publishedPapers.size(); ++index){
 
 					if(publishedPapers.get(index).getClass() == ConferencePaper.class){
-
 						++numberOfConferencePapers;
 					}else{
-						
 						++numberOfJournalArticles;
 					}
 				}

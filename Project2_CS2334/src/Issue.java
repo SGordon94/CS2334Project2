@@ -101,4 +101,13 @@ public class Issue {
 	public String toString(){
 		return (month+", "+year);
 	}
+	
+	public boolean containsPaper(Paper paper){
+		for(int index = 0; index < articles.size(); ++index){
+			if(articles.get(index).equals(paper)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
