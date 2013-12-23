@@ -4,7 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -21,6 +20,10 @@ public class PlotGUI {
 	String option;
 	int numberOfConferencePapers = 0;
 	int numberOfJournalArticles = 0;
+	
+	private ArrayList<JLabel> yearLabels = new ArrayList<JLabel>();
+	private ArrayList<String> yearStrings = new ArrayList<String>();
+	private ArrayList<Integer> data = new ArrayList<Integer>();
 	
 	
 	public PlotGUI(ScholarshipModel model, String option){
@@ -65,34 +68,43 @@ public class PlotGUI {
 				scholarIndex = listOfScholarNames.getSelectedIndex();
 				selectedScholar = plotModel.getScholar(scholarIndex);
 				publishedPapers = plotModel.getPapersForAuthor(selectedScholar);
-				System.out.println(publishedPapers.get(0).getTitleOfPaper());
-				//System.out.println(publishedPapers.get(0).getTypeOfPaper());
-
-				for(int index = 0; index < publishedPapers.size(); ++index){
-
-					if(publishedPapers.get(index).getClass() == ConferencePaper.class){
-						++numberOfConferencePapers;
-					}else{
-						++numberOfJournalArticles;
-					}
-				}
-				
-				
-				
 				switch (option){
 					case "Type Of Publication":
+						//Gather information
+						for(int index = 0; index < publishedPapers.size(); ++index){
+
+							if(publishedPapers.get(index).getClass() == ConferencePaper.class){
+								++numberOfConferencePapers;
+							}else{
+								++numberOfJournalArticles;
+							}
+						}
 						PublicationTypePanel publicationTypePanel = new PublicationTypePanel();
 						publicationTypePanel.setTitle("Type of Publicaton");
 						break;
+						
 					case "Publications Per Year":
+						//Gather Information
+						for(int index = 0; index < publishedPapers.size(); ++index){
+							String year = publishedPapers.get(index).getYear();
+							yearStrings.add(year);
+						}
+						
+						for(int index = 0; index < yearStrings.size(); ++index){
+							System.out.print(yearStrings.get(index));
+						}
+						
 						PublicationPerYearPanel publicationPerYearPanel = new PublicationPerYearPanel();
 						break;
+						
 					case "Conference Papers Per Year":
 						ConferencePaperPerYearPanel conferencePaperPerYearPanel = new ConferencePaperPerYearPanel();
 						break;
+						
 					case "Journal Articles Per Year":
 						JournalArticlesPerYearPanel journalArticlesPerYearPanel = new JournalArticlesPerYearPanel();
 						break;
+						
 					case "Number of Co-Authors Per Publication":
 						CoAuthorsPerPublicationPanel coAuthorsPerPublicationPanel = new CoAuthorsPerPublicationPanel();
 						break;
@@ -144,19 +156,13 @@ public class PlotGUI {
 	
 	
 	private class PublicationPerYearPanel extends JFrame{
-		private ArrayList<JLabel> yearLabels = new ArrayList<JLabel>();
-		private ArrayList<String> yearStrings = new ArrayList<String>();
-		private ArrayList<Integer> data = new ArrayList<Integer>();
+
 		
 		public PublicationPerYearPanel(){
 			
-			for(int index = 0; index < publishedPapers.size(); ++index){
-				String[] year = publishedPapers.get(index).getPublicationDate().split(" ");
-				System.out.print(year[1]);
-				yearStrings.add(year[1]);
-			}
 			
-			this.getContentPane().setName("Publications Per Year");
+			
+			
 			setSize(400,300);
 			setLocationRelativeTo(null);
 			setVisible(true);

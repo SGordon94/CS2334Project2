@@ -34,6 +34,7 @@ public class JournalPaper extends Paper {
 		this.authorsList = (ArrayList<Scholar>)innerDetails.get(2);
 		this.parentSerial = (Journal)innerDetails.get(3);
 		parentIssue.addPaper(this);
+		this.publicationDate = parentIssue.getMonth() + " " + parentIssue.getYear();
 	}
 	
 	public void removePaper(){
