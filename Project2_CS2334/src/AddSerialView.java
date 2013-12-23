@@ -206,6 +206,14 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		public boolean fieldsFilledOnClosing(){
+			if(organization.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			return true;
+		}
+		
 		public ArrayList<Object> getInnerDetails(){ // gets the meeting text fields
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[5];
@@ -380,6 +388,26 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		public boolean fieldsFilledOnClosing(){
+			if(organizationName.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(city.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a City.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(stateProvince.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a State or Province.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;
+			}
+			if(country.getText().trim().equals("")){
+				JOptionPane.showMessageDialog(null, "Please input a Country.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+				return false;			
+			}
+			return true;
+		}
+		
 		public ArrayList<Object> getInnerDetails(){
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[2];
@@ -446,6 +474,20 @@ public class AddSerialView extends JFrame implements ItemListener{
 		else{
 			return new ArrayList<Object>();
 		}
+	}
+	
+	public boolean fieldsFilledOnClosing(){
+		if(card1.isVisible()){
+			return card1.fieldsFilledOnClosing();
+		}
+		else if(card2.isVisible()){
+			return card2.fieldsFilledOnClosing();
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "INCORRECT PANEL PASSED; ADDSERIALVIEW CLASS", "ERROR", JOptionPane.ERROR_MESSAGE);
+			System.exit(-1);
+		}
+		return false; // solely to remove compiler error
 	}
 	
 	public ArrayList<Meeting> getMeetings(){
