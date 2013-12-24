@@ -43,9 +43,9 @@ public class SaveLoadGUI extends JFrame{
 					//this.model = (ScholarshipModel) objectInput.readObject();
 					this.model.setModel(((ScholarshipModel) objectInput.readObject()).getModel());
 					objectInput.close();
-					if(model.getPaperListSize() != 0){
-						localView.updatePaperList();
-					}
+					localView.updateScholarList();
+					localView.updateSerialList();
+					localView.updatePaperList();
 				}
 				break;
 			case "Save":
