@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 public class Scholar implements Serializable {
 
-        /**
-         *
-         */
+        
         private static final long serialVersionUID = -6435144183026980478L;
 
         private ArrayList<Paper> containingPapers = new ArrayList<Paper>();

@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class ConferencePaper extends Paper {
+public class ConferencePaper extends Paper implements Serializable{
 
 	/**
 	 * 

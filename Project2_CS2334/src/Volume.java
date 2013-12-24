@@ -1,6 +1,9 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Volume {
+public class Volume implements Serializable {
+	
+	private static final long serialVersionUID = 154555674631899681L;
 	private ArrayList<Issue> issues = new ArrayList<Issue>();
 	
 	public Volume(){}

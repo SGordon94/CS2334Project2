@@ -1,4 +1,5 @@
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -1068,14 +1069,30 @@ public class ScholarPubController {
 	private class LoadOptionListener implements ActionListener{
 		String choice = "Load";
 		public void actionPerformed(ActionEvent e) {
-			SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
+			try {
+				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	
 	private class SaveOptionListener implements ActionListener{
 		String choice = "Save";
 		public void actionPerformed(ActionEvent e) {
-			SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
+			try {
+				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	

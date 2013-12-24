@@ -1,7 +1,10 @@
+import java.io.Serializable;
 import java.util.*;
 
 
-public class Journal {
+public class Journal implements Serializable{
+	
+	private static final long serialVersionUID = 5796341236658134402L;
 	private String nameOfOrganization;
 	private Location location;
 	private ArrayList<Volume> volumes;
