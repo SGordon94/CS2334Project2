@@ -182,6 +182,10 @@ public class SelectionView extends JFrame {
 		this.model = mod;
 	}
 	
+	public void setSaveOptionState(boolean state){
+		saveOption.setEnabled(state);
+	}
+	
 	public JButton getJBTAddScholar(){
 		return jbtAddScholar;
 	}

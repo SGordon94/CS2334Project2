@@ -850,6 +850,7 @@ public class ScholarPubController {
 			}
 			model.removePapers(indices);
 			if(model.getPaperListSize() == 0){
+				mainView.setSaveOptionState(false);
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
@@ -872,6 +873,7 @@ public class ScholarPubController {
 			}
 			openPapers.removeAll(openPapers);
 			model.emptyPapers();
+			mainView.setSaveOptionState(false);
 			mainView.getJBTDeletePapers().setEnabled(false);
 			mainView.getJBTDeleteAllPapers().setEnabled(false);
 			for(int i=0;i<plotGUIS.size();i++){
@@ -900,6 +902,7 @@ public class ScholarPubController {
 					mainView.getJBTAddSerial().setEnabled(true);
 				}
 				if(uniqueScholar){
+					mainView.setSaveOptionState(true);
 					openAddScholarWindows.remove(localScholarView);
 					for(int i=openAddSerialWindows.size()-1;i>=0;i--){
 						openAddSerialWindows.get(i).dispose();
