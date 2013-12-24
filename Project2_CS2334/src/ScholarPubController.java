@@ -313,6 +313,8 @@ public class ScholarPubController {
 			}
 			model.removeScholars(indices);
 			if(model.getScholarListSize() == 0){
+				mainView.setSaveOptionState(false);
+				stateChanged = false;
 				mainView.getJBTDeleteScholars().setEnabled(false);
 				mainView.getJBTDeleteAllScholars().setEnabled(false);
 				mainView.getJBTAddSerial().setEnabled(false);
@@ -386,7 +388,8 @@ public class ScholarPubController {
 			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
-			stateChanged = true;
+			mainView.setSaveOptionState(false);
+			stateChanged = false;
 			mainView.getJBTDeleteScholars().setEnabled(false);
 			mainView.getJBTDeleteAllScholars().setEnabled(false);
 			mainView.getJBTAddSerial().setEnabled(false);
