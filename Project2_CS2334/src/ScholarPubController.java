@@ -1089,6 +1089,7 @@ public class ScholarPubController {
 				int result = JOptionPane.showOptionDialog(null, "Changes have been made. Would you like to save the changes?", "Notice", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[2]);
 				switch(result){
 					case 0:
+						stateChanged = false;
 						try {
 							SaveLoadGUI saveLoad = new SaveLoadGUI(model, "Save", mainView);
 						} catch (ClassNotFoundException e1) {
