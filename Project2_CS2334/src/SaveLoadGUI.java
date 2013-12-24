@@ -40,9 +40,50 @@ public class SaveLoadGUI extends JFrame{
 							return;
 						}
 					ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-					//this.model = (ScholarshipModel) objectInput.readObject();
 					this.model.setModel(((ScholarshipModel) objectInput.readObject()).getModel());
 					objectInput.close();
+					if(model.getScholarListSize() == 0){
+						localView.getJBTDeleteScholars().setEnabled(false);
+						localView.getJBTDeleteAllScholars().setEnabled(false);
+						localView.getJBTAddSerial().setEnabled(false);
+						localView.getJBTDeleteSerials().setEnabled(false);
+						localView.getJBTDeleteAllSerials().setEnabled(false);
+						localView.getJBTAddPaper().setEnabled(false);
+						localView.getJBTDeletePapers().setEnabled(false);
+						localView.getJBTDeleteAllPapers().setEnabled(false);
+					}
+					else{
+						localView.getJBTDeleteScholars().setEnabled(true);
+						localView.getJBTDeleteAllScholars().setEnabled(true);
+						localView.getJBTAddSerial().setEnabled(true);
+						localView.getJBTDeleteSerials().setEnabled(false);
+						localView.getJBTDeleteAllSerials().setEnabled(false);
+						localView.getJBTAddPaper().setEnabled(false);
+						localView.getJBTDeletePapers().setEnabled(false);
+						localView.getJBTDeleteAllPapers().setEnabled(false);
+					}
+					if((model.getJournalListSize() == 0) && (model.getConferenceListSize() == 0)){
+						localView.getJBTDeleteSerials().setEnabled(false);
+						localView.getJBTDeleteAllSerials().setEnabled(false);
+						localView.getJBTAddPaper().setEnabled(false);
+						localView.getJBTDeletePapers().setEnabled(false);
+						localView.getJBTDeleteAllPapers().setEnabled(false);
+					}
+					else{
+						localView.getJBTDeleteSerials().setEnabled(true);
+						localView.getJBTDeleteAllSerials().setEnabled(true);
+						localView.getJBTAddPaper().setEnabled(true);
+						localView.getJBTDeletePapers().setEnabled(false);
+						localView.getJBTDeleteAllPapers().setEnabled(false);
+					}
+					if(model.getPaperListSize() == 0){
+						localView.getJBTDeletePapers().setEnabled(false);
+						localView.getJBTDeleteAllPapers().setEnabled(false);
+					}
+					else{
+						localView.getJBTDeletePapers().setEnabled(true);
+						localView.getJBTDeleteAllPapers().setEnabled(true);
+					}
 					localView.updateScholarList();
 					localView.updateSerialList();
 					localView.updatePaperList();
