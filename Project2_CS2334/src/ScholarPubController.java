@@ -195,6 +195,7 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			int[] indices = mainView.getScholarListPositions();
 			for(int i=indices.length-1;i>=0;i--){
+				stateChanged = true;
 				for(int o=model.getConferenceListSize()-1;o>=0;o--){
 					boolean delete = false;
 					for(int p=model.getConference(o).getMeetingListSize()-1;p>=0;p--){
@@ -385,6 +386,7 @@ public class ScholarPubController {
 			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
+			stateChanged = true;
 			mainView.getJBTDeleteScholars().setEnabled(false);
 			mainView.getJBTDeleteAllScholars().setEnabled(false);
 			mainView.getJBTAddSerial().setEnabled(false);
@@ -556,6 +558,7 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			int[] indices = mainView.getSerialListPositions();
 			for(int i=indices.length-1;i>=0;i--){
+				stateChanged = true;
 				if(indices[i] >= model.getJournalListSize()){
 					for(int j=openConferenceWindows.size()-1;j>=0;j--){
 						if(model.getConference(indices[i]-model.getJournalListSize()) == openConferenceWindows.get(j).getUsedSerial()){
@@ -667,6 +670,7 @@ public class ScholarPubController {
 			}
 			mainView.updateSerialList();
 			mainView.updatePaperList();
+			stateChanged = true;
 			mainView.getJBTDeleteSerials().setEnabled(false);
 			mainView.getJBTDeleteAllSerials().setEnabled(false);
 			mainView.getJBTAddPaper().setEnabled(false);
@@ -829,6 +833,7 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			int[] indices = mainView.getPaperListPositions();
 			for(int i=indices.length-1;i>=0;i--){
+				stateChanged = true;
 				for(int j=openConferencePaperWindows.size()-1;j>=0;j--){
 					if(model.getPaper(indices[i]) == openConferencePaperWindows.get(j).getUsedPaper()){
 						openConferencePaperWindows.get(j).dispose();
@@ -879,6 +884,7 @@ public class ScholarPubController {
 			for(int i=0;i<plotGUIS.size();i++){
 				plotGUIS.get(i).updatePlot();
 			}
+			stateChanged = true;
 			mainView.updatePaperList();
 		}
 	}
@@ -903,6 +909,7 @@ public class ScholarPubController {
 				}
 				if(uniqueScholar){
 					mainView.setSaveOptionState(true);
+					stateChanged = true;
 					openAddScholarWindows.remove(localScholarView);
 					for(int i=openAddSerialWindows.size()-1;i>=0;i--){
 						openAddSerialWindows.get(i).dispose();
@@ -943,6 +950,7 @@ public class ScholarPubController {
 								openAddPaperWindows.get(i).dispose();
 								openAddPaperWindows.remove(i);
 							}
+							stateChanged = true;
 							model.addConference(tempConf);
 							openAddSerialWindows.remove(localSerialView);
 							localSerialView.dispose();
@@ -979,6 +987,7 @@ public class ScholarPubController {
 								openAddPaperWindows.get(i).dispose();
 								openAddPaperWindows.remove(i);
 							}
+							stateChanged = true;
 							model.addJournal(tempJour);
 							openAddSerialWindows.remove(localSerialView);
 							localSerialView.dispose();
@@ -1072,14 +1081,42 @@ public class ScholarPubController {
 	private class LoadOptionListener implements ActionListener{
 		String choice = "Load";
 		public void actionPerformed(ActionEvent e) {
-			try {
-				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(stateChanged){
+				Object[] options = {"Save", "Discard", "Cancel"};
+				int result = JOptionPane.showOptionDialog(null, "Changes have been made. Would you like to save the changes?", "Notice", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[2]);
+				switch(result){
+					case 0:
+						try {
+							SaveLoadGUI saveLoad = new SaveLoadGUI(model, "Save", mainView);
+						} catch (ClassNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						break;
+					case 1:
+						stateChanged = false;
+						try {
+							SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
+						} catch (ClassNotFoundException e1) {
+							e1.printStackTrace();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+						break;
+					case 2:
+					default:
+						break;
+				}
+			}
+			else{
+				try {
+					SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
 	}
@@ -1090,12 +1127,11 @@ public class ScholarPubController {
 			try {
 				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
 			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			stateChanged = false;
 		}
 	}
 	
@@ -1161,6 +1197,7 @@ public class ScholarPubController {
 						if(!mainView.getJBTDeleteAllPapers().isEnabled()){
 							mainView.getJBTDeleteAllPapers().setEnabled(true);
 						}
+						stateChanged = true;
 						model.addPaper(pape);
 						openAddPaperWindows.remove(localPaperView);
 						localPaperView.dispose();
@@ -1185,6 +1222,7 @@ public class ScholarPubController {
 						if(!mainView.getJBTDeleteAllPapers().isEnabled()){
 							mainView.getJBTDeleteAllPapers().setEnabled(true);
 						}
+						stateChanged = true;
 						model.addPaper(pape);
 						openAddPaperWindows.remove(localPaperView);
 						localPaperView.dispose();
