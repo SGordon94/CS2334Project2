@@ -17,7 +17,7 @@ import java.util.Set;
 
 
 public class PlotGUI {
-	ScholarshipModel plotModel;
+	ScholarshipModel model;
 	Scholar selectedScholar;
 	ArrayList<Paper> publishedPapers = new ArrayList<Paper>();
 	int scholarIndex;
@@ -27,31 +27,30 @@ public class PlotGUI {
 	
 	private ArrayList<String> yearStrings = new ArrayList<String>();
 	private ArrayList<Integer> data = new ArrayList<Integer>();
-	
 	private ArrayList<Paper> conferencePapers = new ArrayList<Paper>();
-	
 	private ArrayList<Paper> journalArticles = new ArrayList<Paper>();
+	private ArrayList<PlotGUI> plotGUIS = new ArrayList<PlotGUI>();
+	private JList listOfScholarNames = new JList();;
 	
 	
-	public PlotGUI(ScholarshipModel model, String option){
-		this.plotModel = model;
+	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
+		this.model = model;
 		this.option = option;
 		SelectScholarPanel scholarPanel = new SelectScholarPanel();
-		
-		
+		this.plotGUIS = GUIS;
+		this.plotGUIS.add(this);
 	}
 	
 	private class SelectScholarPanel extends JFrame{
 		private JButton jbtOK = new JButton("OK");
 		private JButton jbtCancel = new JButton("Cancel");
-		private JList listOfScholarNames;
 		
 		public SelectScholarPanel(){
 			setTitle("Scholars");
 			setLayout(new BorderLayout());
 			
 			JLabel scholarsLabel = new JLabel("Scholars");
-			listOfScholarNames = new JList(plotModel.getScholarNames());
+			updateList();
 			JScrollPane listOfScholars = new JScrollPane(listOfScholarNames);
 			
 			JPanel buttonPanel = new JPanel();
@@ -73,8 +72,8 @@ public class PlotGUI {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				scholarIndex = listOfScholarNames.getSelectedIndex();
-				selectedScholar = plotModel.getScholar(scholarIndex);
-				publishedPapers = plotModel.getPapersForAuthor(selectedScholar);
+				selectedScholar = model.getScholar(scholarIndex);
+				publishedPapers = model.getPapersForAuthor(selectedScholar);
 				switch (option){
 					case "Type Of Publication":
 						//Gather information
@@ -187,6 +186,7 @@ public class PlotGUI {
 
 		
 		public PublicationPerYearPanel(){
+			setSize(400,300);
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			
@@ -316,5 +316,10 @@ public class PlotGUI {
 				
 			}
 		}
+	}
+	
+	public void updateList(){
+		listOfScholarNames.setListData(model.getScholarNames());
+		listOfScholarNames.setSelectedIndex(-1);
 	}
 }

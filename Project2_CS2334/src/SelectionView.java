@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class SelectionView extends JFrame {
 	/**
@@ -139,6 +140,7 @@ public class SelectionView extends JFrame {
 		jbtAddPaper.setEnabled(false);
 		jbtDeletePapers.setEnabled(false);
 		jbtDeleteAllPapers.setEnabled(false);
+		saveOption.setEnabled(false);
 		
 		setSize(1200,400);
 		setLocationRelativeTo(null);
@@ -148,6 +150,12 @@ public class SelectionView extends JFrame {
 	
 	public synchronized void updateScholarList(){
 		listOfScholars.setListData(model.getScholarNames());
+	}
+	public synchronized void updateScholarList(ArrayList<PlotGUI> plotGUIS){
+		listOfScholars.setListData(model.getScholarNames());
+		for(int i=0;i<plotGUIS.size();i++){
+			plotGUIS.get(i).updateList();
+		}
 	}
 	
 	public synchronized void updateSerialList(){

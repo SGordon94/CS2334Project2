@@ -20,6 +20,8 @@ public class ScholarPubController {
 	private ArrayList<AddScholarView> openAddScholarWindows = new ArrayList<AddScholarView>();
 	private ArrayList<AddSerialView> openAddSerialWindows = new ArrayList<AddSerialView>();
 	private ArrayList<AddPaperView> openAddPaperWindows = new ArrayList<AddPaperView>();
+	private ArrayList<PlotGUI> plotGUIS = new ArrayList<PlotGUI>();
+	private boolean stateChanged = false;
 	
 	ScholarPubController(){}
 	
@@ -329,7 +331,7 @@ public class ScholarPubController {
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
-			mainView.updateScholarList();
+			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
 		}
@@ -372,7 +374,7 @@ public class ScholarPubController {
 			model.emptyScholars();
 			model.emptySerials();
 			model.emptyPapers();
-			mainView.updateScholarList();
+			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
 			mainView.getJBTDeleteScholars().setEnabled(false);
@@ -648,7 +650,7 @@ public class ScholarPubController {
 			openPapers.removeAll(openPapers);
 			model.emptySerials();
 			model.emptyPapers();
-			mainView.updateScholarList();
+			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
 			mainView.getJBTDeleteSerials().setEnabled(false);
@@ -867,7 +869,7 @@ public class ScholarPubController {
 		public void actionPerformed(ActionEvent arg0) {
 			if(localScholarView.fieldsFilled()){
 				boolean uniqueScholar = model.addScholar(localScholarView.getTextFields());
-				mainView.updateScholarList();
+				mainView.updateScholarList(plotGUIS);
 				if(!mainView.getJBTDeleteScholars().isEnabled()){
 					mainView.getJBTDeleteScholars().setEnabled(true);
 				}
@@ -1061,14 +1063,14 @@ public class ScholarPubController {
 	private class TypeOfPublicationListener implements ActionListener{
 		String choice = "Type Of Publication";
 		public void actionPerformed(ActionEvent e) {
-			PlotGUI plotGUI = new PlotGUI(model, choice);
+			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 	}
 	
 	private class PublicationsPerYearListener implements ActionListener{
 		String choice = "Publications Per Year";
 		public void actionPerformed(ActionEvent e) {
-			PlotGUI plotGUI = new PlotGUI(model, choice);
+			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 		
 	}
@@ -1076,7 +1078,7 @@ public class ScholarPubController {
 	private class ConferencePapersPerYearListener implements ActionListener{
 		String choice = "Conference Papers Per Year";
 		public void actionPerformed(ActionEvent e) {
-			PlotGUI plotGUI = new PlotGUI(model, choice);
+			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 		
 	}
@@ -1084,7 +1086,7 @@ public class ScholarPubController {
 	private class JournalArticlesPerYearListener implements ActionListener{
 		String choice = "Journal Articles Per Year";
 		public void actionPerformed(ActionEvent e) {
-			PlotGUI plotGUI = new PlotGUI(model, choice);
+			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 		
 	}
@@ -1092,7 +1094,7 @@ public class ScholarPubController {
 	private class NumberOfCoauthorsPerPublicationListener implements ActionListener{
 		String choice = "Number of Co-Authors Per Publication";
 		public void actionPerformed(ActionEvent e) {
-			PlotGUI plotGUI = new PlotGUI(model, choice);
+			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 	}
 
