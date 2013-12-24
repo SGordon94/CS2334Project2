@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +33,7 @@ public class PlotGUI {
 	private ArrayList<Paper> journalArticles = new ArrayList<Paper>();
 	private ArrayList<PlotGUI> plotGUIS = new ArrayList<PlotGUI>();
 	private JList listOfScholarNames = new JList();;
+	private PlotGUI thisGUI;
 	
 	
 	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
@@ -39,6 +42,19 @@ public class PlotGUI {
 		SelectScholarPanel scholarPanel = new SelectScholarPanel();
 		this.plotGUIS = GUIS;
 		this.plotGUIS.add(this);
+		this.thisGUI = this;
+	}
+	
+	private class SelectScholarWindowListener implements WindowListener{
+		public void windowActivated(WindowEvent arg0) {}
+		public void windowClosed(WindowEvent arg0) {}
+		public void windowClosing(WindowEvent arg0) {
+			plotGUIS.remove(thisGUI);
+		}
+		public void windowDeactivated(WindowEvent arg0) {}
+		public void windowDeiconified(WindowEvent arg0) {}
+		public void windowIconified(WindowEvent arg0) {}
+		public void windowOpened(WindowEvent arg0) {}
 	}
 	
 	private class SelectScholarPanel extends JFrame{
@@ -46,6 +62,7 @@ public class PlotGUI {
 		private JButton jbtCancel = new JButton("Cancel");
 		
 		public SelectScholarPanel(){
+			this.addWindowListener(new SelectScholarWindowListener());
 			setTitle("Scholars");
 			setLayout(new BorderLayout());
 			
