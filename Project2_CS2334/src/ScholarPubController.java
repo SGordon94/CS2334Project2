@@ -618,6 +618,9 @@ public class ScholarPubController {
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
+			for(int i=0;i<plotGUIS.size();i++){
+				plotGUIS.get(i).updatePlot();
+			}
 			mainView.updateSerialList();
 			mainView.updatePaperList();
 		}
@@ -651,6 +654,9 @@ public class ScholarPubController {
 			model.emptySerials();
 			model.emptyPapers();
 			mainView.updateScholarList(plotGUIS);
+			for(int i=0;i<plotGUIS.size();i++){
+				plotGUIS.get(i).updatePlot();
+			}
 			mainView.updateSerialList();
 			mainView.updatePaperList();
 			mainView.getJBTDeleteSerials().setEnabled(false);
@@ -839,6 +845,9 @@ public class ScholarPubController {
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
+			for(int i=0;i<plotGUIS.size();i++){
+				plotGUIS.get(i).updatePlot();
+			}
 			mainView.updatePaperList();
 		}
 	}
@@ -857,6 +866,9 @@ public class ScholarPubController {
 			model.emptyPapers();
 			mainView.getJBTDeletePapers().setEnabled(false);
 			mainView.getJBTDeleteAllPapers().setEnabled(false);
+			for(int i=0;i<plotGUIS.size();i++){
+				plotGUIS.get(i).updatePlot();
+			}
 			mainView.updatePaperList();
 		}
 	}
@@ -927,6 +939,9 @@ public class ScholarPubController {
 						else{
 							JOptionPane.showMessageDialog(null, "This conference is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 						}
+						for(int i=0;i<plotGUIS.size();i++){
+							plotGUIS.get(i).updatePlot();
+						}
 						mainView.updateSerialList();
 					}
 					else{
@@ -959,6 +974,9 @@ public class ScholarPubController {
 						}
 						else{
 							JOptionPane.showMessageDialog(null, "This journal is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+						}
+						for(int i=0;i<plotGUIS.size();i++){
+							plotGUIS.get(i).updatePlot();
 						}
 						mainView.updateSerialList();
 					}
@@ -1125,6 +1143,9 @@ public class ScholarPubController {
 						JOptionPane.showMessageDialog(null, "This Conference Paper is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
 						
 					}
+					for(int i=0;i<plotGUIS.size();i++){
+						plotGUIS.get(i).updatePlot();
+					}
 					mainView.updatePaperList();
 				}
 				else{
@@ -1144,6 +1165,9 @@ public class ScholarPubController {
 					else{
 						pape.removePaper();
 						JOptionPane.showMessageDialog(null, "This Article is already in the database.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
+					}
+					for(int i=0;i<plotGUIS.size();i++){
+						plotGUIS.get(i).updatePlot();
 					}
 					mainView.updatePaperList();
 				}

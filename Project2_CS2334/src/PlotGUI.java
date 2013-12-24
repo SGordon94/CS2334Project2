@@ -34,6 +34,8 @@ public class PlotGUI {
 	private ArrayList<PlotGUI> plotGUIS = new ArrayList<PlotGUI>();
 	private JList listOfScholarNames = new JList();;
 	private PlotGUI thisGUI;
+	SelectScholarPanel thisScholarPanel;
+	private Object thisOptionClass;
 	
 	
 	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
@@ -45,11 +47,14 @@ public class PlotGUI {
 		this.thisGUI = this;
 	}
 	
-	private class SelectScholarWindowListener implements WindowListener{
+	private class LocalWindowListener implements WindowListener{
 		public void windowActivated(WindowEvent arg0) {}
 		public void windowClosed(WindowEvent arg0) {}
 		public void windowClosing(WindowEvent arg0) {
 			plotGUIS.remove(thisGUI);
+			if(thisScholarPanel != null){
+				thisScholarPanel.dispose();
+			}
 		}
 		public void windowDeactivated(WindowEvent arg0) {}
 		public void windowDeiconified(WindowEvent arg0) {}
@@ -62,7 +67,8 @@ public class PlotGUI {
 		private JButton jbtCancel = new JButton("Cancel");
 		
 		public SelectScholarPanel(){
-			this.addWindowListener(new SelectScholarWindowListener());
+			this.addWindowListener(new LocalWindowListener());
+			thisScholarPanel = this;
 			setTitle("Scholars");
 			setLayout(new BorderLayout());
 			
@@ -88,71 +94,10 @@ public class PlotGUI {
 		private class PlotGUIjbtOKListener implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				thisScholarPanel.setVisible(false);
 				scholarIndex = listOfScholarNames.getSelectedIndex();
 				selectedScholar = model.getScholar(scholarIndex);
-				publishedPapers = model.getPapersForAuthor(selectedScholar);
-				switch (option){
-					case "Type Of Publication":
-						//Gather information
-						for(int index = 0; index < publishedPapers.size(); ++index){
-
-							if(publishedPapers.get(index).getClass() == ConferencePaper.class){
-								++numberOfConferencePapers;
-							}else{
-								++numberOfJournalArticles;
-							}
-						}
-						PublicationTypePanel publicationTypePanel = new PublicationTypePanel();
-						publicationTypePanel.setTitle("Type of Publicaton");
-						break;
-						
-					case "Publications Per Year":
-						//Gather Information
-						for(int index = 0; index < publishedPapers.size(); ++index){
-							String year = publishedPapers.get(index).getYear();
-							yearStrings.add(year);
-						}
-						Set<String> set1 = new HashSet<String>(yearStrings); // get rid of duplicates
-						yearStrings = new ArrayList<String>(set1);
-						
-						PublicationPerYearPanel publicationPerYearPanel = new PublicationPerYearPanel();
-						publicationPerYearPanel.setTitle("Publications Per Year");
-						break;
-						
-					case "Conference Papers Per Year":
-						for(int index = 0; index < publishedPapers.size(); ++index){
-							if(publishedPapers.get(index).getClass() == ConferencePaper.class){
-								String year = publishedPapers.get(index).getYear();
-								yearStrings.add(year);
-							}
-							
-						}
-						Set<String> set2 = new HashSet<String>(yearStrings); // get rid of duplicates
-						yearStrings = new ArrayList<String>(set2);
-						
-						ConferencePaperPerYearPanel conferencePaperPerYearPanel = new ConferencePaperPerYearPanel();
-						conferencePaperPerYearPanel.setTitle("Conference Papers Per Year");
-						break;
-						
-					case "Journal Articles Per Year":
-						for(int index = 0; index < publishedPapers.size(); ++index){
-							if(publishedPapers.get(index).getClass() == JournalPaper.class){
-								String year = publishedPapers.get(index).getYear();
-								yearStrings.add(year);
-							}
-							
-						}
-						Set<String> set3 = new HashSet<String>(yearStrings); // get rid of duplicates
-						yearStrings = new ArrayList<String>(set3);
-						
-						JournalArticlesPerYearPanel journalArticlesPerYearPanel = new JournalArticlesPerYearPanel();
-						journalArticlesPerYearPanel.setTitle("Journal Articles Per Year");
-						break;
-						
-					case "Number of Co-Authors Per Publication":
-						CoAuthorsPerPublicationPanel coAuthorsPerPublicationPanel = new CoAuthorsPerPublicationPanel();
-						break;
-				}
+				updatePlot();
 			}
 		}
 	}
@@ -164,6 +109,8 @@ public class PlotGUI {
 		private ArrayList<Integer> numbers = new ArrayList<Integer>();
 		
 		public PublicationTypePanel(){
+			thisOptionClass = this;
+			this.addWindowListener(new LocalWindowListener());
 			labels.add(conferencePapersLabel);
 			labels.add(journalArticlesLabel);
 			numbers.add(numberOfConferencePapers);
@@ -203,6 +150,8 @@ public class PlotGUI {
 
 		
 		public PublicationPerYearPanel(){
+			thisOptionClass = this;
+			this.addWindowListener(new LocalWindowListener());
 			setSize(400,300);
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -241,7 +190,8 @@ public class PlotGUI {
 	
 	private class ConferencePaperPerYearPanel extends JFrame{
 		public ConferencePaperPerYearPanel(){
-			
+			thisOptionClass = this;
+			this.addWindowListener(new LocalWindowListener());
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			
@@ -280,7 +230,8 @@ public class PlotGUI {
 	
 	private class JournalArticlesPerYearPanel extends JFrame{
 		public JournalArticlesPerYearPanel(){
-			
+			thisOptionClass = this;
+			this.addWindowListener(new LocalWindowListener());
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			
@@ -319,6 +270,8 @@ public class PlotGUI {
 	
 	private class CoAuthorsPerPublicationPanel extends JFrame{
 		public CoAuthorsPerPublicationPanel(){
+			thisOptionClass = this;
+			this.addWindowListener(new LocalWindowListener());
 			setName("Number of Co-Authors Per Publication");
 			setSize(400,300);
 			setLocationRelativeTo(null);
@@ -338,5 +291,88 @@ public class PlotGUI {
 	public void updateList(){
 		listOfScholarNames.setListData(model.getScholarNames());
 		listOfScholarNames.setSelectedIndex(-1);
+	}
+	
+	public void updatePlot(){
+		publishedPapers = model.getPapersForAuthor(selectedScholar);
+		numberOfConferencePapers = 0;
+		numberOfJournalArticles = 0;
+		switch(option){
+			case "Type Of Publication":
+				//Gather information
+				if(thisOptionClass != null){
+					((PublicationTypePanel)(thisOptionClass)).dispose();
+				}
+				for(int index = 0; index < publishedPapers.size(); ++index){
+	
+					if(publishedPapers.get(index).getClass() == ConferencePaper.class){
+						++numberOfConferencePapers;
+					}else{
+						++numberOfJournalArticles;
+					}
+				}
+				PublicationTypePanel publicationTypePanel = new PublicationTypePanel();
+				publicationTypePanel.setTitle("Type of Publicaton");
+				break;
+				
+			case "Publications Per Year":
+				//Gather Information
+				if(thisOptionClass != null){
+					((PublicationPerYearPanel)(thisOptionClass)).dispose();
+				}
+				for(int index = 0; index < publishedPapers.size(); ++index){
+					String year = publishedPapers.get(index).getYear();
+					yearStrings.add(year);
+				}
+				Set<String> set1 = new HashSet<String>(yearStrings); // get rid of duplicates
+				yearStrings = new ArrayList<String>(set1);
+				
+				PublicationPerYearPanel publicationPerYearPanel = new PublicationPerYearPanel();
+				publicationPerYearPanel.setTitle("Publications Per Year");
+				break;
+				
+			case "Conference Papers Per Year":
+				if(thisOptionClass != null){
+					((ConferencePaperPerYearPanel)(thisOptionClass)).dispose();
+				}
+				for(int index = 0; index < publishedPapers.size(); ++index){
+					if(publishedPapers.get(index).getClass() == ConferencePaper.class){
+						String year = publishedPapers.get(index).getYear();
+						yearStrings.add(year);
+					}
+					
+				}
+				Set<String> set2 = new HashSet<String>(yearStrings); // get rid of duplicates
+				yearStrings = new ArrayList<String>(set2);
+				
+				ConferencePaperPerYearPanel conferencePaperPerYearPanel = new ConferencePaperPerYearPanel();
+				conferencePaperPerYearPanel.setTitle("Conference Papers Per Year");
+				break;
+				
+			case "Journal Articles Per Year":
+				if(thisOptionClass != null){
+					((JournalArticlesPerYearPanel)(thisOptionClass)).dispose();
+				}
+				for(int index = 0; index < publishedPapers.size(); ++index){
+					if(publishedPapers.get(index).getClass() == JournalPaper.class){
+						String year = publishedPapers.get(index).getYear();
+						yearStrings.add(year);
+					}
+					
+				}
+				Set<String> set3 = new HashSet<String>(yearStrings); // get rid of duplicates
+				yearStrings = new ArrayList<String>(set3);
+				
+				JournalArticlesPerYearPanel journalArticlesPerYearPanel = new JournalArticlesPerYearPanel();
+				journalArticlesPerYearPanel.setTitle("Journal Articles Per Year");
+				break;
+				
+			case "Number of Co-Authors Per Publication":
+				if(thisOptionClass != null){
+					((CoAuthorsPerPublicationPanel)(thisOptionClass)).dispose();
+				}
+				CoAuthorsPerPublicationPanel coAuthorsPerPublicationPanel = new CoAuthorsPerPublicationPanel();
+				break;
+		}
 	}
 }
