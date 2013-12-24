@@ -309,4 +309,21 @@ public class ScholarshipModel implements Serializable{
 	public synchronized void removePaper(Paper pape){
 		papers.remove(pape);
 	}
+	
+	public ArrayList<Object> getModel(){
+		ArrayList<Object> allData = new ArrayList<Object>();
+		allData.add(scholars);
+		allData.add(conferences);
+		allData.add(journals);
+		allData.add(papers);
+		
+		return allData;
+	}
+	
+	public void setModel(ArrayList<Object> loadedData){
+		scholars = (ArrayList<Scholar>)loadedData.get(0);
+		conferences = (ArrayList<Conference>)loadedData.get(1);
+		journals = (ArrayList<Journal>)loadedData.get(2);
+		papers = (ArrayList<Paper>)loadedData.get(3);
+	}
 }

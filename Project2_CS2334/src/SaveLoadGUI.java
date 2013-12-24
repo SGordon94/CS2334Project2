@@ -40,7 +40,8 @@ public class SaveLoadGUI extends JFrame{
 							return;
 						}
 					ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-					this.model = (ScholarshipModel) objectInput.readObject();
+					//this.model = (ScholarshipModel) objectInput.readObject();
+					this.model.setModel(((ScholarshipModel) objectInput.readObject()).getModel());
 					objectInput.close();
 					if(model.getPaperListSize() != 0){
 						localView.updatePaperList();
