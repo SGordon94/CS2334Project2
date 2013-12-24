@@ -1,7 +1,10 @@
+import java.io.Serializable;
 import java.util.*;
 
 
-public class Conference {
+public class Conference implements Serializable{
+	
+	private static final long serialVersionUID = -4823703551765579325L;
 	private String nameOfOrganization;
 	private ArrayList<Meeting> meetings;
 	

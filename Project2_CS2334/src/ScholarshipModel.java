@@ -1,10 +1,14 @@
 import java.util.*;
 import java.awt.event.*;
+import java.io.Serializable;
 
 import javax.swing.*;
 
 
-public class ScholarshipModel {
+public class ScholarshipModel implements Serializable{
+	
+	private static final long serialVersionUID = 6519612819713173804L;
+
 	ArrayList<ActionListener> actionListListener;
 	
 	private ArrayList<Conference> conferences = new ArrayList<Conference>();
