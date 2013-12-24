@@ -1073,7 +1073,7 @@ public class ScholarPubController {
 		String choice = "Load";
 		public void actionPerformed(ActionEvent e) {
 			try {
-				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
+				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -1088,7 +1088,7 @@ public class ScholarPubController {
 		String choice = "Save";
 		public void actionPerformed(ActionEvent e) {
 			try {
-				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
+				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -17,12 +17,14 @@ import javax.swing.JOptionPane;
 public class SaveLoadGUI extends JFrame{
 	ScholarshipModel model = new ScholarshipModel();
 	JFileChooser fileChooser = new JFileChooser();
+	SelectionView localView;
 	int choice;
 	String option;
 	
-	public SaveLoadGUI(ScholarshipModel mod, String option) throws IOException, ClassNotFoundException{
+	public SaveLoadGUI(ScholarshipModel mod, String option, SelectionView selectionView) throws IOException, ClassNotFoundException{
 		this.model = mod;
 		this.option = option;
+		localView = selectionView;
 		switch(option){
 			case "Load": 
 				choice = fileChooser.showOpenDialog(this);
@@ -40,6 +42,9 @@ public class SaveLoadGUI extends JFrame{
 					ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 					this.model = (ScholarshipModel) objectInput.readObject();
 					objectInput.close();
+					if(model.getPaperListSize() != 0){
+						localView.updatePaperList();
+					}
 				}
 				break;
 			case "Save":
