@@ -1041,14 +1041,16 @@ public class ScholarPubController {
 	}
 	
 	private class LoadOptionListener implements ActionListener{
+		String choice = "Load";
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
 		}
 	}
 	
 	private class SaveOptionListener implements ActionListener{
+		String choice = "Save";
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice);
 		}
 	}
 	
