@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -36,6 +37,8 @@ public class PlotGUI {
 	private PlotGUI thisGUI;
 	SelectScholarPanel thisScholarPanel;
 	private Object thisOptionClass;
+	private Point previousScreenLocation;
+	boolean buttonPressed = false;
 	
 	
 	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
@@ -97,7 +100,9 @@ public class PlotGUI {
 				thisScholarPanel.setVisible(false);
 				scholarIndex = listOfScholarNames.getSelectedIndex();
 				selectedScholar = model.getScholar(scholarIndex);
+				buttonPressed = true;
 				updatePlot();
+				buttonPressed = false;
 			}
 		}
 	}
@@ -126,7 +131,12 @@ public class PlotGUI {
 			}
 			
 			setSize(600,500);
-			setLocationRelativeTo(null);
+			if(previousScreenLocation == null){
+				setLocationRelativeTo(null);
+			}
+			else{
+				setLocation(previousScreenLocation);
+			}
 			setVisible(true);
 			
 		}
@@ -171,7 +181,12 @@ public class PlotGUI {
 			add(mainPanel);
 			
 			setSize(600,500);
-			setLocationRelativeTo(null);
+			if(previousScreenLocation == null){
+				setLocationRelativeTo(null);
+			}
+			else{
+				setLocation(previousScreenLocation);
+			}
 			setVisible(true);
 		}
 		
@@ -210,7 +225,12 @@ public class PlotGUI {
 			add(mainPanel);
 			
 			setSize(600,500);
-			setLocationRelativeTo(null);
+			if(previousScreenLocation == null){
+				setLocationRelativeTo(null);
+			}
+			else{
+				setLocation(previousScreenLocation);
+			}
 			setVisible(true);
 		}
 		
@@ -250,7 +270,12 @@ public class PlotGUI {
 			add(mainPanel);
 			
 			setSize(600,500);
-			setLocationRelativeTo(null);
+			if(previousScreenLocation == null){
+				setLocationRelativeTo(null);
+			}
+			else{
+				setLocation(previousScreenLocation);
+			}
 			setVisible(true);
 		}
 		
@@ -274,7 +299,12 @@ public class PlotGUI {
 			this.addWindowListener(new LocalWindowListener());
 			setName("Number of Co-Authors Per Publication");
 			setSize(400,300);
-			setLocationRelativeTo(null);
+			if(previousScreenLocation == null){
+				setLocationRelativeTo(null);
+			}
+			else{
+				setLocation(previousScreenLocation);
+			}
 			setVisible(true);
 		}
 		
@@ -297,10 +327,12 @@ public class PlotGUI {
 		publishedPapers = model.getPapersForAuthor(selectedScholar);
 		numberOfConferencePapers = 0;
 		numberOfJournalArticles = 0;
-		switch(option){
+		if((thisOptionClass != null) || buttonPressed){
+			switch(option){
 			case "Type Of Publication":
 				//Gather information
 				if(thisOptionClass != null){
+					previousScreenLocation = ((PublicationTypePanel)(thisOptionClass)).getLocationOnScreen();
 					((PublicationTypePanel)(thisOptionClass)).dispose();
 				}
 				for(int index = 0; index < publishedPapers.size(); ++index){
@@ -318,6 +350,7 @@ public class PlotGUI {
 			case "Publications Per Year":
 				//Gather Information
 				if(thisOptionClass != null){
+					previousScreenLocation = ((PublicationPerYearPanel)(thisOptionClass)).getLocationOnScreen();
 					((PublicationPerYearPanel)(thisOptionClass)).dispose();
 				}
 				for(int index = 0; index < publishedPapers.size(); ++index){
@@ -333,6 +366,7 @@ public class PlotGUI {
 				
 			case "Conference Papers Per Year":
 				if(thisOptionClass != null){
+					previousScreenLocation = ((ConferencePaperPerYearPanel)(thisOptionClass)).getLocationOnScreen();
 					((ConferencePaperPerYearPanel)(thisOptionClass)).dispose();
 				}
 				for(int index = 0; index < publishedPapers.size(); ++index){
@@ -351,6 +385,7 @@ public class PlotGUI {
 				
 			case "Journal Articles Per Year":
 				if(thisOptionClass != null){
+					previousScreenLocation = ((JournalArticlesPerYearPanel)(thisOptionClass)).getLocationOnScreen();
 					((JournalArticlesPerYearPanel)(thisOptionClass)).dispose();
 				}
 				for(int index = 0; index < publishedPapers.size(); ++index){
@@ -369,10 +404,43 @@ public class PlotGUI {
 				
 			case "Number of Co-Authors Per Publication":
 				if(thisOptionClass != null){
+					previousScreenLocation = ((CoAuthorsPerPublicationPanel)(thisOptionClass)).getLocationOnScreen();
 					((CoAuthorsPerPublicationPanel)(thisOptionClass)).dispose();
 				}
 				CoAuthorsPerPublicationPanel coAuthorsPerPublicationPanel = new CoAuthorsPerPublicationPanel();
 				break;
+			}
 		}
+	}
+	
+	public void destroy(){
+		plotGUIS.remove(thisGUI);
+		if(thisScholarPanel != null){
+			thisScholarPanel.dispose();
+		}
+		if(thisOptionClass != null){
+			switch(option){
+				case "Type Of Publication":
+					((PublicationTypePanel)(thisOptionClass)).dispose();
+					break;
+					
+				case "Publications Per Year":
+					((PublicationPerYearPanel)(thisOptionClass)).dispose();
+					break;
+					
+				case "Conference Papers Per Year":
+					((ConferencePaperPerYearPanel)(thisOptionClass)).dispose();
+					break;
+					
+				case "Journal Articles Per Year":
+					((JournalArticlesPerYearPanel)(thisOptionClass)).dispose();
+					break;
+					
+				case "Number of Co-Authors Per Publication":
+					((CoAuthorsPerPublicationPanel)(thisOptionClass)).dispose();
+					break;
+			}
+		}
+		thisGUI = null;
 	}
 }

@@ -331,6 +331,9 @@ public class ScholarPubController {
 				mainView.getJBTDeletePapers().setEnabled(false);
 				mainView.getJBTDeleteAllPapers().setEnabled(false);
 			}
+			for(int i=0;i<plotGUIS.size();i++){
+				plotGUIS.get(i).destroy();
+			}
 			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
@@ -339,6 +342,7 @@ public class ScholarPubController {
 	
 	private class DeleteAllScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
+			Debug.Log(plotGUIS.size());
 			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
 				openAddPaperWindows.get(i).dispose();
 				openAddPaperWindows.remove(i);
@@ -374,6 +378,9 @@ public class ScholarPubController {
 			model.emptyScholars();
 			model.emptySerials();
 			model.emptyPapers();
+			for(int i=0;i<plotGUIS.size();i++){
+				plotGUIS.get(i).destroy();
+			}
 			mainView.updateScholarList(plotGUIS);
 			mainView.updateSerialList();
 			mainView.updatePaperList();
