@@ -42,20 +42,21 @@ public class IO{
                 
                 for(int index = 0; index < paperObjects.length; ++index){
                         String[] split = paperObjects[index].split(";;");
-                        
-                        String[] individualAuthorNames = split[1].split(";");
-                        ArrayList<Scholar> authorList = new ArrayList<Scholar>();
-                        
-                        for(int i = 0; i < individualAuthorNames.length; ++i){
-                        	Scholar newAuthor = new Scholar(individualAuthorNames[i]);
-                        	authorList.add(newAuthor);
-                        }
-                        
-                        if(split.length == 6){
-                                papers.addAuthors(split[0], authorList, split[2], split[3], split[4], split[5]);
-                        }
-                        else if(split.length == 7){
-                                papers.addAuthors(split[0], authorList, split[2], split[3], split[4], split[5], split[6]);
+                        if(split.length > 1){
+	                        String[] individualAuthorNames = split[1].split(";");
+	                        ArrayList<Scholar> authorList = new ArrayList<Scholar>();
+	                        
+	                        for(int i = 0; i < individualAuthorNames.length; ++i){
+	                        	Scholar newAuthor = new Scholar(individualAuthorNames[i]);
+	                        	authorList.add(newAuthor);
+	                        }
+	                        
+	                        if(split.length == 6){
+	                                papers.addAuthors(split[0], authorList, split[2], split[3], split[4], split[5]);
+	                        }
+	                        else if(split.length == 7){
+	                                papers.addAuthors(split[0], authorList, split[2], split[3], split[4], split[5], split[6]);
+	                        }
                         }
                 }
                 bufferedReader.close();
@@ -76,6 +77,12 @@ public class IO{
                 bw.close();
         }
         
+        /**Writes a PaperCollection object to a file to be read by this particular program
+         * at a later date.
+         * 
+         * @param papers the object that will be written to disk
+         * @throws IOException
+         */
         public static void saveObject(PaperCollection papers) throws IOException{
                 System.out.print("Enter the name of file to save to: ");
                 String temp = getInput();
@@ -87,13 +94,20 @@ public class IO{
                 objectOut.close();
         }
         
-        public static PaperCollection loadObject(PaperCollection papers) throws IOException, ClassNotFoundException{
+        /**Loads a PaperCollection object that was previously written to a file by this
+         * program.
+         * 
+         * @return the PaperCollection object that was read from the disk
+         * @throws IOException
+         * @throws ClassNotFoundException
+         */
+        public static PaperCollection loadObject() throws IOException, ClassNotFoundException{
                 System.out.print("Enter the name of file: ");
                 String fileName = getInput();
                 FileInputStream fileIn = new FileInputStream(fileName);
                 ObjectInputStream in = new ObjectInputStream(fileIn);
                 
-                papers = (PaperCollection) in.readObject();
+                PaperCollection papers = (PaperCollection) in.readObject();
                 
                 in.close();
                 
