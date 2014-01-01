@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**Class that deals with the GUI for adding papers to the program.
+ * 
+ * @version 1.0
+ */
 public class AddPaperView extends JFrame implements ItemListener{
 	private final String CONFERENCEPAPER = "Conference Paper";
 	private final String JOURNALPAPER = "Journal Paper";
@@ -69,6 +73,9 @@ public class AddPaperView extends JFrame implements ItemListener{
 		private JLabel digitalObjectIdentifierLabel = new JLabel("Digital Object Identifier: ");
 		private JTextField digitalObjectIdentifier = new JTextField(20);
 		
+		/**The constructor for the Conference tab.
+		 * 
+		 */
 		public ConferencePaper(){
 			//Panel for the title of the paper
 			JPanel paperTitlePanel = new JPanel();
@@ -119,16 +126,16 @@ public class AddPaperView extends JFrame implements ItemListener{
 			
 			//Set the layout and add panels in order
 			setLayout(new BorderLayout());
-			//add(paperTitlePanel);
-			//add(digitalObjectPanel);
-			//add(pageNumbersPanel);
-			//add(conferencesPanel);
-			//add(authorsPanel);
 			add(dataFieldsPanel, BorderLayout.NORTH);
 			add(listsPanel);
 			setVisible(true);
 		}
 		
+		/**Verifies that no text fields are left empty, and that authors have
+		 * been selected.
+		 * 
+		 * @return whether or not the fields have been filled out
+		 */
 		public boolean fieldsFilled(){
 			if(paperTitle.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "Please input the name of the paper.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -149,6 +156,11 @@ public class AddPaperView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		/**Gathers the contents of the Conference window and adds them to an
+		 * ArrayList of generic Objects.
+		 * 
+		 * @return the gathered contents in a generic ArrayList<Object>
+		 */
 		public ArrayList<Object> getInnerDetails(){
 			ArrayList<Object> returnStuff = new ArrayList<Object>(3);
 			String[] fields = new String[3];
@@ -179,6 +191,9 @@ public class AddPaperView extends JFrame implements ItemListener{
 		private JLabel digitalObjectIdentifierLabel = new JLabel("Digital Object Identifier: ");
 		private JTextField digitalObjectIdentifier = new JTextField(20);
 		
+		/**The constructor for the Journal tab.
+		 * 
+		 */
 		public JournalPaper(){
 			//Panel for the title of the paper
 			JPanel paperTitlePanel = new JPanel();
@@ -227,16 +242,16 @@ public class AddPaperView extends JFrame implements ItemListener{
 			
 			//Set the layout and add panels in order
 			setLayout(new BorderLayout());
-			//add(paperTitlePanel);
-			//add(digitalObjectPanel);
-			//add(pageNumbersPanel);
-			//add(journalsPanel);
-			//add(authorsPanel);
 			add(dataFieldsPanel, BorderLayout.NORTH);
 			add(listsPanel);
 			setVisible(true);
 		}
 		
+		/**Verifies that no text fields are left empty, and that authors have
+		 * been selected.
+		 * 
+		 * @return whether or not the fields have been filled out
+		 */
 		public boolean fieldsFilled(){
 			if(paperTitle.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "Please input the name of the paper.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -257,6 +272,11 @@ public class AddPaperView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		/**Gathers the contents of the Conference window and adds them to an
+		 * ArrayList of generic Objects.
+		 * 
+		 * @return the gathered contents in a generic ArrayList<Object>
+		 */
 		public ArrayList<Object> getInnerDetails(){
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[3];
@@ -275,6 +295,11 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 	}
 	
+	/**Checks which tab is currently showing, and returns a string stating
+	 * which one up.
+	 * 
+	 * @return the string indicated the selected tab
+	 */
 	public String visibleCard(){
 		if(card1.isVisible()){
 			return "Conference";
@@ -282,6 +307,11 @@ public class AddPaperView extends JFrame implements ItemListener{
 		return "Journal";
 	}
 	
+	/**Calls the getInnerDetails() method contained in the currently
+	 * selected tab
+	 * 
+	 * @return the ArrayList<Object> that was passed to this method
+	 */
 	public ArrayList<Object> getInnerDetails(){
 		if(card1.isVisible()){
 			if(card1.fieldsFilled()){
@@ -304,14 +334,25 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 	}
 	
+	/**Accessor method that returns the JButton that adds the paper to
+	 * the program.
+	 * 
+	 * @return the "Add Paper" JButton
+	 */
 	public JButton getJBTAddPaper(){
 		return jbtAddPaper;
 	}
 	
+	/** Removes this window from the window tracker ArrayList upon closing.
+	 * 
+	 */
 	public void windowIsClosing(){
 		openAddPaperWindows.remove(this);
 	}
-
+	
+	/**STEPHON
+	 * 
+	 */
 	public void itemStateChanged(ItemEvent e) {
 		CardLayout cardPanels = (CardLayout)(cards.getLayout());
 		cardPanels.show(cards, (String)(e.getItem()));
