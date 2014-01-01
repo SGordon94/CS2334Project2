@@ -29,7 +29,7 @@ public class MainDriver {
 			System.out.println("What would you like to do?");
 			System.out.println("RF = Read a provided text file that has the proper formatting.");
 			System.out.println("LO = Read a file that was previously saved using this program.");
-			System.out.println("UI = Bring up an user interface for manipulation.");
+			System.out.println("UI = Bring up an user interface for manipulation. (Project 4)");
 			System.out.println("E  = Exit the program.");
 			System.out.println("Please input your selection here: ");
 			
