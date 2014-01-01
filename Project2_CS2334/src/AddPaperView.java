@@ -350,7 +350,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 		openAddPaperWindows.remove(this);
 	}
 	
-	/**STEPHON
+	/**Method needed to switch between card panels
 	 * 
 	 */
 	public void itemStateChanged(ItemEvent e) {
