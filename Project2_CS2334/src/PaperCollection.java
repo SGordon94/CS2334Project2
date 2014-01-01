@@ -32,8 +32,13 @@ public class PaperCollection implements Serializable {
          */
         public void addPaper(String typeOfPaper, ArrayList<Scholar> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate, String digitalObjectIdentifier){
-                paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
-                                publicationDate, digitalObjectIdentifier));
+        	if(typeOfPaper.equals("Conference Paper")){
+                paperCollection.add(new ConferencePaper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
+                        publicationDate, digitalObjectIdentifier));
+        	}else if(typeOfPaper.equals("Journal Article")){
+                paperCollection.add(new JournalPaper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers,
+                        publicationDate, digitalObjectIdentifier));
+        	}
         }
         
         /** Adds a paper without a Digital Object ID to the collection of papers.
@@ -47,7 +52,13 @@ public class PaperCollection implements Serializable {
          */
         public void addPaper(String typeOfPaper, ArrayList<Scholar> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate){
-                paperCollection.add(new Paper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
+        	if(typeOfPaper.equals("Conference Paper")){
+        		paperCollection.add(new ConferencePaper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
+        	}else if(typeOfPaper.equals("Journal Article")){
+        		paperCollection.add(new JournalPaper(typeOfPaper, authors, titleOfPaper, titleOfSerial, numbers, publicationDate));
+
+        	}
+                
         }
         
         /** UNOFFICIAL COMMENT, ONLY HERE TO LET YOU KNOW HOW TO USE METHOD
@@ -296,5 +307,9 @@ public class PaperCollection implements Serializable {
         
         public String displayAuthorsPapers(int index){
         	return authorsCollection.get(index).displayPapers();
+        }
+        
+        public Scholar getScholar(int index){
+        	return authorsCollection.get(index);
         }
 }

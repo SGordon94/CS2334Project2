@@ -25,6 +25,7 @@ public class PlotGUI {
 	ArrayList<Paper> publishedPapers = new ArrayList<Paper>();
 	int scholarIndex;
 	String option;
+	int displayOption = 0;
 	int numberOfConferencePapers = 0;
 	int numberOfJournalArticles = 0;
 	
@@ -44,10 +45,20 @@ public class PlotGUI {
 	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
 		this.model = model;
 		this.option = option;
+		this.displayOption = 1; //uses project 4
 		SelectScholarPanel scholarPanel = new SelectScholarPanel();
 		this.plotGUIS = GUIS;
 		this.plotGUIS.add(this);
 		this.thisGUI = this;
+	}
+	
+	public PlotGUI(Scholar scholar, String option){
+		selectedScholar = scholar;
+		this.option = option;
+		this.displayOption = 2; //uses project 3
+		buttonPressed = true;
+		updatePlot();
+		buttonPressed = false;
 	}
 	
 	private class LocalWindowListener implements WindowListener{
@@ -337,7 +348,12 @@ public class PlotGUI {
 	}
 	
 	public void updatePlot(){
-		publishedPapers = model.getPapersForAuthor(selectedScholar);
+		if(displayOption == 1){
+			publishedPapers = model.getPapersForAuthor(selectedScholar);
+
+		}else if(displayOption == 2){
+			publishedPapers = selectedScholar.getPapers();
+		}
 		numberOfConferencePapers = 0;
 		numberOfJournalArticles = 0;
 		if((thisOptionClass != null) || buttonPressed){

@@ -240,7 +240,57 @@ public class MainDriver {
 					String temp4 = IO.getInput();
 					int authorFoundIndex = paperCollection.findAuthor(temp4);
 					if(authorFoundIndex != -1){
-						System.out.println("The author has been found. The graph has not been implemented.");
+						System.out.println("Which graph would you like to see?\nTP - Type of Publication\n"
+								+ "PY - Publications Per Year\nCPY - Conference Papers per Year\n"
+								+ "JAY - Journal Articles Per Year\nNC - Number of Co-Authors Per Publication");
+						
+						String temp5 = IO.getInput();
+						Scholar selectedScholar = paperCollection.getScholar(authorFoundIndex);
+						switch(temp5){
+							case "tP":
+							case "tp":
+							case "Tp":
+							case "TP":
+								temp5 = "Type Of Publication";
+								break;
+								
+							case "pY":
+							case "py":
+							case "Py":
+							case "PY":	
+								temp5 = "Publications Per Year";
+								break;
+								
+							case "CPY":
+							case "Cpy":
+							case "CPy":
+							case "CpY":	
+							case "cPY":
+							case "cpY":
+							case "cPy":
+							case "cpy":
+								temp5 = "Conference Papers Per Year";
+								break;
+								
+							case "JAY":
+							case "Jay":
+							case "JAy":
+							case "JaY":	
+							case "jAY":
+							case "jaY":
+							case "jAy":
+							case "jay":
+								temp5 = "Journal Articles Per Year";
+								break;
+								
+							case "NC":
+							case "Nc":
+							case "nC":
+							case "nc":
+								temp5 = "Number of Co-Authors Per Publication";
+								break;
+						}
+						PlotGUI plotGUI = new PlotGUI(selectedScholar, temp5);
 					}
 					else{
 						System.out.println("The author was not found.");

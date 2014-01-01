@@ -25,6 +25,31 @@ public class ConferencePaper extends Paper implements Serializable{
 		}
 	}
 	
+	public ConferencePaper(String typeOfPaper, ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
+			String numbers, String publicationDate, String digitalObjectIdentifier){
+		this.authorsList = authorsList;
+		this.titleOfPaper = titleOfPaper;
+		this.titleOfSerial = titleOfSerial;
+		this.numbers = numbers;
+		this.publicationDate = publicationDate;
+		this.digitalObjectIdentifier = digitalObjectIdentifier;
+		for(int i=0; i<authorsList.size(); i++){
+			authorsList.get(i).setContainingPaper(this);
+		}
+	}
+	
+	public ConferencePaper(String typeOfPaper, ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
+			String numbers, String publicationDate){
+		this.authorsList = authorsList;
+		this.titleOfPaper = titleOfPaper;
+		this.titleOfSerial = titleOfSerial;
+		this.numbers = numbers;
+		this.publicationDate = publicationDate;
+		for(int i=0; i<authorsList.size(); i++){
+			authorsList.get(i).setContainingPaper(this);
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public ConferencePaper(ArrayList<Object> innerDetails){
 		String[] fields = (String[])innerDetails.get(0);
