@@ -282,7 +282,7 @@ public class MainDriver {
 					System.out.println("PF: write the papers to a file");
 					System.out.println("FA: finds and displays the papers associated with an author");
 					System.out.println("S:  search by the previously sorted option; default is paper title");
-					System.out.println("LD: loads a file to read");
+					System.out.println("LD: loads a previously saved file");
 					System.out.println("SV: saves a file to the disk");
 					System.out.println("H:  show the help menu");
 					System.out.println("E:  exit the program\n");
