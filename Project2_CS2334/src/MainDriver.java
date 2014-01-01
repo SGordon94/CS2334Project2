@@ -18,9 +18,9 @@ public class MainDriver {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
 		PaperCollection paperCollection = new PaperCollection();
 		boolean run = true;
-		//boolean fileOpened = false;				CHANGE THIS BACK TO FALSE WHEN DONE
-									boolean fileOpened = true;	// DELETE WHEN DONE
-									new MainDriver();			// DELETE WHEN DONE
+		boolean fileOpened = false;				//CHANGE THIS BACK TO FALSE WHEN DONE
+									//boolean fileOpened = true;	// DELETE WHEN DONE
+									//new MainDriver();			// DELETE WHEN DONE
 		
 		System.out.println("Welcome to ScholarPub!");
 		
