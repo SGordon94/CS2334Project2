@@ -21,6 +21,11 @@ public class AddPaperView extends JFrame implements ItemListener{
 	private JButton jbtAddPaper = new JButton("Add Paper");
 	private ArrayList<AddPaperView> openAddPaperWindows;
 	
+	/**The constructor for the "Add Paper" window
+	 * 
+	 * @param mod the program's model
+	 * @param windows the window tracker for "Add Paper" windows
+	 */
 	public AddPaperView(ScholarshipModel mod, ArrayList<AddPaperView> windows){
 		this.openAddPaperWindows = windows;
 		this.model = mod;
@@ -61,6 +66,9 @@ public class AddPaperView extends JFrame implements ItemListener{
 		
 	}
 	
+	/**The class for the Conference tab
+	 * 
+	 */
 	private class ConferencePaper extends JPanel{
 		private JLabel paperTitleLabel = new JLabel("Title: ");
 		private JTextField paperTitle = new JTextField(20);
@@ -179,6 +187,9 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 	}
 	
+	/**The class for the Journal tab
+	 * 
+	 */
 	private class JournalPaper extends JPanel{
 		private JLabel paperTitleLabel = new JLabel("Title: ");
 		private JTextField paperTitle = new JTextField(20);
