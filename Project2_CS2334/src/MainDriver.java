@@ -49,7 +49,7 @@ public class MainDriver {
 				case "lO":
 				case "Lo":
 				case "lo":
-					paperCollection = IO.loadObject(paperCollection);
+					paperCollection = IO.loadObject();
 					fileOpened = true;
 					break;
 					
@@ -223,7 +223,7 @@ public class MainDriver {
 				case "Ld":
 				case "ld":
 				case "lD":
-					paperCollection = IO.loadObject(paperCollection);
+					paperCollection = IO.loadObject();
 					break;
 					
 				case "SV":
