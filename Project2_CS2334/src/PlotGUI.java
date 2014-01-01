@@ -297,23 +297,36 @@ public class PlotGUI {
 		public CoAuthorsPerPublicationPanel(){
 			thisOptionClass = this;
 			this.addWindowListener(new LocalWindowListener());
-			setName("Number of Co-Authors Per Publication");
-			setSize(400,300);
+			//setName("Number of Co-Authors Per Publication");
+			JPanel mainPanel = new JPanel();
+			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			if(previousScreenLocation == null){
 				setLocationRelativeTo(null);
 			}
 			else{
 				setLocation(previousScreenLocation);
 			}
+			for(int index = 0; index < publishedPapers.size(); ++index){
+				int data = (publishedPapers.get(index).getListOfScholars()).size() - 1;
+				JLabel label = new JLabel(publishedPapers.get(index).getTitleOfPaper() + " (" + data + ")");
+				mainPanel.add(label);
+				mainPanel.add(new BarPanel(data));
+			}
+			add(mainPanel);
+			setSize(400,300);
 			setVisible(true);
+
 		}
 		
 		private class BarPanel extends JPanel{
+			int width;
+			BarPanel(int width){
+				this.width = width;
+			}
 			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
-				
-				
+				g.fillRect(0, 0, width * 10, 100);
 			}
 		}
 	}
@@ -408,6 +421,7 @@ public class PlotGUI {
 					((CoAuthorsPerPublicationPanel)(thisOptionClass)).dispose();
 				}
 				CoAuthorsPerPublicationPanel coAuthorsPerPublicationPanel = new CoAuthorsPerPublicationPanel();
+				coAuthorsPerPublicationPanel.setTitle("Co-Authors Per Publication");
 				break;
 			}
 		}
