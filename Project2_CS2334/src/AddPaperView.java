@@ -21,7 +21,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 	private JButton jbtAddPaper = new JButton("Add Paper");
 	private ArrayList<AddPaperView> openAddPaperWindows;
 	
-	/**The constructor for the "Add Paper" window
+	/**The constructor for the "Add Paper" window.
 	 * 
 	 * @param mod the program's model
 	 * @param windows the window tracker for "Add Paper" windows
@@ -66,7 +66,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 		
 	}
 	
-	/**The class for the Conference tab
+	/**The class for the Conference tab.
 	 * 
 	 */
 	private class ConferencePaper extends JPanel{
@@ -187,7 +187,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 		}
 	}
 	
-	/**The class for the Journal tab
+	/**The class for the Journal tab.
 	 * 
 	 */
 	private class JournalPaper extends JPanel{
@@ -361,7 +361,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 		openAddPaperWindows.remove(this);
 	}
 	
-	/**Method needed to switch between card panels
+	/**Method needed to switch between card panels.
 	 * 
 	 */
 	public void itemStateChanged(ItemEvent e) {

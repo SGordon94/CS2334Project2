@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**The class that deals with the GUI for viewing Conference Paper information.
+ * 
+ * @version 1.0
+ */
 public class ConferencePaperDataView extends JFrame{
 	String authorsLabel = "Authors: ";
 	String paperTitleLabel = "Title: ";
@@ -18,6 +22,13 @@ public class ConferencePaperDataView extends JFrame{
 	ConferencePaper usedPaper;
 	ScholarshipModel model;
 
+	/**The constructor for the ConferencePaperDataView window.
+	 * 
+	 * @param paper the conference paper to display information about
+	 * @param openWindows the object tracker for papers
+	 * @param windows the window tracker for ConferencePaperDataView windows
+	 * @param model the program's model
+	 */
 	public ConferencePaperDataView(ConferencePaper paper, ArrayList<Paper> openWindows, ArrayList<ConferencePaperDataView> windows, ScholarshipModel model){
 		usedPaper = paper;
 		openWindowPapers = openWindows;
@@ -60,15 +71,26 @@ public class ConferencePaperDataView extends JFrame{
 		setVisible(true);
 	}
 	
+	/** Removes this window from the window tracker ArrayList upon closing.
+	 * 
+	 */
 	public void windowIsClosing(){
 		openWindowPapers.remove(usedPaper);
 		paperWindows.remove(this);
 	}
 	
+	/**Returns the ConferencePaper that this class is displaying.
+	 * 
+	 * @return the used conference paper
+	 */
 	public ConferencePaper getUsedPaper(){
 		return usedPaper;
 	}
 	
+	/**Accessor method that returns the JButton that closes this window.
+	 * 
+	 * @return the "OK" JButton
+	 */
 	public JButton getJBTOK(){
 		return jbtOK;
 	}

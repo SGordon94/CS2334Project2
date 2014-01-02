@@ -253,9 +253,6 @@ public class AddSerialView extends JFrame implements ItemListener{
 			fields[2] = city.getText().trim();
 			fields[3] = stateProvince.getText().trim();
 			fields[4] = country.getText().trim();
-			if(programChairs.getSelectedIndices().length == 0){
-				Debug.Log("yo");
-			}
 			ArrayList<Scholar> addedProgramChairs = model.getSelectedScholars(programChairs.getSelectedIndices());
 			ArrayList<Scholar> addedCommitteeMembers = model.getSelectedScholars(programCommitteeMembers.getSelectedIndices());
 			returnStuff.add("Conference");
@@ -504,7 +501,7 @@ public class AddSerialView extends JFrame implements ItemListener{
 		}
 	}
 	
-	/**Method needed to switch between card panels
+	/**Method needed to switch between card panels.
 	 * 
 	 */
 	public void itemStateChanged(ItemEvent e) {

@@ -61,17 +61,16 @@ public class PaperCollection implements Serializable {
                 
         }
         
-        /** UNOFFICIAL COMMENT, ONLY HERE TO LET YOU KNOW HOW TO USE METHOD
-         * Okay, this method is to be used instead of the addPaper() method. It looks through both
-         * the global authorsCollection ArrayList and the paper-local authors ArrayList.
-         * I've implemented a method in the Authors' class that outputs a string that is easily
-         * comparable, and this utilizes that. If the author names are the same from both ArrayLists,
-         * then it removes the created author object in the paper-local authors ArrayList and places a
-         * reference to the author object in the global authorsCollection ArrayList. If a match is not found,
-         * then it adds the author object to the global authorsCollection ArrayList. From there, it calls
-         * the addPaper() method and passes the relevant variables along, so that each paper that has the
-         * same author references the exact same Authors object, while the same author object has references
-         * to each paper it belongs to.
+        /**Creates an author and adds it to the Scholar ArrayList, replacing
+         * any other occurrences of it if it already exists.
+         * 
+         * @param typeOfPaper the type of the paper
+         * @param authors the list of scholars that made this paper
+         * @param titleOfPaper the title of this paper
+         * @param titleOfSerial the title of the serial of the paper
+         * @param numbers the page numbers of the paper
+         * @param publicationDate the publication date of the paper
+         * @param digitalObjectIdentifier the digital object identifier of the paper
          */
         public void addAuthors(String typeOfPaper, ArrayList<Scholar> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate, String digitalObjectIdentifier){
@@ -97,6 +96,16 @@ public class PaperCollection implements Serializable {
                                 publicationDate, digitalObjectIdentifier);
         }
         
+        /**Creates an author and adds it to the Scholar ArrayList, replacing
+         * any other occurrences of it if it already exists.
+         * 
+         * @param typeOfPaper the type of the paper
+         * @param authors the list of scholars that made this paper
+         * @param titleOfPaper the title of this paper
+         * @param titleOfSerial the title of the serial of the paper
+         * @param numbers the page numbers of the paper
+         * @param publicationDate the publication date of the paper
+         */
         public void addAuthors(String typeOfPaper, ArrayList<Scholar> authors, String titleOfPaper, String titleOfSerial,
                         String numbers, String publicationDate){
                 for(int i=0; i<authors.size(); i++){

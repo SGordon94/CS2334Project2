@@ -346,7 +346,6 @@ public class ScholarPubController {
 	
 	private class DeleteAllScholarsListener implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			Debug.Log(plotGUIS.size());
 			for(int i=openAddPaperWindows.size()-1;i>=0;i--){
 				openAddPaperWindows.get(i).dispose();
 				openAddPaperWindows.remove(i);
@@ -1034,7 +1033,7 @@ public class ScholarPubController {
 					}
 				}
 				else if(typeOfSerial.equals("Journal")){
-					Debug.Log("Error in SerialConferenceSaveMeetingListener: button does not match card");
+					System.out.println("Error in SerialConferenceSaveMeetingListener: button does not match card");
 					System.exit(-1);
 				}
 			}
@@ -1064,7 +1063,7 @@ public class ScholarPubController {
 					}
 				}
 				else if(typeOfSerial.equals("Conference")){
-					Debug.Log("Error in SerialJournalSaveIssueListener: button does not match card");
+					System.out.println("Error in SerialJournalSaveIssueListener: button does not match card");
 					System.exit(-1);
 				}
 			}

@@ -227,7 +227,6 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 					return AFTER;
 				
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
@@ -296,7 +295,6 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 						return AFTER;
 					
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				break;
