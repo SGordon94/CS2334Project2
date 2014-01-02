@@ -29,10 +29,10 @@ public class JournalDataView extends JFrame{
 	private String articlesLabel = "Articles: ";
 	
 	private JButton jbtOK = new JButton("OK");
-	ArrayList<Journal> openWindowJournals;
-	ArrayList<JournalDataView> journalWindows;
-	Journal usedJournal;
-	ScholarshipModel model;
+	private ArrayList<Journal> openWindowJournals;
+	private ArrayList<JournalDataView> journalWindows;
+	private Journal usedJournal;
+	private ScholarshipModel model;
 	
 	/**The constructor for the JournalDataView window.
 	 * 

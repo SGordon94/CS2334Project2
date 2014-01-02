@@ -18,16 +18,19 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-
+/**The class that contains the subclasses to display the plots.
+ * 
+ * @version 1.0
+ */
 public class PlotGUI {
-	ScholarshipModel model;
-	Scholar selectedScholar;
-	ArrayList<Paper> publishedPapers = new ArrayList<Paper>();
-	int scholarIndex;
-	String option;
-	int displayOption = 0;
-	int numberOfConferencePapers = 0;
-	int numberOfJournalArticles = 0;
+	private ScholarshipModel model;
+	private Scholar selectedScholar;
+	private ArrayList<Paper> publishedPapers = new ArrayList<Paper>();
+	private int scholarIndex;
+	private String option;
+	private int displayOption = 0;
+	private int numberOfConferencePapers = 0;
+	private int numberOfJournalArticles = 0;
 	
 	private ArrayList<String> yearStrings = new ArrayList<String>();
 	private ArrayList<Integer> data = new ArrayList<Integer>();
@@ -36,12 +39,17 @@ public class PlotGUI {
 	private ArrayList<PlotGUI> plotGUIS = new ArrayList<PlotGUI>();
 	private JList listOfScholarNames = new JList();;
 	private PlotGUI thisGUI;
-	SelectScholarPanel thisScholarPanel;
+	private SelectScholarPanel thisScholarPanel;
 	private Object thisOptionClass;
 	private Point previousScreenLocation;
-	boolean buttonPressed = false;
+	private boolean buttonPressed = false;
 	
-	
+	/**A constructor
+	 * 
+	 * @param model
+	 * @param option
+	 * @param GUIS
+	 */
 	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
 		this.model = model;
 		this.option = option;

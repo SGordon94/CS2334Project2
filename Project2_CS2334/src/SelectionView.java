@@ -4,10 +4,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+/**The core view of the program. All other GUI windows are accessed through
+ * this view.
+ * 
+ * @version 1.0
+ */
 public class SelectionView extends JFrame {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8190094167216851323L;
 	private ScholarshipModel model;
 	private JButton jbtAddScholar = new JButton("Add Scholar");
@@ -27,15 +29,15 @@ public class SelectionView extends JFrame {
 	private JList listOfPapers;
 	
 	//Menu Items
-	JMenuItem loadOption = new JMenuItem("Load");
-	JMenuItem saveOption = new JMenuItem("Save");
-	JMenuItem closeOption = new JMenuItem("Close");
+	private JMenuItem loadOption = new JMenuItem("Load");
+	private JMenuItem saveOption = new JMenuItem("Save");
+	private JMenuItem closeOption = new JMenuItem("Close");
 	
-	JMenuItem typeOfPublication = new JMenuItem("Type of Publication");
-	JMenuItem publicationsPerYear = new JMenuItem("Publications Per Year");
-	JMenuItem conferencePapersPerYear = new JMenuItem("Conference Papers Per Year");
-	JMenuItem journalArticlesPerYear = new JMenuItem("Journal Articles Per Year");
-	JMenuItem numberOfCoauthorsPerPublication = new JMenuItem("Number of Co-Authors Per Publication");
+	private JMenuItem typeOfPublication = new JMenuItem("Type of Publication");
+	private JMenuItem publicationsPerYear = new JMenuItem("Publications Per Year");
+	private JMenuItem conferencePapersPerYear = new JMenuItem("Conference Papers Per Year");
+	private JMenuItem journalArticlesPerYear = new JMenuItem("Journal Articles Per Year");
+	private JMenuItem numberOfCoauthorsPerPublication = new JMenuItem("Number of Co-Authors Per Publication");
 	
 	public SelectionView(){
 		listOfScholars = new JList();

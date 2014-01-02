@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 import javax.swing.*;
 
-
+/**The model for the program.
+ * 
+ * @version 1.0
+ */
 public class ScholarshipModel implements Serializable{
-	
 	private static final long serialVersionUID = 6519612819713173804L;
-
-	ArrayList<ActionListener> actionListListener;
 	
 	private ArrayList<Conference> conferences = new ArrayList<Conference>();
 	private ArrayList<Journal> journals = new ArrayList<Journal>();

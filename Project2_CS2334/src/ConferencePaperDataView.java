@@ -11,16 +11,16 @@ import javax.swing.JTextArea;
  * @version 1.0
  */
 public class ConferencePaperDataView extends JFrame{
-	String authorsLabel = "Authors: ";
-	String paperTitleLabel = "Title: ";
-	String conferencePaperReference = "Conference: ";
-	String pageNumbers = "Page Numbers: ";
-	String digitalObjectIdentifierLabel = "Digital Object Identifier: ";
-	JButton jbtOK = new JButton("OK");
-	ArrayList<Paper> openWindowPapers;
-	ArrayList<ConferencePaperDataView> paperWindows;
-	ConferencePaper usedPaper;
-	ScholarshipModel model;
+	private String authorsLabel = "Authors: ";
+	private String paperTitleLabel = "Title: ";
+	private String conferencePaperReference = "Conference: ";
+	private String pageNumbers = "Page Numbers: ";
+	private String digitalObjectIdentifierLabel = "Digital Object Identifier: ";
+	private JButton jbtOK = new JButton("OK");
+	private ArrayList<Paper> openWindowPapers;
+	private ArrayList<ConferencePaperDataView> paperWindows;
+	private ConferencePaper usedPaper;
+	private ScholarshipModel model;
 
 	/**The constructor for the ConferencePaperDataView window.
 	 * 

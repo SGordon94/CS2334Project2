@@ -5,13 +5,9 @@ import java.util.*;
 
 /**The Paper class for Paper objects that are imported into the program through a file, stored into a collection, sorted, searched through, and printed.
  * 
- *@version 1.0
+ * @version 1.0
  */
 public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1588972413579226921L;
 	protected String typeOfPaper = null;
 	protected ArrayList<Scholar> authorsList = new ArrayList<Scholar>(); 
@@ -24,11 +20,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	protected int compareValue = 6;
 	protected Conference parentSerial;
 	
-	
-	
-	public Paper(){
-		
-	}
+	public Paper(){}
 	
 	public Paper(String typeOfPaper, ArrayList<Scholar> authorsList, String titleOfPaper, String titleOfSerial,
 			String numbers, String publicationDate, String digitalObjectIdentifier){

@@ -1,12 +1,14 @@
 import java.io.Serializable;
 import java.util.*;
 
+/**A data-oriented class. Volumes are contained within Journals.
+ * They contain Issues.
+ * 
+ * @version 1.0
+ */
 public class Volume implements Serializable {
-	
 	private static final long serialVersionUID = 154555674631899681L;
 	private ArrayList<Issue> issues = new ArrayList<Issue>();
-	
-	public Volume(){}
 	
 	public Issue getIssue(int index){
 		return issues.get(index);

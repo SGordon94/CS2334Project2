@@ -26,10 +26,10 @@ public class ConferenceDataView extends JFrame{
 	private String programCommitteeMembsLabel = "Program Committee Members: ";
 	private String publishedPapersLabel = "Published Papers: ";
 	private JButton jbtOK = new JButton("OK");
-	ArrayList<Conference> openWindowConferences;
-	ArrayList<ConferenceDataView> conferenceWindows;
-	Conference usedConference;
-	ScholarshipModel model;
+	private ArrayList<Conference> openWindowConferences;
+	private ArrayList<ConferenceDataView> conferenceWindows;
+	private Conference usedConference;
+	private ScholarshipModel model;
 	
 	/**The constructor for the ConferenceDataView window.
 	 * 

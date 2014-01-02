@@ -6,6 +6,10 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**The controller for the program.
+ * 
+ * @version 1.0
+ */
 public class ScholarPubController {
 	private ScholarshipModel model;
 	private SelectionView mainView;

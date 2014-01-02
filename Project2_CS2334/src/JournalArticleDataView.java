@@ -11,16 +11,16 @@ import javax.swing.JTextArea;
  * @version 1.0
  */
 public class JournalArticleDataView extends JFrame{
-	String authorsLabel = "Authors: ";
-	String paperTitleLabel = "Title: ";
-	String articleIssueReference = "Issue: ";
-	String pageNumbers = "Page Numbers: ";
-	String digitalObjectIdentifierLabel = "Digital Object Identifier: ";
-	JButton jbtOK = new JButton("OK");
-	ArrayList<Paper> openWindowPapers;
-	ArrayList<JournalArticleDataView> paperWindows;
-	JournalPaper usedPaper;
-	ScholarshipModel model;
+	private String authorsLabel = "Authors: ";
+	private String paperTitleLabel = "Title: ";
+	private String articleIssueReference = "Issue: ";
+	private String pageNumbers = "Page Numbers: ";
+	private String digitalObjectIdentifierLabel = "Digital Object Identifier: ";
+	private JButton jbtOK = new JButton("OK");
+	private ArrayList<Paper> openWindowPapers;
+	private ArrayList<JournalArticleDataView> paperWindows;
+	private JournalPaper usedPaper;
+	private ScholarshipModel model;
 
 	/**The constructor for the JournalArticleDataView window.
 	 * 

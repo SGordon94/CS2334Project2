@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
-
+/**The class that deals with the GUI for viewing Scholar information.
+ * 
+ * @version 1.0
+ */
 public class ScholarDataView extends JFrame{
 	private String nameLabel = "Name: ";
 	private String affiliationsLabel = "Institutional Affiliations: ";
@@ -17,11 +20,11 @@ public class ScholarDataView extends JFrame{
 	private String memberLabel = "Conferences attended as Program Committee Member: ";
 	private String editedLabel = "Edited Journals: ";
 	private String reviewedLabel = "Reviewed Journals: ";
-	JButton jbtOK = new JButton("OK");
-	ArrayList<Scholar> openWindowScholars;
-	ArrayList<ScholarDataView> scholarWindows;
-	Scholar usedScholar;
-	ScholarshipModel model;
+	private JButton jbtOK = new JButton("OK");
+	private ArrayList<Scholar> openWindowScholars;
+	private ArrayList<ScholarDataView> scholarWindows;
+	private Scholar usedScholar;
+	private ScholarshipModel model;
 	
 	public ScholarDataView(Scholar scholar, ArrayList<Scholar> openWindows, ArrayList<ScholarDataView> windows, ScholarshipModel model){
 		usedScholar = scholar;

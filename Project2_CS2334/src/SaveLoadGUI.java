@@ -13,13 +13,16 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
+/**The class that governs the GUI for the Save and Load menu options.
+ * 
+ * @version 1.0
+ */
 public class SaveLoadGUI extends JFrame{
-	ScholarshipModel model = new ScholarshipModel();
-	JFileChooser fileChooser = new JFileChooser();
-	SelectionView localView;
-	int choice;
-	String option;
+	private ScholarshipModel model = new ScholarshipModel();
+	private JFileChooser fileChooser = new JFileChooser();
+	private SelectionView localView;
+	private int choice;
+	private String option;
 	
 	public SaveLoadGUI(ScholarshipModel mod, String option, SelectionView selectionView) throws IOException, ClassNotFoundException{
 		this.model = mod;

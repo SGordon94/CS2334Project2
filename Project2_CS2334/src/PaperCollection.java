@@ -9,9 +9,6 @@ import java.util.*;
 * @version 1.0
 */
 public class PaperCollection implements Serializable {
-        /**
-         *
-         */
         private static final long serialVersionUID = -1306506026096077696L;
         private int compareValue = 6;
         private ArrayList<Paper> paperCollection = new ArrayList<Paper>();
@@ -314,10 +311,21 @@ public class PaperCollection implements Serializable {
         	return MATCH_NOT_FOUND;
         }
         
+        /**Returns the papers contained in the indicated author as specified
+         * by the passed index.
+         * 
+         * @param index the index indicating the desired author
+         * @return the papers
+         */
         public String displayAuthorsPapers(int index){
         	return authorsCollection.get(index).displayPapers();
         }
         
+        /**Returns the indicated author as specified by the passed index.
+         * 
+         * @param index the index indicating the desired author
+         * @return the indicated author
+         */
         public Scholar getScholar(int index){
         	return authorsCollection.get(index);
         }
