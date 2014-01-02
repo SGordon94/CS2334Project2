@@ -1,0 +1,56 @@
+PROGRAM AUTHORS:
+DAYLON WILKINS 112-78-3885
+STEPHON GORDON 112-87-5513
+
+This source code is a combination of Projects 3 & 4. To access Project 3, input either 'RF' or 'LO' (or any case-variants). To access Project 4, input 'UI'.
+
+------------------------------------------
+Project 3 Milestones
+------------------------------------------
+Milestone 1:
+	Serialization of the necessary classes to enable saving and loading was successfully implemented.
+
+Milestone 2:
+	Saving and loading works as intended.
+
+Milestone 3:
+	Graphical displays are implemented for the desired views.
+
+Milestone 4:
+	The Scholar class is used as a container for information of the individual authors.
+
+Milestone 5:
+	The Hashmap class was not implemented successfully. An oversight led to the use of ArrayLists, and work had begun on Project 4 when the mistake was caught. Instead of rewriting the source to make use of Hashmaps instead, both group members decided to take the point penalty to hasten the completion of the projects.
+
+Milestone 6:
+	The authors and publications are successfully connected to each other. Each class carries an ArrayList of the other class. For example, when Author 1 adds Publication 1, Author 1 also sends itself to Publication 1.
+
+It is possible that this project has features that were inserted for the purpose of extra credit, however, they have been forgotten. Because of the large period of time in between working on this project and submitting it, many of the finer details have been lost.
+
+In addition, the exact distribution of work cannot be recalled. We believe that it was, most likely, split in half, as the workflow was very similar to Project 2. At most, the difference would be 55% to 45%.
+
+------------------------------------------
+Project 4 Milestones
+------------------------------------------
+Milestone 1:
+	The model is the ScholarshipModel class, which contains the core data used by the program, as well as the methods used to retrieve, store, and manipulate the data.
+
+Milestone 2:
+	The model has the appropriate functionality to interact with the views and controller.
+
+Milestone 3:
+	The necessary classes for the various views were successfully implemented.
+
+Milestone 4:
+	The controller is the ScholarPubController class, which links the views and model together, as well as executes the necessary methods to allow the program to function seamlessly.
+
+One limitation of the program deals with the graphical display views. Whenever a Scholar is deleted, all open graphical display views close, regardless of whether they contained the Scholar or not. All other program features work as intended, such as the graphical display views updating their data automatically, data view windows closing when their source information is deleted, double-clicking a Scholar to bring up their data view, etc. It is encouraged to play with the program to see all that it can do.
+
+The division of labor for this project is much more concrete than in the other projects. All GUI aspects were created by Stephon, as well as the bare necessities to make the views work. The logical functions, such as the window tracking (updates open views and closes them when their source is deleted), deleting, double-clicking of list items, and linking of the model and views were created by Daylon. Factoring in the efficiency of reusable code, both students had roughly the same amount of work.
+
+------------------------------------------
+Overall Comments
+------------------------------------------
+These projects were made without the use of a planning phase, and thus the code is relatively disorganized. As such, a UML or window planner is not included for either project. Raw efficiency is also lacking, as there are several methods that achieve the exact same purpose, just with a different method name and varying inner code. Lastly, because of the inclusion of Projects 3 & 4, some code from 3 that could be repurposed to serve both projects was instead left unmodified, resulting in two methods with similar functions and slight variations to serve slightly different purposes.
+
+Project 3 continued from Project 2's code base, and 4 continued from 3. The only code that was directly referenced stems from Daylon's side project, a game that is being developed in C# and C++. Otherwise, Oracle's Java Database, StackExchange, and the Labs were used to cultivate ideas, with no code being directly used.
