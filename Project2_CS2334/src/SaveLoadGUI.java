@@ -24,6 +24,14 @@ public class SaveLoadGUI extends JFrame{
 	private int choice;
 	private String option;
 	
+	/**The constructor for the SaveLoadGUI windows.
+	 * 
+	 * @param mod the program's model
+	 * @param option determines whether the save or load window will be displayed
+	 * @param selectionView the core view of the program
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	public SaveLoadGUI(ScholarshipModel mod, String option, SelectionView selectionView) throws IOException, ClassNotFoundException{
 		this.model = mod;
 		this.option = option;

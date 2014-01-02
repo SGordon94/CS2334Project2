@@ -26,6 +26,13 @@ public class ScholarDataView extends JFrame{
 	private Scholar usedScholar;
 	private ScholarshipModel model;
 	
+	/**The constructor for the ScholarDataView window.
+	 * 
+	 * @param scholar the scholar to display information about
+	 * @param openWindows the object tracker for scholars
+	 * @param windows the window tracker for ScholarDataView windows
+	 * @param model the program's model
+	 */
 	public ScholarDataView(Scholar scholar, ArrayList<Scholar> openWindows, ArrayList<ScholarDataView> windows, ScholarshipModel model){
 		usedScholar = scholar;
 		openWindowScholars = openWindows;
@@ -102,15 +109,26 @@ public class ScholarDataView extends JFrame{
 		
 	}
 	
+	/** Removes this window from the window tracker ArrayList upon closing.
+	 * 
+	 */
 	public void windowIsClosing(){
 		openWindowScholars.remove(usedScholar);
 		scholarWindows.remove(this);
 	}
 	
+	/**Returns the Scholar that this class is displaying.
+	 * 
+	 * @return the used Scholar
+	 */
 	public Scholar getUsedScholar(){
 		return usedScholar;
 	}
 	
+	/**Accessor method that returns the JButton that closes this window.
+	 * 
+	 * @return the "OK" JButton
+	 */
 	public JButton getJBTOK(){
 		return jbtOK;
 	}

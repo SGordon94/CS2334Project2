@@ -44,26 +44,31 @@ public class PlotGUI {
 	private Point previousScreenLocation;
 	private boolean buttonPressed = false;
 	
-	/**A constructor
+	/**A constructor for PlotGUI windows.
 	 * 
-	 * @param model
-	 * @param option
-	 * @param GUIS
+	 * @param model the program's model
+	 * @param option determines which plot to graph
+	 * @param GUIS the window tracker for PlotGUI windows
 	 */
 	public PlotGUI(ScholarshipModel model, String option, ArrayList<PlotGUI> GUIS){
 		this.model = model;
 		this.option = option;
-		this.displayOption = 1; //uses project 4
+		this.displayOption = 1; //uses Project 4
 		SelectScholarPanel scholarPanel = new SelectScholarPanel();
 		this.plotGUIS = GUIS;
 		this.plotGUIS.add(this);
 		this.thisGUI = this;
 	}
 	
+	/**A constructor for PlotGUI windows.
+	 * 
+	 * @param scholar the scholar to display data for
+	 * @param option determines which plot to graph
+	 */
 	public PlotGUI(Scholar scholar, String option){
 		selectedScholar = scholar;
 		this.option = option;
-		this.displayOption = 2; //uses project 3
+		this.displayOption = 2; //uses Project 3
 		buttonPressed = true;
 		updatePlot();
 		buttonPressed = false;
@@ -114,7 +119,6 @@ public class PlotGUI {
 		}
 		
 		private class PlotGUIjbtOKListener implements ActionListener{
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				thisScholarPanel.setVisible(false);
 				scholarIndex = listOfScholarNames.getSelectedIndex();
@@ -165,7 +169,7 @@ public class PlotGUI {
 			BarPanel(int width){
 				this.width = width;
 			}
-			@Override
+			
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
 				g.fillRect(0, 65, width * 10, 100);
@@ -176,8 +180,6 @@ public class PlotGUI {
 	
 	
 	private class PublicationPerYearPanel extends JFrame{
-
-		
 		public PublicationPerYearPanel(){
 			thisOptionClass = this;
 			this.addWindowListener(new LocalWindowListener());
@@ -214,7 +216,7 @@ public class PlotGUI {
 			BarPanel(int width){
 				this.width = width;
 			}
-			@Override
+			
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
 				g.fillRect(0, 0, width * 10, 100);
@@ -259,7 +261,6 @@ public class PlotGUI {
 				this.width = width;
 			}
 			
-			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
 				g.fillRect(0, 0, width * 10, 100);
@@ -304,7 +305,6 @@ public class PlotGUI {
 				this.width = width;
 			}
 			
-			@Override
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
 				g.fillRect(0, 0, width * 10, 100);
@@ -316,7 +316,6 @@ public class PlotGUI {
 		public CoAuthorsPerPublicationPanel(){
 			thisOptionClass = this;
 			this.addWindowListener(new LocalWindowListener());
-			//setName("Number of Co-Authors Per Publication");
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 			if(previousScreenLocation == null){
@@ -342,7 +341,7 @@ public class PlotGUI {
 			BarPanel(int width){
 				this.width = width;
 			}
-			@Override
+			
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
 				g.fillRect(0, 0, width * 10, 100);
@@ -350,11 +349,17 @@ public class PlotGUI {
 		}
 	}
 	
+	/**Keeps the list of Scholar names in sync with the core view.
+	 * 
+	 */
 	public void updateList(){
 		listOfScholarNames.setListData(model.getScholarNames());
 		listOfScholarNames.setSelectedIndex(-1);
 	}
 	
+	/**Updates the plot with the current data for the chosen scholar.
+	 * 
+	 */
 	public void updatePlot(){
 		if(displayOption == 1){
 			publishedPapers = model.getPapersForAuthor(selectedScholar);
@@ -451,6 +456,9 @@ public class PlotGUI {
 		}
 	}
 	
+	/**Removes the PlotGUI window and all attachments to it.
+	 * 
+	 */
 	public void destroy(){
 		plotGUIS.remove(thisGUI);
 		if(thisScholarPanel != null){

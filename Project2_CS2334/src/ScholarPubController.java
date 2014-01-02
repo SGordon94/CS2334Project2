@@ -28,16 +28,25 @@ public class ScholarPubController {
 	private ArrayList<PlotGUI> plotGUIS = new ArrayList<PlotGUI>();
 	private boolean stateChanged = false;
 	
-	ScholarPubController(){}
-	
+	/**Sets the model used in this class to the program's model.
+	 * 
+	 * @param mod the program's model
+	 */
 	public void setModel(ScholarshipModel mod){ // sets the model that the controller will use
 		this.model = mod;
 	}
 	
+	/**Sets the core view used in this class to the program's core view.
+	 * 
+	 * @param view the program's core view
+	 */
 	public void setView(SelectionView view){ // sets the primary view for the controller
 		this.mainView = view;
 	}
 	
+	/**Sets the action listeners for the program's core view.
+	 * 
+	 */
 	public void setSelectionViewActionListeners(){
 		if(mainView != null){
 			mainView.getJBTAddScholar().addActionListener(new AddScholarListener());
@@ -63,12 +72,20 @@ public class ScholarPubController {
 		}
 	}
 	
+	/**Sets the action listeners for AddScholarView windows.
+	 * 
+	 * @param scholarView the window to set the action listeners for
+	 */
 	public void setAddScholarViewActionListeners(AddScholarView scholarView){
 		if(scholarView != null){
 			scholarView.getJBTAddScholar().addActionListener(new AddScholarToListListener(scholarView));
 		}
 	}
 	
+	/**Sets the action listeners for AddSerialView windows.
+	 * 
+	 * @param serialView the window to set the action listeners for
+	 */
 	public void setAddSerialViewActionListeners(AddSerialView serialView){
 		if(serialView != null){
 			serialView.getJBTAddSerial().addActionListener(new AddSerialToListListener(serialView));
@@ -83,7 +100,7 @@ public class ScholarPubController {
 		SecondMouseClickScholars doubleClick;
 		MouseDraggedScholars mouseMoved;
 		
-		public ListOfScholarsListener(){
+		private ListOfScholarsListener(){
 			doubleClick = new SecondMouseClickScholars();
 			mouseMoved = new MouseDraggedScholars();
 			mainView.getListOfScholars().addMouseListener(doubleClick);
@@ -1094,6 +1111,7 @@ public class ScholarPubController {
 					case 0:
 						stateChanged = false;
 						try {
+							@SuppressWarnings("unused")
 							SaveLoadGUI saveLoad = new SaveLoadGUI(model, "Save", mainView);
 						} catch (ClassNotFoundException e1) {
 							e1.printStackTrace();
@@ -1104,6 +1122,7 @@ public class ScholarPubController {
 					case 1:
 						stateChanged = false;
 						try {
+							@SuppressWarnings("unused")
 							SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
 						} catch (ClassNotFoundException e1) {
 							e1.printStackTrace();
@@ -1118,6 +1137,7 @@ public class ScholarPubController {
 			}
 			else{
 				try {
+					@SuppressWarnings("unused")
 					SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
@@ -1132,6 +1152,7 @@ public class ScholarPubController {
 		String choice = "Save";
 		public void actionPerformed(ActionEvent e) {
 			try {
+				@SuppressWarnings("unused")
 				SaveLoadGUI saveLoad = new SaveLoadGUI(model, choice, mainView);
 			} catch (ClassNotFoundException e1) {
 				e1.printStackTrace();
@@ -1151,6 +1172,7 @@ public class ScholarPubController {
 	private class TypeOfPublicationListener implements ActionListener{
 		String choice = "Type Of Publication";
 		public void actionPerformed(ActionEvent e) {
+			@SuppressWarnings("unused")
 			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 	}
@@ -1158,6 +1180,7 @@ public class ScholarPubController {
 	private class PublicationsPerYearListener implements ActionListener{
 		String choice = "Publications Per Year";
 		public void actionPerformed(ActionEvent e) {
+			@SuppressWarnings("unused")
 			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 		
@@ -1166,6 +1189,7 @@ public class ScholarPubController {
 	private class ConferencePapersPerYearListener implements ActionListener{
 		String choice = "Conference Papers Per Year";
 		public void actionPerformed(ActionEvent e) {
+			@SuppressWarnings("unused")
 			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 		
@@ -1174,6 +1198,7 @@ public class ScholarPubController {
 	private class JournalArticlesPerYearListener implements ActionListener{
 		String choice = "Journal Articles Per Year";
 		public void actionPerformed(ActionEvent e) {
+			@SuppressWarnings("unused")
 			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 		
@@ -1182,6 +1207,7 @@ public class ScholarPubController {
 	private class NumberOfCoauthorsPerPublicationListener implements ActionListener{
 		String choice = "Number of Co-Authors Per Publication";
 		public void actionPerformed(ActionEvent e) {
+			@SuppressWarnings("unused")
 			PlotGUI plotGUI = new PlotGUI(model, choice, plotGUIS);
 		}
 	}

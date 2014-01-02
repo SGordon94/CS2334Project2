@@ -39,6 +39,9 @@ public class SelectionView extends JFrame {
 	private JMenuItem journalArticlesPerYear = new JMenuItem("Journal Articles Per Year");
 	private JMenuItem numberOfCoauthorsPerPublication = new JMenuItem("Number of Co-Authors Per Publication");
 	
+	/**The constructor for the core view.
+	 * 
+	 */
 	public SelectionView(){
 		listOfScholars = new JList();
 		listOfSerials = new JList();
@@ -150,9 +153,18 @@ public class SelectionView extends JFrame {
 		setVisible(true);
 	}
 	
+	/**Updates the list of Scholars with the current data from the model.
+	 * 
+	 */
 	public synchronized void updateScholarList(){
 		listOfScholars.setListData(model.getScholarNames());
 	}
+	
+	/**Updates the list of Scholars with the current data from the model.
+	 * Also updates the PlotGUI's list of Scholars.
+	 * 
+	 * @param plotGUIS the window tracker of PlotGUI windows
+	 */
 	public synchronized void updateScholarList(ArrayList<PlotGUI> plotGUIS){
 		listOfScholars.setListData(model.getScholarNames());
 		for(int i=0;i<plotGUIS.size();i++){
@@ -160,110 +172,216 @@ public class SelectionView extends JFrame {
 		}
 	}
 	
+	/**Updates the list of Serials with the current data from the model.
+	 * 
+	 */
 	public synchronized void updateSerialList(){
 		listOfSerials.setListData(model.getSerialTitles());
 	}
 	
+	/**Updates the list of Papers with the current data from the model.
+	 * 
+	 */
 	public synchronized void updatePaperList(){
 		listOfPapers.setListData(model.getPaperNames());
 	}
 	
+	/**Returns the selected positions from the list of Scholars.
+	 * 
+	 * @return the selected positions
+	 */
 	public int[] getScholarListPositions(){
 		return listOfScholars.getSelectedIndices();
 	}
 	
+	/**Returns the selected positions from the list of Serials.
+	 * 
+	 * @return the selected positions
+	 */
 	public int[] getSerialListPositions(){
 		return listOfSerials.getSelectedIndices();
 	}
 	
+	/**Returns the selected positions from the list of Papers.
+	 * 
+	 * @return the selected positions
+	 */
 	public int[] getPaperListPositions(){
 		return listOfPapers.getSelectedIndices();
 	}
 	
+	/**Sets the core view's model to the program's model.
+	 * 
+	 * @param mod the program's model
+	 */
 	public void setModel(ScholarshipModel mod){
 		this.model = mod;
 	}
 	
+	/**Sets the state of the Save Option menu item to the passed state.
+	 * 
+	 * @param state the state to set the Save Option menu item to
+	 */
 	public void setSaveOptionState(boolean state){
 		saveOption.setEnabled(state);
 	}
 	
+	/**Accessor method that returns the JButton that opens the "Add Scholar" window.
+	 * 
+	 * @return the "Add Scholar" JButton
+	 */
 	public JButton getJBTAddScholar(){
 		return jbtAddScholar;
 	}
 	
+	/**Accessor method that returns the JButton that deletes the selected Scholars.
+	 * 
+	 * @return the "Delete Selected Scholar(s)" JButton
+	 */
 	public JButton getJBTDeleteScholars(){
 		return jbtDeleteScholars;
 	}
 	
+	/**Accessor method that returns the JButton that deletes all Scholars.
+	 * 
+	 * @return the "Delete All Scholars" JButton
+	 */
 	public JButton getJBTDeleteAllScholars(){
 		return jbtDeleteAllScholars;
 	}
 	
+	/**Accessor method that returns the JButton that opens the "Add Serial" window.
+	 * 
+	 * @return the "Add Serial" JButton
+	 */
 	public JButton getJBTAddSerial(){
 		return jbtAddSerial;
 	}
 	
+	/**Accessor method that returns the JButton that deletes the selected Serials.
+	 * 
+	 * @return the "Delete Selected Serial(s)" JButton
+	 */
 	public JButton getJBTDeleteSerials(){
 		return jbtDeleteSerials;
 	}
 	
+	/**Accessor method that returns the JButton that deletes all Serials.
+	 * 
+	 * @return the "Delete All Serials" JButton
+	 */
 	public JButton getJBTDeleteAllSerials(){
 		return jbtDeleteAllSerials;
 	}
 	
+	/**Accessor method that returns the JButton that opens the "Add Paper" window.
+	 * 
+	 * @return the "Add Paper" JButton
+	 */
 	public JButton getJBTAddPaper(){
 		return jbtAddPaper;
 	}
 	
+	/**Accessor method that returns the JButton that deletes the selected Papers.
+	 * 
+	 * @return the "Delete Selected Paper(s)" JButton
+	 */
 	public JButton getJBTDeletePapers(){
 		return jbtDeletePapers;
 	}
 
+	/**Accessor method that returns the JButton that deletes all Papers.
+	 * 
+	 * @return the "Delete All Papers" JButton
+	 */
 	public JButton getJBTDeleteAllPapers(){
 		return jbtDeleteAllPapers;
 	}
 	
+	/**Returns the displayed list of Scholars.
+	 * 
+	 * @return the JList of Scholars
+	 */
 	public JList getListOfScholars(){
 		return listOfScholars;
 	}
 	
+	/**Returns the displayed list of Serials.
+	 * 
+	 * @return the JList of Serials
+	 */
 	public JList getListOfSerials(){
 		return listOfSerials;
 	}
 	
+	/**Returns the displayed list of Papers.
+	 * 
+	 * @return the JList of Papers
+	 */
 	public JList getListOfPapers(){
 		return listOfPapers;
 	}
 	
+	/**Returns the Load menu option.
+	 * 
+	 * @return the Load menu option
+	 */
 	public JMenuItem getLoadOption(){
 		return loadOption;
 	}
 	
+	/**Returns the Save menu option.
+	 * 
+	 * @return the Save menu option
+	 */
 	public JMenuItem getSaveOption(){
 		return saveOption;
 	}
 	
+	/**Returns the Close menu option.
+	 * 
+	 * @return the Close menu option
+	 */
 	public JMenuItem getCloseOption(){
 		return closeOption;
 	}
 	
+	/**Returns the Type of Publication menu option.
+	 * 
+	 * @return the Type of Publication menu option
+	 */
 	public JMenuItem getTypeOfPublication(){
 		return typeOfPublication;
 	}
 	
+	/**Returns the Publications Per Year menu option.
+	 * 
+	 * @return the Publications Per Year menu option
+	 */
 	public JMenuItem getPublicationsPerYear(){
 		return publicationsPerYear;
 	}
 	
+	/**Returns the Conference Papers Per Year menu option.
+	 * 
+	 * @return the Conference Papers Per Year menu option
+	 */
 	public JMenuItem getConferencePapersPerYear(){
 		return conferencePapersPerYear;
 	}
 	
+	/**Returns the Journal Articles Per Year menu option.
+	 * 
+	 * @return the Journal Articles Per Year menu option
+	 */
 	public JMenuItem getJournalArticlesPerYear(){
 		return journalArticlesPerYear;
 	}
 	
+	/**Returns the Number of Co-Authors Per Year menu option.
+	 * 
+	 * @return the Number of Co-Authors Per Year menu option
+	 */
 	public JMenuItem getNumberOfCoauthorsPerYear(){
 		return numberOfCoauthorsPerPublication;
 	}
