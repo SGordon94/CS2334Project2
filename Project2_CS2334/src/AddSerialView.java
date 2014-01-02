@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
 
+/**Class that deals with the GUI for adding serials to the program.
+ * 
+ * @version 1.0
+ */
 public class AddSerialView extends JFrame implements ItemListener{
 	private final String CONFERENCE = "Conference";
 	private final String JOURNAL = "Journal";
@@ -19,6 +23,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 	private ArrayList<Meeting> temporaryMeetings = new ArrayList<Meeting>();
 	private ArrayList<AddSerialView> openAddSerialWindows;
 	
+	/**The constructor for the "Add Serial" window.
+	 * 
+	 * @param mod the program's model
+	 * @param windows the window tracker for "Add Serial" windows
+	 */
 	public AddSerialView(ScholarshipModel mod, ArrayList<AddSerialView> windows){
 		this.openAddSerialWindows = windows;
 		this.model = mod;
@@ -60,11 +69,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 		
 	}
 	
-	private class ConferenceView extends JPanel implements ActionListener{
-		
-		/**
-		 * 
-		 */
+	/**The class for the Conference Paper tab.
+	 * 
+	 */
+	private class ConferenceView extends JPanel{
 		private static final long serialVersionUID = -8523558338836188027L;
 		private JLabel nameLabel = new JLabel("Name: ");
 		private JTextField name = new JTextField(40);
@@ -93,6 +101,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private TitledBorder titledBorder = BorderFactory.createTitledBorder(etchedBorder, meetingLabel,
 				TitledBorder.LEFT, TitledBorder.ABOVE_TOP);
 		
+		/**The constructor for the Conference Paper tab.
+		 * 
+		 */
 		public ConferenceView(){
 			JPanel mainPanel1 = new JPanel();
 			mainPanel1.setLayout(new BoxLayout(mainPanel1, BoxLayout.Y_AXIS));
@@ -121,6 +132,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 			add(mainPanel1);
 		}
 		
+		/**Creates the section that deals with the creation of Meetings.
+		 * 
+		 * @return the created Meeting panel
+		 */
 		public JPanel createMeetingPanel(){
 			
 			JPanel topPanel = new JPanel();
@@ -149,7 +164,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 			
 			JPanel bottomPanel = new JPanel();
 			int layoutGrid = 1;
+			//Daylon: I just had to add bit shifts into the program, so I rewrote the following line
 			bottomPanel.setLayout(new GridLayout(layoutGrid,layoutGrid<<1,layoutGrid<<2,layoutGrid<<2));
+			//It's totally not necessary, but I like bit shifts :)
 			
 			JPanel leftPanel = new JPanel();
 			leftPanel.setLayout(new BorderLayout());
@@ -170,6 +187,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return meetingPanel;
 		}
 		
+		/**Verifies that no text fields are left empty, and that scholars have
+		 * been selected.
+		 * 
+		 * @return whether or not the fields have been filled out
+		 */
 		public boolean fieldsFilled(){
 			if(organization.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -206,6 +228,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		/**Verifies that the organization name has been filled out.
+		 * 
+		 * @return whether or not the organization name has been filled out
+		 */
 		public boolean fieldsFilledOnClosing(){
 			if(organization.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -214,6 +240,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		/**Gathers the contents of the Conference Paper tab and adds them to an
+		 * ArrayList of generic Objects.
+		 * 
+		 * @return the gathered contents in a generic ArrayList<Object>
+		 */
 		public ArrayList<Object> getInnerDetails(){ // gets the meeting text fields
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[5];
@@ -234,21 +265,19 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return returnStuff;
 		}
 		
+		/**Gathers the text from the organization text field.
+		 * 
+		 * @return the text of from the organization text field
+		 */
 		public String getOrganizationName(){
 			return organization.getText();
 		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
 	}
 	
+	/**The class for the Journal Paper tab.
+	 * 
+	 */
 	private class JournalView extends JPanel{
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 6311171508567796171L;
 		
 		private JLabel	   organizationLabel = new JLabel("Organization: ");
@@ -279,6 +308,9 @@ public class AddSerialView extends JFrame implements ItemListener{
 		private TitledBorder titledBorder = BorderFactory.createTitledBorder(etchedBorder, journalLabel,
 				TitledBorder.LEFT, TitledBorder.ABOVE_TOP);
 		
+		/**The constructor for the Journal Paper tab.
+		 * 
+		 */
 		public JournalView(){
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -321,6 +353,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 			add(mainPanel);
 		}
 		
+		/**Creates the section that deals with the creation of Issues.
+		 * 
+		 * @return the created Issue panel
+		 */
 		public JPanel createIssuePanel(){
 			JPanel mainPanel = new JPanel();
 			mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -352,6 +388,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return mainPanel;
 		}
 		
+		/**Verifies that no text fields are left empty, and that scholars have
+		 * been selected.
+		 * 
+		 * @return whether or not the fields have been filled out
+		 */
 		public boolean fieldsFilled(){
 			if(organizationName.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -388,6 +429,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		/**Verifies that no text fields are left empty.
+		 * 
+		 * @return whether or not the fields have been filled out
+		 */
 		public boolean fieldsFilledOnClosing(){
 			if(organizationName.getText().trim().equals("")){
 				JOptionPane.showMessageDialog(null, "Please input the name of the Organization.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -408,6 +453,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return true;
 		}
 		
+		/**Gathers the contents of the Journal Paper tab and adds them to an
+		 * ArrayList of generic Objects.
+		 * 
+		 * @return the gathered contents in a generic ArrayList<Object>
+		 */
 		public ArrayList<Object> getInnerDetails(){
 			ArrayList<Object> returnStuff = new ArrayList<Object>(4);
 			String[] fields = new String[2];
@@ -422,14 +472,27 @@ public class AddSerialView extends JFrame implements ItemListener{
 			return returnStuff;
 		}
 		
+		/**Gathers the text from the organization text field.
+		 * 
+		 * @return returns the text of from the organization text field
+		 */
 		public String getOrganizationName(){
 			return organizationName.getText();
 		}
 		
+		/**Reads the text fields and creates a Location object from the
+		 * collected data.
+		 * 
+		 * @return the created Location object
+		 */
 		public Location getJournalLocation(){
 			return new Location(city.getText(), stateProvince.getText(), country.getText());
 		}
 		
+		/**Updates the contents of the Volume selection box with the
+		 * current data.
+		 * 
+		 */
 		public void updateVolumeComboBox(){
 			if(temporaryVolumes.size() != 0){
 				String[] volumeComboBoxItems = new String[temporaryVolumes.size()];
@@ -441,12 +504,18 @@ public class AddSerialView extends JFrame implements ItemListener{
 		}
 	}
 	
-	@Override
+	/**Method needed to switch between card panels
+	 * 
+	 */
 	public void itemStateChanged(ItemEvent e) {
 		CardLayout cardPanels = (CardLayout)(cards.getLayout());
 		cardPanels.show(cards, (String)(e.getItem()));
 	}
 	
+	/**Returns a string indicating which card is selected.
+	 * 
+	 * @return the string indicating which card is selected.
+	 */
 	public String visibleCard(){
 		if(card1.isVisible()){
 			return "Conference";
@@ -454,6 +523,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 		return "Journal";
 	}
 	
+	/**Calls the getInnerDetails() method contained in the currently
+	 * selected tab.
+	 * 
+	 * @return the ArrayList<Object> that was passed to this method
+	 */
 	public ArrayList<Object> getInnerDetails(){
 		if(card1.isVisible()){
 			if(card1.fieldsFilled()){
@@ -476,6 +550,11 @@ public class AddSerialView extends JFrame implements ItemListener{
 		}
 	}
 	
+	/**Call the fieldsFilledOnClosing() method contained in the currently
+	 * selected tab.
+	 * 
+	 * @return the boolean returned from the inner method
+	 */
 	public boolean fieldsFilledOnClosing(){
 		if(card1.isVisible()){
 			return card1.fieldsFilledOnClosing();
@@ -490,20 +569,38 @@ public class AddSerialView extends JFrame implements ItemListener{
 		return false; // solely to remove compiler error
 	}
 	
+	/**Returns the Meeting ArrayList of this window.
+	 * 
+	 * @return the ArrayList of meetings
+	 */
 	public ArrayList<Meeting> getMeetings(){
 		return temporaryMeetings;
 	}
 	
+	/**Adds the given Meeting to the Meeting ArrayList of this window.
+	 * 
+	 * @param meet the meeting to add to the ArrayList
+	 */
 	public void addTemporaryMeeting(Meeting meet){
 		if(meet != null){
 			temporaryMeetings.add(meet);
 		}
 	}
 	
+	/**Returns the size of the Meeting ArrayList.
+	 * 
+	 * @return the size of the Meeting ArrayList
+	 */
 	public int temporaryMeetingSize(){
 		return temporaryMeetings.size();
 	}
 	
+	/**Searches the Meeting ArrayList for the passed Meeting. Returns
+	 * a boolean indicated whether it was found or not.
+	 * 
+	 * @param meet the meeting to search for
+	 * @return whether the Meeting was found
+	 */
 	public boolean containsMeeting(Meeting meet){
 		if(temporaryMeetings.size() != 0){
 			for(int i=0;i<temporaryMeetings.size();i++){
@@ -515,14 +612,26 @@ public class AddSerialView extends JFrame implements ItemListener{
 		return false;
 	}
 	
+	/**Returns the data from the Conference organization text field.
+	 * 
+	 * @return the organization text field data
+	 */
 	public String getConferenceOrganizationName(){
 		return card1.getOrganizationName();
 	}
 	
+	/**Returns the Volume ArrayList of this window.
+	 * 
+	 * @return the ArrayList of volumes
+	 */
 	public ArrayList<Volume> getVolumes(){
 		return card2.temporaryVolumes;
 	}
 	
+	/**Adds the passed Issue to the currently selected Volume.
+	 * 
+	 * @param issue the Issue to be added
+	 */
 	public void addIssueToVolume(Issue issue){
 		if(card2.temporaryVolumes.size() != 0){
 			card2.temporaryVolumes.get(card2.volumeComboBox.getSelectedIndex()).addIssue(issue);
@@ -534,6 +643,12 @@ public class AddSerialView extends JFrame implements ItemListener{
 		}
 	}
 	
+	/**Checks if the passed Issue is contained within the currently
+	 * selected Volume.
+	 * 
+	 * @param issue the Issue to check
+	 * @return whether the issue was found
+	 */
 	public boolean containsIssue(Issue issue){
 		if(card2.volumeComboBox.getItemCount() != 0){
 			for(int i=0;i<card2.temporaryVolumes.get(card2.volumeComboBox.getSelectedIndex()).getSizeOfIssueList();i++){
@@ -545,6 +660,10 @@ public class AddSerialView extends JFrame implements ItemListener{
 		return false;
 	}
 	
+	/**Verifies that all volumes have issues within them.
+	 * 
+	 * @return whether all volumes have issues
+	 */
 	public boolean issuesPresent(){
 		if(card2.temporaryVolumes.size() != 0){
 			for(int i=0;i<card2.temporaryVolumes.size();i++){
@@ -556,35 +675,70 @@ public class AddSerialView extends JFrame implements ItemListener{
 		return false;
 	}
 	
+	/**Adds a new Volume to the Volume ArrayList.
+	 * 
+	 */
 	public void newVolume(){
 		card2.temporaryVolumes.add(new Volume());
 		card2.updateVolumeComboBox();
 	}
 	
+	/**Returns the data from the Journal organization text field.
+	 * 
+	 * @return the organization text field data
+	 */
 	public String getJournalOrganizationName(){
 		return card2.getOrganizationName();
 	}
 	
+	/**Calls the JournalView's getJournalLocation() method, and returns
+	 * the Location object passed from it.
+	 * 
+	 * @return the passed Location object
+	 */
 	public Location getJournalLocation(){
 		return card2.getJournalLocation();
 	}
 
+	/**Accessor method that returns the JButton that adds the serial to
+	 * the program.
+	 * 
+	 * @return the "Add Serial" JButton
+	 */
 	public JButton getJBTAddSerial(){
 		return jbtAddSerial;
 	}
 	
+	/**Accessor method that returns the JButton that adds a Meeting
+	 * to the Conference.
+	 * 
+	 * @return the "Save Meeting" JButton
+	 */
 	public JButton getJBTSaveMeeting(){
 		return jbtSaveMeeting;
 	}
 	
+	/**Accessor method that returns the JButton that adds a Issue
+	 * to the selected Volume.
+	 * 
+	 * @return the "Save Issue" JButton
+	 */
 	public JButton getJBTSaveIssue(){
 		return jbtSaveIssue;
 	}
 	
+	/**Accessor method that returns the JButton that creates a new
+	 * Volume.
+	 * 
+	 * @return the "New Volume" JButton
+	 */
 	public JButton getJBTNewVolume(){
 		return  jbtNewVolume;
 	}
 	
+	/** Removes this window from the window tracker ArrayList upon closing.
+	 * 
+	 */
 	public void windowIsClosing(){
 		openAddSerialWindows.remove(this);
 	}

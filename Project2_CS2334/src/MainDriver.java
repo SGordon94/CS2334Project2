@@ -240,9 +240,9 @@ public class MainDriver {
 					String temp4 = IO.getInput();
 					int authorFoundIndex = paperCollection.findAuthor(temp4);
 					if(authorFoundIndex != -1){
-						System.out.println("Which graph would you like to see?\nTP - Type of Publication\n"
-								+ "PY - Publications Per Year\nCPY - Conference Papers per Year\n"
-								+ "JAY - Journal Articles Per Year\nNC - Number of Co-Authors Per Publication");
+						System.out.println("Which graph would you like to see?\nTP:  Type of Publication\n"
+								+ "PY:  Publications Per Year\nCPY: Conference Papers per Year\n"
+								+ "JAY: Journal Articles Per Year\nNC:  Number of Co-Authors Per Publication");
 						
 						String temp5 = IO.getInput();
 						Scholar selectedScholar = paperCollection.getScholar(authorFoundIndex);

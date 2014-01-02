@@ -8,12 +8,11 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-
+/**Class that deals with the GUI for adding scholars to the program.
+ * 
+ * @version 1.0
+ */
 public class AddScholarView extends JFrame {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6811104289568434678L;
 	
 	private JLabel primaryNameIndicator = new JLabel("Last Name: ");
@@ -34,6 +33,11 @@ public class AddScholarView extends JFrame {
 	private TitledBorder titledBorder = BorderFactory.createTitledBorder(etchedBorder, meetingLabel,
 			TitledBorder.LEFT, TitledBorder.ABOVE_TOP);
 	
+	/**Sets up the contents of the "Add Scholar" window. Serves the same
+	 * functional purpose as the constructor for the other "Add" classes.
+	 * 
+	 * @param windows the window tracker for "Add Scholar" windows
+	 */
 	public void showAddScholarView(ArrayList<AddScholarView> windows){
 		this.openAddScholarWindows = windows;
 		setTitle("Add Scholar");
@@ -93,14 +97,26 @@ public class AddScholarView extends JFrame {
 		setVisible(true);
 	}
 	
+	/**Accessor method that returns the JButton that adds the scholar to
+	 * the program.
+	 * 
+	 * @return the "Add Scholar" JButton
+	 */
 	public JButton getJBTAddScholar(){
 		return jbtAddScholar;
 	}
 	
+	/** Removes this window from the window tracker ArrayList upon closing.
+	 * 
+	 */
 	public void windowIsClosing(){
 		openAddScholarWindows.remove(this);
 	}
 	
+	/**Verifies that no text fields are left empty.
+	 * 
+	 * @return whether or not the fields have been filled out
+	 */
 	public boolean fieldsFilled(){
 		if(primaryNameData.getText().trim().equals("")){
 			JOptionPane.showMessageDialog(null, "Please input the name the Last Name.", "Request Ignored", JOptionPane.PLAIN_MESSAGE);
@@ -121,6 +137,11 @@ public class AddScholarView extends JFrame {
 		return true;
 	}
 	
+	/**Gathers the contents of the text fields into string array, and
+	 * returns the created array.
+	 * 
+	 * @return the created string array
+	 */
 	public String[] getTextFields(){
 		String[] fields = new String[5];
 		fields[0] = primaryNameData.getText();

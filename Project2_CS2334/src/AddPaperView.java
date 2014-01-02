@@ -139,8 +139,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			setVisible(true);
 		}
 		
-		/**Verifies that no text fields are left empty, and that authors have
-		 * been selected.
+		/**Verifies that no text fields are left empty, and that scholars have
+		 * been selected, and the meeting.
 		 * 
 		 * @return whether or not the fields have been filled out
 		 */
@@ -164,7 +164,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 			return true;
 		}
 		
-		/**Gathers the contents of the Conference window and adds them to an
+		/**Gathers the contents of the Conference tab and adds them to an
 		 * ArrayList of generic Objects.
 		 * 
 		 * @return the gathered contents in a generic ArrayList<Object>
@@ -258,8 +258,8 @@ public class AddPaperView extends JFrame implements ItemListener{
 			setVisible(true);
 		}
 		
-		/**Verifies that no text fields are left empty, and that authors have
-		 * been selected.
+		/**Verifies that no text fields are left empty, and that scholars have
+		 * been selected, and the issue.
 		 * 
 		 * @return whether or not the fields have been filled out
 		 */
@@ -283,7 +283,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 			return true;
 		}
 		
-		/**Gathers the contents of the Conference window and adds them to an
+		/**Gathers the contents of the Journal tab and adds them to an
 		 * ArrayList of generic Objects.
 		 * 
 		 * @return the gathered contents in a generic ArrayList<Object>
@@ -319,7 +319,7 @@ public class AddPaperView extends JFrame implements ItemListener{
 	}
 	
 	/**Calls the getInnerDetails() method contained in the currently
-	 * selected tab
+	 * selected tab.
 	 * 
 	 * @return the ArrayList<Object> that was passed to this method
 	 */
