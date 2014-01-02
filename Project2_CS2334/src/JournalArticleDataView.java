@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+/**The class that deals with the GUI for viewing Journal Article information.
+ * 
+ * @version 1.0
+ */
 public class JournalArticleDataView extends JFrame{
 	String authorsLabel = "Authors: ";
 	String paperTitleLabel = "Title: ";
@@ -18,6 +22,13 @@ public class JournalArticleDataView extends JFrame{
 	JournalPaper usedPaper;
 	ScholarshipModel model;
 
+	/**The constructor for the JournalArticleDataView window.
+	 * 
+	 * @param paper the journal article to display information about
+	 * @param openWindows the object tracker for papers
+	 * @param windows the window tracker for JournalArticleDataView windows
+	 * @param model the program's model
+	 */
 	public JournalArticleDataView(JournalPaper paper, ArrayList<Paper> openWindows, ArrayList<JournalArticleDataView> windows, ScholarshipModel model){
 		usedPaper = paper;
 		openWindowPapers = openWindows;
@@ -66,15 +77,26 @@ public class JournalArticleDataView extends JFrame{
 		setVisible(true);
 	}
 	
+	/** Removes this window from the window tracker ArrayList upon closing.
+	 * 
+	 */
 	public void windowIsClosing(){
 		openWindowPapers.remove(usedPaper);
 		paperWindows.remove(this);
 	}
 	
+	/**Returns the JournalPaper that this class is displaying.
+	 * 
+	 * @return the used journal article
+	 */
 	public JournalPaper getUsedPaper(){
 		return usedPaper;
 	}
 	
+	/**Accessor method that returns the JButton that closes this window.
+	 * 
+	 * @return the "OK" JButton
+	 */
 	public JButton getJBTOK(){
 		return jbtOK;
 	}

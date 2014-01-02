@@ -70,6 +70,7 @@ public class Conference implements Serializable{
 	/**Overrides the inherited toString() method from Object. Returns
 	 * the name of the organization.
 	 * 
+	 * @return the name of the organization
 	 */
 	public String toString(){
 		return nameOfOrganization;
