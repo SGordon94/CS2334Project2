@@ -298,8 +298,8 @@ public class PaperCollection implements Serializable {
          * index of the author object is returned. If a match is not found,
          * then -1 is returned.
          * 
-         * @param key
-         * @return
+         * @param key the author to find
+         * @return the index of the found author
          */
         public int findAuthor(String key){
         	final int MATCH_NOT_FOUND = -1;

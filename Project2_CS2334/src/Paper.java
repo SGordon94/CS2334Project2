@@ -80,7 +80,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 	
 	/**Returns the type of the paper
 	 * 
-	 * @return
+	 * @return the type of the paper
 	 */
 	public String getTypeOfPaper(){
 		return this.typeOfPaper;
