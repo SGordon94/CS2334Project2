@@ -197,6 +197,7 @@ public class Issue implements Serializable{
 	/**Overrides the inherited toString() method from Object. Returns
 	 * the month and year that this issue takes place.
 	 * 
+	 * @return the month and year
 	 */
 	public String toString(){
 		return (month+", "+year);
