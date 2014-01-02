@@ -136,7 +136,7 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return date;
 	}
 	
-	/**Returns the digital object identifier of the paper
+	/**Returns the digital object identifier of the paper.
 	 * 
 	 * @return the digital object identifier of the paper
 	 */
