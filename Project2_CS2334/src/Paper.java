@@ -304,10 +304,19 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		
 	}
 	
+	/**Overrides the inherited toString() method from Object. Returns
+	 * the title of the paper.
+	 * 
+	 * @return the paper title
+	 */
 	public String toString(){
 		return titleOfPaper;
 	}
 	
+	/**Returns all of the authors as a string.
+	 * 
+	 * @return all of the authors
+	 */
 	public String getAllAuthors(){
 		String allAuthors = "";
 		if(authorsList.size() == 1){
@@ -320,6 +329,11 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return allAuthors;
 	}
 	
+	/**Checks if the passed Scholar is contained within this paper.
+	 * 
+	 * @param scholar the passed Scholar
+	 * @return whether the Scholar was found
+	 */
 	public boolean containsScholar(Scholar scholar){
 		for(int index = 0; index < authorsList.size(); ++index)
 			if(authorsList.get(index).equals(scholar))
@@ -328,18 +342,33 @@ public class Paper implements Comparator<Paper>, Comparable<Paper>, Serializable
 		return false;
 	}
 		
+	/**Returns the Scholar ArrayList.
+	 * 
+	 * @return the ArrayList of scholars
+	 */
 	public ArrayList<Scholar> getListOfScholars(){
 		return this.authorsList;
 	}
 	
+	/**Method to be overwritten when this class is inherited.
+	 * 
+	 * @return dummy Object
+	 */
 	public Object getParentSerial(){
 		return new Object();
 	}
 	
+	/**Method to be overwritten when this class is inherited.
+	 * 
+	 */
 	public void removePaper(){
 		
 	}
 	
+	/**Returns the year this paper was made.
+	 * 
+	 * @return the year
+	 */
 	public String getYear(){
 		String[] year = this.publicationDate.split(" ");
 		return year[1];
